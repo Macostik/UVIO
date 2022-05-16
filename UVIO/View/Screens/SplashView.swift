@@ -63,7 +63,7 @@ struct SplashView: View {
     
     var signInButton: some View {
         NavigationLink(destination:
-                        LoginView(viewModel: LoginViewModel())) {
+                        LoginNameView(viewModel: LoginViewModel())) {
             Text("SIGN IN")
                 .font(.custom("Poppins-Medium", size: 14))
                 .foregroundColor(Color.black)
