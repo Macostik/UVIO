@@ -13,7 +13,7 @@
 		56A8535B28322351000DFE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A8535A28322351000DFE3D /* Assets.xcassets */; };
 		56A8535E28322351000DFE3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8535C28322351000DFE3D /* LaunchScreen.storyboard */; };
 		56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8536F2832344A000DFE3D /* SpalshViewModel.swift */; };
-		56A8537228323476000DFE3D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8537128323476000DFE3D /* SplashView.swift */; };
+		56A8537428323934000DFE3D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8537328323934000DFE3D /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		56A8535D28322351000DFE3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56A8535F28322351000DFE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56A8536F2832344A000DFE3D /* SpalshViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshViewModel.swift; sourceTree = "<group>"; };
-		56A8537128323476000DFE3D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		56A8537328323934000DFE3D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				56A8537128323476000DFE3D /* SplashView.swift */,
+				56A8537328323934000DFE3D /* SplashView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -126,6 +126,8 @@
 			dependencies = (
 			);
 			name = UVIO;
+			packageProductDependencies = (
+			);
 			productName = UVIO;
 			productReference = 56A8534E28322350000DFE3D /* UVIO.app */;
 			productType = "com.apple.product-type.application";
@@ -154,6 +156,8 @@
 				Base,
 			);
 			mainGroup = 56A8534528322350000DFE3D;
+			packageReferences = (
+			);
 			productRefGroup = 56A8534F28322350000DFE3D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -182,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
-				56A8537228323476000DFE3D /* SplashView.swift in Sources */,
+				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 			);
