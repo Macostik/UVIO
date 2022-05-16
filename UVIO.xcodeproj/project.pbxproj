@@ -12,6 +12,8 @@
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
 		56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */; };
 		56953FCF283259C90025C1A2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */; };
+		56953FD12832745C0025C1A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD02832745C0025C1A2 /* LoginView.swift */; };
+		56953FD32832746F0025C1A2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD22832746F0025C1A2 /* LoginViewModel.swift */; };
 		56A8535228322350000DFE3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535128322350000DFE3D /* AppDelegate.swift */; };
 		56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535328322350000DFE3D /* SceneDelegate.swift */; };
 		56A8535928322350000DFE3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8535728322350000DFE3D /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		56953FD02832745C0025C1A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		56953FD22832746F0025C1A2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		56A8534E28322350000DFE3D /* UVIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A8535128322350000DFE3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A8535328322350000DFE3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				56A8537328323934000DFE3D /* SplashView.swift */,
+				56953FD02832745C0025C1A2 /* LoginView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				56A8536F2832344A000DFE3D /* SpalshViewModel.swift */,
+				56953FD22832746F0025C1A2 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -223,7 +229,9 @@
 			files = (
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
+				56953FD32832746F0025C1A2 /* LoginViewModel.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
+				56953FD12832745C0025C1A2 /* LoginView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

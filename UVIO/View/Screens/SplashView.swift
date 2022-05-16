@@ -16,25 +16,26 @@ struct SplashView: View {
     }
     
     var body: some View {
-        ZStack {
-            Image("splashBackgroundImage")
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 16) {
-                Spacer()
-                splashIconView
-                Text("Cone")
-                    .bold()
-                    .font(.custom("Poppins-Bold", size: 24))
-                Text("Take back the Control over your Diabetes")
-                    .font(.custom("Poppins-Regular", size: 21))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                Spacer()
-                createAccountButton
-                signInButton
+        NavigationView {
+            ZStack {
+                Image("splashBackgroundImage")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+                VStack(spacing: 16) {
+                    Spacer()
+                    splashIconView
+                    Text("Cone")
+                        .bold()
+                        .font(.custom("Poppins-Bold", size: 24))
+                    Text("Take back the Control over your Diabetes")
+                        .font(.custom("Poppins-Regular", size: 21))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    Spacer()
+                    createAccountButton
+                    signInButton
+                }
             }
-            
         }
     }
     
@@ -61,9 +62,8 @@ struct SplashView: View {
     }
     
     var signInButton: some View {
-        Button(action: {
-            print("click signIn button")
-        }) {
+        NavigationLink(destination:
+                        LoginView(viewModel: LoginViewModel())) {
             Text("SIGN IN")
                 .font(.custom("Poppins-Medium", size: 14))
                 .foregroundColor(Color.black)
