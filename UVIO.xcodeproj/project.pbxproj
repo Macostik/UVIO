@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
+		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
+		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
+		56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */; };
+		56953FCF283259C90025C1A2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */; };
 		56A8535228322350000DFE3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535128322350000DFE3D /* AppDelegate.swift */; };
 		56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535328322350000DFE3D /* SceneDelegate.swift */; };
 		56A8535928322350000DFE3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8535728322350000DFE3D /* Main.storyboard */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		56A8534E28322350000DFE3D /* UVIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A8535128322350000DFE3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A8535328322350000DFE3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +49,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56953FC4283259470025C1A2 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				56A8535728322350000DFE3D /* Main.storyboard */,
+				56A8535A28322351000DFE3D /* Assets.xcassets */,
+				56A8535C28322351000DFE3D /* LaunchScreen.storyboard */,
+				56A8535F28322351000DFE3D /* Info.plist */,
+				56953FC5283259950025C1A2 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		56953FC5283259950025C1A2 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */,
+				56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */,
+				56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */,
+				56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */,
+				56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		56A8534528322350000DFE3D = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +92,11 @@
 		56A8535028322350000DFE3D /* UVIO */ = {
 			isa = PBXGroup;
 			children = (
+				56953FC4283259470025C1A2 /* Resource */,
 				56A8536E283232C7000DFE3D /* Model */,
 				56A8536D283232BE000DFE3D /* ViewModel */,
 				56A8536828322874000DFE3D /* View */,
 				56A8536528322492000DFE3D /* System */,
-				56A8535728322350000DFE3D /* Main.storyboard */,
-				56A8535A28322351000DFE3D /* Assets.xcassets */,
-				56A8535C28322351000DFE3D /* LaunchScreen.storyboard */,
-				56A8535F28322351000DFE3D /* Info.plist */,
 			);
 			path = UVIO;
 			sourceTree = "<group>";
@@ -173,7 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A8535E28322351000DFE3D /* LaunchScreen.storyboard in Resources */,
+				56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */,
+				56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */,
+				56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */,
 				56A8535B28322351000DFE3D /* Assets.xcassets in Resources */,
+				56953FCF283259C90025C1A2 /* Poppins-SemiBold.ttf in Resources */,
+				56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */,
 				56A8535928322350000DFE3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +375,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UVIO/Info.plist;
+				INFOPLIST_FILE = UVIO/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -367,7 +403,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = UVIO/Info.plist;
+				INFOPLIST_FILE = UVIO/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

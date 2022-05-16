@@ -25,9 +25,9 @@ struct SplashView: View {
                 splashIconView
                 Text("Cone")
                     .bold()
-                    .font(.title2)
+                    .font(.custom("Poppins-Bold", size: 24))
                 Text("Take back the Control over your Diabetes")
-                    .font(.title)
+                    .font(.custom("Poppins-Regular", size: 21))
                     .multilineTextAlignment(.center)
                     .padding()
                 Spacer()
@@ -52,6 +52,7 @@ struct SplashView: View {
             print("click create account button")
         }) {
             Text("CREATE ACCOUNT")
+                .font(.custom("Poppins-Medium", size: 14))
                 .foregroundColor(Color.white)
                 .frame(width: UIScreen.main.bounds.width - 24, height: 48)
                 .background(Color.black)
@@ -60,10 +61,13 @@ struct SplashView: View {
     }
     
     var signInButton: some View {
-        Button("SIGN IN") {
+        Button(action: {
             print("click signIn button")
+        }) {
+            Text("SIGN IN")
+                .font(.custom("Poppins-Medium", size: 14))
+                .foregroundColor(Color.black)
         }
-        .foregroundColor(Color.black)
     }
 }
 
