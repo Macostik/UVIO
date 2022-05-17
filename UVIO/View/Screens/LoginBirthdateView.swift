@@ -29,7 +29,7 @@ struct LoginBirthdateView: View {
                     .font(.custom("Poppins-Bold", size: 24))
                 TextField("My full name", text: $fullName)
                     .padding()
-                    .background(.white)
+                    .background(Color.white)
                     .cornerRadius(12)
                     .padding()
                 

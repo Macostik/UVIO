@@ -55,9 +55,10 @@ struct SplashView: View {
             Text("CREATE ACCOUNT")
                 .font(.custom("Poppins-Medium", size: 14))
                 .foregroundColor(Color.white)
-                .frame(width: UIScreen.main.bounds.width - 24, height: 48)
+                .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.black)
                 .cornerRadius(12)
+                .padding()
         }
     }
     
