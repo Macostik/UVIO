@@ -24,13 +24,7 @@ struct SplashView: View {
                 VStack(spacing: 16) {
                     Spacer()
                     splashIconView
-                    Text("Cone")
-                        .bold()
-                        .font(.custom("Poppins-Bold", size: 24))
-                    Text("Take back the Control over your Diabetes")
-                        .font(.custom("Poppins-Regular", size: 21))
-                        .multilineTextAlignment(.center)
-                        .padding()
+                    contentView
                     Spacer()
                     createAccountButton
                     signInButton
@@ -46,6 +40,20 @@ struct SplashView: View {
             Image("uvioIcon")
         }
         .frame(width: 128, height: 128)
+    }
+    
+    var contentView: some View {
+        VStack {
+            Text("Cone")
+                .bold()
+                .foregroundColor(.black)
+                .font(.custom("Poppins-Bold", size: 24))
+            Text("Take back the Control over your Diabetes")
+                .font(.custom("Poppins-Regular", size: 21))
+                .multilineTextAlignment(.center)
+                .foregroundColor(.black)
+                .padding()
+        }
     }
     
     var createAccountButton: some View {
@@ -64,7 +72,7 @@ struct SplashView: View {
     
     var signInButton: some View {
         NavigationLink(destination:
-                        LoginNameView(viewModel: LoginViewModel())) {
+                        LoginNameView(viewModel: LoginNameViewModel())) {
             Text("SIGN IN")
                 .font(.custom("Poppins-Medium", size: 14))
                 .foregroundColor(Color.black)

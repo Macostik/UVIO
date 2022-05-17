@@ -19,11 +19,16 @@ struct backButton: View  {
     }
 }
 
-struct nextButton: View {
+struct nextButton<V: View>: View {
+    
+    private var destination: V
+    
+    init(destination: V) {
+        self.destination = destination
+    }
     
     var body: some View {
-        NavigationLink(destination:
-                        LoginNameView(viewModel: LoginViewModel())) {
+        NavigationLink(destination: destination) {
             HStack {
                 Spacer()
                 Text("Next")

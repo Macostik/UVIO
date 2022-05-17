@@ -10,10 +10,10 @@ import Combine
 
 struct LoginNameView: View {
     
-    @ObservedObject var loginViewModel: LoginViewModel
+    @ObservedObject var loginViewModel: LoginNameViewModel
     @State private var fullName: String = ""
     
-    init(viewModel: LoginViewModel) {
+    init(viewModel: LoginNameViewModel) {
         self.loginViewModel  = viewModel
     }
     
@@ -25,16 +25,9 @@ struct LoginNameView: View {
            
             VStack(spacing: 16) {
                 Spacer()
-                Text("What is your Name?")
-                    .font(.custom("Poppins-Bold", size: 24))
-                TextField("My full name", text: $fullName)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .padding()
-                
+                contentView
                 Spacer()
-                nextButton()
+                nextButton(destination: LoginBirthdateView(viewModel: LoginBirthDateViewModel()))
                 skipButton()
             }
         }
@@ -42,12 +35,22 @@ struct LoginNameView: View {
         .navigationBarItems(leading: backButton())
     }
     
-   
+    var contentView: some View {
+        VStack {
+            Text("What is your Name?")
+                .font(.custom("Poppins-Bold", size: 24))
+            TextField("My full name", text: $fullName)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(12)
+                .padding()
+        }
+    }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginNameView(viewModel: LoginViewModel())
+        LoginNameView(viewModel: LoginNameViewModel())
     }
 }
 

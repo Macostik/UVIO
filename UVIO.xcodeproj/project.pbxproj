@@ -14,13 +14,15 @@
 		56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */; };
 		56953FCF283259C90025C1A2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */; };
 		56953FD12832745C0025C1A2 /* LoginNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD02832745C0025C1A2 /* LoginNameView.swift */; };
-		56953FD32832746F0025C1A2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD22832746F0025C1A2 /* LoginViewModel.swift */; };
+		56953FD32832746F0025C1A2 /* LoginNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */; };
 		56A8535228322350000DFE3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535128322350000DFE3D /* AppDelegate.swift */; };
 		56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535328322350000DFE3D /* SceneDelegate.swift */; };
 		56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8536F2832344A000DFE3D /* SpalshViewModel.swift */; };
 		56A8537428323934000DFE3D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8537328323934000DFE3D /* SplashView.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
+		56D9581E2833983F0053E65C /* LoginBirthDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */; };
+		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +33,7 @@
 		56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		56953FD02832745C0025C1A2 /* LoginNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNameView.swift; sourceTree = "<group>"; };
-		56953FD22832746F0025C1A2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNameViewModel.swift; sourceTree = "<group>"; };
 		56A8534E28322350000DFE3D /* UVIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A8535128322350000DFE3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A8535328322350000DFE3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		56A8537328323934000DFE3D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
+		56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBirthDateViewModel.swift; sourceTree = "<group>"; };
+		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 				56A8537328323934000DFE3D /* SplashView.swift */,
 				56953FD02832745C0025C1A2 /* LoginNameView.swift */,
 				5609ED782832AD1400A8B144 /* LoginBirthdateView.swift */,
+				56D9581F28339CBD0053E65C /* DatePickerView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -135,7 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				56A8536F2832344A000DFE3D /* SpalshViewModel.swift */,
-				56953FD22832746F0025C1A2 /* LoginViewModel.swift */,
+				56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */,
+				56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,9 +241,11 @@
 			files = (
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
-				56953FD32832746F0025C1A2 /* LoginViewModel.swift in Sources */,
+				56953FD32832746F0025C1A2 /* LoginNameViewModel.swift in Sources */,
+				56D9581E2833983F0053E65C /* LoginBirthDateViewModel.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
+				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				5609ED792832AD1400A8B144 /* LoginBirthdateView.swift in Sources */,
 				56953FD12832745C0025C1A2 /* LoginNameView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
