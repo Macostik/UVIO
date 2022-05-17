@@ -18,7 +18,7 @@ struct LoginNameView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image("loginViewBackground")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
@@ -33,6 +33,12 @@ struct LoginNameView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                progressView(completed: 0.2)
+            }
+        })
     }
     
     var contentView: some View {
@@ -46,6 +52,8 @@ struct LoginNameView: View {
                 .padding()
         }
     }
+    
+   
 }
 
 struct LoginView_Previews: PreviewProvider {

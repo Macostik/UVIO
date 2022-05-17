@@ -48,6 +48,12 @@ struct LoginBirthdateView: View {
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                progressView(completed: 0.4)
+            }
+        })
     }
     
     var contentView: some View {

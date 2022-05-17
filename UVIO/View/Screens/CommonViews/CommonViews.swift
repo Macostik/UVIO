@@ -60,3 +60,24 @@ struct skipButton: View {
     }
 }
 
+struct progressView: View {
+    
+    var completed: Double = 1.0
+    
+    var body: some View {
+        HStack(spacing: 18) {
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .frame(width: 160, height: 4)
+                    .foregroundColor(Color.white)
+                Capsule()
+                    .frame(width: 160 * completed, height: 4)
+                    .foregroundColor(Color.green)
+            }
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundColor(Color.green)
+                .frame(width: 12, height: 10)
+        }
+    }
+}
+
