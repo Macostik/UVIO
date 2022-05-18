@@ -10,6 +10,9 @@
 		5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */; };
 		561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */; };
 		561238072834D36C00DCB87B /* DiabetsOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */; };
+		561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */; };
+		5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */; };
+		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
@@ -33,6 +36,9 @@
 		5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateOnboardingView.swift; sourceTree = "<group>"; };
 		561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetsOnboardingView.swift; sourceTree = "<group>"; };
 		561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetsOnboardingViewModel.swift; sourceTree = "<group>"; };
+		561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardViewModel.swift; sourceTree = "<group>"; };
+		5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
+		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 				5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */,
 				56D9581F28339CBD0053E65C /* DatePickerView.swift */,
 				561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */,
+				5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 				56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */,
 				56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */,
 				561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */,
+				561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				56D9581B283392AA0053E65C /* CommonViews.swift */,
+				5612380C283520FB00DCB87B /* RangedSliderView.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -255,11 +264,14 @@
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
+				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */,
 				56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */,
 				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
+				561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
+				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,

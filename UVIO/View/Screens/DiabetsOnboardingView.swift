@@ -25,8 +25,8 @@ struct DiabetsOnboardingView: View {
                 VStack(spacing: 16) {
                     Spacer()
                     contentView
-                    Spacer()
-                    nextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))
+                        .padding(.bottom)
+                    nextButton(destination: GlucoseUnitOnboardingView(viewModel: GlucoseUnitOnboardViewModel()))
                     skipButton()
                         .padding(.bottom, 30)
                 }
@@ -58,7 +58,7 @@ struct DiabetsOnboardingView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
                             .frame(height: 48)
-                            .overlay(genderOverlay(type: item.type)
+                            .overlay(genderOverlay(type: item.type, isSelected: item.isSelected)
                                 .foregroundColor( item.isSelected ? Color("complementaryColor") : Color.black))
                             .overlay( RoundedRectangle(cornerRadius: 16.0)
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
@@ -74,10 +74,7 @@ struct DiabetsOnboardingView: View {
         }
     }
     
-    func genderOverlay(type: String) -> some View {
-        Text(type)
-            .font(.custom("Poppins-Medium", size: 14))
-    }
+    
 }
 
 struct DiabetsOnboardingView_Previews: PreviewProvider {

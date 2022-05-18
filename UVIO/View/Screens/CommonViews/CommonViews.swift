@@ -63,6 +63,22 @@ struct skipButton: View {
     }
 }
 
+func genderOverlay(type: String,
+                   isSelected: Bool) -> some View {
+    HStack {
+        Circle()
+            .foregroundColor(Color("grayscaleColor"))
+            .frame(width: 24, height: 24)
+            .padding(.leading)
+            .overlay(isSelected ?  Circle()
+                .foregroundColor(Color("complementaryColor")).frame(width: 12, height: 12).cornerRadius(6)
+                .padding(.leading, 16) : nil)
+        Text(type)
+            .font(.custom("Poppins-Medium", size: 14))
+        Spacer()
+    }
+}
+
 struct progressView: View {
     
     var completed: Double = 1.0
@@ -75,10 +91,10 @@ struct progressView: View {
                     .foregroundColor(Color.white)
                 Capsule()
                     .frame(width: 160 * completed, height: 4)
-                    .foregroundColor(Color.green)
+                    .foregroundColor(Color("primaryGreenColor"))
             }
             Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(Color.green)
+                .foregroundColor(Color("primaryGreenColor"))
                 .frame(width: 12, height: 10)
         }
     }
