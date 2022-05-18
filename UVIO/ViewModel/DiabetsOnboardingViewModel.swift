@@ -7,14 +7,35 @@
 
 import SwiftUI
 
-struct DiabetsOnboardingViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class DiabetsOnboardingViewModel: ObservableObject {
+    
+    @Published var selectedItem: DiabetType? {
+        willSet {
+            guard let item = newValue else { return }
+            diabetTypeList.forEach({ $0.isSelected = false })
+            diabetTypeList.first(where: { $0.id == item.id })?.isSelected = true
+        }
     }
-}
-
-struct DiabetsOnboardingViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        DiabetsOnboardingViewModel()
+    
+    class DiabetType {
+        let id: Int
+        let type: String
+        var isSelected = false
+        
+        init(id: Int, type: String) {
+            self.id = id
+            self.type = type
+        }
     }
+    
+     var diabetTypeList = [
+        DiabetType(id: 1, type: "Type 1 diabetes"),
+        DiabetType(id: 2, type: "Type 2 diabetes"),
+        DiabetType(id: 3, type: "Gestational diabetes"),
+        DiabetType(id: 4, type: "Prediabetes"),
+        DiabetType(id: 5, type: "LADA"),
+        DiabetType(id: 6, type: "MODY"),
+        DiabetType(id: 7, type: "I’m not sure which type I have"),
+    ]
+    
 }

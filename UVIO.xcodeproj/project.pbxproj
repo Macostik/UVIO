@@ -7,33 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5609ED792832AD1400A8B144 /* LoginBirthdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5609ED782832AD1400A8B144 /* LoginBirthdateView.swift */; };
+		5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */; };
+		561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */; };
+		561238072834D36C00DCB87B /* DiabetsOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
 		56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */; };
 		56953FCF283259C90025C1A2 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */; };
-		56953FD12832745C0025C1A2 /* LoginNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD02832745C0025C1A2 /* LoginNameView.swift */; };
-		56953FD32832746F0025C1A2 /* LoginNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */; };
+		56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD02832745C0025C1A2 /* NameOnboardingView.swift */; };
+		56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56953FD22832746F0025C1A2 /* NameOnboardingViewModel.swift */; };
 		56A8535228322350000DFE3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535128322350000DFE3D /* AppDelegate.swift */; };
 		56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8535328322350000DFE3D /* SceneDelegate.swift */; };
 		56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8536F2832344A000DFE3D /* SpalshViewModel.swift */; };
 		56A8537428323934000DFE3D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8537328323934000DFE3D /* SplashView.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
-		56D9581E2833983F0053E65C /* LoginBirthDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */; };
+		56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
+		56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958212833D3430053E65C /* GenderOnboardingView.swift */; };
+		56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5609ED782832AD1400A8B144 /* LoginBirthdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBirthdateView.swift; sourceTree = "<group>"; };
+		5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateOnboardingView.swift; sourceTree = "<group>"; };
+		561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetsOnboardingView.swift; sourceTree = "<group>"; };
+		561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetsOnboardingViewModel.swift; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		56953FC9283259C90025C1A2 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		56953FCA283259C90025C1A2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		56953FD02832745C0025C1A2 /* LoginNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNameView.swift; sourceTree = "<group>"; };
-		56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNameViewModel.swift; sourceTree = "<group>"; };
+		56953FD02832745C0025C1A2 /* NameOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameOnboardingView.swift; sourceTree = "<group>"; };
+		56953FD22832746F0025C1A2 /* NameOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameOnboardingViewModel.swift; sourceTree = "<group>"; };
 		56A8534E28322350000DFE3D /* UVIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UVIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A8535128322350000DFE3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A8535328322350000DFE3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,8 +48,10 @@
 		56A8537328323934000DFE3D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
-		56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBirthDateViewModel.swift; sourceTree = "<group>"; };
+		56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateOnboardingViewModel.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		56D958212833D3430053E65C /* GenderOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingView.swift; sourceTree = "<group>"; };
+		56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +137,11 @@
 			children = (
 				56D9581A283392990053E65C /* CommonViews */,
 				56A8537328323934000DFE3D /* SplashView.swift */,
-				56953FD02832745C0025C1A2 /* LoginNameView.swift */,
-				5609ED782832AD1400A8B144 /* LoginBirthdateView.swift */,
+				56D958212833D3430053E65C /* GenderOnboardingView.swift */,
+				56953FD02832745C0025C1A2 /* NameOnboardingView.swift */,
+				5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */,
 				56D9581F28339CBD0053E65C /* DatePickerView.swift */,
+				561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -140,8 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				56A8536F2832344A000DFE3D /* SpalshViewModel.swift */,
-				56953FD22832746F0025C1A2 /* LoginNameViewModel.swift */,
-				56D9581D2833983F0053E65C /* LoginBirthDateViewModel.swift */,
+				56953FD22832746F0025C1A2 /* NameOnboardingViewModel.swift */,
+				56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */,
+				56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */,
+				561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -239,15 +251,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				561238072834D36C00DCB87B /* DiabetsOnboardingViewModel.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
-				56953FD32832746F0025C1A2 /* LoginNameViewModel.swift in Sources */,
-				56D9581E2833983F0053E65C /* LoginBirthDateViewModel.swift in Sources */,
+				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
+				56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */,
+				56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */,
+				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
+				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
-				5609ED792832AD1400A8B144 /* LoginBirthdateView.swift in Sources */,
-				56953FD12832745C0025C1A2 /* LoginNameView.swift in Sources */,
+				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
+				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

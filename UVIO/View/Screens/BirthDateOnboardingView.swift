@@ -1,5 +1,5 @@
 //
-//  LoginBirthdateView.swift
+//  BirthDateOnboardingView.swift
 //  UVIO
 //
 //  Created by Macostik on 16.05.2022.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct LoginBirthdateView: View {
+struct BirthDateOnboardingView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var loginViewModel: LoginBirthDateViewModel
+    @ObservedObject var loginViewModel: BirthDateOnboardingViewModel
     @State private var birthDateValue = Date()
     @State private var isPresentedDatePicker = false
     var dateFormatter: DateFormatter {
@@ -19,7 +19,7 @@ struct LoginBirthdateView: View {
         return dateFormatter
     }
     
-    init(viewModel: LoginBirthDateViewModel) {
+    init(viewModel: BirthDateOnboardingViewModel) {
         self.loginViewModel  = viewModel
     }
     
@@ -34,7 +34,7 @@ struct LoginBirthdateView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    nextButton(destination: NameOnboardingView(viewModel: NameOnboardingViewModel()))
+                    nextButton(destination: GenderOnboardingView(viewModel: GenderOnboardingViewModel()))
                     skipButton()
                         .padding(.bottom, 30)
                 }
@@ -67,7 +67,7 @@ struct LoginBirthdateView: View {
             }, label: {
                 Text(dateFormatter.string(from: birthDateValue))
                     .padding()
-                    .font(.custom("Poppings-Medium", size: 14))
+                    .font(.custom("Poppins-Medium", size: 14))
                     .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
                     .background(Color.white)
                     .foregroundColor(.black)
@@ -80,6 +80,6 @@ struct LoginBirthdateView: View {
 
 struct LoginBirthdateView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginBirthdateView(viewModel: LoginBirthDateViewModel())
+        BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel())
     }
 }

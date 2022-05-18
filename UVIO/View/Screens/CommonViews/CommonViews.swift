@@ -29,21 +29,24 @@ struct nextButton<V: View>: View {
     
     var body: some View {
         NavigationLink(destination: destination) {
-            HStack {
-                Spacer()
-                Text("Next")
-                    .font(.custom("Poppins-Medium", size: 14))
-                    .foregroundColor(Color.white)
-                    .offset(x: 20)
-                Spacer()
-                Image("nextIcon")
-                    .padding()
+            ZStack {
+                HStack() {
+                    Image("nextIcon")
+                        .padding()
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
             .background(Color.black)
             .cornerRadius(12)
-            .padding()
+            .padding(.horizontal)
+            .overlay(textOverlay)
         }
+    }
+    
+    var textOverlay: some View {
+        Text("Next")
+            .font(.custom("Popping-Medium", size: 14))
+            .foregroundColor(.white)
     }
 }
 
@@ -78,6 +81,45 @@ struct progressView: View {
                 .foregroundColor(Color.green)
                 .frame(width: 12, height: 10)
         }
+    }
+}
+
+struct SelectableButtonStyle: ButtonStyle {
+
+    var isSelected = false
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .padding()
+            .foregroundColor(isSelected ? Color("complementaryColor") : Color.black)
+            .background(isSelected ? Color.clear : Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16.0))
+            .overlay(RoundedRectangle(cornerRadius: 16.0)
+                .stroke(lineWidth: isSelected ? 2.0 : 0.0)
+                .foregroundColor(Color.white))
+    }
+}
+
+
+struct StatedButton<Label>: View where Label: View {
+
+    private let action: (() -> ())?
+    private let label: (() -> Label)?
+    @State var buttonStyle = SelectableButtonStyle()
+
+    init(action: (() -> ())? = nil, label: (() -> Label)? = nil) {
+        self.action = action
+        self.label = label
+    }
+
+    var body: some View {
+        Button(action: {
+            self.buttonStyle.isSelected = !self.buttonStyle.isSelected
+            self.action?()
+        }) {
+            label?()
+        }
+        .buttonStyle(buttonStyle)
     }
 }
 

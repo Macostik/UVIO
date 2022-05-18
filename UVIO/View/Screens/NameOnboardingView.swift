@@ -1,5 +1,5 @@
 //
-//  LoginNameView.swift
+//  NameOnboardingView.swift
 //  UVIO
 //
 //  Created by Macostik on 16.05.2022.
@@ -8,12 +8,12 @@
 import SwiftUI
 import Combine
 
-struct LoginNameView: View {
+struct NameOnboardingView: View {
     
-    @ObservedObject var loginViewModel: LoginNameViewModel
+    @ObservedObject var loginViewModel: NameOnboardingViewModel
     @State private var fullName: String = ""
     
-    init(viewModel: LoginNameViewModel) {
+    init(viewModel: NameOnboardingViewModel) {
         self.loginViewModel  = viewModel
     }
     
@@ -27,7 +27,7 @@ struct LoginNameView: View {
                 Spacer()
                 contentView
                 Spacer()
-                nextButton(destination: LoginBirthdateView(viewModel: LoginBirthDateViewModel()))
+                nextButton(destination: BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
                 skipButton()
             }
         }
@@ -58,7 +58,7 @@ struct LoginNameView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginNameView(viewModel: LoginNameViewModel())
+        NameOnboardingView(viewModel: NameOnboardingViewModel())
     }
 }
 

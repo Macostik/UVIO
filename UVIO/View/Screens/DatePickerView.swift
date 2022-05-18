@@ -20,7 +20,7 @@ struct DatePickerView: View {
                 }
             }) {
                 Text("DONE")
-                    .font(.custom("Poppings-Regular", size: 16))
+                    .font(.custom("Poppins-Regular", size: 16))
             }
             .padding()
             DatePicker("", selection: $date, displayedComponents: [.date])
