@@ -58,9 +58,10 @@ struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
 
 extension GlucoseUnitOnboardingView {
     var contentView: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 15) {
             glucoseView
             targetView
+            hypersAndHypos
         }
     }
     
@@ -91,7 +92,7 @@ extension GlucoseUnitOnboardingView {
                 }
                 .frame(height: 48)
             }
-        }
+        }.padding(.top)
     }
     
     var targetView: some View {
@@ -104,21 +105,21 @@ extension GlucoseUnitOnboardingView {
                 RoundedRectangle(cornerRadius: 16)
                     .frame(height: 116)
                     .foregroundColor(Color.white)
-                    .overlay(container)
+                    .overlay(rangeSliderOverlay)
             }
             .padding(.trailing)
         }
         .padding(.leading)
     }
     
-    var container: some View {
+    var rangeSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color("grayLightColor"))
                 .padding(8)
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
-                    Image("targetArrowIcon")
+                    Image("greenArrowIcon")
                     Text("Target range")
                         .font(.custom("Poppins-Medium", size: 14))
                     Spacer()
@@ -130,10 +131,84 @@ extension GlucoseUnitOnboardingView {
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
             }.padding()
-            
         }
     }
     
+    var topSliderOverlay: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color("grayLightColor"))
+                .padding(.horizontal, 8)
+            VStack(spacing: 0) {
+                HStack {
+                    Image("alertArrowIcon")
+                    Text("Hyper (High Glucose)")
+                        .font(.custom("Poppins-Medium", size: 14))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("\(viewModel.hyperValue) mg/dL")
+                        .font(.custom("Poppins-Bold", size: 14))
+                        .foregroundColor(Color("primaryAlertColor"))
+                }
+                
+                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+            }.padding()
+        }
+    }
+    
+    var bottomSliderOverlay: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(Color("grayLightColor"))
+                .padding(.horizontal, 8)
+            VStack(spacing: 0) {
+                HStack {
+                    Image("alertArrowIcon")
+                        .rotationEffect(.radians(.pi))
+                    Text("Hypo (Low Glucose)")
+                        .font(.custom("Poppins-Medium", size: 14))
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Text("\(viewModel.hypoValue) mg/dL")
+                        .font(.custom("Poppins-Bold", size: 14))
+                        .foregroundColor(Color("primaryAlertColor"))
+                }
+                
+                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+            }
+            .padding()
+        }
+    }
+    
+    
+    var hypersAndHypos: some View {
+        VStack(alignment: .leading) {
+            Text("Hypers and hypos")
+                .font(.custom("Poppins-Bold", size: 18))
+            Text("Take back the Control over your Diabetes")
+                .font(.custom("Poppins-Medium", size: 14))
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .frame(height: 224)
+                    .foregroundColor(Color.white)
+                    .overlay(doubleSliderOverlay)
+            }
+            .padding(.trailing)
+        }
+        .padding(.leading)
+    }
+    
+    var doubleSliderOverlay: some View {
+        VStack {
+            RoundedRectangle(cornerRadius: 12)
+                .overlay(topSliderOverlay)
+                .padding(.top, 8)
+            RoundedRectangle(cornerRadius: 12)
+                .overlay(bottomSliderOverlay)
+                .padding(.bottom, 8)
+        }
+        .foregroundColor(Color.clear)
+    }
     struct completeButton<V: View>: View {
         
         private var destination: V

@@ -17,22 +17,25 @@ class GlucoseUnitOnboardViewModel: ObservableObject {
         }
     }
     
-    @Published  var glucoseRangeValue: ClosedRange<Int> = 100...160
+    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
+    @Published var hyperValue: Int = 200
+    @Published var hypoValue: Int = 70
     
     class GlucoseType {
         let id: Int
         let type: String
-        var isSelected = false
+        var isSelected: Bool
         
-        init(id: Int, type: String) {
+        init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
+            self.isSelected = isSelected
         }
     }
     
      var glucoseTypeList = [
-        GlucoseType(id: 1, type: "mg/dL"),
-        GlucoseType(id: 2, type: "mmol/l"),
+        GlucoseType(id: 1, type: "mg/dL", isSelected: true),
+        GlucoseType(id: 2, type: "mmol/l", isSelected: false),
     ]
     
 }

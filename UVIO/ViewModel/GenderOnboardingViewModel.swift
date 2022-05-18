@@ -29,18 +29,18 @@ class GenderOnboardingViewModel: ObservableObject {
         let type: String
         var isSelected = false
         
-        init(id: Int, type: String) {
+        init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
+            self.isSelected = isSelected
         }
-        
     }
     
      var genderTypeList = [
-        GenderType(id: 1, type: "Female"),
-        GenderType(id: 2, type: "Male"),
-        GenderType(id: 3, type: "Non-binary"),
-        GenderType(id: 4, type: "Specify another")
+        GenderType(id: 1, type: "Female", isSelected: true),
+        GenderType(id: 2, type: "Male", isSelected: false),
+        GenderType(id: 3, type: "Non-binary", isSelected: false),
+        GenderType(id: 4, type: "Specify another", isSelected: false)
     ]
 }
 

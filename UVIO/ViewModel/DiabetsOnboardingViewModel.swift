@@ -22,20 +22,21 @@ class DiabetsOnboardingViewModel: ObservableObject {
         let type: String
         var isSelected = false
         
-        init(id: Int, type: String) {
+        init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
+            self.isSelected = isSelected
         }
     }
     
      var diabetTypeList = [
-        DiabetType(id: 1, type: "Type 1 diabetes"),
-        DiabetType(id: 2, type: "Type 2 diabetes"),
-        DiabetType(id: 3, type: "Gestational diabetes"),
-        DiabetType(id: 4, type: "Prediabetes"),
-        DiabetType(id: 5, type: "LADA"),
-        DiabetType(id: 6, type: "MODY"),
-        DiabetType(id: 7, type: "I’m not sure which type I have"),
+        DiabetType(id: 1, type: "Type 1 diabetes", isSelected: true),
+        DiabetType(id: 2, type: "Type 2 diabetes", isSelected: false),
+        DiabetType(id: 3, type: "Gestational diabetes", isSelected: false),
+        DiabetType(id: 4, type: "Prediabetes", isSelected: false),
+        DiabetType(id: 5, type: "LADA", isSelected: false),
+        DiabetType(id: 6, type: "MODY", isSelected: false),
+        DiabetType(id: 7, type: "I’m not sure which type I have", isSelected: false)
     ]
     
 }

@@ -13,6 +13,7 @@
 		561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */; };
 		5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
+		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
@@ -39,6 +40,7 @@
 		561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardViewModel.swift; sourceTree = "<group>"; };
 		5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
+		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				56D9581B283392AA0053E65C /* CommonViews.swift */,
 				5612380C283520FB00DCB87B /* RangedSliderView.swift */,
+				5612380E2835399000DCB87B /* SingleSliderView.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
+				5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */,
 				56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */,
 				56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */,
 				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
