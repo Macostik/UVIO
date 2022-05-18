@@ -1,0 +1,10 @@
+/* 
+  Base.strings
+  SwiftDemo
+
+  Created by Yuriy Granchenko on 03.09.2020.
+  
+*/
+
+"what_name" = "What is your Name?";
+"full_name" = "My full name";

@@ -59,7 +59,7 @@ struct BirthDateOnboardingView: View {
     var contentView: some View {
         VStack {
             Text("What is your Birth Date?")
-                .font(.custom("Poppins-Bold", size: 24))
+                .font(.poppins(.bold, size: 24))
             Button(action: {
                 withAnimation {
                     isPresentedDatePicker = true
@@ -67,7 +67,7 @@ struct BirthDateOnboardingView: View {
             }, label: {
                 Text(dateFormatter.string(from: birthDateValue))
                     .padding()
-                    .font(.custom("Poppins-Medium", size: 14))
+                    .font(.poppins(.medium, size: 14))
                     .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
                     .background(Color.white)
                     .foregroundColor(.black)

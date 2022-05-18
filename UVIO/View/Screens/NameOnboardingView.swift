@@ -19,7 +19,7 @@ struct NameOnboardingView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Image("loginViewBackground")
+            Image(Asset.Assets.loginViewBackground.name)
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
            
@@ -43,9 +43,9 @@ struct NameOnboardingView: View {
     
     var contentView: some View {
         VStack {
-            Text("What is your Name?")
+            Text(L10n.whatName)
                 .font(.custom("Poppins-Bold", size: 24))
-            TextField("My full name", text: $fullName)
+            TextField(L10n.fullName, text: $fullName)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(12)
