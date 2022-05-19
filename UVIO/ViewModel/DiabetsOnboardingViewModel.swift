@@ -8,7 +8,6 @@
 import SwiftUI
 
 class DiabetsOnboardingViewModel: ObservableObject {
-    
     @Published var selectedItem: DiabetType? {
         willSet {
             guard let item = newValue else { return }
@@ -16,19 +15,16 @@ class DiabetsOnboardingViewModel: ObservableObject {
             diabetTypeList.first(where: { $0.id == item.id })?.isSelected = true
         }
     }
-    
     class DiabetType {
         let id: Int
         let type: String
         var isSelected = false
-        
         init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
             self.isSelected = isSelected
         }
     }
-    
      var diabetTypeList = [
         DiabetType(id: 1, type: L10n.type1Diabetes, isSelected: true),
         DiabetType(id: 2, type: L10n.type2Diabetes, isSelected: false),
@@ -38,5 +34,4 @@ class DiabetsOnboardingViewModel: ObservableObject {
         DiabetType(id: 6, type: L10n.mody, isSelected: false),
         DiabetType(id: 7, type: L10n.iNotSure, isSelected: false)
     ]
-    
 }

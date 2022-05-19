@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BirthDateOnboardingView: View {
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var loginViewModel: BirthDateOnboardingViewModel
     @State private var birthDateValue = Date()
@@ -18,24 +17,21 @@ struct BirthDateOnboardingView: View {
         dateFormatter.dateStyle = .medium
         return dateFormatter
     }
-    
     init(viewModel: BirthDateOnboardingViewModel) {
         self.loginViewModel  = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
                     Spacer()
                     contentView
                     Spacer()
-                    nextButton(destination: GenderOnboardingView(viewModel: GenderOnboardingViewModel()))
-                    skipButton()
+                    NextButton(destination: GenderOnboardingView(viewModel: GenderOnboardingViewModel()))
+                    SkipButton()
                         .padding(.bottom, 30)
                 }
                 if isPresentedDatePicker {
@@ -47,15 +43,14 @@ struct BirthDateOnboardingView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                progressView(completed: 0.4)
+                ProgressView(completed: 0.4)
             }
         })
     }
-    
     var contentView: some View {
         VStack {
             Text(L10n.whatIsYourBD)

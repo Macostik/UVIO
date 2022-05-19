@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 class GenderOnboardingViewModel: ObservableObject {
-    
     @Published var isSelectedSpecifyType = false
     @Published var ownType: String = ""
     @Published var selectedItem: GenderType? {
@@ -23,19 +22,16 @@ class GenderOnboardingViewModel: ObservableObject {
             }
         }
     }
-    
     class GenderType {
         let id: Int
         let type: String
         var isSelected = false
-        
         init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
             self.isSelected = isSelected
         }
     }
-    
      var genderTypeList = [
         GenderType(id: 1, type: L10n.female, isSelected: true),
         GenderType(id: 2, type: L10n.male, isSelected: false),
@@ -43,5 +39,3 @@ class GenderOnboardingViewModel: ObservableObject {
         GenderType(id: 4, type: L10n.specifyAnother, isSelected: false)
     ]
 }
-
-

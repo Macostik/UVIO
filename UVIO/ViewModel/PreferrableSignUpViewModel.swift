@@ -7,6 +7,4 @@
 
 import SwiftUI
 
-class PreferrableSignUpViewModel: ObservableObject {
-    
-}
+class PreferrableSignUpViewModel: ObservableObject {}

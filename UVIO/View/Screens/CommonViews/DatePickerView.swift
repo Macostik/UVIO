@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct DatePickerView: View {
-    
     @Binding var date: Date
     @Binding var isPresentedDatePicker: Bool
 
     var body: some View {
-        VStack (alignment: .trailing) {
-            Button(action: {
+        VStack(alignment: .trailing) {
+            Button {
                 withAnimation {
-                    isPresentedDatePicker = false                    
+                    isPresentedDatePicker = false
                 }
-            }) {
+            } label: {
                 Text(L10n.done)
                     .font(.poppins(.regular, size: 16))
             }

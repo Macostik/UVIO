@@ -8,6 +8,4 @@
 import SwiftUI
 import Combine
 
-class NameOnboardingViewModel: ObservableObject {
-    
-}
+class NameOnboardingViewModel: ObservableObject {}

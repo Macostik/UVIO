@@ -8,7 +8,9 @@
 import SwiftUI
 
 class GlucoseUnitOnboardViewModel: ObservableObject {
-    
+    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
+    @Published var hyperValue: Int = 200
+    @Published var hypoValue: Int = 70
     @Published var selectedItem: GlucoseType? {
         willSet {
             guard let item = newValue else { return }
@@ -16,26 +18,18 @@ class GlucoseUnitOnboardViewModel: ObservableObject {
             glucoseTypeList.first(where: { $0.id == item.id })?.isSelected = true
         }
     }
-    
-    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
-    @Published var hyperValue: Int = 200
-    @Published var hypoValue: Int = 70
-    
     class GlucoseType {
         let id: Int
         let type: String
         var isSelected: Bool
-        
         init(id: Int, type: String, isSelected: Bool) {
             self.id = id
             self.type = type
             self.isSelected = isSelected
         }
     }
-    
      var glucoseTypeList = [
         GlucoseType(id: 1, type: L10n.mgDL, isSelected: true),
-        GlucoseType(id: 2, type: L10n.mmolL, isSelected: false),
+        GlucoseType(id: 2, type: L10n.mmolL, isSelected: false)
     ]
-    
 }

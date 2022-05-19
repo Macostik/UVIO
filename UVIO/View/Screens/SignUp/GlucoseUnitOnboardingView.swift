@@ -8,47 +8,40 @@
 import SwiftUI
 
 struct GlucoseUnitOnboardingView: View {
-    
     @ObservedObject private var viewModel: GlucoseUnitOnboardViewModel
-    
-    
     let columns = [
         GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
-    
     init(viewModel: GlucoseUnitOnboardViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
                     Spacer()
                     contentView
                     Spacer()
-                    completeButton(destination: PrefferableSignUpView(viewModel: PreferrableSignUpViewModel()))
+                    CompleteButton(destination: PrefferableSignUpView(viewModel: PreferrableSignUpViewModel()))
                         .padding(.bottom, 30)
                 }
             }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                progressView(completed: 1.0)
+                ProgressView(completed: 1.0)
             }
         })
     }
 }
-
 
 struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
@@ -64,7 +57,6 @@ extension GlucoseUnitOnboardingView {
             hypersAndHypos
         }
     }
-    
     var glucoseView: some View {
         VStack(alignment: .leading) {
             Text(L10n.bloodGlucoseUnit)
@@ -94,7 +86,6 @@ extension GlucoseUnitOnboardingView {
             }
         }.padding(.top)
     }
-    
     var targetView: some View {
         VStack(alignment: .leading) {
             Text(L10n.targetLevel)
@@ -111,7 +102,6 @@ extension GlucoseUnitOnboardingView {
         }
         .padding(.leading)
     }
-    
     var rangeSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -123,17 +113,16 @@ extension GlucoseUnitOnboardingView {
                     Text(L10n.targetRange)
                         .font(.poppins(.medium, size: 14))
                     Spacer()
-                    Text("\(viewModel.glucoseRangeValue.lowerBound)-\(viewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
+                    Text("\(viewModel.glucoseRangeValue.lowerBound)-" +
+                         "\(viewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
-                
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
             }.padding()
         }
     }
-    
     var topSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -150,12 +139,10 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                
                 SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
             }.padding()
         }
     }
-    
     var bottomSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -173,18 +160,14 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                
                 SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
             }
             .padding()
         }
     }
-    
     var glucoseUnit: String {
         viewModel.selectedItem?.type ?? L10n.mgDL
     }
-    
-    
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
             Text(L10n.hypersAndHypos)
@@ -201,7 +184,6 @@ extension GlucoseUnitOnboardingView {
         }
         .padding(.leading)
     }
-    
     var doubleSliderOverlay: some View {
         VStack {
             RoundedRectangle(cornerRadius: 12)
@@ -213,18 +195,15 @@ extension GlucoseUnitOnboardingView {
         }
         .foregroundColor(Color.clear)
     }
-    struct completeButton<V: View>: View {
-        
+    struct CompleteButton<V: View>: View {
         private var destination: V
-        
         init(destination: V) {
             self.destination = destination
         }
-        
         var body: some View {
             NavigationLink(destination: destination) {
                 ZStack {
-                    HStack() {
+                    HStack {
                         Image.checkMarkIcon
                             .foregroundColor(Color.white)
                             .padding()
@@ -237,7 +216,6 @@ extension GlucoseUnitOnboardingView {
                 .overlay(textOverlay)
             }
         }
-        
         var textOverlay: some View {
             Text(L10n.complete)
                 .font(.poppins(.medium, size: 14))
@@ -245,5 +223,3 @@ extension GlucoseUnitOnboardingView {
         }
     }
 }
-
-

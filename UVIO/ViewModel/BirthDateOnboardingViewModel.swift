@@ -7,6 +7,4 @@
 
 import SwiftUI
 
-class BirthDateOnboardingViewModel: ObservableObject {
-    
-}
+class BirthDateOnboardingViewModel: ObservableObject {}

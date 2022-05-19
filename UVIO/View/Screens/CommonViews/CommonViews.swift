@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct backButton: View  {
+struct BackButton: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     var body: some View {
         Button {
             self.presentationMode.wrappedValue.dismiss()
@@ -19,18 +18,15 @@ struct backButton: View  {
     }
 }
 
-struct nextButton<V: View>: View {
-    
+struct NextButton<V: View>: View {
     private var destination: V
-    
     init(destination: V) {
         self.destination = destination
     }
-    
     var body: some View {
         NavigationLink(destination: destination) {
             ZStack {
-                HStack() {
+                HStack {
                     Image.nextIcon
                         .padding()
                 }
@@ -42,7 +38,6 @@ struct nextButton<V: View>: View {
             .overlay(textOverlay)
         }
     }
-    
     var textOverlay: some View {
         Text(L10n.next)
             .font(.poppins(.medium, size: 14))
@@ -50,8 +45,7 @@ struct nextButton<V: View>: View {
     }
 }
 
-struct skipButton: View {
-    
+struct SkipButton: View {
     var body: some View {
         Button(action: {
             print("skip button click")
@@ -79,10 +73,8 @@ func genderOverlay(type: String,
     }
 }
 
-struct progressView: View {
-    
+struct ProgressView: View {
     var completed: Double = 1.0
-    
     var body: some View {
         HStack(spacing: 18) {
             ZStack(alignment: .leading) {
@@ -100,22 +92,19 @@ struct progressView: View {
     }
 }
 
-struct logoButton<Destination: View, Logo: View, Title: View>: View {
-    
+struct LogoButton<Destination: View, Logo: View, Title: View>: View {
     private var destination: Destination
     private var logo: Logo
     private var  title: Title
-    
     init(logo: Logo, title: Title, destination: Destination) {
         self.title = title
         self.logo = logo
         self.destination = destination
     }
-    
     var body: some View {
         NavigationLink(destination: destination) {
             ZStack {
-                HStack() {
+                HStack {
                     logo.padding()
                 }
             }
@@ -126,7 +115,6 @@ struct logoButton<Destination: View, Logo: View, Title: View>: View {
             .overlay(textOverlay)
         }
     }
-    
     var textOverlay: some View {
         title
             .font(.poppins(.medium, size: 14))
@@ -145,7 +133,6 @@ var privatePolicy: some View {
     Text(L10n.privacyPolicy)
         .font(.poppins(.bold, fixedSize: 12))
 }
-
 
 var signUpBanner: some View {
     ZStack {
@@ -167,5 +154,3 @@ var signUpTitle: some View {
     }
     .padding(.bottom, 48)
 }
-
-

@@ -8,46 +8,40 @@
 import SwiftUI
 
 struct GenderOnboardingView: View {
-    
     @ObservedObject private var viewModel: GenderOnboardingViewModel
-    
     init(viewModel: GenderOnboardingViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
                     Spacer().frame(height: 225)
                     contentView
                     Spacer()
-                    nextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))
-                    skipButton()
+                    NextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))
+                    SkipButton()
                         .padding(.bottom, 30)
                 }
             }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                progressView(completed: 0.6)
+                ProgressView(completed: 0.6)
             }
         })
     }
-    
     let columns = [
         GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
-    
     var contentView: some View {
         VStack {
             Text(L10n.whatIsYourGender)
@@ -84,7 +78,6 @@ struct GenderOnboardingView: View {
             }
         }
     }
-    
     func genderOverlay(type: String) -> some View {
         Text(type)
             .font(.poppins(.bold, size: 14))

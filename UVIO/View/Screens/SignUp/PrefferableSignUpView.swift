@@ -9,13 +9,10 @@ import SwiftUI
 import Combine
 
 struct PrefferableSignUpView: View {
-    
     @ObservedObject private var viewModel: PreferrableSignUpViewModel
-    
     init(viewModel: PreferrableSignUpViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -34,7 +31,7 @@ struct PrefferableSignUpView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
     }
 }
 
@@ -45,13 +42,20 @@ struct PrefferableSignUpView_Previews: PreviewProvider {
 }
 
 extension PrefferableSignUpView {
-    
     var containerButtons: some View {
         VStack(spacing: 12) {
-            logoButton(logo: Image.emailIcon, title: Text(L10n.signUpWithEmail), destination: EmailSugnUpView(viewModel: EmailSignUpViewModel()))
-            logoButton(logo: Image.facebookIcon, title: Text(L10n.signUpWithFacebook), destination: EmptyView())
-            logoButton(logo: Image.googleIcon, title: Text(L10n.signUpWithGoogle), destination: EmptyView())
-            logoButton(logo: Image.appleIcon, title: Text(L10n.signUpWihtApple), destination: EmptyView())
+            LogoButton(logo: Image.emailIcon,
+                       title: Text(L10n.signUpWithEmail),
+                       destination: EmailSugnUpView(viewModel: EmailSignUpViewModel()))
+            LogoButton(logo: Image.facebookIcon,
+                       title: Text(L10n.signUpWithFacebook),
+                       destination: EmptyView())
+            LogoButton(logo: Image.googleIcon,
+                       title: Text(L10n.signUpWithGoogle),
+                       destination: EmptyView())
+            LogoButton(logo: Image.appleIcon,
+                       title: Text(L10n.signUpWihtApple),
+                       destination: EmptyView())
         }
     }
 }

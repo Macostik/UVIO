@@ -19,6 +19,9 @@
 		568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSugnUpView.swift */; };
 		568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1719283650B400C77384 /* EmailSignUpViewModel.swift */; };
 		568C171C28368AAD00C77384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171B28368AAD00C77384 /* User.swift */; };
+		568C17202836929000C77384 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171F2836929000C77384 /* UserService.swift */; };
+		568C17222836949D00C77384 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C17212836949D00C77384 /* ServiceProvider.swift */; };
+		568C172528369B6200C77384 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 568C172428369B6200C77384 /* swiftlint.yml */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
@@ -60,6 +63,9 @@
 		568C171728364DDB00C77384 /* EmailSugnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSugnUpView.swift; sourceTree = "<group>"; };
 		568C1719283650B400C77384 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
 		568C171B28368AAD00C77384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		568C171F2836929000C77384 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		568C17212836949D00C77384 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		568C172428369B6200C77384 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -116,6 +122,15 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		568C171D2836910700C77384 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				568C171F2836929000C77384 /* UserService.swift */,
+				568C17212836949D00C77384 /* ServiceProvider.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		56953FC4283259470025C1A2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +158,7 @@
 		56A8534528322350000DFE3D = {
 			isa = PBXGroup;
 			children = (
+				568C172428369B6200C77384 /* swiftlint.yml */,
 				56C771FD283553BC0000E579 /* swiftgen.yml */,
 				56A8535028322350000DFE3D /* UVIO */,
 				56A8534F28322350000DFE3D /* Products */,
@@ -166,6 +182,7 @@
 				56A8536E283232C7000DFE3D /* Model */,
 				56A8536D283232BE000DFE3D /* ViewModel */,
 				56A8536828322874000DFE3D /* View */,
+				568C171D2836910700C77384 /* Service */,
 				56A8536528322492000DFE3D /* System */,
 			);
 			path = UVIO;
@@ -262,6 +279,7 @@
 				56A8534B28322350000DFE3D /* Frameworks */,
 				56A8534C28322350000DFE3D /* Resources */,
 				56C771FF2835543D0000E579 /* SwiftGen */,
+				568C17232836998400C77384 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -315,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */,
+				568C172528369B6200C77384 /* swiftlint.yml in Resources */,
 				56C7720F2835642B0000E579 /* fonts_swift5_swiftui.stencil in Resources */,
 				56C771FE283553BC0000E579 /* swiftgen.yml in Resources */,
 				56953FCE283259C90025C1A2 /* Poppins-Regular.ttf in Resources */,
@@ -331,6 +350,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		568C17232836998400C77384 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		56C771FF2835543D0000E579 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,7 +384,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -356,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568C17202836929000C77384 /* UserService.swift in Sources */,
 				561238072834D36C00DCB87B /* DiabetsOnboardingViewModel.swift in Sources */,
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* PrefferableSignUpView.swift in Sources */,
@@ -373,6 +411,7 @@
 				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
 				561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
+				568C17222836949D00C77384 /* ServiceProvider.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,

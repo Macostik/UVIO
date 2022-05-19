@@ -9,44 +9,39 @@ import SwiftUI
 
 struct DiabetsOnboardingView: View {
     @ObservedObject private var viewModel: DiabetsOnboardingViewModel
-    @State private var isSmile : Bool = false
-    
+    @State private var isSmile: Bool = false
     init(viewModel: DiabetsOnboardingViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
                     Spacer()
                     contentView
                         .padding(.bottom)
-                    nextButton(destination: GlucoseUnitOnboardingView(viewModel: GlucoseUnitOnboardViewModel()))
-                    skipButton()
+                    NextButton(destination: GlucoseUnitOnboardingView(viewModel: GlucoseUnitOnboardViewModel()))
+                    SkipButton()
                         .padding(.bottom, 30)
                 }
             }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                progressView(completed: 0.8)
+                ProgressView(completed: 0.8)
             }
         })
     }
-    
     let columns = [
         GridItem(.flexible())
     ]
-    
     var contentView: some View {
         VStack {
             Text(L10n.whichTypeDiabetes)
@@ -67,16 +62,11 @@ struct DiabetsOnboardingView: View {
                                 self.viewModel.selectedItem = item
                             }
                     }
-                }
-                .padding(.horizontal)
-            }
-            .frame(height: 430)
+                } .padding(.horizontal)
+            }.frame(height: 430)
         }
     }
-    
-    
 }
-
 struct DiabetsOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel())

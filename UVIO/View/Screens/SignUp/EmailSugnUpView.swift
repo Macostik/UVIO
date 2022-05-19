@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct EmailSugnUpView: View {
-    
     @ObservedObject private var viewModel: EmailSignUpViewModel
-    
     init(viewModel: EmailSignUpViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -30,7 +27,7 @@ struct EmailSugnUpView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
     }
 }
 
@@ -43,17 +40,17 @@ struct EmailSugnUpView_Previews: PreviewProvider {
 extension EmailSugnUpView {
     var container: some View {
         VStack(spacing: 12) {
-            TextField(L10n.emailAddress, text:$viewModel.email)
+            TextField(L10n.emailAddress, text: $viewModel.email)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))
-                .frame(maxWidth:.infinity, maxHeight: 48)
+                .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
                 .cornerRadius(16)
                 .padding(.horizontal)
-            TextField(L10n.password, text:$viewModel.password)
+            TextField(L10n.password, text: $viewModel.password)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))
-                .frame(maxWidth:.infinity, maxHeight: 48)
+                .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
                 .cornerRadius(16)
                 .padding(.horizontal)
@@ -61,16 +58,14 @@ extension EmailSugnUpView {
             NavigationLink(destination: EmptyView()) {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
-                    .frame(maxWidth:.infinity, maxHeight: 48)
+                    .frame(maxWidth: .infinity, maxHeight: 48)
                     .background(Color.black)
                     .foregroundColor(Color.white)
                     .cornerRadius(16)
                     .padding(.horizontal)
-                
             }
         }
     }
-    
     var hideOverlay: some View {
         VStack {
             Image.hideIcon

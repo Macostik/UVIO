@@ -9,38 +9,34 @@ import SwiftUI
 import Combine
 
 struct NameOnboardingView: View {
-    
     @ObservedObject var loginViewModel: NameOnboardingViewModel
     @State private var fullName: String = ""
-    
     init(viewModel: NameOnboardingViewModel) {
         self.loginViewModel  = viewModel
     }
-    
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-           
             VStack(spacing: 16) {
                 Spacer()
                 contentView
                 Spacer()
-                nextButton(destination: BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
-                skipButton()
+                NextButton(destination: BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
+                SkipButton()
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton())
+        .navigationBarItems(leading: BackButton())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                progressView(completed: 0.2)
+                ProgressView(completed: 0.2)
             }
         })
     }
-    
+
     var contentView: some View {
         VStack {
             Text(L10n.whatName)
@@ -54,8 +50,6 @@ struct NameOnboardingView: View {
                 .padding(.horizontal)
         }
     }
-    
-   
 }
 
 struct LoginView_Previews: PreviewProvider {
@@ -63,4 +57,3 @@ struct LoginView_Previews: PreviewProvider {
         NameOnboardingView(viewModel: NameOnboardingViewModel())
     }
 }
-

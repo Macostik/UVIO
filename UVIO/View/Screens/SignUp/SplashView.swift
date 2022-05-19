@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct SplashView: View {
-    
     @ObservedObject var viewModel: SplashViewModel
-    
     init(viewModel: SplashViewModel) {
         self.viewModel = viewModel
     }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -32,7 +29,6 @@ struct SplashView: View {
             }
         }
     }
-    
     var splashIconView: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 32)
@@ -41,7 +37,6 @@ struct SplashView: View {
         }
         .frame(width: 128, height: 128)
     }
-    
     var contentView: some View {
         VStack {
             Text(L10n.cone)
@@ -55,11 +50,10 @@ struct SplashView: View {
                 .padding()
         }
     }
-    
     var createAccountButton: some View {
-        Button(action: {
+        Button {
             print("click create account button")
-        }) {
+        } label: {
             Text(L10n.createAccount)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)
@@ -69,7 +63,6 @@ struct SplashView: View {
                 .padding()
         }
     }
-    
     var signInButton: some View {
         NavigationLink(destination:
                         NameOnboardingView(viewModel: NameOnboardingViewModel())) {
