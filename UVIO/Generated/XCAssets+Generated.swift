@@ -26,6 +26,7 @@ internal extension Image {
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
   static var googleIcon : Image { Image("googleIcon", bundle: BundleToken.bundle) }
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
+  static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }

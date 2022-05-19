@@ -123,7 +123,7 @@ extension GlucoseUnitOnboardingView {
                     Text(L10n.targetRange)
                         .font(.poppins(.medium, size: 14))
                     Spacer()
-                    Text("\(viewModel.glucoseRangeValue.lowerBound)-\(viewModel.glucoseRangeValue.upperBound) mg/dL")
+                    Text("\(viewModel.glucoseRangeValue.lowerBound)-\(viewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
@@ -146,7 +146,7 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hyperValue) mg/dL")
+                    Text("\(viewModel.hyperValue) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
@@ -169,7 +169,7 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hypoValue) mg/dL")
+                    Text("\(viewModel.hypoValue) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
@@ -178,6 +178,10 @@ extension GlucoseUnitOnboardingView {
             }
             .padding()
         }
+    }
+    
+    var glucoseUnit: String {
+        viewModel.selectedItem?.type ?? L10n.mgDL
     }
     
     

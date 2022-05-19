@@ -23,7 +23,7 @@ struct GenderOnboardingView: View {
             
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
-                    Spacer()
+                    Spacer().frame(height: 225)
                     contentView
                     Spacer()
                     nextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))

@@ -18,6 +18,7 @@
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
 		568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSugnUpView.swift */; };
 		568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1719283650B400C77384 /* EmailSignUpViewModel.swift */; };
+		568C171C28368AAD00C77384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171B28368AAD00C77384 /* User.swift */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
 		56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */; };
@@ -58,6 +59,7 @@
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		568C171728364DDB00C77384 /* EmailSugnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSugnUpView.swift; sourceTree = "<group>"; };
 		568C1719283650B400C77384 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
+		568C171B28368AAD00C77384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		56953FC8283259C90025C1A2 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		56A8536E283232C7000DFE3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				568C171B28368AAD00C77384 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				56E2867F28354EAE0095FD9F /* PrefferableSignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
+				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				56E2867D28354E2F0095FD9F /* PreferrableSignUpViewModel.swift in Sources */,

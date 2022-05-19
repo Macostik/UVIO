@@ -57,6 +57,7 @@ extension EmailSugnUpView {
                 .background(Color.white)
                 .cornerRadius(16)
                 .padding(.horizontal)
+                .overlay(hideOverlay, alignment: .trailing)
             NavigationLink(destination: EmptyView()) {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
@@ -68,5 +69,11 @@ extension EmailSugnUpView {
                 
             }
         }
+    }
+    
+    var hideOverlay: some View {
+        VStack {
+            Image.hideIcon
+        }.padding(.trailing, 32)
     }
 }
