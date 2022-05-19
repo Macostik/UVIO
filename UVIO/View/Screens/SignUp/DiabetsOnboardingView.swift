@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DiabetsOnboardingView: View {
     @ObservedObject private var viewModel: DiabetsOnboardingViewModel
-    @State private var isSmile: Bool = false
     init(viewModel: DiabetsOnboardingViewModel) {
         self.viewModel = viewModel
     }

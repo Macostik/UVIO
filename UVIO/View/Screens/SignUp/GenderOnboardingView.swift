@@ -19,7 +19,7 @@ struct GenderOnboardingView: View {
                 .edgesIgnoringSafeArea(.all)
             ZStack(alignment: .bottom) {
                 VStack(spacing: 16) {
-                    Spacer().frame(height: 225)
+                    Spacer()
                     contentView
                     Spacer()
                     NextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmailSugnUpView: View {
     @ObservedObject private var viewModel: EmailSignUpViewModel
+    @State private var showPassword: Bool = false
     init(viewModel: EmailSignUpViewModel) {
         self.viewModel = viewModel
     }
@@ -48,14 +49,7 @@ extension EmailSugnUpView {
                 .cornerRadius(16)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
-            TextField(L10n.password, text: $viewModel.password)
-                .padding(.leading)
-                .font(.poppins(.medium, size: 14))
-                .frame(maxWidth: .infinity, maxHeight: 48)
-                .background(Color.white)
-                .cornerRadius(16)
-                .padding(.horizontal)
-                .overlay(hideOverlay, alignment: .trailing)
+            passwordInput
             NavigationLink(destination: EmptyView()) {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
@@ -71,5 +65,23 @@ extension EmailSugnUpView {
         VStack {
             Image.hideIcon
         }.padding(.trailing, 32)
+            .onTapGesture {
+                $showPassword.wrappedValue.toggle()
+            }
+    }
+    var passwordInput: some View {
+        Group {
+          if showPassword {
+              TextField(L10n.password, text: $viewModel.password)
+            } else {
+                SecureField(L10n.password, text: $viewModel.password)
+            }
+     }.padding(.leading)
+            .font(.poppins(.medium, size: 14))
+            .frame(maxWidth: .infinity, maxHeight: 48)
+            .background(Color.white)
+            .cornerRadius(16)
+            .padding(.horizontal)
+            .overlay(hideOverlay, alignment: .trailing)
     }
 }
