@@ -75,10 +75,12 @@ struct GenderOnboardingView: View {
             if viewModel.isSelectedSpecifyType {
                 TextField(L10n.provideOwn, text: $viewModel.ownType)
                     .font(.poppins(.medium, size: 14))
-                    .padding()
+                    .padding(.leading)
+                    .frame(maxWidth: .infinity, maxHeight: 48)
                     .background(Color.white)
                     .cornerRadius(12)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.top, 10)
             }
         }
     }

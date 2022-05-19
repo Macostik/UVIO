@@ -147,4 +147,25 @@ var privatePolicy: some View {
 }
 
 
+var signUpBanner: some View {
+    ZStack {
+        Image.signUpLogo
+            .frame(width: 96, height: 96)
+            .background(Color.white)
+            .cornerRadius(16)
+    }
+}
+
+var signUpTitle: some View {
+    VStack(spacing: 16) {
+        Text(L10n.uvio)
+            .font(.poppins(.bold, size: 21))
+        Text(L10n.takeBackControl)
+            .font(.poppins(.regular, size: 16))
+            .padding(.horizontal, 40)
+            .multilineTextAlignment(.center)
+    }
+    .padding(.bottom, 48)
+}
+
 

@@ -46,10 +46,12 @@ struct NameOnboardingView: View {
             Text(L10n.whatName)
                 .font(.poppins(.bold, size: 24))
             TextField(L10n.fullName, text: $fullName)
-                .padding()
+                .padding(.leading)
+                .font(.poppins(.medium, size: 14))
+                .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
                 .cornerRadius(12)
-                .padding()
+                .padding(.horizontal)
         }
     }
     
