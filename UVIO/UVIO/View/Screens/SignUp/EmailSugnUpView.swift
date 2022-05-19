@@ -47,6 +47,7 @@ extension EmailSugnUpView {
                 .background(Color.white)
                 .cornerRadius(16)
                 .padding(.horizontal)
+                .keyboardType(.emailAddress)
             TextField(L10n.password, text: $viewModel.password)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))

@@ -1,0 +1,39 @@
+# 1
+input_dir: UVIO/
+# 2
+output_dir: UVIO/Generated/
+
+## XCAssets
+# 1
+xcassets:
+  # 2
+  inputs:
+    - Resource/Assets.xcassets
+    - Resource/Colors.xcassets
+  # 3
+  outputs:
+    # 4
+    templatePath: UVIO/Templates/swiftui-xcassets-template.stencil
+    # 5
+    output: XCAssets+Generated.swift
+    
+    ## Strings
+strings:
+  inputs:
+    # 1
+    - Resource/Base.lproj
+  outputs:
+    - templateName: structured-swift5
+      # 2
+      params:
+        publicAccess: true
+      output: Strings+Generated.swift
+      
+      ## Fonts
+fonts:
+  inputs:
+    - Resource/Poppins
+  outputs:
+    templatePath: UVIO/Templates/fonts_swift5_swiftui.stencil
+    output: Fonts+Generated.swift
+

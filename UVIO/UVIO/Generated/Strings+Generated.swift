@@ -26,8 +26,6 @@ public enum L10n {
   public static let done = L10n.tr("Base", "done")
   /// Email Address
   public static let emailAddress = L10n.tr("Base", "email_address")
-  /// finish
-  public static let end = L10n.tr("Base", "end")
   /// Female
   public static let female = L10n.tr("Base", "female")
   /// My full name
