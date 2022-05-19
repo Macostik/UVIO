@@ -40,3 +40,15 @@
 "i_not_sure" = "I'm not sure which type I have";
 "mg/dL" = "mg/dL";
 "mmol/l" = "mmol/l";
+"uvio" = "UVIO";
+"sign_up_with_email" = "Sign Up with Email";
+"sign_up_with_facebook" = "Sign Up with Facebook";
+"sign_up_with_google" = "Sign Up with Google";
+"sign_up_wiht_apple" = "Sign Up with Apple";
+"sign_up" = "Sign Up";
+"email_address" = "Email Address";
+"password" = "Password";
+"by_continuing" = "By continuing, you agree to UVIO’s";
+"terms_of_service" = " Terms of Service";
+"privacy_policy" = " Privacy Policy.";
+"and" = " and";

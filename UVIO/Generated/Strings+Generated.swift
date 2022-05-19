@@ -10,8 +10,12 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  ///  and
+  public static let and = L10n.tr("Base", "and")
   /// Blood glucose unit
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
+  /// By continuing, you agree to UVIO’s
+  public static let byContinuing = L10n.tr("Base", "by_continuing")
   /// Complete
   public static let complete = L10n.tr("Base", "complete")
   /// Cone
@@ -20,6 +24,8 @@ public enum L10n {
   public static let createAccount = L10n.tr("Base", "create_account")
   /// DONE
   public static let done = L10n.tr("Base", "done")
+  /// Email Address
+  public static let emailAddress = L10n.tr("Base", "email_address")
   /// Female
   public static let female = L10n.tr("Base", "female")
   /// My full name
@@ -48,12 +54,26 @@ public enum L10n {
   public static let next = L10n.tr("Base", "next")
   /// Non-binary
   public static let nonBinary = L10n.tr("Base", "non_binary")
+  /// Password
+  public static let password = L10n.tr("Base", "password")
   /// Prediabetes
   public static let prediabetes = L10n.tr("Base", "prediabetes")
+  ///  Privacy Policy.
+  public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
   /// SIGN IN
   public static let signIn = L10n.tr("Base", "sign_in")
+  /// Sign Up
+  public static let signUp = L10n.tr("Base", "sign_up")
+  /// Sign Up with Apple
+  public static let signUpWihtApple = L10n.tr("Base", "sign_up_wiht_apple")
+  /// Sign Up with Email
+  public static let signUpWithEmail = L10n.tr("Base", "sign_up_with_email")
+  /// Sign Up with Facebook
+  public static let signUpWithFacebook = L10n.tr("Base", "sign_up_with_facebook")
+  /// Sign Up with Google
+  public static let signUpWithGoogle = L10n.tr("Base", "sign_up_with_google")
   /// Skip
   public static let skip = L10n.tr("Base", "skip")
   /// Specify another
@@ -66,10 +86,14 @@ public enum L10n {
   public static let targetLevel = L10n.tr("Base", "target_level")
   /// Target range
   public static let targetRange = L10n.tr("Base", "target_range")
+  ///  Terms of Service
+  public static let termsOfService = L10n.tr("Base", "terms_of_service")
   /// Type 1 diabetes
   public static let type1Diabetes = L10n.tr("Base", "type_1_diabetes")
   /// Type 2 diabetes
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
+  /// UVIO
+  public static let uvio = L10n.tr("Base", "uvio")
   /// What is your Birth Date?
   public static let whatIsYourBD = L10n.tr("Base", "what_is_your_BD")
   /// What is your Gender?

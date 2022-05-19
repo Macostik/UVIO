@@ -85,7 +85,7 @@ struct GenderOnboardingView: View {
     
     func genderOverlay(type: String) -> some View {
         Text(type)
-            .font(.poppins(.medium, size: 14))
+            .font(.poppins(.bold, size: 14))
     }
 }
 

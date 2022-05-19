@@ -100,42 +100,51 @@ struct progressView: View {
     }
 }
 
-struct SelectableButtonStyle: ButtonStyle {
-
-    var isSelected = false
-
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding()
-            .foregroundColor(isSelected ? Color.complementaryColor : Color.black)
-            .background(isSelected ? Color.clear : Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 16.0))
-            .overlay(RoundedRectangle(cornerRadius: 16.0)
-                .stroke(lineWidth: isSelected ? 2.0 : 0.0)
-                .foregroundColor(Color.white))
+struct logoButton<Destination: View, Logo: View, Title: View>: View {
+    
+    private var destination: Destination
+    private var logo: Logo
+    private var  title: Title
+    
+    init(logo: Logo, title: Title, destination: Destination) {
+        self.title = title
+        self.logo = logo
+        self.destination = destination
     }
-}
-
-
-struct StatedButton<Label>: View where Label: View {
-
-    private let action: (() -> ())?
-    private let label: (() -> Label)?
-    @State var buttonStyle = SelectableButtonStyle()
-
-    init(action: (() -> ())? = nil, label: (() -> Label)? = nil) {
-        self.action = action
-        self.label = label
-    }
-
+    
     var body: some View {
-        Button(action: {
-            self.buttonStyle.isSelected = !self.buttonStyle.isSelected
-            self.action?()
-        }) {
-            label?()
+        NavigationLink(destination: destination) {
+            ZStack {
+                HStack() {
+                    logo.padding()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
+            .background(Color.white.opacity(0.6))
+            .cornerRadius(12)
+            .padding(.horizontal)
+            .overlay(textOverlay)
         }
-        .buttonStyle(buttonStyle)
+    }
+    
+    var textOverlay: some View {
+        title
+            .font(.poppins(.medium, size: 14))
+            .foregroundColor(.black)
     }
 }
+
+var privatePolicy: some View {
+    Text(L10n.byContinuing)
+        .font(.poppins(.regular, size: 12)) +
+    Text(L10n.termsOfService)
+        .font(.poppins(.bold, size: 12)) +
+    Text("\n") +
+    Text(L10n.and)
+        .font(.poppins(.regular, size: 12)) +
+    Text(L10n.privacyPolicy)
+        .font(.poppins(.bold, fixedSize: 12))
+}
+
+
 
