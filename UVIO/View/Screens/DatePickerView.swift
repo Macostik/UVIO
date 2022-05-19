@@ -19,8 +19,8 @@ struct DatePickerView: View {
                     isPresentedDatePicker = false                    
                 }
             }) {
-                Text("DONE")
-                    .font(.custom("Poppins-Regular", size: 16))
+                Text(L10n.done)
+                    .font(.poppins(.regular, size: 16))
             }
             .padding()
             DatePicker("", selection: $date, displayedComponents: [.date])

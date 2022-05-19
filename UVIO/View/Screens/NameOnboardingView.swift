@@ -19,7 +19,7 @@ struct NameOnboardingView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Image(Asset.Assets.loginViewBackground.name)
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
            
@@ -44,7 +44,7 @@ struct NameOnboardingView: View {
     var contentView: some View {
         VStack {
             Text(L10n.whatName)
-                .font(.custom("Poppins-Bold", size: 24))
+                .font(.poppins(.bold, size: 24))
             TextField(L10n.fullName, text: $fullName)
                 .padding()
                 .background(Color.white)

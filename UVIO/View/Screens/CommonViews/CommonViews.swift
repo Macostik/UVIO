@@ -14,7 +14,7 @@ struct backButton: View  {
         Button {
             self.presentationMode.wrappedValue.dismiss()
         } label: {
-            Image("backButtonIcon")
+            Image.backButtonIcon
         }
     }
 }
@@ -31,7 +31,7 @@ struct nextButton<V: View>: View {
         NavigationLink(destination: destination) {
             ZStack {
                 HStack() {
-                    Image("nextIcon")
+                    Image.nextIcon
                         .padding()
                 }
             }
@@ -44,8 +44,8 @@ struct nextButton<V: View>: View {
     }
     
     var textOverlay: some View {
-        Text("Next")
-            .font(.custom("Popping-Medium", size: 14))
+        Text(L10n.next)
+            .font(.poppins(.medium, size: 14))
             .foregroundColor(.white)
     }
 }
@@ -56,8 +56,8 @@ struct skipButton: View {
         Button(action: {
             print("skip button click")
         }, label: {
-            Text("Skip")
-                .font(.custom("Poppins-Medium", size: 14))
+            Text(L10n.skip)
+                .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
         })
     }
@@ -67,14 +67,14 @@ func genderOverlay(type: String,
                    isSelected: Bool) -> some View {
     HStack {
         Circle()
-            .foregroundColor(Color("grayscaleColor"))
+            .foregroundColor(Color.grayscaleColor)
             .frame(width: 24, height: 24)
             .padding(.leading)
             .overlay(isSelected ?  Circle()
-                .foregroundColor(Color("complementaryColor")).frame(width: 12, height: 12).cornerRadius(6)
+                .foregroundColor(Color.complementaryColor).frame(width: 12, height: 12).cornerRadius(6)
                 .padding(.leading, 16) : nil)
         Text(type)
-            .font(.custom("Poppins-Medium", size: 14))
+            .font(.poppins(.medium, size: 14))
         Spacer()
     }
 }
@@ -91,10 +91,10 @@ struct progressView: View {
                     .foregroundColor(Color.white)
                 Capsule()
                     .frame(width: 160 * completed, height: 4)
-                    .foregroundColor(Color("primaryGreenColor"))
+                    .foregroundColor(Color.primaryGreenColor)
             }
             Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(Color("primaryGreenColor"))
+                .foregroundColor(Color.primaryGreenColor)
                 .frame(width: 12, height: 10)
         }
     }
@@ -107,7 +107,7 @@ struct SelectableButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding()
-            .foregroundColor(isSelected ? Color("complementaryColor") : Color.black)
+            .foregroundColor(isSelected ? Color.complementaryColor : Color.black)
             .background(isSelected ? Color.clear : Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 16.0))
             .overlay(RoundedRectangle(cornerRadius: 16.0)

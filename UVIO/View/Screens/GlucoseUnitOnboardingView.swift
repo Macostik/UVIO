@@ -23,7 +23,7 @@ struct GlucoseUnitOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Image("loginViewBackground")
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
@@ -67,8 +67,8 @@ extension GlucoseUnitOnboardingView {
     
     var glucoseView: some View {
         VStack(alignment: .leading) {
-            Text("Blood glucose unit")
-                .font(.custom("Poppins-Bold", size: 18))
+            Text(L10n.bloodGlucoseUnit)
+                .font(.poppins(.bold, size: 18))
                 .padding(.leading)
             HStack {
                 ScrollView([]) {
@@ -79,7 +79,7 @@ extension GlucoseUnitOnboardingView {
                                 .foregroundColor(item.isSelected ? Color.clear : Color.white)
                                 .frame(height: 48)
                                 .overlay(genderOverlay(type: item.type, isSelected: item.isSelected)
-                                    .foregroundColor( item.isSelected ? Color("complementaryColor") : Color.black))
+                                    .foregroundColor( item.isSelected ? Color.complementaryColor : Color.black))
                                 .overlay( RoundedRectangle(cornerRadius: 16.0)
                                     .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                     .foregroundColor(Color.white))
@@ -97,10 +97,10 @@ extension GlucoseUnitOnboardingView {
     
     var targetView: some View {
         VStack(alignment: .leading) {
-            Text("Target level")
-                .font(.custom("Poppins-Bold", size: 18))
-            Text("Take back the Control over your Diabetes")
-                .font(.custom("Poppins-Medium", size: 14))
+            Text(L10n.targetLevel)
+                .font(.poppins(.bold, size: 18))
+            Text(L10n.takeBackControl)
+                .font(.poppins(.medium, size: 14))
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .frame(height: 116)
@@ -115,17 +115,17 @@ extension GlucoseUnitOnboardingView {
     var rangeSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color("grayLightColor"))
+                .foregroundColor(Color.grayLightColor)
                 .padding(8)
             VStack(spacing: 0) {
                 HStack {
-                    Image("greenArrowIcon")
-                    Text("Target range")
-                        .font(.custom("Poppins-Medium", size: 14))
+                    Image.greenArrowIcon
+                    Text(L10n.targetRange)
+                        .font(.poppins(.medium, size: 14))
                     Spacer()
                     Text("\(viewModel.glucoseRangeValue.lowerBound)-\(viewModel.glucoseRangeValue.upperBound) mg/dL")
-                        .font(.custom("Poppins-Bold", size: 14))
-                        .foregroundColor(Color("primaryGreenColor"))
+                        .font(.poppins(.bold, size: 14))
+                        .foregroundColor(Color.primaryGreenColor)
                 }
                 
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
@@ -137,18 +137,18 @@ extension GlucoseUnitOnboardingView {
     var topSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color("grayLightColor"))
+                .foregroundColor(Color.grayLightColor)
                 .padding(.horizontal, 8)
             VStack(spacing: 0) {
                 HStack {
-                    Image("alertArrowIcon")
-                    Text("Hyper (High Glucose)")
-                        .font(.custom("Poppins-Medium", size: 14))
+                    Image.alertArrowIcon
+                    Text(L10n.hyperHighGlucose)
+                        .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
                     Text("\(viewModel.hyperValue) mg/dL")
-                        .font(.custom("Poppins-Bold", size: 14))
-                        .foregroundColor(Color("primaryAlertColor"))
+                        .font(.poppins(.bold, size: 14))
+                        .foregroundColor(Color.primaryAlertColor)
                 }
                 
                 SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
@@ -159,19 +159,19 @@ extension GlucoseUnitOnboardingView {
     var bottomSliderOverlay: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color("grayLightColor"))
+                .foregroundColor(Color.grayLightColor)
                 .padding(.horizontal, 8)
             VStack(spacing: 0) {
                 HStack {
-                    Image("alertArrowIcon")
+                    Image.alertArrowIcon
                         .rotationEffect(.radians(.pi))
-                    Text("Hypo (Low Glucose)")
-                        .font(.custom("Poppins-Medium", size: 14))
+                    Text(L10n.hypoLowGlucose)
+                        .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
                     Text("\(viewModel.hypoValue) mg/dL")
-                        .font(.custom("Poppins-Bold", size: 14))
-                        .foregroundColor(Color("primaryAlertColor"))
+                        .font(.poppins(.bold, size: 14))
+                        .foregroundColor(Color.primaryAlertColor)
                 }
                 
                 SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
@@ -183,10 +183,10 @@ extension GlucoseUnitOnboardingView {
     
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
-            Text("Hypers and hypos")
-                .font(.custom("Poppins-Bold", size: 18))
-            Text("Take back the Control over your Diabetes")
-                .font(.custom("Poppins-Medium", size: 14))
+            Text(L10n.hypersAndHypos)
+                .font(.poppins(.bold, size: 18))
+            Text(L10n.takeBackControl)
+                .font(.poppins(.medium, size: 14))
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .frame(height: 224)
@@ -221,7 +221,7 @@ extension GlucoseUnitOnboardingView {
             NavigationLink(destination: destination) {
                 ZStack {
                     HStack() {
-                        Image("checkMarkIcon")
+                        Image.checkMarkIcon
                             .foregroundColor(Color.white)
                             .padding()
                     }
@@ -235,8 +235,8 @@ extension GlucoseUnitOnboardingView {
         }
         
         var textOverlay: some View {
-            Text("Complete")
-                .font(.custom("Popping-Medium", size: 14))
+            Text(L10n.complete)
+                .font(.poppins(.medium, size: 14))
                 .foregroundColor(.white)
         }
     }

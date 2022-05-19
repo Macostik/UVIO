@@ -13,7 +13,7 @@ xcassets:
   # 3
   outputs:
     # 4
-    templateName: swift5
+    templatePath: UVIO/Templates/swiftui-xcassets-template.stencil
     # 5
     output: XCAssets+Generated.swift
     

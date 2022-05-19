@@ -17,7 +17,7 @@ struct GenderOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Image("loginViewBackground")
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
@@ -50,8 +50,8 @@ struct GenderOnboardingView: View {
     
     var contentView: some View {
         VStack {
-            Text("What is your Gender?")
-                .font(.custom("Poppins-Bold", size: 24))
+            Text(L10n.whatIsYourGender)
+                .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(viewModel.genderTypeList,
@@ -60,7 +60,7 @@ struct GenderOnboardingView: View {
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
                             .frame(height: 80)
                             .overlay(genderOverlay(type: item.type)
-                                .foregroundColor( item.isSelected ? Color("complementaryColor") : Color.black))
+                                .foregroundColor( item.isSelected ? Color.complementaryColor : Color.black))
                             .overlay( RoundedRectangle(cornerRadius: 16.0)
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))
@@ -73,8 +73,8 @@ struct GenderOnboardingView: View {
             }
             .frame(height: 175)
             if viewModel.isSelectedSpecifyType {
-                TextField("Provide own", text: $viewModel.ownType)
-                    .font(.custom("Poppins-Medium", size: 14))
+                TextField(L10n.provideOwn, text: $viewModel.ownType)
+                    .font(.poppins(.medium, size: 14))
                     .padding()
                     .background(Color.white)
                     .cornerRadius(12)
@@ -85,7 +85,7 @@ struct GenderOnboardingView: View {
     
     func genderOverlay(type: String) -> some View {
         Text(type)
-            .font(.custom("Poppins-Bold", size: 14))
+            .font(.poppins(.medium, size: 14))
     }
 }
 

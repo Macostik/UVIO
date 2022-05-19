@@ -37,10 +37,10 @@ class GenderOnboardingViewModel: ObservableObject {
     }
     
      var genderTypeList = [
-        GenderType(id: 1, type: "Female", isSelected: true),
-        GenderType(id: 2, type: "Male", isSelected: false),
-        GenderType(id: 3, type: "Non-binary", isSelected: false),
-        GenderType(id: 4, type: "Specify another", isSelected: false)
+        GenderType(id: 1, type: L10n.female, isSelected: true),
+        GenderType(id: 2, type: L10n.male, isSelected: false),
+        GenderType(id: 3, type: L10n.nonBinary, isSelected: false),
+        GenderType(id: 4, type: L10n.specifyAnother, isSelected: false)
     ]
 }
 

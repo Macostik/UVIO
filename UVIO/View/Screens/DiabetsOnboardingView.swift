@@ -17,7 +17,7 @@ struct DiabetsOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Image("loginViewBackground")
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
@@ -49,8 +49,8 @@ struct DiabetsOnboardingView: View {
     
     var contentView: some View {
         VStack {
-            Text("Which type of diabetes do you have?")
-                .font(.custom("Poppins-Bold", size: 24))
+            Text(L10n.whichTypeDiabetes)
+                .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(viewModel.diabetTypeList,
@@ -59,7 +59,7 @@ struct DiabetsOnboardingView: View {
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
                             .frame(height: 48)
                             .overlay(genderOverlay(type: item.type, isSelected: item.isSelected)
-                                .foregroundColor( item.isSelected ? Color("complementaryColor") : Color.black))
+                                .foregroundColor( item.isSelected ? Color.complementaryColor : Color.black))
                             .overlay( RoundedRectangle(cornerRadius: 16.0)
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))

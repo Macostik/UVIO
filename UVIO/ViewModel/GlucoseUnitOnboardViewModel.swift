@@ -34,8 +34,8 @@ class GlucoseUnitOnboardViewModel: ObservableObject {
     }
     
      var glucoseTypeList = [
-        GlucoseType(id: 1, type: "mg/dL", isSelected: true),
-        GlucoseType(id: 2, type: "mmol/l", isSelected: false),
+        GlucoseType(id: 1, type: L10n.mgDL, isSelected: true),
+        GlucoseType(id: 2, type: L10n.mmolL, isSelected: false),
     ]
     
 }

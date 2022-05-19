@@ -18,7 +18,7 @@ struct PrefferableSignUpView: View {
     
     var body: some View {
         ZStack {
-            Image("loginViewBackground")
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             

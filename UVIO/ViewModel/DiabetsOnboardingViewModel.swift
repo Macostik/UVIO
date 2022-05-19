@@ -30,13 +30,13 @@ class DiabetsOnboardingViewModel: ObservableObject {
     }
     
      var diabetTypeList = [
-        DiabetType(id: 1, type: "Type 1 diabetes", isSelected: true),
-        DiabetType(id: 2, type: "Type 2 diabetes", isSelected: false),
-        DiabetType(id: 3, type: "Gestational diabetes", isSelected: false),
-        DiabetType(id: 4, type: "Prediabetes", isSelected: false),
-        DiabetType(id: 5, type: "LADA", isSelected: false),
-        DiabetType(id: 6, type: "MODY", isSelected: false),
-        DiabetType(id: 7, type: "I’m not sure which type I have", isSelected: false)
+        DiabetType(id: 1, type: L10n.type1Diabetes, isSelected: true),
+        DiabetType(id: 2, type: L10n.type2Diabetes, isSelected: false),
+        DiabetType(id: 3, type: L10n.gestationalDiabetes, isSelected: false),
+        DiabetType(id: 4, type: L10n.prediabetes, isSelected: false),
+        DiabetType(id: 5, type: L10n.lada, isSelected: false),
+        DiabetType(id: 6, type: L10n.mody, isSelected: false),
+        DiabetType(id: 7, type: L10n.iNotSure, isSelected: false)
     ]
     
 }

@@ -18,7 +18,7 @@ struct SplashView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("splashBackgroundImage")
+                Image.splashBackgroundImage
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                 VStack(spacing: 16) {
@@ -37,19 +37,19 @@ struct SplashView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 32)
                 .foregroundColor(Color.white)
-            Image("uvioIcon")
+            Image.uvioIcon
         }
         .frame(width: 128, height: 128)
     }
     
     var contentView: some View {
         VStack {
-            Text("Cone")
+            Text(L10n.cone)
                 .bold()
                 .foregroundColor(.black)
-                .font(.custom("Poppins-Bold", size: 24))
-            Text("Take back the Control over your Diabetes")
-                .font(.custom("Poppins-Regular", size: 21))
+                .font(.poppins(.bold, size: 24))
+            Text(L10n.takeBackControl)
+                .font(.poppins(.regular, size: 21))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
                 .padding()
@@ -60,8 +60,8 @@ struct SplashView: View {
         Button(action: {
             print("click create account button")
         }) {
-            Text("CREATE ACCOUNT")
-                .font(.custom("Poppins-Medium", size: 14))
+            Text(L10n.createAccount)
+                .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.black)
@@ -73,8 +73,8 @@ struct SplashView: View {
     var signInButton: some View {
         NavigationLink(destination:
                         NameOnboardingView(viewModel: NameOnboardingViewModel())) {
-            Text("SIGN IN")
-                .font(.custom("Poppins-Medium", size: 14))
+            Text(L10n.signIn)
+                .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
         }
     }

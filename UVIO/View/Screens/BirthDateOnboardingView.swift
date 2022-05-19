@@ -25,7 +25,7 @@ struct BirthDateOnboardingView: View {
     
     var body: some View {
         ZStack {
-            Image("loginViewBackground")
+            Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
@@ -58,7 +58,7 @@ struct BirthDateOnboardingView: View {
     
     var contentView: some View {
         VStack {
-            Text("What is your Birth Date?")
+            Text(L10n.whatIsYourBD)
                 .font(.poppins(.bold, size: 24))
             Button(action: {
                 withAnimation {
