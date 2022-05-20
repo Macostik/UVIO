@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-class User: ObservableObject {
-    var name: String = ""
-    var birthDate: String = ""
-    var gender: String = ""
-    var diabetsType: String = ""
-    var email: String = ""
-    var password: String = ""
-    var glucoseUnit: String = ""
-    var glucoseTargetLowBounce: String = ""
-    var glucoseTargetUpperBounce: String = ""
-    var hyper: String = ""
-    var hypo: String = ""
+class User: Object {
+    @Persisted var name: String = ""
+    @Persisted var birthDate: String = ""
+    @Persisted var gender: String = ""
+    @Persisted var diabetsType: String = ""
+    @Persisted var email: String = ""
+    @Persisted var password: String = ""
+    @Persisted var glucoseUnit: String = ""
+    @Persisted var glucoseTargetLowBounce: String = ""
+    @Persisted var glucoseTargetUpperBounce: String = ""
+    @Persisted var hyper: String = ""
+    @Persisted var hypo: String = ""
 }

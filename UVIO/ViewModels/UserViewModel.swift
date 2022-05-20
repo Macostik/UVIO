@@ -36,11 +36,19 @@ class UserViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.signUp, on: self)
             .store(in: &cancellableSet)
+        $signUpConfirmed
+            .sink { isConfirmed in
+                if isConfirmed {
+                    _  = self.save(user: User())
+                }
+            }.store(in: &cancellableSet)
     }
-    func getUser() -> AnyPublisher<User, Error>? {
+    func getUser() -> AnyPublisher<User?, Error> {
         storeUserInteractor.getUser()
     }
-    func save(user: User) -> AnyPublisher<Bool, Error>? {
-        storeUserInteractor.saveUser(user: user)
+    func save(user: User) -> AnyPublisher<Bool, Error> {
+        user.email = email
+        user.password = password
+        return storeUserInteractor.saveUser(user: user)
     }
- }
+}
