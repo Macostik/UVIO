@@ -12,17 +12,17 @@ enum CoreDataError: Error {
 }
 
 protocol StoreUserProvider {
-    func saveUserToCoreData(user: User) -> AnyPublisher<Bool, Error>?
-    func getUserFromCoreData() -> AnyPublisher<User, Error>?
+    func saveUser(user: User) -> AnyPublisher<Bool, Error>?
+    func getUser() -> AnyPublisher<User, Error>?
 }
 
 class StoreUserService: StoreUserProvider {
-    func saveUserToCoreData(user: User) -> AnyPublisher<Bool, Error>? {
+    func saveUser(user: User) -> AnyPublisher<Bool, Error>? {
         Just(false)
             .mapError { _ in CoreDataError.none }
             .eraseToAnyPublisher()
     }
-    func getUserFromCoreData() -> AnyPublisher<User, Error>? {
+    func getUser() -> AnyPublisher<User, Error>? {
         Just(User())
             .mapError { _ in CoreDataError.none }
             .eraseToAnyPublisher()

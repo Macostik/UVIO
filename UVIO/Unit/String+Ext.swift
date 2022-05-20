@@ -9,17 +9,8 @@ import Foundation
 
 extension String {
     func isValidEmail() -> Bool {
-        let pattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]" +
-        "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[" +
-        "a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-        do {
-            let regex = try NSRegularExpression(pattern: pattern,
-                                                 options: .caseInsensitive)
-            return regex.firstMatch(in: self, options: [],
-                                    range: NSRange(location: 0,
-                                                   length: count)) != nil
-        } catch {
-            return false
-        }
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: self)
     }
 }

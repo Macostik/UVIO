@@ -9,16 +9,16 @@ import Resolver
 import Combine
 
 protocol StoreUserInteractorType {
-    func saveUserToCoreData(user: User) -> AnyPublisher<Bool, Error>?
-    func getUserFromCoreData() -> AnyPublisher<User, Error>?
+    func saveUser(user: User) -> AnyPublisher<Bool, Error>?
+    func getUser() -> AnyPublisher<User, Error>?
 }
 
 class StoreUserInteractor: StoreUserInteractorType {
     @Injected var provider: StoreUserProvider
-    func saveUserToCoreData(user: User) -> AnyPublisher<Bool, Error>? {
-        provider.saveUserToCoreData(user: user)
+    func saveUser(user: User) -> AnyPublisher<Bool, Error>? {
+        provider.saveUser(user: user)
     }
-    func getUserFromCoreData() -> AnyPublisher<User, Error>? {
-        provider.getUserFromCoreData()
+    func getUser() -> AnyPublisher<User, Error>? {
+        provider.getUser()
     }
 }

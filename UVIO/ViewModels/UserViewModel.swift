@@ -38,9 +38,9 @@ class UserViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
     func getUser() -> AnyPublisher<User, Error>? {
-        storeUserInteractor.getUserFromCoreData()
+        storeUserInteractor.getUser()
     }
     func save(user: User) -> AnyPublisher<Bool, Error>? {
-        storeUserInteractor.saveUserToCoreData(user: user)
+        storeUserInteractor.saveUser(user: user)
     }
  }
