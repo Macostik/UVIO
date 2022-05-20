@@ -46,7 +46,7 @@ extension PrefferableSignUpView {
         VStack(spacing: 12) {
             LogoButton(logo: Image.emailIcon,
                        title: Text(L10n.signUpWithEmail),
-                       destination: EmailSugnUpView(viewModel: EmailSignUpViewModel()))
+                       destination: EmailSignUpView(viewModel: UserViewModel()))
             LogoButton(logo: Image.facebookIcon,
                        title: Text(L10n.signUpWithFacebook),
                        destination: EmptyView())

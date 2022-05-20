@@ -19,10 +19,10 @@
 		5645D6A9283788E10081EA5A /* StoreUserInteractor+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
+		5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AF2837D73F0081EA5A /* String+Ext.swift */; };
 		568C17132836259500C77384 /* swiftui-xcassets-template.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 568C17122836259500C77384 /* swiftui-xcassets-template.stencil */; };
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
-		568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSugnUpView.swift */; };
-		568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1719283650B400C77384 /* EmailSignUpViewModel.swift */; };
+		568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSignUpView.swift */; };
 		568C171C28368AAD00C77384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171B28368AAD00C77384 /* User.swift */; };
 		568C17222836949D00C77384 /* StoreUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C17212836949D00C77384 /* StoreUserProvider.swift */; };
 		568C172528369B6200C77384 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 568C172428369B6200C77384 /* swiftlint.yml */; };
@@ -66,10 +66,10 @@
 		5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreUserInteractor+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		568C17122836259500C77384 /* swiftui-xcassets-template.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "swiftui-xcassets-template.stencil"; sourceTree = "<group>"; };
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
-		568C171728364DDB00C77384 /* EmailSugnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSugnUpView.swift; sourceTree = "<group>"; };
-		568C1719283650B400C77384 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
+		568C171728364DDB00C77384 /* EmailSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpView.swift; sourceTree = "<group>"; };
 		568C171B28368AAD00C77384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		568C17212836949D00C77384 /* StoreUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserProvider.swift; sourceTree = "<group>"; };
 		568C172428369B6200C77384 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
@@ -124,11 +124,19 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
+		5645D6AE2837D7290081EA5A /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				5645D6AF2837D73F0081EA5A /* String+Ext.swift */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
 		568C171628364DB400C77384 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
 				56A8537328323934000DFE3D /* SplashView.swift */,
-				568C171728364DDB00C77384 /* EmailSugnUpView.swift */,
+				568C171728364DDB00C77384 /* EmailSignUpView.swift */,
 				56D958212833D3430053E65C /* GenderOnboardingView.swift */,
 				56953FD02832745C0025C1A2 /* NameOnboardingView.swift */,
 				5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */,
@@ -192,6 +200,7 @@
 		56A8535028322350000DFE3D /* UVIO */ = {
 			isa = PBXGroup;
 			children = (
+				5645D6AE2837D7290081EA5A /* Unit */,
 				56C7720A28355DA20000E579 /* Templates */,
 				56C77202283556520000E579 /* Generated */,
 				56953FC4283259470025C1A2 /* Resource */,
@@ -242,7 +251,6 @@
 				561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */,
 				561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */,
 				56E2867C28354E2F0095FD9F /* PreferrableSignUpViewModel.swift */,
-				568C1719283650B400C77384 /* EmailSignUpViewModel.swift */,
 				5645D6AC283795560081EA5A /* UserViewModel.swift */,
 			);
 			path = ViewModels;
@@ -419,6 +427,7 @@
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* PrefferableSignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
+				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
@@ -436,7 +445,6 @@
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
-				568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,
@@ -445,7 +453,7 @@
 				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
-				568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */,
+				568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

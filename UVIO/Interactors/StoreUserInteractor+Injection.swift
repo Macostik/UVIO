@@ -9,12 +9,11 @@ import Resolver
 
 extension Resolver {
     public static func registerUserStore() {
-        register(StoreUserInteractorType.self) { _ in
-            return StoreUserInteractor()
+        register(StoreUserInteractorType.self) {
+            StoreUserInteractor()
+        }
+        register(StoreUserProvider.self) {
+            StoreUserService()
         }
     }
 }
-
-
-
-

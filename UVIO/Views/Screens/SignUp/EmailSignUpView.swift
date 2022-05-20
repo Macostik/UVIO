@@ -1,5 +1,5 @@
 //
-//  EmailSugnUpView.swift
+//  EmailSignUpView.swift
 //  UVIO
 //
 //  Created by Macostik on 19.05.2022.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct EmailSugnUpView: View {
-    @ObservedObject private var viewModel: EmailSignUpViewModel
+struct EmailSignUpView: View {
+    @ObservedObject private var viewModel: UserViewModel
     @State private var showPassword: Bool = false
-    init(viewModel: EmailSignUpViewModel) {
+    init(viewModel: UserViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
@@ -34,11 +34,11 @@ struct EmailSugnUpView: View {
 
 struct EmailSugnUpView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailSugnUpView(viewModel: EmailSignUpViewModel())
+        EmailSignUpView(viewModel: UserViewModel())
     }
 }
 
-extension EmailSugnUpView {
+extension EmailSignUpView {
     var container: some View {
         VStack(spacing: 12) {
             TextField(L10n.emailAddress, text: $viewModel.email)
@@ -50,7 +50,12 @@ extension EmailSugnUpView {
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
             passwordInput
-            NavigationLink(destination: EmptyView()) {
+            NavigationLink(destination: EmptyView(), isActive: $viewModel.signUpConfirmed) {
+                EmptyView()
+            }
+            Button {
+                $viewModel.signUpConfirmed.wrappedValue.toggle()
+            } label: {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
                     .frame(maxWidth: .infinity, maxHeight: 48)
@@ -58,7 +63,9 @@ extension EmailSugnUpView {
                     .foregroundColor(Color.white)
                     .cornerRadius(16)
                     .padding(.horizontal)
+                    .opacity(viewModel.signUp ? 1.0 : 0.5)
             }
+            .disabled(!viewModel.signUp)
         }
     }
     var hideOverlay: some View {
