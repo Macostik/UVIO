@@ -14,13 +14,17 @@
 		5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
+		5645D6A4283788030081EA5A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5645D6A3283788030081EA5A /* Resolver */; };
+		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
+		5645D6A9283788E10081EA5A /* StoreUserInteractor+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */; };
+		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
+		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
 		568C17132836259500C77384 /* swiftui-xcassets-template.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 568C17122836259500C77384 /* swiftui-xcassets-template.stencil */; };
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
 		568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSugnUpView.swift */; };
 		568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1719283650B400C77384 /* EmailSignUpViewModel.swift */; };
 		568C171C28368AAD00C77384 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171B28368AAD00C77384 /* User.swift */; };
-		568C17202836929000C77384 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171F2836929000C77384 /* UserService.swift */; };
-		568C17222836949D00C77384 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C17212836949D00C77384 /* ServiceProvider.swift */; };
+		568C17222836949D00C77384 /* StoreUserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C17212836949D00C77384 /* StoreUserProvider.swift */; };
 		568C172528369B6200C77384 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 568C172428369B6200C77384 /* swiftlint.yml */; };
 		56953FCB283259C90025C1A2 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */; };
 		56953FCC283259C90025C1A2 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */; };
@@ -58,13 +62,16 @@
 		5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
+		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
+		5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreUserInteractor+Injection.swift"; sourceTree = "<group>"; };
+		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
+		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		568C17122836259500C77384 /* swiftui-xcassets-template.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "swiftui-xcassets-template.stencil"; sourceTree = "<group>"; };
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		568C171728364DDB00C77384 /* EmailSugnUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSugnUpView.swift; sourceTree = "<group>"; };
 		568C1719283650B400C77384 /* EmailSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpViewModel.swift; sourceTree = "<group>"; };
 		568C171B28368AAD00C77384 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		568C171F2836929000C77384 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		568C17212836949D00C77384 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		568C17212836949D00C77384 /* StoreUserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserProvider.swift; sourceTree = "<group>"; };
 		568C172428369B6200C77384 /* swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		56953FC6283259C90025C1A2 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		56953FC7283259C90025C1A2 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
@@ -101,12 +108,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5645D6A4283788030081EA5A /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5645D6A7283788A70081EA5A /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */,
+				5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
 		568C171628364DB400C77384 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,13 +139,12 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
-		568C171D2836910700C77384 /* Service */ = {
+		568C171D2836910700C77384 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				568C171F2836929000C77384 /* UserService.swift */,
-				568C17212836949D00C77384 /* ServiceProvider.swift */,
+				568C17212836949D00C77384 /* StoreUserProvider.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		56953FC4283259470025C1A2 /* Resource */ = {
@@ -180,9 +196,10 @@
 				56C77202283556520000E579 /* Generated */,
 				56953FC4283259470025C1A2 /* Resource */,
 				56A8536E283232C7000DFE3D /* Model */,
-				56A8536D283232BE000DFE3D /* ViewModel */,
-				56A8536828322874000DFE3D /* View */,
-				568C171D2836910700C77384 /* Service */,
+				56A8536D283232BE000DFE3D /* ViewModels */,
+				56A8536828322874000DFE3D /* Views */,
+				5645D6A7283788A70081EA5A /* Interactors */,
+				568C171D2836910700C77384 /* Services */,
 				56A8536528322492000DFE3D /* System */,
 			);
 			path = UVIO;
@@ -193,28 +210,29 @@
 			children = (
 				56A8535128322350000DFE3D /* AppDelegate.swift */,
 				56A8535328322350000DFE3D /* SceneDelegate.swift */,
+				5645D6A52837884C0081EA5A /* UVIO+Injection.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
 		};
-		56A8536828322874000DFE3D /* View */ = {
+		56A8536828322874000DFE3D /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				56A853692832287F000DFE3D /* Screens */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				568C171628364DB400C77384 /* SignUp */,
-				56D9581A283392990053E65C /* CommonViews */,
+				56D9581A283392990053E65C /* Components */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		56A8536D283232BE000DFE3D /* ViewModel */ = {
+		56A8536D283232BE000DFE3D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				56A8536F2832344A000DFE3D /* SpalshViewModel.swift */,
@@ -225,8 +243,9 @@
 				561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */,
 				56E2867C28354E2F0095FD9F /* PreferrableSignUpViewModel.swift */,
 				568C1719283650B400C77384 /* EmailSignUpViewModel.swift */,
+				5645D6AC283795560081EA5A /* UserViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		56A8536E283232C7000DFE3D /* Model */ = {
@@ -256,7 +275,7 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
-		56D9581A283392990053E65C /* CommonViews */ = {
+		56D9581A283392990053E65C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				56D9581B283392AA0053E65C /* CommonViews.swift */,
@@ -265,7 +284,7 @@
 				568C1714283641B300C77384 /* StateButton.swift */,
 				56D9581F28339CBD0053E65C /* DatePickerView.swift */,
 			);
-			path = CommonViews;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +306,7 @@
 			);
 			name = UVIO;
 			packageProductDependencies = (
+				5645D6A3283788030081EA5A /* Resolver */,
 			);
 			productName = UVIO;
 			productReference = 56A8534E28322350000DFE3D /* UVIO.app */;
@@ -317,6 +337,7 @@
 			);
 			mainGroup = 56A8534528322350000DFE3D;
 			packageReferences = (
+				5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */,
 			);
 			productRefGroup = 56A8534F28322350000DFE3D /* Products */;
 			projectDirPath = "";
@@ -393,8 +414,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				568C17202836929000C77384 /* UserService.swift in Sources */,
 				561238072834D36C00DCB87B /* DiabetsOnboardingViewModel.swift in Sources */,
+				5645D6A9283788E10081EA5A /* StoreUserInteractor+Injection.swift in Sources */,
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* PrefferableSignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
@@ -411,14 +432,17 @@
 				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
 				561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
-				568C17222836949D00C77384 /* ServiceProvider.swift in Sources */,
+				568C17222836949D00C77384 /* StoreUserProvider.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
 				568C171A283650B400C77384 /* EmailSignUpViewModel.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
+				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
+				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
+				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 				568C171828364DDB00C77384 /* EmailSugnUpView.swift in Sources */,
@@ -565,8 +589,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UVIO/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,8 +617,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UVIO/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,6 +657,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5645D6A3283788030081EA5A /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 56A8534628322350000DFE3D /* Project object */;
 }

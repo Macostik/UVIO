@@ -23,7 +23,8 @@ struct NameOnboardingView: View {
                 Spacer()
                 contentView
                 Spacer()
-                NextButton(destination: BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
+                NextButton(destination:
+                            BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
                 SkipButton()
             }
         }

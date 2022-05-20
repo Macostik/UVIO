@@ -26,14 +26,11 @@
 				</dict>
 			</array>
 		</dict>
-    </dict>
-    <key>UILaunchScreen</key>
-    <dict>
-        <key>UIColorName</key>
-        <string>LaunchBackground</string>
-    </dict>
-    
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
 </dict>
 </plist>
