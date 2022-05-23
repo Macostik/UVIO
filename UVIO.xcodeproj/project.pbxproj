@@ -24,6 +24,7 @@
 		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
 		56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* LoginFacebookProvider.swift */; };
 		56598098283B897D00669F15 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598097283B897D00669F15 /* SignInView.swift */; };
+		56749FA4283B981300A2D4B7 /* EmailSingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56749FA3283B981300A2D4B7 /* EmailSingInView.swift */; };
 		568C17132836259500C77384 /* swiftui-xcassets-template.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 568C17122836259500C77384 /* swiftui-xcassets-template.stencil */; };
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
 		568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSignUpView.swift */; };
@@ -73,6 +74,7 @@
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		56598094283B789800669F15 /* LoginFacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacebookProvider.swift; sourceTree = "<group>"; };
 		56598097283B897D00669F15 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		56749FA3283B981300A2D4B7 /* EmailSingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSingInView.swift; sourceTree = "<group>"; };
 		568C17122836259500C77384 /* swiftui-xcassets-template.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "swiftui-xcassets-template.stencil"; sourceTree = "<group>"; };
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		568C171728364DDB00C77384 /* EmailSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				56598097283B897D00669F15 /* SignInView.swift */,
+				56749FA3283B981300A2D4B7 /* EmailSingInView.swift */,
 			);
 			path = SingIn;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
+				56749FA4283B981300A2D4B7 /* EmailSingInView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 				568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */,
 			);

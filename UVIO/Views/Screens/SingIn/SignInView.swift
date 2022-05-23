@@ -42,7 +42,7 @@ extension SignInView {
         VStack(spacing: 12) {
             LogoButton(logo: Image.emailIcon,
                        title: Text(L10n.signInWithEmail),
-                       destination: EmailSignUpView(viewModel: UserViewModel()))
+                       destination: EmailSingInView(viewModel: UserViewModel()))
             Button {
 //                self.facebookProvider.facebookLogin(cUser: currentGiver)
             } label: {
@@ -92,11 +92,5 @@ extension SignInView {
                     .foregroundColor(.black))
             }
         }
-    }
-    
-    var forgotPassword: some View {
-        Text(L10n.forgotPassword)
-            .font(.poppins(.medium, size: 14))
-            .foregroundColor(Color.complementaryColor)
     }
 }

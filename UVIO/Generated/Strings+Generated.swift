@@ -66,7 +66,7 @@ public enum L10n {
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
-  /// SIGN IN
+  /// Sign In
   public static let signIn = L10n.tr("Base", "sign_in")
   /// Sign In with Apple
   public static let signInWihtApple = L10n.tr("Base", "sign_in_wiht_apple")
