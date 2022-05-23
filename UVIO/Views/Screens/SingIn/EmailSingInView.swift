@@ -10,6 +10,7 @@ import SwiftUI
 struct EmailSingInView: View {
     @ObservedObject private var viewModel: UserViewModel
     @State private var showPassword: Bool = false
+    @State private var showErrorAlert: Bool = false
     init(viewModel: UserViewModel) {
         self.viewModel = viewModel
     }
@@ -65,7 +66,9 @@ extension EmailSingInView {
                 EmptyView()
             }
             Button {
-                $viewModel.signUpConfirmed.wrappedValue.toggle()
+                withAnimation {
+                    showErrorAlert = true
+                }
             } label: {
                 Text(L10n.signIn)
                     .font(.poppins(.medium, size: 14))
@@ -75,7 +78,6 @@ extension EmailSingInView {
                     .cornerRadius(16)
                     .padding(.horizontal)
             }
-            .disabled(!viewModel.signUp)
         }
     }
     var hideOverlay: some View {

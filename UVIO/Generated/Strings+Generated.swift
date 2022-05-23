@@ -26,8 +26,12 @@ public enum L10n {
   public static let done = L10n.tr("Base", "done")
   /// Don’t have an account yet? 
   public static let dontHaveAccount = L10n.tr("Base", "dont_have_account")
+  /// •
+  public static let dot = L10n.tr("Base", "dot")
   /// Email Address
   public static let emailAddress = L10n.tr("Base", "email_address")
+  /// Email is required
+  public static let emailIsRequired = L10n.tr("Base", "email_is_required")
   /// Female
   public static let female = L10n.tr("Base", "female")
   /// Forgot Password?
@@ -60,6 +64,8 @@ public enum L10n {
   public static let nonBinary = L10n.tr("Base", "non_binary")
   /// Password
   public static let password = L10n.tr("Base", "password")
+  /// Password is required
+  public static let passwordIsRequired = L10n.tr("Base", "password_is_required")
   /// Prediabetes
   public static let prediabetes = L10n.tr("Base", "prediabetes")
   ///  Privacy Policy.
