@@ -24,10 +24,14 @@ public enum L10n {
   public static let createAccount = L10n.tr("Base", "create_account")
   /// DONE
   public static let done = L10n.tr("Base", "done")
+  /// Don’t have an account yet? 
+  public static let dontHaveAccount = L10n.tr("Base", "dont_have_account")
   /// Email Address
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Female
   public static let female = L10n.tr("Base", "female")
+  /// Forgot Password?
+  public static let forgotPassword = L10n.tr("Base", "forgot_password")
   /// My full name
   public static let fullName = L10n.tr("Base", "full_name")
   /// Gestational diabetes
@@ -64,6 +68,14 @@ public enum L10n {
   public static let provideOwn = L10n.tr("Base", "provideOwn")
   /// SIGN IN
   public static let signIn = L10n.tr("Base", "sign_in")
+  /// Sign In with Apple
+  public static let signInWihtApple = L10n.tr("Base", "sign_in_wiht_apple")
+  /// Sign In with Email
+  public static let signInWithEmail = L10n.tr("Base", "sign_in_with_email")
+  /// Sign In with Facebook
+  public static let signInWithFacebook = L10n.tr("Base", "sign_in_with_facebook")
+  /// Sign In with Google
+  public static let signInWithGoogle = L10n.tr("Base", "sign_in_with_google")
   /// Sign Up
   public static let signUp = L10n.tr("Base", "sign_up")
   /// Sign Up with Apple

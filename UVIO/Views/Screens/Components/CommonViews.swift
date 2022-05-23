@@ -18,9 +18,9 @@ struct BackButton: View {
     }
 }
 
-struct NextButton<V: View>: View {
-    private var destination: V
-    init(destination: V) {
+struct NextButton<Destination: View>: View {
+    private var destination: Destination
+    init(destination: Destination) {
         self.destination = destination
     }
     var body: some View {
@@ -45,15 +45,17 @@ struct NextButton<V: View>: View {
     }
 }
 
-struct SkipButton: View {
+struct SkipButton<Destination: View>: View {
+    private var destination: Destination
+    init(destination: Destination) {
+        self.destination = destination
+    }
     var body: some View {
-        Button(action: {
-            print("skip button click")
-        }, label: {
+        NavigationLink(destination: destination) {
             Text(L10n.skip)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
-        })
+        }
     }
 }
 
@@ -134,6 +136,14 @@ var privatePolicy: some View {
         .font(.poppins(.bold, fixedSize: 12))
 }
 
+var singUpLink: some View {
+    Text(L10n.dontHaveAccount)
+        .font(.poppins(.regular, size: 14)) +
+    Text(L10n.signUp)
+        .font(.poppins(.medium, size: 14))
+        .foregroundColor(Color.complementaryColor)
+}
+
 var signUpBanner: some View {
     ZStack {
         Image.signUpLogo
@@ -143,9 +153,30 @@ var signUpBanner: some View {
     }
 }
 
+var signInBanner: some View {
+    ZStack {
+        Image.uvioIcon
+            .frame(width: 96, height: 96)
+            .background(Color.white)
+            .cornerRadius(16)
+    }
+}
+
 var signUpTitle: some View {
     VStack(spacing: 16) {
         Text(L10n.uvio)
+            .font(.poppins(.bold, size: 21))
+        Text(L10n.takeBackControl)
+            .font(.poppins(.regular, size: 16))
+            .padding(.horizontal, 40)
+            .multilineTextAlignment(.center)
+    }
+    .padding(.bottom, 48)
+}
+
+var signInTitle: some View {
+    VStack(spacing: 16) {
+        Text(L10n.cone)
             .font(.poppins(.bold, size: 21))
         Text(L10n.takeBackControl)
             .font(.poppins(.regular, size: 16))

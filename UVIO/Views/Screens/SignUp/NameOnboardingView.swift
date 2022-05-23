@@ -25,7 +25,7 @@ struct NameOnboardingView: View {
                 Spacer()
                 NextButton(destination:
                             BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
-                SkipButton()
+                SkipButton(destination: SignInView())
             }
         }
         .navigationBarBackButtonHidden(true)
