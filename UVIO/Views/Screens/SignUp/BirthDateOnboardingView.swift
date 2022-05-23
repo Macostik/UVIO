@@ -31,6 +31,7 @@ struct BirthDateOnboardingView: View {
                     contentView
                     Spacer()
                     NextButton(destination: GenderOnboardingView(viewModel: GenderOnboardingViewModel()))
+                        .opacity(isPresentedDatePicker ? 0.0 : 1.0)
                     SkipButton()
                         .padding(.bottom, 30)
                 }

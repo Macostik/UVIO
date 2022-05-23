@@ -10,6 +10,8 @@ import Combine
 
 struct PrefferableSignUpView: View {
     @ObservedObject private var viewModel: PreferrableSignUpViewModel
+    @ObservedObject var facebookProvider = LoginFacebookProvider()
+    @ObservedObject var currentGiver = CurrentUser()
     init(viewModel: PreferrableSignUpViewModel) {
         self.viewModel = viewModel
     }
@@ -47,9 +49,28 @@ extension PrefferableSignUpView {
             LogoButton(logo: Image.emailIcon,
                        title: Text(L10n.signUpWithEmail),
                        destination: EmailSignUpView(viewModel: UserViewModel()))
-            LogoButton(logo: Image.facebookIcon,
-                       title: Text(L10n.signUpWithFacebook),
-                       destination: EmptyView())
+//            LogoButton(logo: Image.facebookIcon,
+//                       title: Text(L10n.signUpWithFacebook),
+//                       destination: EmptyView())
+//            .onTapGesture {
+//            }
+            Button {
+//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                
+            } label: {
+                ZStack {
+                    HStack {
+                        Image.facebookIcon.padding()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
+                .background(Color.white.opacity(0.6))
+                .cornerRadius(12)
+                .padding(.horizontal)
+                .overlay(Text(L10n.signUpWithFacebook)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(.black))
+            }
             LogoButton(logo: Image.googleIcon,
                        title: Text(L10n.signUpWithGoogle),
                        destination: EmptyView())

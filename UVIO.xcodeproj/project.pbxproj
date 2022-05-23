@@ -14,13 +14,15 @@
 		5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
-		5645D6A4283788030081EA5A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5645D6A3283788030081EA5A /* Resolver */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6A9283788E10081EA5A /* StoreUserInteractor+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A8283788E10081EA5A /* StoreUserInteractor+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
 		5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AF2837D73F0081EA5A /* String+Ext.swift */; };
-		5645D6B32837E3C10081EA5A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5645D6B22837E3C10081EA5A /* RealmSwift */; };
+		5659808C283B771600669F15 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808B283B771600669F15 /* Resolver */; };
+		5659808F283B776C00669F15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808E283B776C00669F15 /* RealmSwift */; };
+		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
+		56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* LoginFacebookProvider.swift */; };
 		568C17132836259500C77384 /* swiftui-xcassets-template.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 568C17122836259500C77384 /* swiftui-xcassets-template.stencil */; };
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
 		568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C171728364DDB00C77384 /* EmailSignUpView.swift */; };
@@ -68,6 +70,7 @@
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		56598094283B789800669F15 /* LoginFacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacebookProvider.swift; sourceTree = "<group>"; };
 		568C17122836259500C77384 /* swiftui-xcassets-template.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "swiftui-xcassets-template.stencil"; sourceTree = "<group>"; };
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		568C171728364DDB00C77384 /* EmailSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpView.swift; sourceTree = "<group>"; };
@@ -109,8 +112,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5645D6B32837E3C10081EA5A /* RealmSwift in Frameworks */,
-				5645D6A4283788030081EA5A /* Resolver in Frameworks */,
+				5659808F283B776C00669F15 /* RealmSwift in Frameworks */,
+				5659808C283B771600669F15 /* Resolver in Frameworks */,
+				56598092283B77D700669F15 /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +138,14 @@
 			path = Unit;
 			sourceTree = "<group>";
 		};
+		56598093283B788700669F15 /* FaceBookProvider */ = {
+			isa = PBXGroup;
+			children = (
+				56598094283B789800669F15 /* LoginFacebookProvider.swift */,
+			);
+			path = FaceBookProvider;
+			sourceTree = "<group>";
+		};
 		568C171628364DB400C77384 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +164,7 @@
 		568C171D2836910700C77384 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				56598093283B788700669F15 /* FaceBookProvider */,
 				568C17212836949D00C77384 /* StoreUserProvider.swift */,
 			);
 			path = Services;
@@ -316,8 +329,9 @@
 			);
 			name = UVIO;
 			packageProductDependencies = (
-				5645D6A3283788030081EA5A /* Resolver */,
-				5645D6B22837E3C10081EA5A /* RealmSwift */,
+				5659808B283B771600669F15 /* Resolver */,
+				5659808E283B776C00669F15 /* RealmSwift */,
+				56598091283B77D700669F15 /* FacebookLogin */,
 			);
 			productName = UVIO;
 			productReference = 56A8534E28322350000DFE3D /* UVIO.app */;
@@ -348,8 +362,9 @@
 			);
 			mainGroup = 56A8534528322350000DFE3D;
 			packageReferences = (
-				5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */,
-				5645D6B12837E3C10081EA5A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */,
+				5659808D283B776C00669F15 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				56598090283B77D700669F15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 56A8534F28322350000DFE3D /* Products */;
 			projectDirPath = "";
@@ -449,6 +464,7 @@
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
+				56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */,
 				56A853702832344A000DFE3D /* SpalshViewModel.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,
@@ -671,15 +687,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */ = {
+		5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
-		5645D6B12837E3C10081EA5A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		5659808D283B776C00669F15 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
@@ -687,18 +703,31 @@
 				kind = branch;
 			};
 		};
+		56598090283B77D700669F15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5645D6A3283788030081EA5A /* Resolver */ = {
+		5659808B283B771600669F15 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5645D6A2283788030081EA5A /* XCRemoteSwiftPackageReference "Resolver" */;
+			package = 5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
 		};
-		5645D6B22837E3C10081EA5A /* RealmSwift */ = {
+		5659808E283B776C00669F15 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5645D6B12837E3C10081EA5A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 5659808D283B776C00669F15 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		56598091283B77D700669F15 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56598090283B77D700669F15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
