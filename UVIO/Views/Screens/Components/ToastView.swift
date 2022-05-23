@@ -7,16 +7,28 @@
 
 import SwiftUI
 
-struct ToastView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(L10n.dot)
-                Text(L10n.emailIsRequired)
-            }
-            HStack {
-                Text(L10n.dot)
-                Text(L10n.passwordIsRequired)
+struct ToastView: ViewModifier {
+    let delay: TimeInterval = 3.0
+    @Binding var isShowing: Bool
+    func body(content: Content) -> some View {
+        ZStack(alignment: .top) {
+          content
+          toastView
+        }
+      }
+    private var toastView: some View {
+        Group {
+            if isShowing {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text(L10n.dot)
+                        Text(L10n.emailIsRequired)
+                    }
+                    HStack {
+                        Text(L10n.dot)
+                        Text(L10n.passwordIsRequired)
+                    }
+                }
             }
         }
         .foregroundColor(Color.white)
@@ -26,22 +38,15 @@ struct ToastView: View {
         .background(Color.primaryAlertColor)
         .cornerRadius(16)
         .padding(.horizontal)
-    }
-}
-
-//extension View: ViewModifier {
-//    @Binding var showToast: Bool
-//
-//    func body(content: Content) -> some View {
-//        return content
-//            .transition(.move(edge: .top))
-//            .animation(Animation.easeInOut)
-//            .zIndex(1)
-//    }
-//}
-
-struct ErrorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ToastView()
+        .onTapGesture {
+            isShowing = false
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                isShowing = false
+            }
+        }
+        .animation(.easeInOut, value: isShowing)
+        .transition(.move(edge: .top))
     }
 }

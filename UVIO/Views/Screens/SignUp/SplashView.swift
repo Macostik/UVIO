@@ -51,9 +51,7 @@ struct SplashView: View {
         }
     }
     var createAccountButton: some View {
-        Button {
-            print("click create account button")
-        } label: {
+        NavigationLink(destination: NameOnboardingView(viewModel: NameOnboardingViewModel())) {
             Text(L10n.createAccount)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)

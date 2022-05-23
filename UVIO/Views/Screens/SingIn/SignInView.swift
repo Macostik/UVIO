@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
@@ -22,12 +22,10 @@ struct SignInView: View {
                     .padding(.top)
                 Spacer()
                 singUpLink
-                    .padding(.bottom, 30)
             }
+            NativigationBarView(content: {})
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
+        .navigationBarHidden(true)
     }
 }
 

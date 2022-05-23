@@ -15,7 +15,7 @@ struct EmailSingInView: View {
         self.viewModel = viewModel
     }
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
@@ -29,18 +29,14 @@ struct EmailSingInView: View {
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 30)
             }
-        }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
-        .toolbar(content: {
-            ToolbarItem(placement: .principal) {
+            NativigationBarView {
                 Text(L10n.forgotPassword)
                     .font(.poppins(.medium, size: 18))
             }
-        })
+        }
+        .navigationBarHidden(true)
+        .toast(isShowing: $showErrorAlert)
     }
 }
 
@@ -58,6 +54,8 @@ extension EmailSingInView {
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.primaryAlertColor, lineWidth: showErrorAlert ? 2 : 0))
                 .cornerRadius(16)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
@@ -99,6 +97,8 @@ extension EmailSingInView {
             .font(.poppins(.medium, size: 14))
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.primaryAlertColor, lineWidth: showErrorAlert ? 2 : 0))
             .cornerRadius(16)
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)
