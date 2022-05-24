@@ -10,16 +10,8 @@ import Combine
 
 struct SignUpView: View {
     @ObservedObject private var viewModel: UserViewModel
-    @ObservedObject var facebookProvider = LoginFacebookProvider()
-    private var cancellableSet = Set<AnyCancellable>()
     init(viewModel: UserViewModel) {
         self.viewModel = viewModel
-        self.facebookProvider
-            .userPublisher
-            .sink { user in
-                print("!!!User: \(user)")
-            }
-            .store(in: &cancellableSet)
     }
     var body: some View {
         ZStack {
@@ -56,7 +48,7 @@ extension SignUpView {
                        title: Text(L10n.signUpWithEmail),
                        destination: EmailSignUpView(viewModel: UserViewModel()))
             Button {
-                self.facebookProvider.facebookLogin()
+                self.viewModel.loginThroughFacebook()
             } label: {
                 ZStack {
                     HStack {

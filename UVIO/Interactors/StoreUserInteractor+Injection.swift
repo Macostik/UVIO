@@ -15,5 +15,11 @@ extension Resolver {
         register(StoreUserProvider.self) {
             StoreUserService()
         }
+        register(LoginFacebookInteractorType.self) {
+            LoginFacebookInteractor()
+        }
+        register(LoginFacebookProvider.self) {
+            LoginFacebookService()
+        }
     }
 }

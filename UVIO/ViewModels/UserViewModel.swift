@@ -18,6 +18,7 @@ class UserViewModel: ObservableObject {
     @Published var signUpConfirmed = false
     private var cancellableSet = Set<AnyCancellable>()
     @Injected var storeUserInteractor: StoreUserInteractorType
+    @Injected var loginUserInteractor: LoginFacebookInteractorType
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
         $password
             .map { $0.count > 5}
@@ -45,6 +46,9 @@ class UserViewModel: ObservableObject {
                 }
             }.store(in: &cancellableSet)
     }
+}
+// Handle store user
+extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
         storeUserInteractor.getUser()
     }
@@ -52,5 +56,13 @@ class UserViewModel: ObservableObject {
         user.email = email
         user.password = password
         return storeUserInteractor.saveUser(user: user)
+    }
+}
+// Handle user authorization
+extension UserViewModel {
+    func loginThroughFacebook() -> AnyPublisher<Bool, Error> {
+        loginUserInteractor.loginThroughFacebook()
+            .flatMap(save)
+            .eraseToAnyPublisher()
     }
 }

@@ -10,10 +10,14 @@ import FBSDKLoginKit
 import Combine
 import UIKit
 
-class LoginFacebookProvider: ObservableObject {
+protocol LoginFacebookProvider {
+    func loginThroughtFacebook() -> AnyPublisher<User, Error>
+}
+
+class LoginFacebookService: LoginFacebookProvider {
     let loginManager = LoginManager()
-    let userPublisher =  PassthroughSubject<User?, Never>()
-    func facebookLogin() {
+    func loginThroughtFacebook() -> AnyPublisher<User, Error> {
+        let subject = PassthroughSubject<User, Error>()
          loginManager.logIn(permissions: [.publicProfile, .email],
                            viewController: nil) { loginResult in
             switch loginResult {
@@ -26,17 +30,18 @@ class LoginFacebookProvider: ObservableObject {
                 GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, first_name"])
                     .start(completion: { _, result, error in
                         if let error = error {
-                            print("FaceBook sing in was fail - \(error)")
+                            print("Facebook sing in was fail - \(error)")
                         }
                         if result != nil, let fbDetails = result as? [String: String] {
                             let user = User()
                             user.id =  fbDetails["id"] ?? ""
-                            user.name = fbDetails["first_name"] ?? ""
+                            user.name = fbDetails["name"] ?? ""
                             user.email = fbDetails["email"] ?? ""
-                            self.userPublisher.send(user)
+                            subject.send(user)
                         }
                 })
             }
         }
+        return subject.eraseToAnyPublisher()
     }
 }
