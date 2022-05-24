@@ -16,10 +16,16 @@ public enum L10n {
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
   /// By continuing, you agree to UVIO’s
   public static let byContinuing = L10n.tr("Base", "by_continuing")
+  /// Check your Inbox.
+  ///  We’ve just sent you a link to
+  ///  reset your Password.
+  public static let checkYouInbox = L10n.tr("Base", "check_you_inbox")
   /// Complete
   public static let complete = L10n.tr("Base", "complete")
   /// Cone
   public static let cone = L10n.tr("Base", "cone")
+  /// Continue
+  public static let `continue` = L10n.tr("Base", "continue")
   /// CREATE ACCOUNT
   public static let createAccount = L10n.tr("Base", "create_account")
   /// DONE
@@ -32,6 +38,10 @@ public enum L10n {
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Email is required
   public static let emailIsRequired = L10n.tr("Base", "email_is_required")
+  /// Enter an Email address you registered with and Continue
+  public static let enterEmail = L10n.tr("Base", "enter_email")
+  /// Enter a new Password and Continue
+  public static let enterNewPasswordAndContinue = L10n.tr("Base", "enter_new_password_and_continue")
   /// Female
   public static let female = L10n.tr("Base", "female")
   /// Forgot Password?
@@ -58,10 +68,14 @@ public enum L10n {
   public static let mmolL = L10n.tr("Base", "mmol/l")
   /// MODY
   public static let mody = L10n.tr("Base", "mody")
+  /// New Password
+  public static let newPassword = L10n.tr("Base", "new_password")
   /// Next
   public static let next = L10n.tr("Base", "next")
   /// Non-binary
   public static let nonBinary = L10n.tr("Base", "non_binary")
+  /// Open Email App
+  public static let openEmailApp = L10n.tr("Base", "open_email_app")
   /// Password
   public static let password = L10n.tr("Base", "password")
   /// Password is required
@@ -72,6 +86,8 @@ public enum L10n {
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
+  /// Send Email for Recovery
+  public static let sendEmailRecovery = L10n.tr("Base", "send_email_recovery")
   /// Sign In
   public static let signIn = L10n.tr("Base", "sign_in")
   /// Sign In with Apple
@@ -96,6 +112,9 @@ public enum L10n {
   public static let skip = L10n.tr("Base", "skip")
   /// Specify another
   public static let specifyAnother = L10n.tr("Base", "specify_another")
+  /// You have successfully
+  ///  changed your Password.
+  public static let successfullyChangedPassword = L10n.tr("Base", "successfully_changed_password")
   /// Take back teh Control over your Diabetes
   public static let takeBack = L10n.tr("Base", "take_back")
   /// Take back the Control over your Diabetes

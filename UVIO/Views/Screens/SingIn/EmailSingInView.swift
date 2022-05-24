@@ -20,7 +20,7 @@ struct EmailSingInView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 140)
+                Spacer()
                 signInBanner
                 signInTitle
                 container

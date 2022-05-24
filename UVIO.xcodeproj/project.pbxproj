@@ -60,6 +60,10 @@
 		56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */; };
 		56E2867D28354E2F0095FD9F /* PreferrableSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2867C28354E2F0095FD9F /* PreferrableSignUpViewModel.swift */; };
 		56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2867E28354EAE0095FD9F /* SignUpView.swift */; };
+		56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */; };
+		56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F37283CC0A90085D4DD /* CheckInboxView.swift */; };
+		56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F39283CC3E90085D4DD /* NewPasswordView.swift */; };
+		56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +119,10 @@
 		56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingViewModel.swift; sourceTree = "<group>"; };
 		56E2867C28354E2F0095FD9F /* PreferrableSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferrableSignUpViewModel.swift; sourceTree = "<group>"; };
 		56E2867E28354EAE0095FD9F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryEmailView.swift; sourceTree = "<group>"; };
+		56E55F37283CC0A90085D4DD /* CheckInboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInboxView.swift; sourceTree = "<group>"; };
+		56E55F39283CC3E90085D4DD /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
+		56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordSuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +170,10 @@
 			children = (
 				56598097283B897D00669F15 /* SignInView.swift */,
 				56749FA3283B981300A2D4B7 /* EmailSingInView.swift */,
+				56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */,
+				56E55F37283CC0A90085D4DD /* CheckInboxView.swift */,
+				56E55F39283CC3E90085D4DD /* NewPasswordView.swift */,
+				56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */,
 			);
 			path = SingIn;
 			sourceTree = "<group>";
@@ -469,6 +481,8 @@
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
+				56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */,
+				56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */,
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				56598098283B897D00669F15 /* SignInView.swift in Sources */,
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,
@@ -479,8 +493,10 @@
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				56E2867D28354E2F0095FD9F /* PreferrableSignUpViewModel.swift in Sources */,
 				5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */,
+				56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */,
 				56C772112835645A0000E579 /* Fonts+Generated.swift in Sources */,
 				56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */,
+				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
 				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,

@@ -12,6 +12,8 @@ import SwiftUI
 class UserViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var recoveryEmail: String = ""
+    @Published var newPassword: String = ""
     @Published var signUp = false
     @Published var signUpConfirmed = false
     private var cancellableSet = Set<AnyCancellable>()
