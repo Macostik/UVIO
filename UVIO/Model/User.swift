@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class User: Object {
+    @Persisted(primaryKey: true) var id: String
     @Persisted var name: String = ""
     @Persisted var birthDate: String = ""
     @Persisted var gender: String = ""

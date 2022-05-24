@@ -9,11 +9,17 @@ import SwiftUI
 import Combine
 
 struct SignUpView: View {
-    @ObservedObject private var viewModel: PreferrableSignUpViewModel
+    @ObservedObject private var viewModel: UserViewModel
     @ObservedObject var facebookProvider = LoginFacebookProvider()
-    @ObservedObject var currentGiver = CurrentUser()
-    init(viewModel: PreferrableSignUpViewModel) {
+    private var cancellableSet = Set<AnyCancellable>()
+    init(viewModel: UserViewModel) {
         self.viewModel = viewModel
+        self.facebookProvider
+            .userPublisher
+            .sink { user in
+                print("!!!User: \(user)")
+            }
+            .store(in: &cancellableSet)
     }
     var body: some View {
         ZStack {
@@ -39,7 +45,7 @@ struct SignUpView: View {
 
 struct PrefferableSignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(viewModel: PreferrableSignUpViewModel())
+        SignUpView(viewModel: UserViewModel())
     }
 }
 
@@ -50,7 +56,7 @@ extension SignUpView {
                        title: Text(L10n.signUpWithEmail),
                        destination: EmailSignUpView(viewModel: UserViewModel()))
             Button {
-//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                self.facebookProvider.facebookLogin()
             } label: {
                 ZStack {
                     HStack {

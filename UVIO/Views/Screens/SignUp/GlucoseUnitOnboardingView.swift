@@ -26,7 +26,7 @@ struct GlucoseUnitOnboardingView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    CompleteButton(destination: SignUpView(viewModel: PreferrableSignUpViewModel()))
+                    CompleteButton(destination: SignUpView(viewModel: UserViewModel()))
                         .padding(.bottom, 30)
                 }
             }

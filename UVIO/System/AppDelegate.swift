@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import FBSDKCoreKit
 
 typealias NotificationPayload = [AnyHashable: Any]
 typealias FetchCompletion = (UIBackgroundFetchResult) -> Void
@@ -15,7 +16,14 @@ typealias FetchCompletion = (UIBackgroundFetchResult) -> Void
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return true
+        ApplicationDelegate.shared.application(application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+    }
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        ApplicationDelegate.shared.application(app, open: url, options: options)
     }
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {}
