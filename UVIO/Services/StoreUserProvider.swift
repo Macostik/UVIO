@@ -9,7 +9,7 @@ import Combine
 import RealmSwift
 
 enum RealmError: Error {
-    case none
+    case unknow
 }
 
 protocol StoreUserProvider {
@@ -23,35 +23,39 @@ class StoreUserService: StoreUserProvider {
     }
     init() {
         let configuration = Realm.Configuration.defaultConfiguration
-        print(configuration.fileURL ?? "")
+        Logger.debug(configuration.fileURL)
         do {
             _ = try Realm.deleteFiles(for: configuration)
         } catch {
-            print("Realm wasn't created")
+            Logger.error("Realm wasn't created")
         }
     }
     func saveUser(user: User) -> AnyPublisher<Bool, Error> {
-        do {
-            try realm?.write {
-                realm?.add(user)
+        let subject = PassthroughSubject<Bool, Error>()
+        realm?.writeAsync({ [weak self] in
+            guard let self = self else {
+                Logger.error("User wasn't save")
+                return subject.send(completion: .failure(RealmError.unknow))
             }
-        } catch {
-            return Just(false)
-                .mapError { _ in RealmError.none }
-                .eraseToAnyPublisher()
-        }
-        return Just(true)
-            .mapError { _ in RealmError.none }
-            .eraseToAnyPublisher()
+            self.realm?.add(user)
+        }, onComplete: { error in
+            guard let error = error else {
+                Logger.debug("User was saved successfully")
+                subject.send(true)
+                return  subject.send(completion: .finished)
+            }
+            subject.send(completion: .failure(error))
+        })
+        return subject.eraseToAnyPublisher()
     }
     func getUser() -> AnyPublisher<User?, Error> {
         guard let user =  realm?.objects(User.self).first else {
             return Just(nil)
-                .mapError { _ in RealmError.none }
+                .mapError { _ in RealmError.unknow }
                 .eraseToAnyPublisher()
         }
         return  Just(user)
-            .mapError { _ in RealmError.none }
+            .mapError { _ in RealmError.unknow }
             .eraseToAnyPublisher()
     }
 }

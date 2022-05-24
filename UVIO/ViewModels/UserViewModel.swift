@@ -60,9 +60,11 @@ extension UserViewModel {
 }
 // Handle user authorization
 extension UserViewModel {
-    func loginThroughFacebook() -> AnyPublisher<Bool, Error> {
+    func loginThroughFacebook() {
         loginUserInteractor.loginThroughFacebook()
             .flatMap(save)
-            .eraseToAnyPublisher()
+            .sink { _ in }
+    receiveValue: { _ in  }
+            .store(in: &cancellableSet)
     }
 }

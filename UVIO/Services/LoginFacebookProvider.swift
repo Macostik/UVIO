@@ -22,15 +22,18 @@ class LoginFacebookService: LoginFacebookProvider {
                            viewController: nil) { loginResult in
             switch loginResult {
             case .failed(let error):
-                print(error)
+                Logger.error("Login via Facebook was failed \(error)")
+                subject.send(completion: .failure(error))
             case .cancelled:
                 print("User cancelled login.")
+                subject.send(completion: .finished)
             case .success(_, _, let accessToken):
-                print("Logged was successful with \(accessToken.debugDescription)")
+                Logger.info("Facebook login was successful with token \(accessToken.debugDescription)")
                 GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email, first_name"])
                     .start(completion: { _, result, error in
                         if let error = error {
-                            print("Facebook sing in was fail - \(error)")
+                            Logger.error("Facebook sing in was fail - \(error)")
+                            subject.send(completion: .failure(error))
                         }
                         if result != nil, let fbDetails = result as? [String: String] {
                             let user = User()
@@ -38,6 +41,7 @@ class LoginFacebookService: LoginFacebookProvider {
                             user.name = fbDetails["name"] ?? ""
                             user.email = fbDetails["email"] ?? ""
                             subject.send(user)
+                            subject.send(completion: .finished)
                         }
                 })
             }
