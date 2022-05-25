@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SignInView: View {
+    @Injected private var dependency: Dependency
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -42,7 +44,7 @@ extension SignInView {
                        title: Text(L10n.signInWithEmail),
                        destination: EmailSingInView(viewModel: UserViewModel()))
             Button {
-//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                dependency.authService.facebookLoginService.login()
             } label: {
                 ZStack {
                     HStack {
@@ -58,7 +60,7 @@ extension SignInView {
                     .foregroundColor(.black))
             }
             Button {
-//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                dependency.authService.googleLoginService.login()
             } label: {
                 ZStack {
                     HStack {

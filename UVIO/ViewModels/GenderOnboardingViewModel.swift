@@ -7,8 +7,10 @@
 
 import SwiftUI
 import Combine
+import Resolver
 
 class GenderOnboardingViewModel: ObservableObject {
+    @Injected var dependency: Dependency
     @Published var isSelectedSpecifyType = false
     @Published var ownType: String = ""
     @Published var selectedItem: GenderType? {

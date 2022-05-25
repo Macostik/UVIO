@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Resolver
 
 struct NameOnboardingView: View {
     @ObservedObject var loginViewModel: NameOnboardingViewModel

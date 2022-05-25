@@ -1,5 +1,5 @@
 //
-//  StoreUserProvider.swift
+//  StoreProvider.swift
 //  UVIO
 //
 //  Created by Macostik on 19.05.2022.
@@ -11,13 +11,12 @@ import RealmSwift
 enum RealmError: Error {
     case unknow
 }
-
-protocol StoreUserProvider {
+protocol StoreProvider {
     func saveUser(user: User) -> AnyPublisher<Bool, Error>
     func getUser() -> AnyPublisher<User?, Error>
 }
 
-class StoreUserService: StoreUserProvider {
+class StoreService: StoreProvider {
     private var realm: Realm? {
          try? Realm()
     }

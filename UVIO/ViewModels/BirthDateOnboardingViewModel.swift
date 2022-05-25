@@ -6,5 +6,6 @@
 //
 
 import SwiftUI
+import Resolver
 
 class BirthDateOnboardingViewModel: ObservableObject {}

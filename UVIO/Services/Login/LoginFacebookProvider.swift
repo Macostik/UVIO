@@ -11,14 +11,14 @@ import Combine
 import UIKit
 
 protocol LoginFacebookProvider {
-    func loginThroughtFacebook() -> AnyPublisher<User, Error>
+    var facebookLoginService: LoginFacebookInteractor { get }
 }
 
-class LoginFacebookService: LoginFacebookProvider {
+struct LoginFacebookServiceCase: LoginFacebookInteractor {
     let loginManager = LoginManager()
-    func loginThroughtFacebook() -> AnyPublisher<User, Error> {
+    func login() -> AnyPublisher<User, Error> {
         let subject = PassthroughSubject<User, Error>()
-         loginManager.logIn(permissions: [.publicProfile, .email],
+        loginManager.logIn(permissions: [.publicProfile, .email],
                            viewController: nil) { loginResult in
             switch loginResult {
             case .failed(let error):
@@ -43,7 +43,7 @@ class LoginFacebookService: LoginFacebookProvider {
                             subject.send(user)
                             subject.send(completion: .finished)
                         }
-                })
+                    })
             }
         }
         return subject.eraseToAnyPublisher()

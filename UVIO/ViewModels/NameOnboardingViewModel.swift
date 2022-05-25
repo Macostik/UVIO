@@ -7,5 +7,6 @@
 
 import SwiftUI
 import Combine
+import Resolver
 
 class NameOnboardingViewModel: ObservableObject {}
