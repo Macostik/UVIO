@@ -44,7 +44,7 @@ extension SignInView {
                        title: Text(L10n.signInWithEmail),
                        destination: EmailSingInView(viewModel: UserViewModel()))
             Button {
-                dependency.authService.facebookLoginService.login()
+                dependency.provider.facebookLoginService.login()
             } label: {
                 ZStack {
                     HStack {
@@ -60,7 +60,7 @@ extension SignInView {
                     .foregroundColor(.black))
             }
             Button {
-                dependency.authService.googleLoginService.login()
+                dependency.provider.googleLoginService.login()
             } label: {
                 ZStack {
                     HStack {

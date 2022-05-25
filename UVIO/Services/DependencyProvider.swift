@@ -9,11 +9,9 @@ import Foundation
 import Resolver
 
 protocol DependencyProvider {
-    var authService: AuthService { get set }
-    var storeService: StoreService { get set }
+    var provider: Provider { get set }
 }
 
 struct Dependency: DependencyProvider {
-    @Injected var authService: AuthService
-    @Injected var storeService: StoreService
+    @Injected var provider: Provider
 }

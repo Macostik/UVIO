@@ -12,14 +12,10 @@ enum RealmError: Error {
     case unknow
 }
 protocol StoreProvider {
-    func saveUser(user: User) -> AnyPublisher<Bool, Error>
-    func getUser() -> AnyPublisher<User?, Error>
+    var storeService: StoreInteractor { get }
 }
 
-class StoreService: StoreProvider {
-    private var realm: Realm? {
-         try? Realm()
-    }
+class StoreService: StoreInteractor {
     init() {
         let configuration = Realm.Configuration.defaultConfiguration
         Logger.debug(configuration.fileURL)
@@ -31,23 +27,23 @@ class StoreService: StoreProvider {
     }
     func saveUser(user: User) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
-        realm?.writeAsync({ [weak self] in
-            guard let self = self else {
-                Logger.error("User wasn't save")
-                return subject.send(completion: .failure(RealmError.unknow))
-            }
-            self.realm?.add(user)
+        let realm = try? Realm()
+        realm?.writeAsync({
+            Logger.debug("User is writing to DB")
+            realm?.add(user)
         }, onComplete: { error in
             guard let error = error else {
                 Logger.debug("User was saved successfully")
                 subject.send(true)
                 return  subject.send(completion: .finished)
             }
+            Logger.error("User wasn't saved to DB with error: \(error)")
             subject.send(completion: .failure(error))
         })
         return subject.eraseToAnyPublisher()
     }
     func getUser() -> AnyPublisher<User?, Error> {
+        let realm = try? Realm()
         guard let user =  realm?.objects(User.self).first else {
             return Just(nil)
                 .mapError { _ in RealmError.unknow }

@@ -49,18 +49,17 @@ class UserViewModel: ObservableObject {
 // Handle store user
 extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
-        dependency.storeService.getUser()
+        dependency.provider.storeService.getUser()
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
-        user.email = email
-        user.password = password
-        return dependency.storeService.saveUser(user: user)
+        return dependency.provider.storeService.saveUser(user: user)
     }
 }
 // Handle user authorization
 extension UserViewModel {
     func loginThroughFacebook() {
-        dependency.authService.facebookLoginService.login()
+        dependency.provider
+            .facebookLoginService.login()
             .flatMap(save)
             .sink { _ in }
     receiveValue: { _ in  }

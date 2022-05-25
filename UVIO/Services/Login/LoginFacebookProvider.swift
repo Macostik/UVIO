@@ -14,7 +14,7 @@ protocol LoginFacebookProvider {
     var facebookLoginService: LoginFacebookInteractor { get }
 }
 
-struct LoginFacebookServiceCase: LoginFacebookInteractor {
+struct LoginFacebookService: LoginFacebookInteractor {
     let loginManager = LoginManager()
     func login() -> AnyPublisher<User, Error> {
         let subject = PassthroughSubject<User, Error>()

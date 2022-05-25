@@ -11,6 +11,6 @@ protocol LoginGoogleProvider {
     var googleLoginService: LoginGoogleInteractor { get }
 }
 
-struct LoginGoogleServiceCase: LoginGoogleInteractor {
+struct LoginGoogleService: LoginGoogleInteractor {
     func login() {}
 }

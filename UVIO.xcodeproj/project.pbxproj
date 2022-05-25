@@ -62,7 +62,7 @@
 		56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2867E28354EAE0095FD9F /* SignUpView.swift */; };
 		56E537BF283E950900929282 /* LoginGoogleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537BE283E950900929282 /* LoginGoogleInteractor.swift */; };
 		56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C0283E958300929282 /* LoginGoogleProvider.swift */; };
-		56E537C5283E960300929282 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C4283E960300929282 /* AuthProvider.swift */; };
+		56E537C5283E960300929282 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C4283E960300929282 /* Provider.swift */; };
 		56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C9283E998E00929282 /* DependencyProvider.swift */; };
 		56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */; };
 		56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F37283CC0A90085D4DD /* CheckInboxView.swift */; };
@@ -131,7 +131,7 @@
 		56E2867E28354EAE0095FD9F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		56E537BE283E950900929282 /* LoginGoogleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGoogleInteractor.swift; sourceTree = "<group>"; };
 		56E537C0283E958300929282 /* LoginGoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGoogleProvider.swift; sourceTree = "<group>"; };
-		56E537C4283E960300929282 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		56E537C4283E960300929282 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		56E537C9283E998E00929282 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryEmailView.swift; sourceTree = "<group>"; };
 		56E55F37283CC0A90085D4DD /* CheckInboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInboxView.swift; sourceTree = "<group>"; };
@@ -208,10 +208,11 @@
 		568C171D2836910700C77384 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				56E537C9283E998E00929282 /* DependencyProvider.swift */,
+				56E537C4283E960300929282 /* Provider.swift */,
 				56E537C7283E98E400929282 /* Store */,
 				56E537C2283E95B700929282 /* Login */,
 				5623A10A283D49460097AF78 /* EnvirmonmentType.swift */,
-				56E537C9283E998E00929282 /* DependencyProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,7 +364,6 @@
 		56E537C2283E95B700929282 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				56E537C4283E960300929282 /* AuthProvider.swift */,
 				56598094283B789800669F15 /* LoginFacebookProvider.swift */,
 				56E537C0283E958300929282 /* LoginGoogleProvider.swift */,
 			);
@@ -555,7 +555,7 @@
 				565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
-				56E537C5283E960300929282 /* AuthProvider.swift in Sources */,
+				56E537C5283E960300929282 /* Provider.swift in Sources */,
 				56E2867D28354E2F0095FD9F /* PreferrableSignUpViewModel.swift in Sources */,
 				5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */,
 				56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */,

@@ -11,8 +11,7 @@ import Resolver
 extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         register { UserViewModel() }
-        register { StoreService() }
-        register { AuthService() }
+        register { Provider() }
         register { Dependency() }
     }
 }
