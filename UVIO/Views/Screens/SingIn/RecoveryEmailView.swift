@@ -23,7 +23,7 @@ struct RecoveryEmailView: View {
                 Spacer()
                 sendRecoveryEmailLink
             }
-            NativigationBarView {
+            NativigationBackBarView {
                 Text(L10n.forgotPassword)
                     .font(.poppins(.medium, size: 18))
             }

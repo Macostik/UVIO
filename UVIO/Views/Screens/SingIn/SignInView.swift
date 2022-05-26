@@ -26,7 +26,7 @@ struct SignInView: View {
                 Spacer()
                 singUpLink
             }
-            NativigationBarView {}
+            NativigationBackBarView {}
         }
         .navigationBarHidden(true)
     }

@@ -19,6 +19,7 @@
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
 		56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */; };
+		56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371397283FB92F003C5A09 /* SelectDeviceView.swift */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -89,6 +90,7 @@
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
 		56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMViewModel.swift; sourceTree = "<group>"; };
+		56371397283FB92F003C5A09 /* SelectDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeviceView.swift; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				56371393283F71E0003C5A09 /* ConnectCGMView.swift */,
+				56371397283FB92F003C5A09 /* SelectDeviceView.swift */,
 			);
 			path = ConnectCGM;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
 				56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */,
+				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */,
 				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,

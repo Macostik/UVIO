@@ -16,6 +16,8 @@ public enum L10n {
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
   /// By continuing, you agree to UVIO’s
   public static let byContinuing = L10n.tr("Base", "by_continuing")
+  /// Cancel
+  public static let cancel = L10n.tr("Base", "cancel")
   /// Check your Inbox.
   ///  We’ve just sent you a link to
   ///  reset your Password.
@@ -30,6 +32,10 @@ public enum L10n {
   public static let `continue` = L10n.tr("Base", "continue")
   /// CREATE ACCOUNT
   public static let createAccount = L10n.tr("Base", "create_account")
+  /// DEXCOM
+  public static let dexcom = L10n.tr("Base", "dexcom")
+  /// Dexcom G6
+  public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
   /// DONE
   public static let done = L10n.tr("Base", "done")
   /// Don’t have an account yet? 
@@ -40,6 +46,8 @@ public enum L10n {
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Email is required
   public static let emailIsRequired = L10n.tr("Base", "email_is_required")
+  /// Enable Bluetooth for the Cone App.
+  public static let enableBluetooth = L10n.tr("Base", "enable_bluetooth")
   /// Enter an Email address you registered with and Continue
   public static let enterEmail = L10n.tr("Base", "enter_email")
   /// Enter a new Password and Continue
@@ -48,6 +56,10 @@ public enum L10n {
   public static let female = L10n.tr("Base", "female")
   /// Forgot Password?
   public static let forgotPassword = L10n.tr("Base", "forgot_password")
+  /// Freestyle Libre
+  public static let freestyleLibre = L10n.tr("Base", "freestyle_libre")
+  /// Freestyle Libre 2
+  public static let freestyleLibre2 = L10n.tr("Base", "freestyle_libre_2")
   /// My full name
   public static let fullName = L10n.tr("Base", "full_name")
   /// Gestational diabetes
@@ -62,6 +74,8 @@ public enum L10n {
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
+  /// Looking for device...
+  public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
   /// Male
   public static let male = L10n.tr("Base", "male")
   /// mg/dL
@@ -88,6 +102,8 @@ public enum L10n {
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
+  /// Select supporting device
+  public static let selecteDevices = L10n.tr("Base", "selecte_devices")
   /// Send Email for Recovery
   public static let sendEmailRecovery = L10n.tr("Base", "send_email_recovery")
   /// Sign In
@@ -112,6 +128,8 @@ public enum L10n {
   public static let signUpWithGoogle = L10n.tr("Base", "sign_up_with_google")
   /// Skip
   public static let skip = L10n.tr("Base", "skip")
+  /// Lorem Ipsum is simply dummy text.
+  public static let someText = L10n.tr("Base", "some_text")
   /// Specify another
   public static let specifyAnother = L10n.tr("Base", "specify_another")
   /// You have successfully

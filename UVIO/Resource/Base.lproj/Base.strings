@@ -72,3 +72,12 @@
 "welcome" = "Welcome";
 "connect_CGM" = "Connect CGM";
 "will_connect_CGM" = "I will connect CGM later";
+"selecte_devices" = "Select supporting device";
+"dexcom_G6" = "Dexcom G6";
+"dexcom" = "DEXCOM";
+"freestyle_libre" = "Freestyle Libre";
+"freestyle_libre_2" = "Freestyle Libre 2";
+"enable_bluetooth" = "Enable Bluetooth for the Cone App.";
+"some_text" = "Lorem Ipsum is simply dummy text.";
+"looking_for_device" = "Looking for device...";
+"cancel" = "Cancel";

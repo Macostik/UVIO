@@ -24,7 +24,7 @@ struct NewPasswordView: View {
                 Spacer()
                 continueLink
             }
-            NativigationBarView {
+            NativigationBackBarView {
                 Text(L10n.newPassword)
                     .font(.poppins(.medium, size: 18))
             }

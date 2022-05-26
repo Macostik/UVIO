@@ -20,7 +20,7 @@ struct NewPasswordSuccessView: View {
                 Spacer()
                 openEmailAppLink
             }
-            NativigationBarView {
+            NativigationBackBarView {
                 Text(L10n.newPassword)
                     .font(.poppins(.medium, size: 18))
             }

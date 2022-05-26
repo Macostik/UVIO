@@ -30,7 +30,7 @@ struct EmailSingInView: View {
                 privatePolicy
                     .multilineTextAlignment(.center)
             }
-            NativigationBarView {
+            NativigationBackBarView {
                 Text(L10n.forgotPassword)
                     .font(.poppins(.medium, size: 18))
             }

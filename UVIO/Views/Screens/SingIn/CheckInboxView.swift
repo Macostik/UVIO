@@ -20,7 +20,7 @@ struct CheckInboxView: View {
                 Spacer()
                 openEmailAppLink
             }
-            NativigationBarView {
+            NativigationBackBarView {
                 Text(L10n.forgotPassword)
                     .font(.poppins(.medium, size: 18))
             }

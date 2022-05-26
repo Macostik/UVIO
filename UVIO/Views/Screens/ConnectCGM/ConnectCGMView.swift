@@ -25,15 +25,15 @@ struct ConnectCGMView: View {
                     Spacer()
                 }
             }
-//            welcomeContent
-//                .opacity(viewModel.isHidden ? 0 : 1)
+            welcomeContent
+                .opacity(viewModel.isHidden ? 0 : 1)
         }
         .background(Color.grayBackgroundColor)
         .edgesIgnoringSafeArea(.all)
     }
     var welcomeContent: some View {
         ZStack {
-            Image.loginViewBackground
+            Image.connectBackground
                 .resizable()
             Text(L10n.welcome)
                 .font(.poppins(.medium, size: 32))
@@ -53,10 +53,17 @@ struct ConnectCGMView: View {
     }
     var mainContainerOverlay: some View {
         VStack {
-            Image.connectCGMIcon
-            Text(L10n.willConnectCGM)
-                .font(.poppins(.regular, size: 14))
-                .foregroundColor(Color.complementaryColor)
+            NavigationLink {
+                SelectDeviceView()
+            } label: {
+                Image.connectCGMIcon
+            }
+            HStack {
+                Text(L10n.willConnectCGM)
+                    .font(.poppins(.regular, size: 14))
+                Image.chevronIcon
+            }
+            .foregroundColor(Color.complementaryColor)
         }
     }
     var subContainer: some View {
