@@ -69,3 +69,6 @@
 "new_password" = "New Password";
 "continue" = "Continue";
 "successfully_changed_password" = "You have successfully\n changed your Password.";
+"welcome" = "Welcome";
+"connect_CGM" = "Connect CGM";
+"will_connect_CGM" = "I will connect CGM later";

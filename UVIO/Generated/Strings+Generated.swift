@@ -24,6 +24,8 @@ public enum L10n {
   public static let complete = L10n.tr("Base", "complete")
   /// Cone
   public static let cone = L10n.tr("Base", "cone")
+  /// Connect CGM
+  public static let connectCGM = L10n.tr("Base", "connect_CGM")
   /// Continue
   public static let `continue` = L10n.tr("Base", "continue")
   /// CREATE ACCOUNT
@@ -131,6 +133,8 @@ public enum L10n {
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
+  /// Welcome
+  public static let welcome = L10n.tr("Base", "welcome")
   /// What is your Birth Date?
   public static let whatIsYourBD = L10n.tr("Base", "what_is_your_BD")
   /// What is your Gender?
@@ -139,6 +143,8 @@ public enum L10n {
   public static let whatName = L10n.tr("Base", "what_name")
   /// Which type of diabetes do you have?
   public static let whichTypeDiabetes = L10n.tr("Base", "which_type_diabetes")
+  /// I will connect CGM later
+  public static let willConnectCGM = L10n.tr("Base", "will_connect_CGM")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

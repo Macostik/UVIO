@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Resolver
 
 struct GenderOnboardingView: View {
     @ObservedObject var genderViewModel: GenderOnboardingViewModel
-    @Injected var viewModel: UserViewModel
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -22,7 +21,8 @@ struct GenderOnboardingView: View {
                     contentView
                     Spacer()
                     NextButton(destination:
-                                DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel()))
+                                DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(),
+                               viewModel: viewModel))
                     SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
@@ -86,6 +86,6 @@ struct GenderOnboardingView: View {
 
 struct GenderOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GenderOnboardingView(genderViewModel: GenderOnboardingViewModel())
+        GenderOnboardingView(genderViewModel: GenderOnboardingViewModel(), viewModel: UserViewModel())
     }
 }

@@ -11,17 +11,21 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
-            ZStack {
-                Image.splashBackgroundImage
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-                VStack(spacing: 16) {
-                    Spacer()
-                    splashIconView
-                    contentView
-                    Spacer()
-                    createAccountButton
-                    signInButton
+            if viewModel.userPersist {
+                WelcomeView()
+            } else {
+                ZStack {
+                    Image.splashBackgroundImage
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                    VStack(spacing: 16) {
+                        Spacer()
+                        splashIconView
+                        contentView
+                        Spacer()
+                        createAccountButton
+                        signInButton
+                    }
                 }
             }
         }

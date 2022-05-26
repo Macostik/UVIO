@@ -17,6 +17,7 @@ class UserViewModel: ObservableObject {
     @Published var signUp = false
     @Published var signUpConfirmed = false
     @Published var userWasCreated = false
+    @Published var userPersist = false
     private var cancellableSet = Set<AnyCancellable>()
     @Injected var dependency: Dependency
     var facebookPublisher = PassthroughSubject<Void, Error>()
@@ -53,7 +54,13 @@ class UserViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: \.userWasCreated, on: self)
             .store(in: &cancellableSet)
+        getUser()
+            .map({ $0 != nil })
+            .replaceError(with: false)
+            .assign(to: \.userPersist, on: self)
+            .store(in: &cancellableSet)
     }
+
 }
 // Handle store user
 extension UserViewModel {

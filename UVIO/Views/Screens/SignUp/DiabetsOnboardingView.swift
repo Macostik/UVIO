@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Resolver
 
 struct DiabetsOnboardingView: View {
     @ObservedObject var diabetsViewModel: DiabetsOnboardingViewModel
-    @Injected var viewModel: UserViewModel
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -22,7 +21,8 @@ struct DiabetsOnboardingView: View {
                     contentView
                         .padding(.bottom)
                     NextButton(destination:
-                                GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel()))
+                                GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(),
+                                                          viewModel: viewModel))
                     SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
@@ -68,6 +68,6 @@ struct DiabetsOnboardingView: View {
 }
 struct DiabetsOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel())
+        DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(), viewModel: UserViewModel())
     }
 }

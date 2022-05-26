@@ -36,7 +36,7 @@ struct Logger {
                          type: LogType = .default,
                          filename: String = #file,
                          line: Int = #line) {
-        if EnvirmonmentType.isDevelop {
+        if EnvironmentProvider.isDevelop {
             Slim.debug("\(type.rawValue)\(string())\n",
                 filename: filename,
                 line: line)
@@ -46,7 +46,7 @@ struct Logger {
                        type: LogType = .default,
                        filename: String = #file,
                        line: Int = #line) {
-        if EnvirmonmentType.isDevelop {
+        if EnvironmentProvider.isDevelop {
             Slim.debug("\(type.rawValue)\(message())\n",
                 filename: filename,
                 line: line)
