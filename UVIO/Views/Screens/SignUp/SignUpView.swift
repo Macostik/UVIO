@@ -64,13 +64,13 @@ extension SignUpView {
                     .foregroundColor(.black))
             }
             NavigationLink(isActive: $viewModel.userWasCreated) {
-                EmptyView()
+                ConnectCGMView(viewModel: ConnectCGMViewModel())
             } label: {
                 EmptyView()
             }
 
             Button {
-//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                self.viewModel.googlePublisher.send()
             } label: {
                 ZStack {
                     HStack {

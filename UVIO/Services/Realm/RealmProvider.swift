@@ -29,7 +29,7 @@ struct RealmProvider {
             .containerURL(forSecurityApplicationGroupIdentifier: Constant.groupId) else {
             return config
         }
-        groupURL = url.appendingPathComponent("\(EnvironmentProvider.ENV).realm")
+        groupURL = url.appendingPathComponent("\(EnvironmentProvider.ENV) + \(Int.random(in: 0..<10000)).realm")
         let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL
         if realmFileURL?.absoluteString != groupURL?.absoluteString {
             config.fileURL = groupURL

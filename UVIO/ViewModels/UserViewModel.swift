@@ -21,6 +21,7 @@ class UserViewModel: ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
     @Injected var dependency: Dependency
     var facebookPublisher = PassthroughSubject<Void, Error>()
+    var googlePublisher = PassthroughSubject<Void, Error>()
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
         $password
             .map { $0.count > 5}
@@ -47,8 +48,13 @@ class UserViewModel: ObservableObject {
                     _  = self.save(user: User())
                 }
             }.store(in: &cancellableSet)
+        let facebookPublisher =
         facebookPublisher
             .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
+        let googlePublisher =
+        googlePublisher
+            .flatMap({ _ in self.dependency.provider.googleLoginService.login() })
+        Publishers.MergeMany(facebookPublisher, googlePublisher)
             .flatMap(save)
             .replaceError(with: false)
             .receive(on: DispatchQueue.main)

@@ -30,6 +30,7 @@ struct ConnectCGMView: View {
         }
         .background(Color.grayBackgroundColor)
         .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
     }
     var welcomeContent: some View {
         ZStack {

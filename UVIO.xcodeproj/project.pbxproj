@@ -21,6 +21,7 @@
 		56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */; };
 		56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371397283FB92F003C5A09 /* SelectDeviceView.swift */; };
 		5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371399283FC895003C5A09 /* EstablishConnectionView.swift */; };
+		563713B2283FD8FF003C5A09 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 563713B1283FD8FF003C5A09 /* GoogleSignIn */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -155,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5659808F283B776C00669F15 /* RealmSwift in Frameworks */,
+				563713B2283FD8FF003C5A09 /* GoogleSignIn in Frameworks */,
 				5659808C283B771600669F15 /* Resolver in Frameworks */,
 				56598092283B77D700669F15 /* FacebookLogin in Frameworks */,
 			);
@@ -459,6 +461,7 @@
 				5659808B283B771600669F15 /* Resolver */,
 				5659808E283B776C00669F15 /* RealmSwift */,
 				56598091283B77D700669F15 /* FacebookLogin */,
+				563713B1283FD8FF003C5A09 /* GoogleSignIn */,
 			);
 			productName = UVIO;
 			productReference = 56A8534E28322350000DFE3D /* UVIO.app */;
@@ -492,6 +495,7 @@
 				5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */,
 				5659808D283B776C00669F15 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				56598090283B77D700669F15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				563713B0283FD8FF003C5A09 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 56A8534F28322350000DFE3D /* Products */;
 			projectDirPath = "";
@@ -923,6 +927,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		563713B0283FD8FF003C5A09 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver";
@@ -950,6 +962,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		563713B1283FD8FF003C5A09 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 563713B0283FD8FF003C5A09 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
 		5659808B283B771600669F15 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */;

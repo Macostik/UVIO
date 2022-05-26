@@ -61,12 +61,13 @@ extension SignInView {
                     .foregroundColor(.black))
             }
             NavigationLink(isActive: $viewModel.userWasCreated) {
-                EmptyView()
+                ConnectCGMView(viewModel: ConnectCGMViewModel())
             } label: {
                 EmptyView()
             }
             Button {
-                dependency.provider.googleLoginService.login()
+                self.viewModel.googlePublisher.send()
+
             } label: {
                 ZStack {
                     HStack {

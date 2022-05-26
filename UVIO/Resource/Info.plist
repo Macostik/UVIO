@@ -12,15 +12,27 @@
 				<string>fb756510822011713</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps.858527894249-6oh5e3gmudg6aoqvu3njti03cj38mdc0</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.858527894249-6oh5e3gmudg6aoqvu3njti03cj38mdc0</string>
+			</array>
+		</dict>
 	</array>
+	<key>Environment</key>
+	<string>${ENV}</string>
 	<key>FacebookAppID</key>
 	<string>756510822011713</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>FacebookClientToken</key>
 	<string>5671538d56bd26edcce1add75ed05ed2</string>
 	<key>FacebookDisplayName</key>
 	<string>Cone app</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Regular.ttf</string>
@@ -51,7 +63,5 @@
 		<key>UIColorName</key>
 		<string>LaunchBackground</string>
 	</dict>
-	<key>Environment</key>
-	<string>${ENV}</string>
 </dict>
 </plist>
