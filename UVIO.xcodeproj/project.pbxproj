@@ -17,7 +17,8 @@
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
-		56371394283F71E0003C5A09 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* WelcomeView.swift */; };
+		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
+		56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -86,7 +87,8 @@
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		56371393283F71E0003C5A09 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
+		56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMViewModel.swift; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -173,12 +175,12 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		56371392283F71B9003C5A09 /* ConnectSGM */ = {
+		56371392283F71B9003C5A09 /* ConnectCGM */ = {
 			isa = PBXGroup;
 			children = (
-				56371393283F71E0003C5A09 /* WelcomeView.swift */,
+				56371393283F71E0003C5A09 /* ConnectCGMView.swift */,
 			);
-			path = ConnectSGM;
+			path = ConnectCGM;
 			sourceTree = "<group>";
 		};
 		5645D6A7283788A70081EA5A /* Interactors */ = {
@@ -322,7 +324,7 @@
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				56371392283F71B9003C5A09 /* ConnectSGM */,
+				56371392283F71B9003C5A09 /* ConnectCGM */,
 				56598096283B896A00669F15 /* SingIn */,
 				568C171628364DB400C77384 /* SignUp */,
 				56D9581A283392990053E65C /* Components */,
@@ -337,6 +339,7 @@
 				561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */,
 				561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */,
 				5645D6AC283795560081EA5A /* UserViewModel.swift */,
+				56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -581,7 +584,7 @@
 				5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */,
 				56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */,
 				56C772112835645A0000E579 /* Fonts+Generated.swift in Sources */,
-				56371394283F71E0003C5A09 /* WelcomeView.swift in Sources */,
+				56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */,
 				56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */,
 				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
@@ -604,6 +607,7 @@
 				565FDCE1283BDA29004D9924 /* View+Ext.swift in Sources */,
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
+				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,

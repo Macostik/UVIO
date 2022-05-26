@@ -7,7 +7,9 @@ internal extension Color {
   // Assets.xcassets
   static var accentColor : Color { Color("AccentColor", bundle: BundleToken.bundle) }
   // Colors.xcassets
+  static var capsulaGrayColor : Color { Color("capsulaGrayColor", bundle: BundleToken.bundle) }
   static var complementaryColor : Color { Color("complementaryColor", bundle: BundleToken.bundle) }
+  static var grayBackgroundColor : Color { Color("grayBackgroundColor", bundle: BundleToken.bundle) }
   static var grayLightColor : Color { Color("grayLightColor", bundle: BundleToken.bundle) }
   static var grayscaleColor : Color { Color("grayscaleColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }
@@ -21,6 +23,7 @@ internal extension Image {
   static var appleIcon : Image { Image("appleIcon", bundle: BundleToken.bundle) }
   static var backButtonIcon : Image { Image("backButtonIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
+  static var connectCGMIcon : Image { Image("connectCGMIcon", bundle: BundleToken.bundle) }
   static var dotsIcon : Image { Image("dotsIcon", bundle: BundleToken.bundle) }
   static var emailIcon : Image { Image("emailIcon", bundle: BundleToken.bundle) }
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
@@ -28,6 +31,7 @@ internal extension Image {
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
   static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
+  static var menuIcon : Image { Image("menuIcon", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }
   static var splashBackgroundImage : Image { Image("splashBackgroundImage", bundle: BundleToken.bundle) }

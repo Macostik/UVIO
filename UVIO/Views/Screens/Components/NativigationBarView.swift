@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct NativigationBarView<Content: View>: View {
+struct NativigationBackBarView<Content: View>: View {
     let content: Content?
     init(@ViewBuilder content: () -> Content?) {
         self.content = content()
@@ -21,6 +21,28 @@ struct NativigationBarView<Content: View>: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(content)
+    }
+}
+
+struct NativigationBarView<Content: View>: View {
+    let content: Content?
+    init(@ViewBuilder content: () -> Content?) {
+        self.content = content()
+    }
+    var body: some View {
+        ZStack {
+            HStack {
+                Image.uvioIcon
+                    .resizable()
+                    .frame(width: 28, height: 25)
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                Image.menuIcon
+            }
+            .padding(.horizontal, 30)
+        }
+        .frame(maxWidth: .infinity)
         .overlay(content)
     }
 }

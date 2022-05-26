@@ -12,7 +12,7 @@ struct SplashView: View {
     var body: some View {
         NavigationView {
             if viewModel.userPersist {
-                WelcomeView()
+                ConnectCGMView(viewModel: ConnectCGMViewModel())
             } else {
                 ZStack {
                     Image.splashBackgroundImage
