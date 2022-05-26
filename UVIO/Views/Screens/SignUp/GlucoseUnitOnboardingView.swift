@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct GlucoseUnitOnboardingView: View {
     @ObservedObject var glucoseViewModel: GlucoseUnitOnboardViewModel
-    @ObservedObject var viewModel: UserViewModel
+    @Injected var viewModel: UserViewModel
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -43,7 +44,7 @@ struct GlucoseUnitOnboardingView: View {
 
 struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(), viewModel: UserViewModel())
+        GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel())
     }
 }
 
