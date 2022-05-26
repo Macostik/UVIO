@@ -9,16 +9,13 @@ import SwiftUI
 
 struct BirthDateOnboardingView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var loginViewModel: BirthDateOnboardingViewModel
+    @ObservedObject var viewModel: UserViewModel
     @State private var birthDateValue = Date()
     @State private var isPresentedDatePicker = false
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         return dateFormatter
-    }
-    init(viewModel: BirthDateOnboardingViewModel) {
-        self.loginViewModel  = viewModel
     }
     var body: some View {
         ZStack {
@@ -30,9 +27,11 @@ struct BirthDateOnboardingView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    NextButton(destination: GenderOnboardingView(viewModel: GenderOnboardingViewModel()))
+                    NextButton(destination:
+                                GenderOnboardingView(genderViewModel: GenderOnboardingViewModel(),
+                                                     viewModel: viewModel))
                         .opacity(isPresentedDatePicker ? 0.0 : 1.0)
-                    SkipButton(destination: SignInView())
+                    SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
                 if isPresentedDatePicker {
@@ -76,6 +75,6 @@ struct BirthDateOnboardingView: View {
 
 struct LoginBirthdateView_Previews: PreviewProvider {
     static var previews: some View {
-        BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel())
+        BirthDateOnboardingView(viewModel: UserViewModel())
     }
 }

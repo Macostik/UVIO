@@ -42,7 +42,7 @@ struct NewPasswordView: View {
     }
     var continueLink: some View {
         NavigationLink {
-            NewPasswordSuccessView()
+            NewPasswordSuccessView(viewModel: viewModel)
         } label: {
             Text(L10n.continue)
                 .font(.poppins(.medium, size: 14))

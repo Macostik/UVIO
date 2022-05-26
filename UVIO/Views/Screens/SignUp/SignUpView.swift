@@ -46,9 +46,9 @@ extension SignUpView {
         VStack(spacing: 12) {
             LogoButton(logo: Image.emailIcon,
                        title: Text(L10n.signUpWithEmail),
-                       destination: EmailSignUpView(viewModel: UserViewModel()))
+                       destination: EmailSignUpView(viewModel: viewModel))
             Button {
-                self.viewModel.loginThroughFacebook()
+                self.viewModel.facebookPublisher.send()
             } label: {
                 ZStack {
                     HStack {
@@ -63,6 +63,12 @@ extension SignUpView {
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
+            NavigationLink(isActive: $viewModel.userWasCreated) {
+                EmptyView()
+            } label: {
+                EmptyView()
+            }
+
             Button {
 //                self.facebookProvider.facebookLogin(cUser: currentGiver)
             } label: {

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct DiabetsOnboardingView: View {
-    @ObservedObject private var viewModel: DiabetsOnboardingViewModel
-    init(viewModel: DiabetsOnboardingViewModel) {
-        self.viewModel = viewModel
-    }
+    @ObservedObject var diabetsViewModel: DiabetsOnboardingViewModel
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -23,8 +21,9 @@ struct DiabetsOnboardingView: View {
                     contentView
                         .padding(.bottom)
                     NextButton(destination:
-                                GlucoseUnitOnboardingView(viewModel: GlucoseUnitOnboardViewModel()))
-                    SkipButton(destination: SignInView())
+                                GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(),
+                                                          viewModel: viewModel))
+                    SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
             }
@@ -48,7 +47,7 @@ struct DiabetsOnboardingView: View {
                 .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(viewModel.diabetTypeList,
+                    ForEach(diabetsViewModel.diabetTypeList,
                             id: \.id) { item in
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -59,7 +58,7 @@ struct DiabetsOnboardingView: View {
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))
                             .onTapGesture {
-                                self.viewModel.selectedItem = item
+                                self.diabetsViewModel.selectedItem = item
                             }
                     }
                 } .padding(.horizontal)
@@ -69,6 +68,6 @@ struct DiabetsOnboardingView: View {
 }
 struct DiabetsOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel())
+        DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(), viewModel: UserViewModel())
     }
 }

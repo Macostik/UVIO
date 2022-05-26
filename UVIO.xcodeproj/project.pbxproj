@@ -54,7 +54,6 @@
 		56C772112835645A0000E579 /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C772102835645A0000E579 /* Fonts+Generated.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
-		56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
 		56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958212833D3430053E65C /* GenderOnboardingView.swift */; };
 		56D958242833D3530053E65C /* GenderOnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */; };
@@ -123,7 +122,6 @@
 		56C772102835645A0000E579 /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
-		56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateOnboardingViewModel.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		56D958212833D3430053E65C /* GenderOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingView.swift; sourceTree = "<group>"; };
 		56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -310,7 +308,6 @@
 			children = (
 				56A8536F2832344A000DFE3D /* SpalshViewModel.swift */,
 				56953FD22832746F0025C1A2 /* NameOnboardingViewModel.swift */,
-				56D9581D2833983F0053E65C /* BirthDateOnboardingViewModel.swift */,
 				56D958232833D3530053E65C /* GenderOnboardingViewModel.swift */,
 				561238062834D36C00DCB87B /* DiabetsOnboardingViewModel.swift */,
 				561238082835068100DCB87B /* GlucoseUnitOnboardViewModel.swift */,
@@ -565,7 +562,6 @@
 				56953FD32832746F0025C1A2 /* NameOnboardingViewModel.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
-				56D9581E2833983F0053E65C /* BirthDateOnboardingViewModel.swift in Sources */,
 				56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */,
 				561238092835068100DCB87B /* GlucoseUnitOnboardViewModel.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,

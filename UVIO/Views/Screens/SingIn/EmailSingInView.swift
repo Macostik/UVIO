@@ -103,4 +103,13 @@ extension EmailSingInView {
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)
     }
+    var forgotPassword: some View {
+        NavigationLink {
+            RecoveryEmailView(viewModel: viewModel)
+        } label: {
+            Text(L10n.forgotPassword)
+                .font(.poppins(.medium, size: 14))
+                .foregroundColor(Color.complementaryColor)
+        }
+    }
 }

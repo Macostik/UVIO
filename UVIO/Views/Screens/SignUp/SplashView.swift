@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
-    @ObservedObject var viewModel: SplashViewModel
-    init(viewModel: SplashViewModel) {
-        self.viewModel = viewModel
-    }
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
             ZStack {
@@ -51,7 +48,7 @@ struct SplashView: View {
         }
     }
     var createAccountButton: some View {
-        NavigationLink(destination: NameOnboardingView(viewModel: NameOnboardingViewModel())) {
+        NavigationLink(destination: NameOnboardingView(viewModel: viewModel)) {
             Text(L10n.createAccount)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)
@@ -62,7 +59,7 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignInView()) {
+        NavigationLink(destination: SignInView(viewModel: viewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
@@ -72,6 +69,6 @@ struct SplashView: View {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(viewModel: SplashViewModel())
+        SplashView(viewModel: UserViewModel())
     }
 }

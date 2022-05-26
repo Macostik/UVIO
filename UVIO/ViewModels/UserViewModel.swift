@@ -16,8 +16,10 @@ class UserViewModel: ObservableObject {
     @Published var newPassword: String = ""
     @Published var signUp = false
     @Published var signUpConfirmed = false
+    @Published var userWasCreated = false
     private var cancellableSet = Set<AnyCancellable>()
     @Injected var dependency: Dependency
+    var facebookPublisher = PassthroughSubject<Void, Error>()
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
         $password
             .map { $0.count > 5}
@@ -44,6 +46,13 @@ class UserViewModel: ObservableObject {
                     _  = self.save(user: User())
                 }
             }.store(in: &cancellableSet)
+        facebookPublisher
+            .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
+            .flatMap(save)
+            .replaceError(with: false)
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.userWasCreated, on: self)
+            .store(in: &cancellableSet)
     }
 }
 // Handle store user
@@ -53,16 +62,5 @@ extension UserViewModel {
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.saveUser(user: user)
-    }
-}
-// Handle user authorization
-extension UserViewModel {
-    func loginThroughFacebook() {
-        dependency.provider
-            .facebookLoginService.login()
-            .flatMap(save)
-            .sink { _ in }
-    receiveValue: { _ in  }
-            .store(in: &cancellableSet)
     }
 }

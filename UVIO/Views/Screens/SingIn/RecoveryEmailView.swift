@@ -47,7 +47,7 @@ struct RecoveryEmailView: View {
     }
     var sendRecoveryEmailLink: some View {
         NavigationLink {
-            CheckInboxView()
+            CheckInboxView(viewModel: viewModel)
         } label: {
             Text(L10n.sendEmailRecovery)
                 .font(.poppins(.medium, size: 14))

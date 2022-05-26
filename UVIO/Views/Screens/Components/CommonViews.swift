@@ -185,14 +185,3 @@ var signInTitle: some View {
     }
     .padding(.bottom, 48)
 }
-
-var forgotPassword: some View {
-    NavigationLink {
-        RecoveryEmailView(viewModel: UserViewModel())
-    } label: {
-        Text(L10n.forgotPassword)
-            .font(.poppins(.medium, size: 14))
-            .foregroundColor(Color.complementaryColor)
-    }
-
-}

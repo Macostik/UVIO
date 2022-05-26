@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct GenderOnboardingView: View {
-    @ObservedObject private var viewModel: GenderOnboardingViewModel
-    init(viewModel: GenderOnboardingViewModel) {
-        self.viewModel = viewModel
-    }
+    @ObservedObject var genderViewModel: GenderOnboardingViewModel
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -22,8 +20,10 @@ struct GenderOnboardingView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    NextButton(destination: DiabetsOnboardingView(viewModel: DiabetsOnboardingViewModel()))
-                    SkipButton(destination: SignInView())
+                    NextButton(destination:
+                                DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(),
+                                                      viewModel: viewModel))
+                    SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
             }
@@ -48,7 +48,7 @@ struct GenderOnboardingView: View {
                 .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(viewModel.genderTypeList,
+                    ForEach(genderViewModel.genderTypeList,
                             id: \.id) { item in
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -59,15 +59,15 @@ struct GenderOnboardingView: View {
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))
                             .onTapGesture {
-                                self.viewModel.selectedItem = item
+                                self.genderViewModel.selectedItem = item
                             }
                     }
                 }
                 .padding(.horizontal)
             }
             .frame(height: 175)
-            if viewModel.isSelectedSpecifyType {
-                TextField(L10n.provideOwn, text: $viewModel.ownType)
+            if genderViewModel.isSelectedSpecifyType {
+                TextField(L10n.provideOwn, text: $genderViewModel.ownType)
                     .font(.poppins(.medium, size: 14))
                     .padding(.leading)
                     .frame(maxWidth: .infinity, maxHeight: 48)
@@ -86,6 +86,6 @@ struct GenderOnboardingView: View {
 
 struct GenderOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GenderOnboardingView(viewModel: GenderOnboardingViewModel())
+        GenderOnboardingView(genderViewModel: GenderOnboardingViewModel(), viewModel: UserViewModel())
     }
 }

@@ -17,7 +17,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
-            let viewModel = SplashViewModel()
+            let viewModel = UserViewModel()
             let weeklyView = SplashView(viewModel: viewModel)
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: weeklyView)

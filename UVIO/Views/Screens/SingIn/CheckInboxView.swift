@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CheckInboxView: View {
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -39,7 +40,7 @@ struct CheckInboxView: View {
     }
     var openEmailAppLink: some View {
         NavigationLink {
-            NewPasswordView(viewModel: UserViewModel())
+            NewPasswordView(viewModel: viewModel)
         } label: {
             Text(L10n.openEmailApp)
                 .font(.poppins(.medium, size: 14))
@@ -54,6 +55,6 @@ struct CheckInboxView: View {
 
 struct CheckInboxView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckInboxView()
+        CheckInboxView(viewModel: UserViewModel())
     }
 }

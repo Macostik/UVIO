@@ -10,11 +10,8 @@ import Combine
 import Resolver
 
 struct NameOnboardingView: View {
-    @ObservedObject var loginViewModel: NameOnboardingViewModel
+    @ObservedObject var viewModel: UserViewModel
     @State private var fullName: String = ""
-    init(viewModel: NameOnboardingViewModel) {
-        self.loginViewModel  = viewModel
-    }
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -25,8 +22,8 @@ struct NameOnboardingView: View {
                 contentView
                 Spacer()
                 NextButton(destination:
-                            BirthDateOnboardingView(viewModel: BirthDateOnboardingViewModel()))
-                SkipButton(destination: SignInView())
+                            BirthDateOnboardingView(viewModel: viewModel))
+                SkipButton(destination: SignInView(viewModel: viewModel))
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -56,6 +53,6 @@ struct NameOnboardingView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        NameOnboardingView(viewModel: NameOnboardingViewModel())
+        NameOnboardingView(viewModel: UserViewModel())
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewPasswordSuccessView: View {
+    @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -38,7 +39,7 @@ struct NewPasswordSuccessView: View {
     }
     var openEmailAppLink: some View {
         NavigationLink {
-            SignInView()
+            SignInView(viewModel: viewModel)
         } label: {
             Text(L10n.signIn)
                 .font(.poppins(.medium, size: 14))
@@ -53,6 +54,6 @@ struct NewPasswordSuccessView: View {
 
 struct NewPasswordSuccessView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordSuccessView()
+        NewPasswordSuccessView(viewModel: UserViewModel())
     }
 }

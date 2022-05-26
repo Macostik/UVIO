@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct GlucoseUnitOnboardingView: View {
-    @ObservedObject private var viewModel: GlucoseUnitOnboardViewModel
+    @ObservedObject var glucoseViewModel: GlucoseUnitOnboardViewModel
+    @ObservedObject var viewModel: UserViewModel
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    init(viewModel: GlucoseUnitOnboardViewModel) {
-        self.viewModel = viewModel
-    }
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -26,7 +24,7 @@ struct GlucoseUnitOnboardingView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    CompleteButton(destination: SignUpView(viewModel: UserViewModel()))
+                    CompleteButton(destination: SignUpView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
             }
@@ -45,7 +43,7 @@ struct GlucoseUnitOnboardingView: View {
 
 struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GlucoseUnitOnboardingView(viewModel: GlucoseUnitOnboardViewModel())
+        GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(), viewModel: UserViewModel())
     }
 }
 
@@ -65,7 +63,7 @@ extension GlucoseUnitOnboardingView {
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(viewModel.glucoseTypeList,
+                        ForEach(glucoseViewModel.glucoseTypeList,
                                 id: \.id) { item in
                             RoundedRectangle(cornerRadius: 16)
                                 .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -76,7 +74,7 @@ extension GlucoseUnitOnboardingView {
                                     .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                     .foregroundColor(Color.white))
                                 .onTapGesture {
-                                    self.viewModel.selectedItem = item
+                                    self.glucoseViewModel.selectedItem = item
                                 }
                         }
                     }
@@ -113,12 +111,12 @@ extension GlucoseUnitOnboardingView {
                     Text(L10n.targetRange)
                         .font(.poppins(.medium, size: 14))
                     Spacer()
-                    Text("\(viewModel.glucoseRangeValue.lowerBound)-" +
-                         "\(viewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
+                    Text("\(glucoseViewModel.glucoseRangeValue.lowerBound)-" +
+                         "\(glucoseViewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
-                RangedSliderView(value: $viewModel.glucoseRangeValue,
+                RangedSliderView(value: $glucoseViewModel.glucoseRangeValue,
                                  bounds: 0...300)
             }.padding()
         }
@@ -135,11 +133,11 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hyperValue) \(glucoseUnit)")
+                    Text("\(glucoseViewModel.hyperValue) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                SingleSliderView(value: $glucoseViewModel.hyperValue, bounds: 0...300)
             }.padding()
         }
     }
@@ -156,17 +154,17 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hypoValue) \(glucoseUnit)")
+                    Text("\(glucoseViewModel.hypoValue) \(glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+                SingleSliderView(value: $glucoseViewModel.hypoValue, bounds: 0...300)
             }
             .padding()
         }
     }
     var glucoseUnit: String {
-        viewModel.selectedItem?.type ?? L10n.mgDL
+        glucoseViewModel.selectedItem?.type ?? L10n.mgDL
     }
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
