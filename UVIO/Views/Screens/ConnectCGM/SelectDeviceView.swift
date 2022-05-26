@@ -17,6 +17,7 @@ struct SelectDeviceView: View {
         }
         .background(Color.grayBackgroundColor)
         .edgesIgnoringSafeArea(.bottom)
+        .navigationBarHidden(true)
     }
     var header: some View {
         VStack {
@@ -39,11 +40,15 @@ struct SelectDeviceView: View {
         }.padding(.leading)
     }
     var topDeviceCell: some View {
-        RoundedRectangle(cornerRadius: 16)
-            .foregroundColor(Color.white)
-            .frame(height: 68)
-            .padding(.trailing)
-            .overlay(topOverlay)
+        NavigationLink {
+            EstablishConnectionView()
+        } label: {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(Color.white)
+                .frame(height: 68)
+                .padding(.trailing)
+                .overlay(topOverlay)
+        }
     }
     var topOverlay: some View {
         HStack {
@@ -52,6 +57,7 @@ struct SelectDeviceView: View {
                 .frame(width: 44, height: 38)
             Text(L10n.dexcomG6)
                 .font(.poppins(.bold, size: 16))
+                .foregroundColor(Color.black)
             Spacer()
             Image.chevronIcon
                 .padding(.trailing)

@@ -20,6 +20,7 @@
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
 		56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */; };
 		56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371397283FB92F003C5A09 /* SelectDeviceView.swift */; };
+		5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371399283FC895003C5A09 /* EstablishConnectionView.swift */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -91,6 +92,7 @@
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
 		56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMViewModel.swift; sourceTree = "<group>"; };
 		56371397283FB92F003C5A09 /* SelectDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeviceView.swift; sourceTree = "<group>"; };
+		56371399283FC895003C5A09 /* EstablishConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishConnectionView.swift; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			children = (
 				56371393283F71E0003C5A09 /* ConnectCGMView.swift */,
 				56371397283FB92F003C5A09 /* SelectDeviceView.swift */,
+				56371399283FC895003C5A09 /* EstablishConnectionView.swift */,
 			);
 			path = ConnectCGM;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,
 				56598098283B897D00669F15 /* SignInView.swift in Sources */,
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,
+				5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */,
