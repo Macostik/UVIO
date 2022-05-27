@@ -10,6 +10,6 @@ import Combine
 
 protocol StoreInteractor {
     func saveUser(user: User) -> AnyPublisher<Bool, Error>
-    func updateCredentionals(email: String, password: String) -> AnyPublisher<Bool, Error>
+    func updateCredentionals(email: String?, password: String) -> AnyPublisher<Bool, Error>
     func getUser() -> AnyPublisher<User?, Error>
 }

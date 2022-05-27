@@ -33,7 +33,7 @@ class StoreService: StoreInteractor {
         })
         return subject.eraseToAnyPublisher()
     }
-    func updateCredentionals(email: String, password: String) -> AnyPublisher<Bool, Error> {
+    func updateCredentionals(email: String? = nil, password: String) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = RealmProvider.shared.realm
         guard let currentUser = realm.objects(User.self).first else {
@@ -43,7 +43,9 @@ class StoreService: StoreInteractor {
         }
         realm.writeAsync({
             Logger.debug("User is updating to DB")
-            currentUser.email = email
+            if let email = email {
+                currentUser.email = email
+            }
             currentUser.password = password
             realm.add(currentUser, update: .modified)
         }, onComplete: { error in

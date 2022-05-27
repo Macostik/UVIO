@@ -18,7 +18,7 @@ class UserViewModel: ObservableObject {
     // User gender
     @Published var isSelectedSpecifyType = false
     @Published var ownType: String = ""
-    @Published var genderSelectedItem: GenderType? {
+    @Published var genderSelectedItem = genderTypeList.first {
         willSet {
             guard let item = newValue else { return }
             genderTypeList.forEach({ $0.isSelected = false })
@@ -41,7 +41,7 @@ class UserViewModel: ObservableObject {
         }
     }
     // User diabet
-    @Published var diabetSelectedItem: DiabetType? {
+    @Published var diabetSelectedItem = diabetTypeList.first {
         willSet {
             guard let item = newValue else { return }
             diabetTypeList.forEach({ $0.isSelected = false })
@@ -57,6 +57,8 @@ class UserViewModel: ObservableObject {
     @Published var userWasUpdated = false
     @Published var userPersist = false
     @Published var userCreateCompleted = false
+    @Published var showErrorAlert: Bool = false
+    var isValidCredentials = PassthroughSubject<Bool, Never>()
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     var facebookPublisher = PassthroughSubject<Void, Error>()

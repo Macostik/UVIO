@@ -10,7 +10,6 @@ import SwiftUI
 struct EmailSingInView: View {
     @ObservedObject private var viewModel: UserViewModel
     @State private var showPassword: Bool = false
-    @State private var showErrorAlert: Bool = false
     init(viewModel: UserViewModel) {
         self.viewModel = viewModel
     }
@@ -36,7 +35,7 @@ struct EmailSingInView: View {
             }
         }
         .navigationBarHidden(true)
-        .toast(isShowing: $showErrorAlert)
+        .toast(isShowing: $viewModel.showErrorAlert)
     }
 }
 
@@ -55,7 +54,8 @@ extension EmailSingInView {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
                 .overlay(RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.primaryAlertColor, lineWidth: showErrorAlert ? 2 : 0))
+                    .stroke(Color.primaryAlertColor,
+                            lineWidth: viewModel.showErrorAlert ? 2 : 0))
                 .cornerRadius(16)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
@@ -66,7 +66,7 @@ extension EmailSingInView {
             }
             Button {
                 withAnimation {
-                    showErrorAlert = true
+                    viewModel.isValidCredentials.send(true)
                 }
             } label: {
                 Text(L10n.signIn)
@@ -99,7 +99,8 @@ extension EmailSingInView {
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)
             .overlay(RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.primaryAlertColor, lineWidth: showErrorAlert ? 2 : 0))
+                .stroke(Color.primaryAlertColor,
+                        lineWidth: viewModel.showErrorAlert ? 2 : 0))
             .cornerRadius(16)
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)
