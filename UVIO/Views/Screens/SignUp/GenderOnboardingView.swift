@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GenderOnboardingView: View {
-    @ObservedObject var genderViewModel: GenderOnboardingViewModel
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
@@ -21,8 +20,7 @@ struct GenderOnboardingView: View {
                     contentView
                     Spacer()
                     NextButton(destination:
-                                DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(),
-                               viewModel: viewModel))
+                                DiabetsOnboardingView(viewModel: viewModel))
                     SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
@@ -48,7 +46,7 @@ struct GenderOnboardingView: View {
                 .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(genderViewModel.genderTypeList,
+                    ForEach(genderTypeList,
                             id: \.id) { item in
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -59,15 +57,15 @@ struct GenderOnboardingView: View {
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))
                             .onTapGesture {
-                                self.genderViewModel.selectedItem = item
+                                self.viewModel.genderSelectedItem = item
                             }
                     }
                 }
                 .padding(.horizontal)
             }
             .frame(height: 175)
-            if genderViewModel.isSelectedSpecifyType {
-                TextField(L10n.provideOwn, text: $genderViewModel.ownType)
+            if viewModel.isSelectedSpecifyType {
+                TextField(L10n.provideOwn, text: $viewModel.ownType)
                     .font(.poppins(.medium, size: 14))
                     .padding(.leading)
                     .frame(maxWidth: .infinity, maxHeight: 48)
@@ -86,6 +84,6 @@ struct GenderOnboardingView: View {
 
 struct GenderOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GenderOnboardingView(genderViewModel: GenderOnboardingViewModel(), viewModel: UserViewModel())
+        GenderOnboardingView(viewModel: UserViewModel())
     }
 }

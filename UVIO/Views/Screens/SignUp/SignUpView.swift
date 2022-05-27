@@ -63,7 +63,7 @@ extension SignUpView {
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
-            NavigationLink(isActive: $viewModel.userWasCreated) {
+            NavigationLink(isActive: $viewModel.userWasUpdated) {
                 ConnectCGMView(viewModel: ConnectCGMViewModel())
             } label: {
                 EmptyView()

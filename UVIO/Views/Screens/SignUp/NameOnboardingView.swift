@@ -11,7 +11,6 @@ import Resolver
 
 struct NameOnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
-    @State private var fullName: String = ""
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -40,7 +39,7 @@ struct NameOnboardingView: View {
         VStack {
             Text(L10n.whatName)
                 .font(.poppins(.bold, size: 24))
-            TextField(L10n.fullName, text: $fullName)
+            TextField(L10n.fullName, text: $viewModel.name)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)

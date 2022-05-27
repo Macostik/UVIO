@@ -10,18 +10,119 @@ import Resolver
 import SwiftUI
 
 class UserViewModel: ObservableObject {
+    @Injected var dependency: Dependency
+    // User name
+    @Published var name: String = ""
+    // User birthDate
+    @Published var birthDate: Date = Date()
+    // User gender
+    @Published var isSelectedSpecifyType = false
+    @Published var ownType: String = ""
+    @Published var genderSelectedItem: GenderType? {
+        willSet {
+            guard let item = newValue else { return }
+            genderTypeList.forEach({ $0.isSelected = false })
+            let selectedItem = genderTypeList.first(where: { $0.id == item.id })
+            if let selectedItem = selectedItem {
+                isSelectedSpecifyType = selectedItem.id == 4
+                selectedItem.isSelected = true
+            }
+        }
+    }
+    // User glucose
+    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
+    @Published var hyperValue: Int = 200
+    @Published var hypoValue: Int = 70
+    @Published var glucoseSelectedItem: GlucoseType? {
+        willSet {
+            guard let item = newValue else { return }
+            glucoseTypeList.forEach({ $0.isSelected = false })
+            glucoseTypeList.first(where: { $0.id == item.id })?.isSelected = true
+        }
+    }
+    // User diabet
+    @Published var diabetSelectedItem: DiabetType? {
+        willSet {
+            guard let item = newValue else { return }
+            diabetTypeList.forEach({ $0.isSelected = false })
+            diabetTypeList.first(where: { $0.id == item.id })?.isSelected = true
+        }
+    }
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
     @Published var newPassword: String = ""
     @Published var signUp = false
     @Published var signUpConfirmed = false
-    @Published var userWasCreated = false
+    @Published var userWasUpdated = false
     @Published var userPersist = false
+    @Published var userCreateCompleted = false
+    var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
-    @Injected var dependency: Dependency
     var facebookPublisher = PassthroughSubject<Void, Error>()
     var googlePublisher = PassthroughSubject<Void, Error>()
+    init() {
+        isComfirmedPublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.signUp, on: self)
+            .store(in: &cancellableSet)
+        $signUpConfirmed
+            .sink { isConfirmed in
+                if isConfirmed {
+                    _  = self.save(user: User())
+                }
+            }.store(in: &cancellableSet)
+        handleLogin()
+        checkUser()
+        createUser()
+    }
+}
+// Init
+extension UserViewModel {
+    func handleLogin() {
+        let facebookPublisher =
+        facebookPublisher
+            .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
+        let googlePublisher =
+        googlePublisher
+            .flatMap({ _ in self.dependency.provider.googleLoginService.login() })
+        Publishers.MergeMany(facebookPublisher, googlePublisher)
+            .flatMap(save)
+            .replaceError(with: false)
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.userWasUpdated, on: self)
+            .store(in: &cancellableSet)
+    }
+    func checkUser() {
+        getUser()
+            .map({ $0 != nil })
+            .replaceError(with: false)
+            .assign(to: \.userPersist, on: self)
+            .store(in: &cancellableSet)
+    }
+    func createUser() {
+        createNewUser
+            .map { user -> User in
+                user.id = UUID().uuidString
+                user.name = self.name
+                user.birthDate = self.birthDate
+                user.gender = self.genderSelectedItem?.type ?? ""
+                user.diabetsType = self.diabetSelectedItem?.type ?? ""
+                user.glucoseUnit = self.glucoseUnit
+                user.glucoseTargetLowerBound = "\(self.glucoseRangeValue.lowerBound)"
+                user.glucoseTargetUpperBound = "\(self.glucoseRangeValue.upperBound)"
+                user.hypo = "\(self.hypoValue)"
+                user.hyper = "\(self.hyperValue)"
+                return user
+            }
+            .flatMap(save)
+            .assertNoFailure()
+            .assign(to: \.userCreateCompleted, on: self)
+            .store(in: &cancellableSet)
+    }
+}
+// Handle publishers
+extension UserViewModel {
     private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
         $password
             .map { $0.count > 5}
@@ -37,36 +138,6 @@ class UserViewModel: ObservableObject {
             .map { $0 && $1 }
             .eraseToAnyPublisher()
     }
-    init() {
-        isComfirmedPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.signUp, on: self)
-            .store(in: &cancellableSet)
-        $signUpConfirmed
-            .sink { isConfirmed in
-                if isConfirmed {
-                    _  = self.save(user: User())
-                }
-            }.store(in: &cancellableSet)
-        let facebookPublisher =
-        facebookPublisher
-            .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
-        let googlePublisher =
-        googlePublisher
-            .flatMap({ _ in self.dependency.provider.googleLoginService.login() })
-        Publishers.MergeMany(facebookPublisher, googlePublisher)
-            .flatMap(save)
-            .replaceError(with: false)
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.userWasCreated, on: self)
-            .store(in: &cancellableSet)
-        getUser()
-            .map({ $0 != nil })
-            .replaceError(with: false)
-            .assign(to: \.userPersist, on: self)
-            .store(in: &cancellableSet)
-    }
-
 }
 // Handle store user
 extension UserViewModel {
@@ -75,5 +146,19 @@ extension UserViewModel {
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.saveUser(user: user)
+    }
+}
+// Handle user data converting
+extension UserViewModel {
+    var dateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter
+    }
+    var birthDateString: String {
+        dateFormatter.string(from: birthDate)
+    }
+    var glucoseUnit: String {
+        glucoseSelectedItem?.type ?? L10n.mgDL
     }
 }

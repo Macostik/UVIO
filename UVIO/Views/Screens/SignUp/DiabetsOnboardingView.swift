@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DiabetsOnboardingView: View {
-    @ObservedObject var diabetsViewModel: DiabetsOnboardingViewModel
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
@@ -21,8 +20,7 @@ struct DiabetsOnboardingView: View {
                     contentView
                         .padding(.bottom)
                     NextButton(destination:
-                                GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(),
-                                                          viewModel: viewModel))
+                                GlucoseUnitOnboardingView(viewModel: viewModel))
                     SkipButton(destination: SignInView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
@@ -47,7 +45,7 @@ struct DiabetsOnboardingView: View {
                 .font(.poppins(.bold, size: 24))
             ScrollView([]) {
                 LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(diabetsViewModel.diabetTypeList,
+                    ForEach(diabetTypeList,
                             id: \.id) { item in
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -58,7 +56,7 @@ struct DiabetsOnboardingView: View {
                                 .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                 .foregroundColor(Color.white))
                             .onTapGesture {
-                                self.diabetsViewModel.selectedItem = item
+                                self.viewModel.diabetSelectedItem = item
                             }
                     }
                 } .padding(.horizontal)
@@ -68,6 +66,6 @@ struct DiabetsOnboardingView: View {
 }
 struct DiabetsOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        DiabetsOnboardingView(diabetsViewModel: DiabetsOnboardingViewModel(), viewModel: UserViewModel())
+        DiabetsOnboardingView(viewModel: UserViewModel())
     }
 }

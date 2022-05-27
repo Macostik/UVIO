@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GlucoseUnitOnboardingView: View {
-    @ObservedObject var glucoseViewModel: GlucoseUnitOnboardViewModel
     @ObservedObject var viewModel: UserViewModel
     let columns = [
         GridItem(.flexible()),
@@ -24,8 +23,28 @@ struct GlucoseUnitOnboardingView: View {
                     Spacer()
                     contentView
                     Spacer()
-                    CompleteButton(destination: SignUpView(viewModel: viewModel))
-                        .padding(.bottom, 30)
+                    NavigationLink(isActive: $viewModel.userCreateCompleted) {
+                        SignUpView(viewModel: viewModel)
+                    } label: {
+                        EmptyView()
+                    }
+                    Button(action: {
+                        viewModel.createNewUser.send(User())
+                    }, label: {
+                        ZStack {
+                            HStack {
+                                Image.checkMarkIcon
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                            }
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
+                        .background(Color.black)
+                        .cornerRadius(12)
+                        .padding(.horizontal)
+                        .overlay(textOverlay)
+                    })
+                    .padding(.bottom, 30)
                 }
             }
         }
@@ -43,7 +62,7 @@ struct GlucoseUnitOnboardingView: View {
 
 struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GlucoseUnitOnboardingView(glucoseViewModel: GlucoseUnitOnboardViewModel(), viewModel: UserViewModel())
+        GlucoseUnitOnboardingView(viewModel: UserViewModel())
     }
 }
 
@@ -63,7 +82,7 @@ extension GlucoseUnitOnboardingView {
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(glucoseViewModel.glucoseTypeList,
+                        ForEach(glucoseTypeList,
                                 id: \.id) { item in
                             RoundedRectangle(cornerRadius: 16)
                                 .foregroundColor(item.isSelected ? Color.clear : Color.white)
@@ -74,7 +93,7 @@ extension GlucoseUnitOnboardingView {
                                     .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                     .foregroundColor(Color.white))
                                 .onTapGesture {
-                                    self.glucoseViewModel.selectedItem = item
+                                    self.viewModel.glucoseSelectedItem = item
                                 }
                         }
                     }
@@ -111,12 +130,12 @@ extension GlucoseUnitOnboardingView {
                     Text(L10n.targetRange)
                         .font(.poppins(.medium, size: 14))
                     Spacer()
-                    Text("\(glucoseViewModel.glucoseRangeValue.lowerBound)-" +
-                         "\(glucoseViewModel.glucoseRangeValue.upperBound) \(glucoseUnit)")
+                    Text("\(viewModel.glucoseRangeValue.lowerBound)-" +
+                         "\(viewModel.glucoseRangeValue.upperBound) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
-                RangedSliderView(value: $glucoseViewModel.glucoseRangeValue,
+                RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
             }.padding()
         }
@@ -133,11 +152,11 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(glucoseViewModel.hyperValue) \(glucoseUnit)")
+                    Text("\(viewModel.hyperValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $glucoseViewModel.hyperValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
             }.padding()
         }
     }
@@ -154,17 +173,14 @@ extension GlucoseUnitOnboardingView {
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(glucoseViewModel.hypoValue) \(glucoseUnit)")
+                    Text("\(viewModel.hypoValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $glucoseViewModel.hypoValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
             }
             .padding()
         }
-    }
-    var glucoseUnit: String {
-        glucoseViewModel.selectedItem?.type ?? L10n.mgDL
     }
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
@@ -193,31 +209,9 @@ extension GlucoseUnitOnboardingView {
         }
         .foregroundColor(Color.clear)
     }
-    struct CompleteButton<V: View>: View {
-        private var destination: V
-        init(destination: V) {
-            self.destination = destination
-        }
-        var body: some View {
-            NavigationLink(destination: destination) {
-                ZStack {
-                    HStack {
-                        Image.checkMarkIcon
-                            .foregroundColor(Color.white)
-                            .padding()
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
-                .background(Color.black)
-                .cornerRadius(12)
-                .padding(.horizontal)
-                .overlay(textOverlay)
-            }
-        }
-        var textOverlay: some View {
-            Text(L10n.complete)
-                .font(.poppins(.medium, size: 14))
-                .foregroundColor(.white)
-        }
+    var textOverlay: some View {
+        Text(L10n.complete)
+            .font(.poppins(.medium, size: 14))
+            .foregroundColor(.white)
     }
 }
