@@ -62,23 +62,28 @@ class UserViewModel: ObservableObject {
     var facebookPublisher = PassthroughSubject<Void, Error>()
     var googlePublisher = PassthroughSubject<Void, Error>()
     init() {
-        isComfirmedPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.signUp, on: self)
-            .store(in: &cancellableSet)
-        $signUpConfirmed
-            .sink { isConfirmed in
-                if isConfirmed {
-                    _  = self.save(user: User())
-                }
-            }.store(in: &cancellableSet)
-        handleLogin()
-        checkUser()
         createUser()
+        checkUser()
+        handleLogin()
+        validateCredintials()
+        fillUserCredentials()
     }
 }
 // Init
 extension UserViewModel {
+    func validateCredintials() {
+        isComfirmedPublisher
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.signUp, on: self)
+            .store(in: &cancellableSet)
+    }
+    func fillUserCredentials() {
+        $signUpConfirmed
+            .filter({ $0 })
+            .sink { _ in
+                _ = self.updateCredentials(email: self.email, password: self.password)
+            }.store(in: &cancellableSet)
+    }
     func handleLogin() {
         let facebookPublisher =
         facebookPublisher
@@ -143,6 +148,12 @@ extension UserViewModel {
 extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
         dependency.provider.storeService.getUser()
+    }
+    func updateCredentials(email: String,
+                           password: String) -> AnyPublisher<Bool, Error> {
+        return dependency.provider.storeService
+            .updateCredentionals(email: email,
+                                 password: password)
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.saveUser(user: user)
