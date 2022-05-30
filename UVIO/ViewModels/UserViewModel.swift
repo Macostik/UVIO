@@ -181,7 +181,7 @@ extension UserViewModel {
         return dependency.provider.storeService
             .validateCredentials(email: email, password: password)
     }
-    func logOut() {
+    func logOut() -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.logOut()
     }
 }

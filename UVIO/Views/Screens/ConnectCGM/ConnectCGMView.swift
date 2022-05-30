@@ -14,7 +14,7 @@ struct ConnectCGMView: View {
         ZStack {
             VStack {
                 NativigationBarView(action: {
-                    userViewModel.logOut()
+                   _ = userViewModel.logOut()
                 }, content: {})
                     .padding(.top, 50)
                 VStack(spacing: 8) {

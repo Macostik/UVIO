@@ -13,5 +13,5 @@ protocol StoreInteractor {
     func getUser() -> AnyPublisher<User?, Error>
     func setupCredentionals(email: String?, password: String?) -> AnyPublisher<Bool, Error>
     func validateCredentials(email: String, password: String) -> AnyPublisher<Bool, Error>
-    func logOut()
+    func logOut() -> AnyPublisher<Bool, Error>
 }

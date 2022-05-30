@@ -86,14 +86,25 @@ class StoreService: StoreInteractor {
         subject.send(isValidate)
         return subject.eraseToAnyPublisher()
     }
-    func logOut() {
+    func logOut() -> AnyPublisher<Bool, Error> {
+        let subject = CurrentValueSubject<Bool, Error>(false)
         let realm = RealmProvider.shared.realm
         guard let currentUser = realm.objects(User.self).first else {
             Logger.error("Realm doesn't contain user")
-            return
+            return subject.eraseToAnyPublisher()
         }
-        realm.writeAsync {
+        realm.writeAsync({
             currentUser.isLogin = false
-        }
+        }, onComplete: { error in
+            guard let error = error else {
+                Logger.debug("User was log out successfully")
+                subject.send(true)
+                subject.send(completion: .finished)
+                return
+            }
+            subject.send(completion: .failure(error))
+            Logger.error("User wasn't log out with error: \(error)")
+        })
+        return subject.eraseToAnyPublisher()
     }
 }
