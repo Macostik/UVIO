@@ -40,9 +40,10 @@ struct NativigationBarView<Content: View>: View {
                     .frame(width: 28, height: 25)
                     .aspectRatio(contentMode: .fit)
                 Spacer()
-                Button {
-                    action()
-                } label: { Image.menuIcon }
+                Image.menuIcon
+                    .onLongPressGesture {
+                        action()
+                    }
             }
             .padding(.horizontal, 30)
         }

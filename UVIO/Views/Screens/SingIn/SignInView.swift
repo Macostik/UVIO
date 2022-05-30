@@ -27,6 +27,12 @@ struct SignInView: View {
                 singUpLink
             }
             NativigationBackBarView {}
+            NavigationLink(isActive: $viewModel.userWasUpdated) {
+                ConnectCGMView(userViewModel: viewModel,
+                               viewModel: ConnectCGMViewModel())
+            } label: {
+                EmptyView()
+            }
         }
         .navigationBarHidden(true)
     }
@@ -59,12 +65,6 @@ extension SignInView {
                 .overlay(Text(L10n.signUpWithFacebook)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
-            }
-            NavigationLink(isActive: $viewModel.userWasUpdated) {
-                ConnectCGMView(userViewModel: viewModel,
-                               viewModel: ConnectCGMViewModel())
-            } label: {
-                EmptyView()
             }
             Button {
                 self.viewModel.googlePublisher.send()

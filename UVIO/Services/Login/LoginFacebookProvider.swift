@@ -36,11 +36,12 @@ struct LoginFacebookService: LoginFacebookInteractor {
                             subject.send(completion: .failure(error))
                         }
                         if result != nil, let fbDetails = result as? [String: String] {
-                            let user = User()
-                            user.id =  fbDetails["id"] ?? ""
-                            user.name = fbDetails["name"] ?? ""
-                            user.email = fbDetails["email"] ?? ""
-                            subject.send(user)
+                            let localUser = User()
+                            localUser.id =  fbDetails["id"] ?? ""
+                            localUser.name = fbDetails["name"] ?? ""
+                            localUser.email = fbDetails["email"] ?? ""
+                            localUser.isLogin = true
+                            subject.send(localUser)
                             subject.send(completion: .finished)
                         }
                     })

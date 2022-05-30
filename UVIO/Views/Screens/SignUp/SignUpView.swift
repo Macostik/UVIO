@@ -28,6 +28,12 @@ struct SignUpView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 30)
             }
+            NavigationLink(isActive: $viewModel.userWasUpdated) {
+                ConnectCGMView(userViewModel: viewModel,
+                               viewModel: ConnectCGMViewModel())
+            } label: {
+                EmptyView()
+            }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
@@ -62,12 +68,6 @@ extension SignUpView {
                 .overlay(Text(L10n.signUpWithFacebook)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
-            }
-            NavigationLink(isActive: $viewModel.userWasUpdated) {
-                ConnectCGMView(userViewModel: viewModel,
-                               viewModel: ConnectCGMViewModel())
-            } label: {
-                EmptyView()
             }
 
             Button {
