@@ -16,7 +16,7 @@ protocol StoreProvider {
 }
 
 class StoreService: StoreInteractor {
-    func saveUser(user: User) -> AnyPublisher<Bool, Error> {
+    func save(user: User) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = RealmProvider.shared.realm
         realm.writeAsync({
@@ -46,7 +46,7 @@ class StoreService: StoreInteractor {
             .mapError { _ in RealmError.unknow }
             .eraseToAnyPublisher()
     }
-    func setupCredentionals(email: String? = nil, password: String) -> AnyPublisher<Bool, Error> {
+    func setupCredentionals(email: String? = nil, password: String? = nil) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = RealmProvider.shared.realm
         guard let currentUser = realm.objects(User.self).first else {
@@ -59,7 +59,9 @@ class StoreService: StoreInteractor {
             if let email = email {
                 currentUser.email = email
             }
-            currentUser.password = password
+            if let password = password {
+                currentUser.password = password
+            }
             currentUser.isLogin = true
             realm.add(currentUser, update: .modified)
         }, onComplete: { error in

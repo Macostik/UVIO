@@ -12,10 +12,12 @@ import Realm
 struct RealmProvider {
   private let configuration: Realm.Configuration
 
-  internal init(config: Realm.Configuration) { configuration = config }
+  internal init(config: Realm.Configuration) {
+      configuration = config
+      Logger.info("\(configuration.fileURL!)")
+  }
   public var realm: Realm {
         do {
-            Logger.info("\(configuration.fileURL!)")
             return try Realm(configuration: configuration)
         } catch {
             Logger.error("Realm was not configured!")

@@ -174,7 +174,7 @@ extension UserViewModel {
                                 password: password)
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
-        return dependency.provider.storeService.saveUser(user: user)
+        return dependency.provider.storeService.save(user: user)
     }
     func validateCredentials(email: String, password: String) -> Bool {
         return dependency.provider.storeService.validateCredentials(email: email, password: password)
