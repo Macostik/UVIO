@@ -58,7 +58,7 @@ class UserViewModel: ObservableObject {
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
-    var isValidCredentials = PassthroughSubject<Bool, Never>()
+    var signInClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     var facebookPublisher = PassthroughSubject<Void, Error>()
@@ -66,9 +66,10 @@ class UserViewModel: ObservableObject {
     init() {
         createUser()
         checkUser()
-        handleLogin()
+        handleLoginViaThirdParty()
         validateCredintials()
         fillUserCredentials()
+        handleSignIn()
     }
 }
 // Init
@@ -81,12 +82,17 @@ extension UserViewModel {
     }
     func fillUserCredentials() {
         $signUpConfirmed
+            .dropFirst()
+            .map({ isConfirm in
+                self.showErrorAlert = !isConfirm
+                return isConfirm
+            })
             .filter({ $0 })
             .sink { _ in
-                _ = self.updateCredentials(email: self.email, password: self.password)
+                _ = self.setupCredentials(email: self.email, password: self.password)
             }.store(in: &cancellableSet)
     }
-    func handleLogin() {
+    func handleLoginViaThirdParty() {
         let facebookPublisher =
         facebookPublisher
             .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
@@ -102,7 +108,10 @@ extension UserViewModel {
     }
     func checkUser() {
         getUser()
-            .map({ $0 != nil })
+            .map({ user in
+                guard let user = user else { return false }
+                return user.isLogin
+            })
             .replaceError(with: false)
             .assign(to: \.userPersist, on: self)
             .store(in: &cancellableSet)
@@ -125,6 +134,13 @@ extension UserViewModel {
             .flatMap(save)
             .assertNoFailure()
             .assign(to: \.userCreateCompleted, on: self)
+            .store(in: &cancellableSet)
+    }
+    func handleSignIn() {
+        signInClickPublisher
+            .map({ _ in self.validateCredentials(email: self.email, password: self.password) })
+            .assertNoFailure()
+            .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
 }
@@ -151,14 +167,20 @@ extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
         dependency.provider.storeService.getUser()
     }
-    func updateCredentials(email: String,
-                           password: String) -> AnyPublisher<Bool, Error> {
+    func setupCredentials(email: String,
+                          password: String) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService
-            .updateCredentionals(email: email,
-                                 password: password)
+            .setupCredentionals(email: email,
+                                password: password)
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.saveUser(user: user)
+    }
+    func validateCredentials(email: String, password: String) -> Bool {
+        return dependency.provider.storeService.validateCredentials(email: email, password: password)
+    }
+    func logOut() {
+        dependency.provider.storeService.logOut()
     }
 }
 // Handle user data converting

@@ -50,7 +50,8 @@ extension EmailSignUpView {
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
             passwordInput
-            NavigationLink(destination: ConnectCGMView(viewModel: ConnectCGMViewModel()),
+            NavigationLink(destination: ConnectCGMView(userViewModel: viewModel,
+                                                       viewModel: ConnectCGMViewModel()),
                            isActive: $viewModel.signUpConfirmed) {
                 EmptyView()
             }

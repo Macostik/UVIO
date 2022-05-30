@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ConnectCGMView: View {
+    @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var viewModel: ConnectCGMViewModel
     var body: some View {
         ZStack {
             VStack {
-                NativigationBarView {}
+                NativigationBarView(action: {
+                    userViewModel.logOut()
+                }, content: {})
                     .padding(.top, 50)
                 VStack(spacing: 8) {
                     mainContainer
@@ -25,8 +28,8 @@ struct ConnectCGMView: View {
                     Spacer()
                 }
             }
-            welcomeContent
-                .opacity(viewModel.isHidden ? 0 : 1)
+//            welcomeContent
+//                .opacity(viewModel.isHidden ? 0 : 1)
         }
         .background(Color.grayBackgroundColor)
         .edgesIgnoringSafeArea(.all)
@@ -95,6 +98,7 @@ struct ConnectCGMView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectCGMView(viewModel: ConnectCGMViewModel())
+        ConnectCGMView(userViewModel: UserViewModel(),
+                       viewModel: ConnectCGMViewModel())
     }
 }

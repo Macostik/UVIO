@@ -61,7 +61,8 @@ extension SignInView {
                     .foregroundColor(.black))
             }
             NavigationLink(isActive: $viewModel.userWasUpdated) {
-                ConnectCGMView(viewModel: ConnectCGMViewModel())
+                ConnectCGMView(userViewModel: viewModel,
+                               viewModel: ConnectCGMViewModel())
             } label: {
                 EmptyView()
             }

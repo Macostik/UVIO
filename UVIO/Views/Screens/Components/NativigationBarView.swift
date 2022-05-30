@@ -27,7 +27,9 @@ struct NativigationBackBarView<Content: View>: View {
 
 struct NativigationBarView<Content: View>: View {
     let content: Content?
-    init(@ViewBuilder content: () -> Content?) {
+    let action: (() -> Void)
+    init(action: @escaping (() -> Void), @ViewBuilder content: () -> Content?) {
+        self.action = action
         self.content = content()
     }
     var body: some View {
@@ -38,7 +40,9 @@ struct NativigationBarView<Content: View>: View {
                     .frame(width: 28, height: 25)
                     .aspectRatio(contentMode: .fit)
                 Spacer()
-                Image.menuIcon
+                Button {
+                    action()
+                } label: { Image.menuIcon }
             }
             .padding(.horizontal, 30)
         }

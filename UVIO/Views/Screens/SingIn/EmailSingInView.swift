@@ -60,13 +60,14 @@ extension EmailSingInView {
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
             passwordInput
-            NavigationLink(destination: ConnectCGMView(viewModel: ConnectCGMViewModel()),
+            NavigationLink(destination: ConnectCGMView(userViewModel: viewModel,
+                                                       viewModel: ConnectCGMViewModel()),
                            isActive: $viewModel.signUpConfirmed) {
                 EmptyView()
             }
             Button {
                 withAnimation {
-                    viewModel.isValidCredentials.send(true)
+                    viewModel.signInClickPublisher.send()
                 }
             } label: {
                 Text(L10n.signIn)
