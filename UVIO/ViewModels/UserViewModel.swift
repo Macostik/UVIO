@@ -138,7 +138,7 @@ extension UserViewModel {
     }
     func handleSignIn() {
         signInClickPublisher
-            .map({ _ in self.validateCredentials(email: self.email, password: self.password) })
+            .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
             .assertNoFailure()
             .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
@@ -176,8 +176,10 @@ extension UserViewModel {
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.save(user: user)
     }
-    func validateCredentials(email: String, password: String) -> Bool {
-        return dependency.provider.storeService.validateCredentials(email: email, password: password)
+    func validateCredentials(email: String,
+                             password: String) -> AnyPublisher<Bool, Error> {
+        return dependency.provider.storeService
+            .validateCredentials(email: email, password: password)
     }
     func logOut() {
         dependency.provider.storeService.logOut()

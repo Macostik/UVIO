@@ -75,13 +75,16 @@ class StoreService: StoreInteractor {
         })
         return subject.eraseToAnyPublisher()
     }
-    func validateCredentials(email: String, password: String) -> Bool {
+    func validateCredentials(email: String, password: String) -> AnyPublisher<Bool, Error> {
+        let subject = CurrentValueSubject<Bool, Error>(false)
         let realm = RealmProvider.shared.realm
         guard let currentUser = realm.objects(User.self).first else {
             Logger.error("Realm doesn't contain user")
-            return false
+            return subject.eraseToAnyPublisher()
         }
-        return currentUser.email == email && currentUser.password == password
+        let isValidate = currentUser.email == email && currentUser.password == password
+        subject.send(isValidate)
+        return subject.eraseToAnyPublisher()
     }
     func logOut() {
         let realm = RealmProvider.shared.realm
