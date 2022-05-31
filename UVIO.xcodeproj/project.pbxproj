@@ -13,6 +13,7 @@
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
+		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
@@ -86,6 +87,7 @@
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
+		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				56D9581F28339CBD0053E65C /* DatePickerView.swift */,
 				56749FA5283BAA0C00A2D4B7 /* ToastView.swift */,
 				565FDCDE283BD45A004D9924 /* NativigationBarView.swift */,
+				562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */,
 				56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */,
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
+				562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */,
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,
 				56598098283B897D00669F15 /* SignInView.swift in Sources */,
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,

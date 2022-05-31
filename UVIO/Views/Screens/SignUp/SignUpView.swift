@@ -14,30 +14,29 @@ struct SignUpView: View {
         self.viewModel = viewModel
     }
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer()
                 signUpBanner
-                signUpTitle
-                containerButtons
+                VStack {
+                    signUpTitle
+                    containerButtons
+                }
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 30)
-            }
+            }.padding(.top, 60)
             NavigationLink(isActive: $viewModel.userWasUpdated) {
                 ConnectCGMView(userViewModel: viewModel,
                                viewModel: ConnectCGMViewModel())
             } label: {
                 EmptyView()
             }
+            NativigationBackBarView {}
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
+        .navigationBarHidden(true)
     }
 }
 
@@ -69,7 +68,7 @@ extension SignUpView {
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
-
+            
             Button {
                 self.viewModel.googlePublisher.send()
             } label: {
@@ -87,7 +86,7 @@ extension SignUpView {
                     .foregroundColor(.black))
             }
             Button {
-//                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                //                self.facebookProvider.facebookLogin(cUser: currentGiver)
             } label: {
                 ZStack {
                     HStack {

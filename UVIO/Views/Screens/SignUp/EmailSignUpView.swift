@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct EmailSignUpView: View {
+    @ObservedObject private var keyboardHandler = KeyboardHandler()
     @ObservedObject private var viewModel: UserViewModel
     @State private var showPassword: Bool = false
     init(viewModel: UserViewModel) {
         self.viewModel = viewModel
     }
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             Image.loginViewBackground
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 80)
                 signUpBanner
                 title
                 container
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 30)
             }
+            .padding(.top, 45)
             NavigationLink(destination:
                             ConnectCGMView(userViewModel: viewModel,
                                            viewModel: ConnectCGMViewModel()),
                            isActive: $viewModel.signUpConfirmed) {
                 EmptyView()
             }
+            NativigationBackBarView {}
         }
-        .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         .navigationBarItems(leading: BackButton())
     }
     var title: some View {
