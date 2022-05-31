@@ -59,6 +59,7 @@ class UserViewModel: ObservableObject {
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
     var signInClickPublisher = PassthroughSubject<Void, Error>()
+    var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     var facebookPublisher = PassthroughSubject<Void, Error>()
@@ -69,7 +70,8 @@ class UserViewModel: ObservableObject {
         handleLoginViaThirdParty()
         validateCredintials()
         fillUserCredentials()
-        handleSignIn()
+//        handleSignIn()
+        handleSignUp()
     }
 }
 // Init
@@ -139,6 +141,13 @@ extension UserViewModel {
     func handleSignIn() {
         signInClickPublisher
             .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
+            .assertNoFailure()
+            .assign(to: \.signUpConfirmed, on: self)
+            .store(in: &cancellableSet)
+    }
+    func handleSignUp() {
+        signUpClickPublisher
+            .map({ self.signUp })
             .assertNoFailure()
             .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)

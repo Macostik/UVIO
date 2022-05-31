@@ -68,7 +68,6 @@ extension SignUpView {
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
-            
             Button {
                 self.viewModel.googlePublisher.send()
             } label: {

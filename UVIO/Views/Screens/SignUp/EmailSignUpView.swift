@@ -37,7 +37,7 @@ struct EmailSignUpView: View {
             NativigationBackBarView {}
         }
         .navigationBarHidden(true)
-        .navigationBarItems(leading: BackButton())
+        .toast(isShowing: $viewModel.showErrorAlert)
     }
     var title: some View {
         VStack(spacing: 16) {
@@ -67,12 +67,15 @@ extension EmailSignUpView {
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
+                .overlay(RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.primaryAlertColor,
+                            lineWidth: viewModel.showErrorAlert ? 2 : 0))
                 .cornerRadius(12)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
             passwordInput
             Button {
-                $viewModel.signUpConfirmed.wrappedValue.toggle()
+                viewModel.signUpClickPublisher.send()
             } label: {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
@@ -103,6 +106,9 @@ extension EmailSignUpView {
             .font(.poppins(.medium, size: 14))
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)
+            .overlay(RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.primaryAlertColor,
+                        lineWidth: viewModel.showErrorAlert ? 2 : 0))
             .cornerRadius(12)
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)

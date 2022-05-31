@@ -38,6 +38,7 @@ struct ToastView: ViewModifier {
         .background(Color.primaryAlertColor)
         .cornerRadius(16)
         .padding(.horizontal)
+        .zIndex(1)
         .onTapGesture {
             isShowing = false
         }
