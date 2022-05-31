@@ -146,7 +146,7 @@ var singUpLink: some View {
 
 var signUpBanner: some View {
     ZStack {
-        Image.signUpLogo
+        Image.uvioIcon
             .frame(width: 96, height: 96)
             .background(Color.white)
             .cornerRadius(16)
@@ -164,11 +164,11 @@ var signInBanner: some View {
 
 var signUpTitle: some View {
     VStack(spacing: 16) {
-        Text(L10n.uvio)
+        Text(L10n.cone)
             .font(.poppins(.bold, size: 21))
-        Text(L10n.takeBackControl)
-            .font(.poppins(.regular, size: 16))
-            .padding(.horizontal, 40)
+        Text(L10n.awesome)
+            .font(.poppins(.regular, size: 21))
+            .padding(.horizontal)
             .multilineTextAlignment(.center)
     }
     .padding(.bottom, 48)

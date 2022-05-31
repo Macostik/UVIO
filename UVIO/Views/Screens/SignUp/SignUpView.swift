@@ -51,7 +51,7 @@ extension SignUpView {
     var containerButtons: some View {
         VStack(spacing: 12) {
             LogoButton(logo: Image.emailIcon,
-                       title: Text(L10n.signUpWithEmail),
+                       title: Text(L10n.continueWithEmail),
                        destination: EmailSignUpView(viewModel: viewModel))
             Button {
                 self.viewModel.facebookPublisher.send()
@@ -65,7 +65,7 @@ extension SignUpView {
                 .background(Color.white.opacity(0.6))
                 .cornerRadius(12)
                 .padding(.horizontal)
-                .overlay(Text(L10n.signUpWithFacebook)
+                .overlay(Text(L10n.continueWithFacebook)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
@@ -82,7 +82,7 @@ extension SignUpView {
                 .background(Color.white.opacity(0.6))
                 .cornerRadius(12)
                 .padding(.horizontal)
-                .overlay(Text(L10n.signUpWithGoogle)
+                .overlay(Text(L10n.continueWithGoogle)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
@@ -98,7 +98,7 @@ extension SignUpView {
                 .background(Color.white.opacity(0.6))
                 .cornerRadius(12)
                 .padding(.horizontal)
-                .overlay(Text(L10n.signUpWihtApple)
+                .overlay(Text(L10n.continueWithApple)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }

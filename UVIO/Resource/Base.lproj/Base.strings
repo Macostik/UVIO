@@ -81,3 +81,9 @@
 "some_text" = "Lorem Ipsum is simply dummy text.";
 "looking_for_device" = "Looking for device...";
 "cancel" = "Cancel";
+"awesome" = "Awesome! Now, let’s finalize your account creation.";
+"welcome_back" = "Welcome back! Please log in to continue.";
+"continue_with_email" = "Continue with Email";
+"continue_with_facebook" = "Continue with Facebook";
+"continue_with_google" = "Continue with Google";
+"continue_with_apple" = "Continue with Apple";

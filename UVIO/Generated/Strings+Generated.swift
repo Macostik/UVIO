@@ -12,6 +12,8 @@ import Foundation
 public enum L10n {
   ///  and
   public static let and = L10n.tr("Base", "and")
+  /// Awesome! Now, let’s finalize your account creation.
+  public static let awesome = L10n.tr("Base", "awesome")
   /// Blood glucose unit
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
   /// By continuing, you agree to UVIO’s
@@ -30,6 +32,14 @@ public enum L10n {
   public static let connectCGM = L10n.tr("Base", "connect_CGM")
   /// Continue
   public static let `continue` = L10n.tr("Base", "continue")
+  /// Continue with Apple
+  public static let continueWithApple = L10n.tr("Base", "continue_with_apple")
+  /// Continue with Email
+  public static let continueWithEmail = L10n.tr("Base", "continue_with_email")
+  /// Continue with Facebook
+  public static let continueWithFacebook = L10n.tr("Base", "continue_with_facebook")
+  /// Continue with Google
+  public static let continueWithGoogle = L10n.tr("Base", "continue_with_google")
   /// CREATE ACCOUNT
   public static let createAccount = L10n.tr("Base", "create_account")
   /// DEXCOM
@@ -153,6 +163,8 @@ public enum L10n {
   public static let uvio = L10n.tr("Base", "uvio")
   /// Welcome
   public static let welcome = L10n.tr("Base", "welcome")
+  /// Welcome back! Please log in to continue.
+  public static let welcomeBack = L10n.tr("Base", "welcome_back")
   /// What is your Birth Date?
   public static let whatIsYourBD = L10n.tr("Base", "what_is_your_BD")
   /// What is your Gender?
