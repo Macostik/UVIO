@@ -21,7 +21,7 @@ struct GenderOnboardingView: View {
                     Spacer()
                     NextButton(destination:
                                 DiabetsOnboardingView(viewModel: viewModel))
-                    SkipButton(destination: SignInView(viewModel: viewModel))
+                    SkipButton(destination: SignUpView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
             }

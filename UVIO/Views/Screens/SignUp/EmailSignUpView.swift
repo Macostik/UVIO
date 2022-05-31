@@ -29,8 +29,7 @@ struct EmailSignUpView: View {
             }
             .padding(.top, 45)
             NavigationLink(destination:
-                            ConnectCGMView(userViewModel: viewModel,
-                                           viewModel: ConnectCGMViewModel()),
+                            OnboardingView(viewModel: viewModel),
                            isActive: $viewModel.signUpConfirmed) {
                 EmptyView()
             }

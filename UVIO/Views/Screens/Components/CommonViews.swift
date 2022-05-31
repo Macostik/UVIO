@@ -82,14 +82,11 @@ struct ProgressView: View {
             ZStack(alignment: .leading) {
                 Capsule()
                     .frame(width: 160, height: 4)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.grayBackgroundColor)
                 Capsule()
                     .frame(width: 160 * completed, height: 4)
-                    .foregroundColor(Color.primaryGreenColor)
+                    .foregroundColor(Color.black)
             }
-            Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(Color.primaryGreenColor)
-                .frame(width: 12, height: 10)
         }
     }
 }

@@ -12,8 +12,9 @@ struct SplashView: View {
     var body: some View {
         NavigationView {
             if viewModel.userPersist {
-                ConnectCGMView(userViewModel: viewModel,
-                               viewModel: ConnectCGMViewModel())
+//                ConnectCGMView(userViewModel: viewModel,
+//                               viewModel: ConnectCGMViewModel())
+                OnboardingView(viewModel: viewModel)
             } else {
                 ZStack {
                     Image.splashBackgroundImage
@@ -64,7 +65,7 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignInView(viewModel: viewModel)) {
+        NavigationLink(destination: SignUpView(viewModel: viewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)

@@ -22,7 +22,7 @@ struct NameOnboardingView: View {
                 Spacer()
                 NextButton(destination:
                             BirthDateOnboardingView(viewModel: viewModel))
-                SkipButton(destination: SignInView(viewModel: viewModel))
+                SkipButton(destination: SignUpView(viewModel: viewModel))
             }
         }
         .navigationBarBackButtonHidden(true)

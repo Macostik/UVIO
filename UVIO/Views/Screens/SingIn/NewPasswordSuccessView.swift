@@ -39,7 +39,7 @@ struct NewPasswordSuccessView: View {
     }
     var openEmailAppLink: some View {
         NavigationLink {
-            SignInView(viewModel: viewModel)
+            SignUpView(viewModel: viewModel)
         } label: {
             Text(L10n.signIn)
                 .font(.poppins(.medium, size: 14))

@@ -208,3 +208,16 @@ extension UserViewModel {
         glucoseSelectedItem?.type ?? L10n.mgDL
     }
 }
+
+// Handle onboarding views
+extension UserViewModel {
+    func buildView(types: [Any], index: Int) -> AnyView {
+        switch types[index].self {
+        case is NameOnboardingView.Type: return AnyView( NameOnboardingView(viewModel: self) )
+        case is BirthDateOnboardingView.Type: return AnyView( BirthDateOnboardingView(viewModel: self) )
+        case is GenderOnboardingView.Type: return AnyView( GenderOnboardingView(viewModel: self) )
+        case is GlucoseUnitOnboardingView.Type: return AnyView( GlucoseUnitOnboardingView(viewModel: self) )
+        default: return AnyView(EmptyView())
+        }
+    }
+}

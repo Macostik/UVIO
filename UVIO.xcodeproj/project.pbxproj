@@ -14,6 +14,8 @@
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
+		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
+		562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* Onboarding.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
@@ -32,10 +34,8 @@
 		5659808F283B776C00669F15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808E283B776C00669F15 /* RealmSwift */; };
 		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
 		56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* LoginFacebookProvider.swift */; };
-		56598098283B897D00669F15 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598097283B897D00669F15 /* SignInView.swift */; };
 		565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCDE283BD45A004D9924 /* NativigationBarView.swift */; };
 		565FDCE1283BDA29004D9924 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCE0283BDA29004D9924 /* View+Ext.swift */; };
-		56749FA4283B981300A2D4B7 /* EmailSingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56749FA3283B981300A2D4B7 /* EmailSingInView.swift */; };
 		56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56749FA5283BAA0C00A2D4B7 /* ToastView.swift */; };
 		568C17132836259500C77384 /* swiftui-xcassets-template.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 568C17122836259500C77384 /* swiftui-xcassets-template.stencil */; };
 		568C1715283641B300C77384 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568C1714283641B300C77384 /* StateButton.swift */; };
@@ -88,6 +88,8 @@
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
+		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		562822B2284672CE00F0F6DC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
@@ -102,10 +104,8 @@
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		56598094283B789800669F15 /* LoginFacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacebookProvider.swift; sourceTree = "<group>"; };
-		56598097283B897D00669F15 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		565FDCDE283BD45A004D9924 /* NativigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativigationBarView.swift; sourceTree = "<group>"; };
 		565FDCE0283BDA29004D9924 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
-		56749FA3283B981300A2D4B7 /* EmailSingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSingInView.swift; sourceTree = "<group>"; };
 		56749FA5283BAA0C00A2D4B7 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		568C17122836259500C77384 /* swiftui-xcassets-template.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "swiftui-xcassets-template.stencil"; sourceTree = "<group>"; };
 		568C1714283641B300C77384 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
@@ -214,8 +214,6 @@
 		56598096283B896A00669F15 /* SingIn */ = {
 			isa = PBXGroup;
 			children = (
-				56598097283B897D00669F15 /* SignInView.swift */,
-				56749FA3283B981300A2D4B7 /* EmailSingInView.swift */,
 				56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */,
 				56E55F37283CC0A90085D4DD /* CheckInboxView.swift */,
 				56E55F39283CC3E90085D4DD /* NewPasswordView.swift */,
@@ -235,6 +233,7 @@
 				561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */,
 				5612380A283506A400DCB87B /* GlucoseUnitOnboardingView.swift */,
 				56E2867E28354EAE0095FD9F /* SignUpView.swift */,
+				562822B02846651100F0F6DC /* OnboardingView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -358,6 +357,7 @@
 				563713B32840E48F003C5A09 /* GenderType.swift */,
 				563713B52840E732003C5A09 /* GlucoseType.swift */,
 				563713B72840E8A9003C5A09 /* DiabetType.swift */,
+				562822B2284672CE00F0F6DC /* Onboarding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,7 +585,6 @@
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */,
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,
-				56598098283B897D00669F15 /* SignInView.swift in Sources */,
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,
 				5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
@@ -603,6 +602,7 @@
 				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
+				562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */,
 				56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
@@ -615,6 +615,7 @@
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseUnitOnboardingView.swift in Sources */,
 				56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */,
+				562822B12846651100F0F6DC /* OnboardingView.swift in Sources */,
 				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				563713B62840E732003C5A09 /* GlucoseType.swift in Sources */,
@@ -627,7 +628,6 @@
 				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,
-				56749FA4283B981300A2D4B7 /* EmailSingInView.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 				568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */,
 			);
