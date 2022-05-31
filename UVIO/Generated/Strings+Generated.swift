@@ -26,7 +26,7 @@ public enum L10n {
   public static let checkYouInbox = L10n.tr("Base", "check_you_inbox")
   /// Complete
   public static let complete = L10n.tr("Base", "complete")
-  /// Cone
+  /// CONE
   public static let cone = L10n.tr("Base", "cone")
   /// Connect CGM
   public static let connectCGM = L10n.tr("Base", "connect_CGM")
@@ -106,6 +106,8 @@ public enum L10n {
   public static let password = L10n.tr("Base", "password")
   /// Password is required
   public static let passwordIsRequired = L10n.tr("Base", "password_is_required")
+  /// Please enter your email and password to log in.
+  public static let pleaseEnterYourEmailPassword = L10n.tr("Base", "please_enter_your_email_password")
   /// Prediabetes
   public static let prediabetes = L10n.tr("Base", "prediabetes")
   ///  Privacy Policy.

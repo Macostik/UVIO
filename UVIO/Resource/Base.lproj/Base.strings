@@ -10,7 +10,7 @@
 "full_name" = "My full name";
 "next" = "Next";
 "skip" = "Skip";
-"cone" = "Cone";
+"cone" = "CONE";
 "take_back" = "Take back teh Control over your Diabetes";
 "create_account" = "CREATE ACCOUNT";
 "sign_in" = "Sign In";
@@ -87,3 +87,4 @@
 "continue_with_facebook" = "Continue with Facebook";
 "continue_with_google" = "Continue with Google";
 "continue_with_apple" = "Continue with Apple";
+"please_enter_your_email_password" = "Please enter your email and password to log in.";

@@ -19,7 +19,7 @@ struct SignUpView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 140)
+                Spacer()
                 signUpBanner
                 signUpTitle
                 containerButtons

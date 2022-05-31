@@ -149,7 +149,7 @@ var signUpBanner: some View {
         Image.uvioIcon
             .frame(width: 96, height: 96)
             .background(Color.white)
-            .cornerRadius(16)
+            .cornerRadius(24)
     }
 }
 
@@ -167,8 +167,9 @@ var signUpTitle: some View {
         Text(L10n.cone)
             .font(.poppins(.bold, size: 21))
         Text(L10n.awesome)
-            .font(.poppins(.regular, size: 21))
+            .font(.poppins(.medium, size: 21))
             .padding(.horizontal)
+            .padding(.top, 60)
             .multilineTextAlignment(.center)
     }
     .padding(.bottom, 48)

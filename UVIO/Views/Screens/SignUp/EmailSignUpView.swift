@@ -19,16 +19,37 @@ struct EmailSignUpView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 140)
+                Spacer().frame(height: 80)
                 signUpBanner
-                signUpTitle
+                title
                 container
                 Spacer()
+                privatePolicy
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 30)
+            }
+            NavigationLink(destination:
+                            ConnectCGMView(userViewModel: viewModel,
+                                           viewModel: ConnectCGMViewModel()),
+                           isActive: $viewModel.signUpConfirmed) {
+                EmptyView()
             }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
+    }
+    var title: some View {
+        VStack(spacing: 16) {
+            Text(L10n.cone)
+                .font(.poppins(.bold, size: 21))
+            Text(L10n.pleaseEnterYourEmailPassword)
+                .font(.poppins(.medium, size: 21))
+                .padding(.horizontal)
+                .padding(.top, 60)
+                .multilineTextAlignment(.center)
+        }
+        .padding(.bottom, 36)
     }
 }
 
@@ -46,28 +67,21 @@ extension EmailSignUpView {
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
             passwordInput
-            NavigationLink(destination: ConnectCGMView(userViewModel: viewModel,
-                                                       viewModel: ConnectCGMViewModel()),
-                           isActive: $viewModel.signUpConfirmed) {
-                EmptyView()
-            }
             Button {
                 $viewModel.signUpConfirmed.wrappedValue.toggle()
             } label: {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
                     .frame(maxWidth: .infinity, maxHeight: 48)
-                    .background(Color.black)
+                    .background(Color.complementaryColor)
                     .foregroundColor(Color.white)
-                    .cornerRadius(16)
+                    .cornerRadius(12)
                     .padding(.horizontal)
-                    .opacity(viewModel.signUp ? 1.0 : 0.5)
             }
-            .disabled(!viewModel.signUp)
         }
     }
     var hideOverlay: some View {
@@ -89,7 +103,7 @@ extension EmailSignUpView {
             .font(.poppins(.medium, size: 14))
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)
-            .cornerRadius(16)
+            .cornerRadius(12)
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)
     }
