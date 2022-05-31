@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct GlucoseUnitOnboardingView: View {
+struct GlucoseUnitOnboardingView: View, Identifiable {
+    let id = UUID()
     @ObservedObject var viewModel: UserViewModel
     let columns = [
         GridItem(.flexible()),

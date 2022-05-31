@@ -16,6 +16,7 @@
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
 		562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* Onboarding.swift */; };
+		5633494628468A09004AE426 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633494528468A09004AE426 /* Int+Ext.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
@@ -90,6 +91,7 @@
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		5633494528468A09004AE426 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				5645D6AF2837D73F0081EA5A /* String+Ext.swift */,
 				565FDCE0283BDA29004D9924 /* View+Ext.swift */,
+				5633494528468A09004AE426 /* Int+Ext.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */,
 				56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */,
+				5633494628468A09004AE426 /* Int+Ext.swift in Sources */,
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */,
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,

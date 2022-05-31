@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct BirthDateOnboardingView: View {
+struct BirthDateOnboardingView: View, Identifiable {
+    let id = UUID()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel: UserViewModel
     @State private var isPresentedDatePicker = false

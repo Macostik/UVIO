@@ -9,7 +9,8 @@ import SwiftUI
 import Combine
 import Resolver
 
-struct NameOnboardingView: View {
+struct NameOnboardingView: View, Identifiable {
+    let id = UUID()
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {

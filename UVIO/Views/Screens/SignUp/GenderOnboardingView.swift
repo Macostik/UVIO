@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct GenderOnboardingView: View {
+struct GenderOnboardingView: View, Identifiable {
+    let id = UUID()
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack {
