@@ -17,6 +17,7 @@
 		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
 		562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* Onboarding.swift */; };
 		562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */; };
+		562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */; };
 		5633494628468A09004AE426 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633494528468A09004AE426 /* Int+Ext.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
@@ -93,6 +94,7 @@
 		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
+		562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeToggleStyle.swift; sourceTree = "<group>"; };
 		5633494528468A09004AE426 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				56749FA5283BAA0C00A2D4B7 /* ToastView.swift */,
 				565FDCDE283BD45A004D9924 /* NativigationBarView.swift */,
 				562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */,
+				562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
+				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
