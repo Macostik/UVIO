@@ -48,6 +48,8 @@ class UserViewModel: ObservableObject {
             diabetTypeList.first(where: { $0.id == item.id })?.isSelected = true
         }
     }
+    // Onboarding selection
+    @Published var selectedItem: OnboardingViewType = .birthDate
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
@@ -206,18 +208,5 @@ extension UserViewModel {
     }
     var glucoseUnit: String {
         glucoseSelectedItem?.type ?? L10n.mgDL
-    }
-}
-
-// Handle onboarding views
-extension UserViewModel {
-    func buildView(types: [Any], index: Int) -> AnyView {
-        switch types[index].self {
-        case is NameOnboardingView.Type: return AnyView( NameOnboardingView(viewModel: self) )
-        case is BirthDateOnboardingView.Type: return AnyView( BirthDateOnboardingView(viewModel: self) )
-        case is GenderOnboardingView.Type: return AnyView( GenderOnboardingView(viewModel: self) )
-        case is GlucoseUnitOnboardingView.Type: return AnyView( GlucoseUnitOnboardingView(viewModel: self) )
-        default: return AnyView(EmptyView())
-        }
     }
 }

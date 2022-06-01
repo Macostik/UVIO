@@ -7,9 +7,6 @@
 
 import Foundation
 
-var onboardingViews: [Any] = [
-    NameOnboardingView.self,
-    BirthDateOnboardingView.self,
-    GenderOnboardingView.self,
-    GlucoseUnitOnboardingView.self
-]
+enum OnboardingViewType {
+    case name, birthDate, gender, glucose
+}

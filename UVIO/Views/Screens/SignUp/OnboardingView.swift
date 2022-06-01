@@ -10,43 +10,22 @@ import AVFoundation
 
 struct OnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
-    @State private var index: Int = 0 {
-        didSet {
-            print(index)
-        }
-    }
-    @State private var offset: CGFloat = 0 
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
                 NativigationBackBarView {
                     ProgressView(completed: 0.2)
                 }
-                GeometryReader { geometry in
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .center, spacing: 0) {
-                            ForEach(onboardingViews.indices, id: \.self) { index in
-                                viewModel.buildView(types: onboardingViews, index: index)
-                                    .frame(width: geometry.size.width)
-                            }
-                        }
-                    }
-                    .content.offset(x: self.offset)
-                    .frame(width: geometry.size.width, height: nil, alignment: .leading)
-                    .gesture(DragGesture()
-                        .onChanged({ value in
-                            self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
-                        })
-                        .onEnded({ value in
-                            if abs(value.predictedEndTranslation.width) >= geometry.size.width / 2 {
-                                var nextIndex: Int = (value.predictedEndTranslation.width < 0) ? 1 : -1
-                                nextIndex += self.index
-                                self.index = nextIndex.keepIndexInRange(min: 0, max: onboardingViews.endIndex - 1)
-                            }
-                            withAnimation { self.offset = -geometry.size.width * CGFloat(self.index) }
-                        })
-                    )
-                }
+                TabView(selection: $viewModel.selectedItem) {
+                    NameOnboardingView(viewModel: viewModel)
+                        .tag(OnboardingViewType.name)
+                    BirthDateOnboardingView(viewModel: viewModel)
+                        .tag(OnboardingViewType.birthDate)
+                    GenderOnboardingView(viewModel: viewModel)
+                        .tag(OnboardingViewType.gender)
+                    GlucoseUnitOnboardingView(viewModel: viewModel)
+                        .tag(OnboardingViewType.glucose)
+                }.tabViewStyle(.page)
             }
         }
         .navigationBarHidden(true)
