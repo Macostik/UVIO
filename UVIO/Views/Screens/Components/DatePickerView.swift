@@ -13,19 +13,12 @@ struct DatePickerView: View {
 
     var body: some View {
         VStack(alignment: .trailing) {
-            Button {
-                withAnimation {
-                    isPresentedDatePicker = false
-                }
-            } label: {
-                Text(L10n.done)
-                    .font(.poppins(.regular, size: 16))
-            }
-            .padding()
             DatePicker("", selection: $date, displayedComponents: [.date])
                 .datePickerStyle(.wheel)
         }
         .background(Color.white)
+        .cornerRadius(16)
+        .padding(.horizontal)
     }
 }
 

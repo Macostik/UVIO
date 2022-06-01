@@ -12,23 +12,33 @@ struct OnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
-            VStack {
-                NativigationBackBarView {
-                    ProgressView(completed: 0.2)
-                }
-                TabView(selection: $viewModel.selectedItem) {
-                    NameOnboardingView(viewModel: viewModel)
-                        .tag(OnboardingViewType.name)
-                    BirthDateOnboardingView(viewModel: viewModel)
-                        .tag(OnboardingViewType.birthDate)
-                    GenderOnboardingView(viewModel: viewModel)
-                        .tag(OnboardingViewType.gender)
-                    GlucoseUnitOnboardingView(viewModel: viewModel)
-                        .tag(OnboardingViewType.glucose)
-                }.tabViewStyle(.page)
-            }
+            backgroundColor
+            containerViews
         }
         .navigationBarHidden(true)
+    }
+    var backgroundColor: some View {
+        LinearGradient(
+            colors: [Color.grayBackgroundColor],
+            startPoint: .top, endPoint: .bottom)
+        .ignoresSafeArea()
+    }
+    var containerViews: some View {
+        VStack {
+            NativigationBackBarView {
+                ProgressView(completed: 0.2)
+            }
+            TabView(selection: $viewModel.selectedItem) {
+                NameOnboardingView(viewModel: viewModel)
+                    .tag(OnboardingViewType.name)
+                BirthDateOnboardingView(viewModel: viewModel)
+                    .tag(OnboardingViewType.birthDate)
+                GenderOnboardingView(viewModel: viewModel)
+                    .tag(OnboardingViewType.gender)
+                GlucoseUnitOnboardingView(viewModel: viewModel)
+                    .tag(OnboardingViewType.glucose)
+            }.tabViewStyle(.page(indexDisplayMode: .never))
+        }
     }
 }
 

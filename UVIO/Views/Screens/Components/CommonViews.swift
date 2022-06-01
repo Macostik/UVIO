@@ -32,7 +32,7 @@ struct NextButton<Destination: View>: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
-            .background(Color.black)
+            .background(Color.complementaryColor)
             .cornerRadius(12)
             .padding(.horizontal)
             .overlay(textOverlay)
@@ -63,7 +63,7 @@ func genderOverlay(type: String,
                    isSelected: Bool) -> some View {
     HStack {
         Circle()
-            .foregroundColor(Color.grayscaleColor)
+            .foregroundColor(Color.grayScaleColor)
             .frame(width: 24, height: 24)
             .padding(.leading)
             .overlay(isSelected ?  Circle()
@@ -81,10 +81,10 @@ struct ProgressView: View {
         HStack(spacing: 18) {
             ZStack(alignment: .leading) {
                 Capsule()
-                    .frame(width: 160, height: 4)
-                    .foregroundColor(Color.grayBackgroundColor)
+                    .frame(width: 160, height: 6)
+                    .foregroundColor(Color.grayScaleColor)
                 Capsule()
-                    .frame(width: 160 * completed, height: 4)
+                    .frame(width: 160 * completed, height: 6)
                     .foregroundColor(Color.black)
             }
         }

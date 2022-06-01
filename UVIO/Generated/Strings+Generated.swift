@@ -52,6 +52,8 @@ public enum L10n {
   public static let dontHaveAccount = L10n.tr("Base", "dont_have_account")
   /// •
   public static let dot = L10n.tr("Base", "dot")
+  /// E.g. John Icecream
+  public static let eg = L10n.tr("Base", "e_g")
   /// Email Address
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Email is required

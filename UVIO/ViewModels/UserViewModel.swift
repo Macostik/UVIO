@@ -49,7 +49,7 @@ class UserViewModel: ObservableObject {
         }
     }
     // Onboarding selection
-    @Published var selectedItem: OnboardingViewType = .birthDate
+    @Published var selectedItem: OnboardingViewType = .name
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""

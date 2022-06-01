@@ -14,39 +14,33 @@ struct NameOnboardingView: View, Identifiable {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 16) {
+            VStack {
                 Spacer()
                 contentView
                 Spacer()
-                NextButton(destination:
-                            BirthDateOnboardingView(viewModel: viewModel))
-                SkipButton(destination: SignUpView(viewModel: viewModel))
+                VStack(spacing: 26) {
+                    NextButton(destination:
+                                BirthDateOnboardingView(viewModel: viewModel))
+                    SkipButton(destination: SignUpView(viewModel: viewModel))
+                }
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .principal) {
-                ProgressView(completed: 0.2)
-            }
-        })
+        .edgesIgnoringSafeArea(.all)
     }
 
     var contentView: some View {
-        VStack {
+        VStack(spacing: 32) {
             Text(L10n.whatName)
                 .font(.poppins(.bold, size: 24))
-            TextField(L10n.fullName, text: $viewModel.name)
+            TextField(L10n.eg, text: $viewModel.name)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
                 .cornerRadius(12)
                 .padding(.horizontal)
+                .shadow(color: Color.black.opacity(0.1),
+                        radius: 7)
         }
     }
 }
