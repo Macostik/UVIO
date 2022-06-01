@@ -24,7 +24,7 @@ struct SingleSliderView: View {
         let sliderViewYCenter = sliderSize.height / 2
         ZStack {
             RoundedRectangle(cornerRadius: 2)
-                .fill(Color.primaryOrangeColor)
+                .fill(Color.grayScaleColor)
                 .frame(height: 4)
             ZStack {
                 let sliderBoundDifference = sliderBounds.count

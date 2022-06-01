@@ -95,8 +95,7 @@
 "lets_connect_dexcom" = "Now, let’s connect your Dexcom and get you started";
 "connect_dexcom" = "Connect Dexcom";
 "vibrate_only" = "Vibrate only";
-"turn_on_arerts" = "When turned ON, your phone will vibrate instead of making sound alerts.";
+"turn_on_arerts" = "When turned ON, your phone will vibrate\n instead of making sound alerts.";
 "dont_disturb" = "Override “Do not Disturb”";
-"turn_on_disturb_mode" = "When turned ON, the app will play a sound even in your phone is in
-“Don Not Disturb” mode.";
+"turn_on_disturb_mode" = "When turned ON, the app will play a\n sound even in your phone is in\n“Don Not Disturb” mode.";
 "off" = "Off";

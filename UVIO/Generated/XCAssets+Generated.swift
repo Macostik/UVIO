@@ -43,7 +43,9 @@ internal extension Image {
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }
   static var splashBackgroundImage : Image { Image("splashBackgroundImage", bundle: BundleToken.bundle) }
   static var successMarkIcon : Image { Image("successMarkIcon", bundle: BundleToken.bundle) }
+  static var timerIcon : Image { Image("timerIcon", bundle: BundleToken.bundle) }
   static var uvioIcon : Image { Image("uvioIcon", bundle: BundleToken.bundle) }
+  static var vibrateIcon : Image { Image("vibrateIcon", bundle: BundleToken.bundle) }
   // Colors.xcassets
 }
 

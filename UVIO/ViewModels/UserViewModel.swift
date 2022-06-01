@@ -50,6 +50,9 @@ class UserViewModel: ObservableObject {
     }
     // Onboarding selection
     @Published var selectedItem: OnboardingViewType = .name
+    // Onboarding alert
+    @Published var isVibrate: Bool = false
+    @Published var isNotDisturb: Bool = false
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""

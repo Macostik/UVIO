@@ -15,49 +15,15 @@ struct GlucoseAlertOnboardingView: View, Identifiable {
         GridItem(.flexible())
     ]
     var body: some View {
-        ZStack {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            ZStack(alignment: .bottom) {
-                VStack(spacing: 16) {
-                    Spacer()
-                    contentView
-                    Spacer()
-                    NavigationLink(isActive: $viewModel.userCreateCompleted) {
-                        SignUpView(viewModel: viewModel)
-                    } label: {
-                        EmptyView()
-                    }
-                    Button(action: {
-                        viewModel.createNewUser.send(User())
-                    }, label: {
-                        ZStack {
-                            HStack {
-                                Image.checkMarkIcon
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                            }
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
-                        .background(Color.black)
-                        .cornerRadius(12)
-                        .padding(.horizontal)
-                        .overlay(textOverlay)
-                    })
-                    .padding(.bottom, 30)
-                }
+        ZStack(alignment: .top) {
+            VStack {
+                contentView
+                Spacer()
+                NextButton(destination:
+                            BirthDateOnboardingView(viewModel: viewModel))
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .principal) {
-                ProgressView(completed: 1.0)
-            }
-        })
     }
 }
 
@@ -69,20 +35,19 @@ struct GlucoseAlertOnboardingView_Previews: PreviewProvider {
 
 extension GlucoseAlertOnboardingView {
     var contentView: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: 8) {
             targetView
             hypersAndHypos
         }
     }
     var targetView: some View {
-        VStack(alignment: .leading) {
-            Text(L10n.targetLevel)
-                .font(.poppins(.bold, size: 18))
-            Text(L10n.takeBackControl)
-                .font(.poppins(.medium, size: 14))
+        VStack {
+            Text(L10n.setGlucoseAlert)
+                .font(.poppins(.bold, size: 24))
+                .padding(.top, 32)
             ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 116)
+                RoundedRectangle(cornerRadius: 12)
+                    .frame(height: 100)
                     .foregroundColor(Color.white)
                     .overlay(rangeSliderOverlay)
             }
@@ -128,7 +93,8 @@ extension GlucoseAlertOnboardingView {
                         .foregroundColor(Color.primaryAlertColor)
                 }
                 SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
-            }.padding()
+            }
+            .padding()
         }
     }
     var bottomSliderOverlay: some View {
@@ -155,13 +121,9 @@ extension GlucoseAlertOnboardingView {
     }
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
-            Text(L10n.hypersAndHypos)
-                .font(.poppins(.bold, size: 18))
-            Text(L10n.takeBackControl)
-                .font(.poppins(.medium, size: 14))
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 224)
+                    .frame(height: 395)
                     .foregroundColor(Color.white)
                     .overlay(doubleSliderOverlay)
             }
@@ -174,9 +136,13 @@ extension GlucoseAlertOnboardingView {
             RoundedRectangle(cornerRadius: 12)
                 .overlay(topSliderOverlay)
                 .padding(.top, 8)
+                .frame(height: 100)
             RoundedRectangle(cornerRadius: 12)
                 .overlay(bottomSliderOverlay)
                 .padding(.bottom, 8)
+                .frame(height: 100)
+            vibrateView
+                .padding(.horizontal, 16)
         }
         .foregroundColor(Color.clear)
     }
@@ -184,5 +150,50 @@ extension GlucoseAlertOnboardingView {
         Text(L10n.complete)
             .font(.poppins(.medium, size: 14))
             .foregroundColor(.white)
+    }
+    var vibrateView: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Image.vibrateIcon
+                    Text(L10n.vibrateOnly)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                    Text(L10n.off)
+                        .font(.poppins(.medium, size: 12))
+                        .foregroundColor(Color.black)
+                    Toggle("", isOn: $viewModel.isVibrate)
+                        .foregroundColor(Color.primaryGreenColor)
+                }
+                Text(L10n.turnOnArerts)
+                    .font(.poppins(.medium, size: 10))
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 28)
+            }
+            Divider()
+                .padding(.leading, 40)
+            VStack {
+                VStack(alignment: .leading) {
+                HStack {
+                    Image.timerIcon
+                    Text(L10n.dontDisturb)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                    Text(L10n.off)
+                        .font(.poppins(.medium, size: 12))
+                        .foregroundColor(Color.black)
+                    Toggle("", isOn: $viewModel.isVibrate)
+                        .foregroundColor(Color.primaryGreenColor)
+                }
+                Text(L10n.turnOnDisturbMode)
+                    .font(.poppins(.medium, size: 10))
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 28)
+                }
+                .padding(.bottom, 8)
+            }
+        }
     }
 }

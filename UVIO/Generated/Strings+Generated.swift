@@ -173,9 +173,11 @@ public enum L10n {
   public static let targetRange = L10n.tr("Base", "target_range")
   ///  Terms of Service
   public static let termsOfService = L10n.tr("Base", "terms_of_service")
-  /// When turned ON, your phone will vibrate instead of making sound alerts.
+  /// When turned ON, your phone will vibrate
+  ///  instead of making sound alerts.
   public static let turnOnArerts = L10n.tr("Base", "turn_on_arerts")
-  /// When turned ON, the app will play a sound even in your phone is in
+  /// When turned ON, the app will play a
+  ///  sound even in your phone is in
   /// “Don Not Disturb” mode.
   public static let turnOnDisturbMode = L10n.tr("Base", "turn_on_disturb_mode")
   /// Type 1 diabetes
