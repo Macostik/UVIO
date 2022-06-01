@@ -25,9 +25,13 @@ struct OnboardingView: View {
     }
     var containerViews: some View {
         VStack {
-            NativigationBackBarView {
-                ProgressView(completed: 0.2)
-            }
+            NativigationBackBarViewAction(action: {
+                withAnimation {
+                    viewModel.selectedItem = viewModel.previousType
+                }
+            }, content: {
+                ProgressView(completed: viewModel.completionValue)
+            })
             TabView(selection: $viewModel.selectedItem) {
                 NameOnboardingView(viewModel: viewModel)
                     .tag(OnboardingViewType.name)

@@ -114,6 +114,8 @@ public enum L10n {
   public static let off = L10n.tr("Base", "off")
   /// Open Email App
   public static let openEmailApp = L10n.tr("Base", "open_email_app")
+  /// Other
+  public static let other = L10n.tr("Base", "other")
   /// Password
   public static let password = L10n.tr("Base", "password")
   /// Password is required

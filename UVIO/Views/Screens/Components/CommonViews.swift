@@ -18,6 +18,20 @@ struct BackButton: View {
     }
 }
 
+struct BackButtonAction: View {
+    private var action: () -> Void
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            Image.backButtonIcon
+        }
+    }
+}
+
 struct NextButton<Destination: View>: View {
     private var destination: Destination
     init(destination: Destination) {
@@ -25,6 +39,35 @@ struct NextButton<Destination: View>: View {
     }
     var body: some View {
         NavigationLink(destination: destination) {
+            ZStack {
+                HStack {
+                    Image.nextIcon
+                        .padding()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
+            .background(Color.complementaryColor)
+            .cornerRadius(12)
+            .padding(.horizontal)
+            .overlay(textOverlay)
+        }
+    }
+    var textOverlay: some View {
+        Text(L10n.next)
+            .font(.poppins(.medium, size: 14))
+            .foregroundColor(.white)
+    }
+}
+
+struct NextButtonAction: View {
+    private var action: () -> Void
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    var body: some View {
+        Button {
+            action()
+        } label: {
             ZStack {
                 HStack {
                     Image.nextIcon
@@ -81,10 +124,10 @@ struct ProgressView: View {
         HStack(spacing: 18) {
             ZStack(alignment: .leading) {
                 Capsule()
-                    .frame(width: 160, height: 6)
+                    .frame(width: 126, height: 6)
                     .foregroundColor(Color.grayScaleColor)
                 Capsule()
-                    .frame(width: 160 * completed, height: 6)
+                    .frame(width: 126 * completed, height: 6)
                     .foregroundColor(Color.black)
             }
         }

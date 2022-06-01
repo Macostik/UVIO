@@ -34,31 +34,21 @@ struct GenderOnboardingView: View, Identifiable {
                     ForEach(genderTypeList,
                             id: \.id) { item in
                         RoundedRectangle(cornerRadius: 16)
-                            .foregroundColor(item.isSelected ? Color.clear : Color.white)
+                            .foregroundColor(item.isSelected ? Color.complementaryColor : Color.white)
                             .frame(height: 80)
                             .overlay(genderOverlay(type: item.type)
-                                .foregroundColor( item.isSelected ? Color.complementaryColor : Color.black))
-                            .overlay( RoundedRectangle(cornerRadius: 16.0)
-                                .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
-                                .foregroundColor(Color.white))
+                                .foregroundColor( item.isSelected ? Color.white : Color.black))
                             .onTapGesture {
                                 self.viewModel.genderSelectedItem = item
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                    viewModel.presentOnboardingView.value = .glucoseUnit
+                                })
                             }
                     }
                 }
                 .padding(.horizontal)
             }
             .frame(height: 175)
-            if viewModel.isSelectedSpecifyType {
-                TextField(L10n.provideOwn, text: $viewModel.ownType)
-                    .font(.poppins(.medium, size: 14))
-                    .padding(.leading)
-                    .frame(maxWidth: .infinity, maxHeight: 48)
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .padding(.horizontal)
-                    .padding(.top, 10)
-            }
         }
     }
     func genderOverlay(type: String) -> some View {

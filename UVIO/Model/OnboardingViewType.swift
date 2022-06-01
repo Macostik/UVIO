@@ -1,5 +1,5 @@
 //
-//  Onboarding.swift
+//  OnboardingViewType.swift
 //  UVIO
 //
 //  Created by Macostik on 31.05.2022.

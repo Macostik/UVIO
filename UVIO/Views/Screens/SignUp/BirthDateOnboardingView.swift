@@ -19,8 +19,9 @@ struct BirthDateOnboardingView: View, Identifiable {
                 contentView
                 Spacer()
                 VStack(spacing: 26) {
-                    NextButton(destination:
-                                BirthDateOnboardingView(viewModel: viewModel))
+                    NextButtonAction {
+                        viewModel.presentOnboardingView.value = .gender
+                    }
                     SkipButton(destination: SignUpView(viewModel: viewModel))
                 }
             }

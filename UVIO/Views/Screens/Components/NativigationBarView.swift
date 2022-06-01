@@ -8,6 +8,25 @@
 import SwiftUI
 import Combine
 
+struct NativigationBackBarViewAction<Content: View>: View {
+    let action: () -> Void
+    let content: Content?
+    init(action:@escaping () -> Void, @ViewBuilder content: () -> Content?) {
+        self.action = action
+        self.content = content()
+    }
+    var body: some View {
+        ZStack {
+            HStack {
+                BackButtonAction(action: action)
+                    .padding()
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(content)
+    }
+}
+
 struct NativigationBackBarView<Content: View>: View {
     let content: Content?
     init(@ViewBuilder content: () -> Content?) {

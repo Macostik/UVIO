@@ -16,7 +16,6 @@ class UserViewModel: ObservableObject {
     // User birthDate
     @Published var birthDate: Date = Date()
     // User gender
-    @Published var isSelectedSpecifyType = false
     @Published var ownType: String = ""
     @Published var genderSelectedItem: GenderType? {
         willSet {
@@ -24,7 +23,6 @@ class UserViewModel: ObservableObject {
             genderTypeList.forEach({ $0.isSelected = false })
             let selectedItem = genderTypeList.first(where: { $0.id == item.id })
             if let selectedItem = selectedItem {
-                isSelectedSpecifyType = selectedItem.id == 4
                 selectedItem.isSelected = true
             }
         }
@@ -63,6 +61,7 @@ class UserViewModel: ObservableObject {
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
+    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.name)
     var signInClickPublisher = PassthroughSubject<Void, Error>()
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
@@ -75,8 +74,8 @@ class UserViewModel: ObservableObject {
         handleLoginViaThirdParty()
         validateCredintials()
         fillUserCredentials()
-//        handleSignIn()
         handleSignUp()
+        handleOnboardingScreen()
     }
 }
 // Init
@@ -157,6 +156,17 @@ extension UserViewModel {
             .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
+    func handleOnboardingScreen() {
+        presentOnboardingView
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+            } receiveValue: { type in
+                withAnimation {
+                    self.selectedItem = type
+                }
+            }
+            .store(in: &cancellableSet)
+    }
 }
 // Handle publishers
 extension UserViewModel {
@@ -211,5 +221,26 @@ extension UserViewModel {
     }
     var glucoseUnit: String {
         glucoseSelectedItem?.type ?? L10n.mgDL
+    }
+}
+// Handle onboarding
+extension UserViewModel {
+    var completionValue: CGFloat {
+        switch selectedItem {
+        case .name:  return 0.2
+        case .birthDate: return 0.4
+        case .gender: return 0.6
+        case .glucoseUnit: return 0.8
+        case .glucoseAlert: return 1.0
+        }
+    }
+    var previousType: OnboardingViewType {
+        switch selectedItem {
+        case .name: return .name
+        case .birthDate: return .name
+        case .gender: return .birthDate
+        case .glucoseUnit: return .gender
+        case .glucoseAlert: return .glucoseUnit
+        }
     }
 }

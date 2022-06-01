@@ -15,7 +15,7 @@
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
-		562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* Onboarding.swift */; };
+		562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* OnboardingViewType.swift */; };
 		562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */; };
 		562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */; };
 		5633494628468A09004AE426 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633494528468A09004AE426 /* Int+Ext.swift */; };
@@ -92,7 +92,7 @@
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		562822B2284672CE00F0F6DC /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		562822B2284672CE00F0F6DC /* OnboardingViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewType.swift; sourceTree = "<group>"; };
 		562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
 		562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeToggleStyle.swift; sourceTree = "<group>"; };
 		5633494528468A09004AE426 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 				563713B32840E48F003C5A09 /* GenderType.swift */,
 				563713B52840E732003C5A09 /* GlucoseType.swift */,
 				563713B72840E8A9003C5A09 /* DiabetType.swift */,
-				562822B2284672CE00F0F6DC /* Onboarding.swift */,
+				562822B2284672CE00F0F6DC /* OnboardingViewType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,7 +613,7 @@
 				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
-				562822B3284672CE00F0F6DC /* Onboarding.swift in Sources */,
+				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,
 				56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,

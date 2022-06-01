@@ -48,6 +48,9 @@ struct GlucoseUnitOnboardingView: View {
                                 )
                                 .onTapGesture {
                                     self.viewModel.glucoseSelectedItem = item
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                        viewModel.presentOnboardingView.value = .glucoseAlert
+                                    })
                                 }
                         }
                     }
