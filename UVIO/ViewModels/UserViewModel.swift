@@ -18,7 +18,7 @@ class UserViewModel: ObservableObject {
     // User gender
     @Published var isSelectedSpecifyType = false
     @Published var ownType: String = ""
-    @Published var genderSelectedItem = genderTypeList.first {
+    @Published var genderSelectedItem: GenderType? {
         willSet {
             guard let item = newValue else { return }
             genderTypeList.forEach({ $0.isSelected = false })

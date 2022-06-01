@@ -11,38 +11,22 @@ struct GenderOnboardingView: View, Identifiable {
     let id = UUID()
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
-        ZStack {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            ZStack(alignment: .bottom) {
-                VStack(spacing: 16) {
-                    Spacer()
-                    contentView
-                    Spacer()
-                    NextButton(destination:
-                                DiabetsOnboardingView(viewModel: viewModel))
-                    SkipButton(destination: SignUpView(viewModel: viewModel))
-                        .padding(.bottom, 30)
-                }
+        ZStack(alignment: .top) {
+            VStack(spacing: 16) {
+                Spacer()
+                contentView
+                Spacer()
+                SkipButton(destination: SignUpView(viewModel: viewModel))
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(content: {
-            ToolbarItem(placement: .principal) {
-                ProgressView(completed: 0.6)
-            }
-        })
     }
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     var contentView: some View {
-        VStack {
+        VStack(spacing: 32) {
             Text(L10n.whatIsYourGender)
                 .font(.poppins(.bold, size: 24))
             ScrollView([]) {
