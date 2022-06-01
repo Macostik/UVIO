@@ -36,7 +36,9 @@ struct OnboardingView: View {
                 GenderOnboardingView(viewModel: viewModel)
                     .tag(OnboardingViewType.gender)
                 GlucoseUnitOnboardingView(viewModel: viewModel)
-                    .tag(OnboardingViewType.glucose)
+                    .tag(OnboardingViewType.glucoseUnit)
+                GlucoseAlertOnboardingView(viewModel: viewModel)
+                    .tag(OnboardingViewType.glucoseAlert)
             }.tabViewStyle(.page(indexDisplayMode: .never))
         }
     }

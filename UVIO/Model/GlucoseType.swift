@@ -18,6 +18,6 @@ class GlucoseType {
     }
 }
  var glucoseTypeList = [
-    GlucoseType(id: 1, type: L10n.mgDL, isSelected: true),
+    GlucoseType(id: 1, type: L10n.mgDL, isSelected: false),
     GlucoseType(id: 2, type: L10n.mmolL, isSelected: false)
 ]

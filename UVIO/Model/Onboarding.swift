@@ -8,5 +8,5 @@
 import Foundation
 
 enum OnboardingViewType {
-    case name, birthDate, gender, glucose
+    case name, birthDate, gender, glucoseUnit, glucoseAlert
 }

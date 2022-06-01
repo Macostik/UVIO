@@ -14,6 +14,8 @@ public enum L10n {
   public static let and = L10n.tr("Base", "and")
   /// Awesome! Now, let’s finalize your account creation.
   public static let awesome = L10n.tr("Base", "awesome")
+  /// Awesome! You made it!
+  public static let awosomeYouMadeIt = L10n.tr("Base", "awosome_you_made_it")
   /// Blood glucose unit
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
   /// By continuing, you agree to UVIO’s
@@ -30,6 +32,8 @@ public enum L10n {
   public static let cone = L10n.tr("Base", "cone")
   /// Connect CGM
   public static let connectCGM = L10n.tr("Base", "connect_CGM")
+  /// Connect Dexcom
+  public static let connectDexcom = L10n.tr("Base", "connect_dexcom")
   /// Continue
   public static let `continue` = L10n.tr("Base", "continue")
   /// Continue with Apple
@@ -48,6 +52,8 @@ public enum L10n {
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
   /// DONE
   public static let done = L10n.tr("Base", "done")
+  /// Override “Do not Disturb”
+  public static let dontDisturb = L10n.tr("Base", "dont_disturb")
   /// Don’t have an account yet? 
   public static let dontHaveAccount = L10n.tr("Base", "dont_have_account")
   /// •
@@ -86,6 +92,8 @@ public enum L10n {
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
+  /// Now, let’s connect your Dexcom and get you started
+  public static let letsConnectDexcom = L10n.tr("Base", "lets_connect_dexcom")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
   /// Male
@@ -102,6 +110,8 @@ public enum L10n {
   public static let next = L10n.tr("Base", "next")
   /// Non-binary
   public static let nonBinary = L10n.tr("Base", "non_binary")
+  /// Off
+  public static let off = L10n.tr("Base", "off")
   /// Open Email App
   public static let openEmailApp = L10n.tr("Base", "open_email_app")
   /// Password
@@ -116,10 +126,14 @@ public enum L10n {
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
+  /// Select preferred Blood Glucose units
+  public static let selectGlucose = L10n.tr("Base", "select_glucose")
   /// Select supporting device
   public static let selecteDevices = L10n.tr("Base", "selecte_devices")
   /// Send Email for Recovery
   public static let sendEmailRecovery = L10n.tr("Base", "send_email_recovery")
+  /// Set Glucose Alerts
+  public static let setGlucoseAlert = L10n.tr("Base", "set_glucose_Alert")
   /// Sign In
   public static let signIn = L10n.tr("Base", "sign_in")
   /// Sign In with Apple
@@ -159,12 +173,19 @@ public enum L10n {
   public static let targetRange = L10n.tr("Base", "target_range")
   ///  Terms of Service
   public static let termsOfService = L10n.tr("Base", "terms_of_service")
+  /// When turned ON, your phone will vibrate instead of making sound alerts.
+  public static let turnOnArerts = L10n.tr("Base", "turn_on_arerts")
+  /// When turned ON, the app will play a sound even in your phone is in
+  /// “Don Not Disturb” mode.
+  public static let turnOnDisturbMode = L10n.tr("Base", "turn_on_disturb_mode")
   /// Type 1 diabetes
   public static let type1Diabetes = L10n.tr("Base", "type_1_diabetes")
   /// Type 2 diabetes
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
+  /// Vibrate only
+  public static let vibrateOnly = L10n.tr("Base", "vibrate_only")
   /// Welcome
   public static let welcome = L10n.tr("Base", "welcome")
   /// Welcome back! Please log in to continue.
