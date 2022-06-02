@@ -19,8 +19,7 @@ struct GlucoseAlertOnboardingView: View, Identifiable {
             VStack {
                 contentView
                 Spacer()
-                NextButton(destination:
-                            BirthDateOnboardingView(viewModel: viewModel))
+                NextButton(destination: CompleteOnboardingView(viewModel: viewModel))
             }
         }
         .edgesIgnoringSafeArea(.all)

@@ -244,3 +244,15 @@ extension UserViewModel {
         }
     }
 }
+// Handle dexcom API
+extension UserViewModel {
+    func dexcomLogin() {
+        dependency.provider.dexcomService.getBearer()
+            .sink { error in
+                print(error)
+            } receiveValue: { token in
+                Logger.debug("Dexcom token - \(token)")
+            }
+            .store(in: &cancellableSet)
+    }
+}

@@ -21,6 +21,7 @@ internal extension Image {
   // Assets.xcassets
   static var alertArrowIcon : Image { Image("alertArrowIcon", bundle: BundleToken.bundle) }
   static var appleIcon : Image { Image("appleIcon", bundle: BundleToken.bundle) }
+  static var awesomeIcon : Image { Image("awesomeIcon", bundle: BundleToken.bundle) }
   static var backButtonIcon : Image { Image("backButtonIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }

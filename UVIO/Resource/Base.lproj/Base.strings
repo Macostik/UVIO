@@ -92,7 +92,6 @@
 "select_glucose" = "Select preferred Blood Glucose units";
 "set_glucose_Alert" = "Set Glucose Alerts";
 "awosome_you_made_it" = "Awesome! You made it!";
-"lets_connect_dexcom" = "Now, let’s connect your Dexcom and get you started";
 "connect_dexcom" = "Connect Dexcom";
 "vibrate_only" = "Vibrate only";
 "turn_on_arerts" = "When turned ON, your phone will vibrate\n instead of making sound alerts.";
@@ -100,3 +99,6 @@
 "turn_on_disturb_mode" = "When turned ON, the app will play a\n sound even in your phone is in\n“Don Not Disturb” mode.";
 "off" = "Off";
 "other" = "Other";
+"lets_connect_dexcom" = "Now, let’s connect your ";
+"dexcom" = "Dexcom ";
+"get_started" = "and get you started";

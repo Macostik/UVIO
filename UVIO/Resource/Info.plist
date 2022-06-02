@@ -22,6 +22,16 @@
 				<string>com.googleusercontent.apps.858527894249-6oh5e3gmudg6aoqvu3njti03cj38mdc0</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.GYS.UVIO</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>cone</string>
+			</array>
+		</dict>
 	</array>
 	<key>Environment</key>
 	<string>${ENV}</string>

@@ -8,7 +8,7 @@
 import Foundation
 import Resolver
 
-typealias ProviderType = LoginFacebookProvider & LoginGoogleProvider & StoreProvider
+typealias ProviderType = LoginFacebookProvider & LoginGoogleProvider & DexcomProvider  & StoreProvider
 
 struct Provider: ProviderType {
     var facebookLoginService: LoginFacebookInteractor {
@@ -16,6 +16,9 @@ struct Provider: ProviderType {
     }
     var googleLoginService: LoginGoogleInteractor {
         LoginGoogleService()
+    }
+    var dexcomService: DexcomInteractor {
+        DexcomService()
     }
     var storeService: StoreInteractor {
         StoreService()

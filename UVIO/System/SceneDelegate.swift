@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import Combine
 import Foundation
+import OAuthSwift
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -26,7 +27,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
     }
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {}
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        OAuthSwift.handle(url: url)
+    }
     func sceneDidBecomeActive(_ scene: UIScene) {}
     func sceneWillResignActive(_ scene: UIScene) {}
 }

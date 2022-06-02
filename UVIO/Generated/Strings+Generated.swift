@@ -46,7 +46,7 @@ public enum L10n {
   public static let continueWithGoogle = L10n.tr("Base", "continue_with_google")
   /// CREATE ACCOUNT
   public static let createAccount = L10n.tr("Base", "create_account")
-  /// DEXCOM
+  /// Dexcom 
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// Dexcom G6
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
@@ -82,6 +82,8 @@ public enum L10n {
   public static let fullName = L10n.tr("Base", "full_name")
   /// Gestational diabetes
   public static let gestationalDiabetes = L10n.tr("Base", "gestational_diabetes")
+  /// and get you started
+  public static let getStarted = L10n.tr("Base", "get_started")
   /// Hyper (High Glucose)
   public static let hyperHighGlucose = L10n.tr("Base", "hyper_high_glucose")
   /// Hypers and hypos
@@ -92,7 +94,7 @@ public enum L10n {
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
-  /// Now, let’s connect your Dexcom and get you started
+  /// Now, let’s connect your 
   public static let letsConnectDexcom = L10n.tr("Base", "lets_connect_dexcom")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
