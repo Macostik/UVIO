@@ -21,7 +21,7 @@ struct DiabetsOnboardingView: View {
                         .padding(.bottom)
                     NextButton(destination:
                                 GlucoseAlertOnboardingView(viewModel: viewModel))
-                    SkipButton(destination: SignUpView(viewModel: viewModel))
+                    SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
                         .padding(.bottom, 30)
                 }
             }

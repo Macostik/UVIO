@@ -19,7 +19,7 @@ struct GlucoseUnitOnboardingView: View {
                 Spacer()
                 contentView
                 Spacer()
-                SkipButton(destination: SignUpView(viewModel: viewModel))
+                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
             }
         }
         .edgesIgnoringSafeArea(.all)

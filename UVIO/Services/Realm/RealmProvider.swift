@@ -21,7 +21,8 @@ struct RealmProvider {
             return try Realm(configuration: configuration)
         } catch {
             Logger.error("Realm was not configured!")
-            fatalError()
+            // swiftlint:disable force_try
+            return try! Realm()
         }
     }
 //    private static func configureRealm() -> Realm.Configuration {
