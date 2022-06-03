@@ -13,5 +13,5 @@ protocol DependencyProvider {
 }
 
 struct Dependency: DependencyProvider {
-    @Injected var provider: Provider
+     var provider = Provider()
 }
