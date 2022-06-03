@@ -206,15 +206,6 @@ var signInBanner: some View {
     }
 }
 
-var signUpTitle: some View {
-    Text(L10n.awesome)
-        .font(.poppins(.medium, size: 21))
-        .padding(.horizontal)
-        .padding(.top, 60)
-        .multilineTextAlignment(.center)
-        .padding(.bottom, 48)
-}
-
 var signInTitle: some View {
     VStack(spacing: 16) {
         Text(L10n.cone)

@@ -64,7 +64,7 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignUpView(viewModel: viewModel)) {
+        NavigationLink(destination: SignInView(viewModel: viewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)

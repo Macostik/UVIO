@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct GenderOnboardingView: View, Identifiable {
-    let id = UUID()
     @ObservedObject var viewModel: UserViewModel
+    let id = UUID()
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 16) {
@@ -21,10 +25,15 @@ struct GenderOnboardingView: View, Identifiable {
         }
         .edgesIgnoringSafeArea(.all)
     }
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+}
+
+struct GenderOnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        GenderOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension GenderOnboardingView {
     var contentView: some View {
         VStack(spacing: 32) {
             Text(L10n.whatIsYourGender)
@@ -54,11 +63,5 @@ struct GenderOnboardingView: View, Identifiable {
     func genderOverlay(type: String) -> some View {
         Text(type)
             .font(.poppins(.bold, size: 14))
-    }
-}
-
-struct GenderOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        GenderOnboardingView(viewModel: UserViewModel())
     }
 }

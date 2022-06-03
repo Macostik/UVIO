@@ -40,14 +40,6 @@ struct EmailSignUpView: View {
         .navigationBarHidden(true)
         .toast(isShowing: $viewModel.showErrorAlert)
     }
-    var title: some View {
-        Text(L10n.pleaseEnterYourEmailPassword)
-            .font(.poppins(.medium, size: 21))
-            .padding(.horizontal)
-            .multilineTextAlignment(.center)
-            .padding(.bottom, 30)
-            .minimumScaleFactor(0.68)
-    }
 }
 
 struct EmailSugnUpView_Previews: PreviewProvider {
@@ -57,6 +49,14 @@ struct EmailSugnUpView_Previews: PreviewProvider {
 }
 
 extension EmailSignUpView {
+    var title: some View {
+        Text(L10n.pleaseEnterYourEmailPassword)
+            .font(.poppins(.medium, size: 21))
+            .padding(.horizontal)
+            .multilineTextAlignment(.center)
+            .padding(.bottom, 30)
+            .minimumScaleFactor(0.68)
+    }
     var container: some View {
         VStack(spacing: 12) {
             TextField(L10n.emailAddress, text: $viewModel.email)

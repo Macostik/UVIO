@@ -16,6 +16,7 @@
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
 		562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* OnboardingViewType.swift */; };
+		56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56295BE1284A4F3D003811F5 /* SingInView.swift */; };
 		562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */; };
 		562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */; };
 		562A6BBA2847E134002152B0 /* CompleteOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */; };
@@ -98,6 +99,7 @@
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* OnboardingViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewType.swift; sourceTree = "<group>"; };
+		56295BE1284A4F3D003811F5 /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
 		562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
 		562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeToggleStyle.swift; sourceTree = "<group>"; };
 		562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				56A8537328323934000DFE3D /* SplashView.swift */,
+				56E2867E28354EAE0095FD9F /* SignUpView.swift */,
+				56295BE1284A4F3D003811F5 /* SingInView.swift */,
 				568C171728364DDB00C77384 /* EmailSignUpView.swift */,
 				56D958212833D3430053E65C /* GenderOnboardingView.swift */,
 				56953FD02832745C0025C1A2 /* NameOnboardingView.swift */,
@@ -251,7 +255,6 @@
 				561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */,
 				562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */,
 				5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */,
-				56E2867E28354EAE0095FD9F /* SignUpView.swift */,
 				562822B02846651100F0F6DC /* OnboardingView.swift */,
 				562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */,
 			);
@@ -634,6 +637,7 @@
 				56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
+				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
 				568C17222836949D00C77384 /* StoreProvider.swift in Sources */,
 				5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */,
 				563713B42840E48F003C5A09 /* GenderType.swift in Sources */,

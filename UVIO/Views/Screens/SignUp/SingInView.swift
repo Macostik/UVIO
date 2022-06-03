@@ -1,14 +1,13 @@
 //
-//  SignUpView.swift
+//  SingInView.swift
 //  UVIO
 //
-//  Created by Macostik on 18.05.2022.
+//  Created by Macostik on 03.06.2022.
 //
 
 import SwiftUI
-import Combine
 
-struct SignUpView: View {
+struct SignInView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
@@ -18,7 +17,7 @@ struct SignUpView: View {
             VStack {
                 signUpBanner
                 VStack {
-                    signUpTitle
+                    signInTitle
                     containerButtons
                 }
                 Spacer()
@@ -36,15 +35,15 @@ struct SignUpView: View {
     }
 }
 
-struct PrefferableSignUpView_Previews: PreviewProvider {
+struct PrefferableSignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView(viewModel: UserViewModel())
     }
 }
 
-extension SignUpView {
-    var signUpTitle: some View {
-        Text(L10n.awesome)
+extension SignInView {
+    var signInTitle: some View {
+        Text(L10n.welcomeBack)
             .font(.poppins(.medium, size: 21))
             .padding(.horizontal)
             .padding(.top, 60)

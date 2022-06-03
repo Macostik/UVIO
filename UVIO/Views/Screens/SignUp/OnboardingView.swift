@@ -17,6 +17,15 @@ struct OnboardingView: View {
         }
         .navigationBarHidden(true)
     }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension OnboardingView {
     var backgroundColor: some View {
         LinearGradient(
             colors: [Color.grayBackgroundColor],
@@ -45,11 +54,5 @@ struct OnboardingView: View {
                     .tag(OnboardingViewType.glucoseAlert)
             }.tabViewStyle(.page(indexDisplayMode: .never))
         }
-    }
-}
-
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView(viewModel: UserViewModel())
     }
 }

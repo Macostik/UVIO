@@ -27,6 +27,15 @@ struct CompleteOnboardingView: View {
         }
         .navigationBarHidden(true)
     }
+}
+
+struct CompleteOnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        CompleteOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension CompleteOnboardingView {
     var backgroundColor: some View {
         LinearGradient(
             colors: [Color.grayBackgroundColor],
@@ -67,11 +76,5 @@ struct CompleteOnboardingView: View {
             .font(.poppins(.bold, size: 21)) +
         Text(L10n.getStarted)
             .font(.poppins(.regular, size: 21))
-    }
-}
-
-struct CompleteOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        CompleteOnboardingView(viewModel: UserViewModel())
     }
 }

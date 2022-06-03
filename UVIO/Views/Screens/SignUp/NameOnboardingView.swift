@@ -28,7 +28,15 @@ struct NameOnboardingView: View, Identifiable {
         }
         .edgesIgnoringSafeArea(.all)
     }
+}
 
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        NameOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension NameOnboardingView {
     var contentView: some View {
         VStack(spacing: 32) {
             Text(L10n.whatName)
@@ -43,11 +51,5 @@ struct NameOnboardingView: View, Identifiable {
                 .shadow(color: Color.black.opacity(0.1),
                         radius: 7)
         }
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        NameOnboardingView(viewModel: UserViewModel())
     }
 }

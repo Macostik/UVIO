@@ -24,6 +24,15 @@ struct GlucoseUnitOnboardingView: View {
         }
         .edgesIgnoringSafeArea(.all)
     }
+}
+
+struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        GlucoseUnitOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension GlucoseUnitOnboardingView {
     var contentView: some View {
         VStack(spacing: 32) {
             Text(L10n.selectGlucose)
@@ -59,11 +68,5 @@ struct GlucoseUnitOnboardingView: View {
                 .frame(height: 48)
             }
         }.padding(.top)
-    }
-}
-
-struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        GlucoseUnitOnboardingView(viewModel: UserViewModel())
     }
 }

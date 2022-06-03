@@ -28,6 +28,15 @@ struct BirthDateOnboardingView: View, Identifiable {
         }
         .edgesIgnoringSafeArea(.all)
     }
+}
+
+struct LoginBirthdateView_Previews: PreviewProvider {
+    static var previews: some View {
+        BirthDateOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension BirthDateOnboardingView {
     var contentView: some View {
         VStack {
             Text(L10n.whatIsYourBD)
@@ -35,11 +44,5 @@ struct BirthDateOnboardingView: View, Identifiable {
             DatePickerView(date: $viewModel.birthDate,
                            isPresentedDatePicker: $isPresentedDatePicker)
         }
-    }
-}
-
-struct LoginBirthdateView_Previews: PreviewProvider {
-    static var previews: some View {
-        BirthDateOnboardingView(viewModel: UserViewModel())
     }
 }

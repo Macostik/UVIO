@@ -9,6 +9,9 @@ import SwiftUI
 
 struct DiabetsOnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
+    let columns = [
+        GridItem(.flexible())
+    ]
     var body: some View {
         ZStack {
             Image.loginViewBackground
@@ -36,9 +39,15 @@ struct DiabetsOnboardingView: View {
             }
         })
     }
-    let columns = [
-        GridItem(.flexible())
-    ]
+}
+
+struct DiabetsOnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        DiabetsOnboardingView(viewModel: UserViewModel())
+    }
+}
+
+extension DiabetsOnboardingView {
     var contentView: some View {
         VStack {
             Text(L10n.whichTypeDiabetes)
@@ -62,10 +71,5 @@ struct DiabetsOnboardingView: View {
                 } .padding(.horizontal)
             }.frame(height: 430)
         }
-    }
-}
-struct DiabetsOnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiabetsOnboardingView(viewModel: UserViewModel())
     }
 }
