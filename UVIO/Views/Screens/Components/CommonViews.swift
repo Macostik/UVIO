@@ -185,34 +185,34 @@ var singUpLink: some View {
 }
 
 var signUpBanner: some View {
-    ZStack {
+    VStack(spacing: 16) {
         Image.uvioIcon
             .frame(width: 96, height: 96)
             .background(Color.white)
             .cornerRadius(24)
+        Text(L10n.cone)
+            .font(.poppins(.bold, size: 21))
     }
 }
 
 var signInBanner: some View {
-    ZStack {
+    VStack(spacing: 16) {
         Image.uvioIcon
             .frame(width: 96, height: 96)
             .background(Color.white)
             .cornerRadius(16)
+        Text(L10n.cone)
+            .font(.poppins(.bold, size: 21))
     }
 }
 
 var signUpTitle: some View {
-    VStack(spacing: 16) {
-        Text(L10n.cone)
-            .font(.poppins(.bold, size: 21))
-        Text(L10n.awesome)
-            .font(.poppins(.medium, size: 21))
-            .padding(.horizontal)
-            .padding(.top, 60)
-            .multilineTextAlignment(.center)
-    }
-    .padding(.bottom, 48)
+    Text(L10n.awesome)
+        .font(.poppins(.medium, size: 21))
+        .padding(.horizontal)
+        .padding(.top, 60)
+        .multilineTextAlignment(.center)
+        .padding(.bottom, 48)
 }
 
 var signInTitle: some View {

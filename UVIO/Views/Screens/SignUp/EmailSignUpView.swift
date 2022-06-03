@@ -21,6 +21,8 @@ struct EmailSignUpView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 signUpBanner
+                    .padding(.bottom, 40)
+                    .layoutPriority(0)
                 title
                 container
                 Spacer()
@@ -39,16 +41,12 @@ struct EmailSignUpView: View {
         .toast(isShowing: $viewModel.showErrorAlert)
     }
     var title: some View {
-        VStack(spacing: 16) {
-            Text(L10n.cone)
-                .font(.poppins(.bold, size: 21))
-            Text(L10n.pleaseEnterYourEmailPassword)
-                .font(.poppins(.medium, size: 21))
-                .padding(.horizontal)
-                .padding(.top, 60)
-                .multilineTextAlignment(.center)
-        }
-        .padding(.bottom, 36)
+        Text(L10n.pleaseEnterYourEmailPassword)
+            .font(.poppins(.medium, size: 21))
+            .padding(.horizontal)
+            .multilineTextAlignment(.center)
+            .padding(.bottom, 30)
+            .minimumScaleFactor(0.68)
     }
 }
 
@@ -62,7 +60,7 @@ extension EmailSignUpView {
     var container: some View {
         VStack(spacing: 12) {
             TextField(L10n.emailAddress, text: $viewModel.email)
-                .padding(.leading)
+                .padding()
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
@@ -72,13 +70,15 @@ extension EmailSignUpView {
                 .cornerRadius(12)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
+                .frame(maxHeight: 48)
             passwordInput
             Button {
                 viewModel.signUpClickPublisher.send()
             } label: {
                 Text(L10n.signUp)
                     .font(.poppins(.medium, size: 14))
-                    .frame(maxWidth: .infinity, maxHeight: 48)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 48)
                     .background(Color.complementaryColor)
                     .foregroundColor(Color.white)
                     .cornerRadius(12)
@@ -101,15 +101,16 @@ extension EmailSignUpView {
             } else {
                 SecureField(L10n.password, text: $viewModel.password)
             }
-     }.padding(.leading)
-            .font(.poppins(.medium, size: 14))
-            .frame(maxWidth: .infinity, maxHeight: 48)
-            .background(Color.white)
-            .overlay(RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.primaryAlertColor,
-                        lineWidth: viewModel.showErrorAlert ? 2 : 0))
-            .cornerRadius(12)
-            .padding(.horizontal)
-            .overlay(hideOverlay, alignment: .trailing)
+        }
+        .padding()
+        .font(.poppins(.medium, size: 14))
+        .frame(maxWidth: .infinity, maxHeight: 48)
+        .background(Color.white)
+        .overlay(RoundedRectangle(cornerRadius: 12)
+            .stroke(Color.primaryAlertColor,
+                    lineWidth: viewModel.showErrorAlert ? 2 : 0))
+        .cornerRadius(12)
+        .padding(.horizontal)
+        .overlay(hideOverlay, alignment: .trailing)
     }
 }
