@@ -16,19 +16,24 @@ protocol StoreProvider {
 }
 
 class StoreService: StoreInteractor {
+    let realmProvider = RealmProvider(config: .defaultConfiguration)
     func save(user: User) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
-        let realm = RealmProvider.shared.realm
-        realm.writeAsync({
-            let users = realm.objects(User.self)
-            realm.delete(users)
+        let realm = realmProvider.realm
+        realm?.writeAsync({
+            guard  let users = realm?.objects(User.self) else {
+                Logger.error("Realm doesn't contain user")
+                subject.send(completion: .failure(RealmError.unknow))
+                return
+            }
+            realm?.delete(users)
             Logger.debug("User is writing to DB")
-            realm.add(user, update: .modified)
+            realm?.add(user, update: .modified)
         }, onComplete: { error in
             guard let error = error else {
                 Logger.debug("User was saved successfully")
                 subject.send(true)
-                return  subject.send(completion: .finished)
+                return subject.send(completion: .finished)
             }
             Logger.error("User wasn't saved to DB with error: \(error)")
             subject.send(completion: .failure(error))
@@ -36,8 +41,8 @@ class StoreService: StoreInteractor {
         return subject.eraseToAnyPublisher()
     }
     func getUser() -> AnyPublisher<User?, Error> {
-        let realm = RealmProvider.shared.realm
-        guard let user = realm.objects(User.self).first else {
+        let realm = realmProvider.realm
+        guard let user = realm?.objects(User.self).first else {
             return Just(nil)
                 .mapError { _ in RealmError.unknow }
                 .eraseToAnyPublisher()
@@ -50,13 +55,13 @@ class StoreService: StoreInteractor {
                           password: String? = nil,
                           dexcomToken: String? = nil) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
-        let realm = RealmProvider.shared.realm
-        guard let currentUser = realm.objects(User.self).first else {
+        let realm = realmProvider.realm
+        guard let currentUser = realm?.objects(User.self).first else {
             Logger.error("Realm doesn't contain user")
             subject.send(completion: .failure(RealmError.empty))
             return subject.eraseToAnyPublisher()
         }
-        realm.writeAsync({
+        realm?.writeAsync({
             Logger.debug("User is updating to DB")
             if let email = email {
                 currentUser.email = email
@@ -67,7 +72,7 @@ class StoreService: StoreInteractor {
             if let dexcomToken = dexcomToken {
                 currentUser.dexcomToken = dexcomToken
             }
-            realm.add(currentUser, update: .modified)
+            realm?.add(currentUser, update: .modified)
         }, onComplete: { error in
             guard let error = error else {
                 Logger.debug("User credentials were saved successfully")
@@ -81,8 +86,8 @@ class StoreService: StoreInteractor {
     }
     func validateCredentials(email: String, password: String) -> AnyPublisher<Bool, Error> {
         let subject = CurrentValueSubject<Bool, Error>(false)
-        let realm = RealmProvider.shared.realm
-        guard let currentUser = realm.objects(User.self).first else {
+        let realm = realmProvider.realm
+        guard let currentUser = realm?.objects(User.self).first else {
             Logger.error("Realm doesn't contain user")
             return subject.eraseToAnyPublisher()
         }
@@ -92,12 +97,12 @@ class StoreService: StoreInteractor {
     }
     func logOut() -> AnyPublisher<Bool, Error> {
         let subject = CurrentValueSubject<Bool, Error>(false)
-        let realm = RealmProvider.shared.realm
-        guard let currentUser = realm.objects(User.self).first else {
+        let realm = realmProvider.realm
+        guard let currentUser = realm?.objects(User.self).first else {
             Logger.error("Realm doesn't contain user")
             return subject.eraseToAnyPublisher()
         }
-        realm.writeAsync({
+        realm?.writeAsync({
             currentUser.isLogin = false
         }, onComplete: { error in
             guard let error = error else {

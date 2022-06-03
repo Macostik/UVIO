@@ -16,13 +16,12 @@ struct RealmProvider {
       configuration = config
       Logger.info("\(configuration.fileURL!)")
   }
-  public var realm: Realm {
+  public var realm: Realm? {
         do {
             return try Realm(configuration: configuration)
         } catch {
             Logger.error("Realm was not configured!")
-            // swiftlint:disable force_try
-            return try! Realm()
+            return try? Realm()
         }
     }
 //    private static func configureRealm() -> Realm.Configuration {
@@ -50,5 +49,4 @@ struct RealmProvider {
 //        }
 //        return config
 //    }
-    public static var shared = RealmProvider(config: .defaultConfiguration)
 }
