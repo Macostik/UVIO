@@ -28,10 +28,9 @@ struct SignUpView: View {
                 privatePolicy
                     .multilineTextAlignment(.center)
             }.padding(.top, 60)
-            NavigationLink(isActive: $viewModel.userWasUpdated) {
-                ConnectCGMView(userViewModel: viewModel,
-                               viewModel: ConnectCGMViewModel())
-            } label: {
+            NavigationLink(destination:
+                            OnboardingView(viewModel: viewModel),
+                           isActive: $viewModel.signUpConfirmed) {
                 EmptyView()
             }
             NativigationBackBarView {}

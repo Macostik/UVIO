@@ -16,6 +16,7 @@ extension OAuth2Swift {
                                   state: state, parameters: parameters, headers: headers)
     }
     struct AuthorizePublisher: Publisher {
+        // swiftlint:disable nesting
         typealias Output = TokenSuccess
         typealias Failure = OAuthSwiftError
         private let oauth2: OAuth2Swift

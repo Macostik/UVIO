@@ -15,3 +15,10 @@ opt_in_rules:
     - unavailable_function
     - empty_string
     - file_name_no_space
+nesting:
+  type_level:
+    warning: 3 --> this means the warning appears if you nest 3 level deep instead of 1
+    error: 6
+  statement_level:
+    warning: 5
+    error: 10

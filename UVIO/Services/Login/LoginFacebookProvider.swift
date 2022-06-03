@@ -16,8 +16,8 @@ protocol LoginFacebookProvider {
 
 struct LoginFacebookService: LoginFacebookInteractor {
     let loginManager = LoginManager()
-    func login() -> AnyPublisher<User, Error> {
-        let subject = PassthroughSubject<User, Error>()
+    func login() -> AnyPublisher<UserData, Error> {
+        let subject = PassthroughSubject<UserData, Error>()
         loginManager.logIn(permissions: [.publicProfile, .email],
                            viewController: nil) { loginResult in
             switch loginResult {
@@ -36,11 +36,9 @@ struct LoginFacebookService: LoginFacebookInteractor {
                             subject.send(completion: .failure(error))
                         }
                         if result != nil, let fbDetails = result as? [String: String] {
-                            let localUser = User()
-                            localUser.id =  fbDetails["id"] ?? ""
-                            localUser.name = fbDetails["name"] ?? ""
-                            localUser.email = fbDetails["email"] ?? ""
-                            subject.send(localUser)
+                            let name = fbDetails["name"] ?? ""
+                            let email = fbDetails["email"] ?? ""
+                            subject.send((name, email))
                             subject.send(completion: .finished)
                         }
                     })

@@ -20,16 +20,15 @@ struct LoginGoogleService: LoginGoogleInteractor {
     private let rootViewController: UIViewController = {
         UIApplication.shared.windows.first?.rootViewController ?? UIViewController()
     }()
-    func login() -> AnyPublisher<User, Error> {
-        let subject = PassthroughSubject<User, Error>()
+    func login() -> AnyPublisher<UserData, Error> {
+        let subject = PassthroughSubject<UserData, Error>()
         GIDSignIn.sharedInstance.signIn(with: configuration,
                                         presenting: rootViewController) { user, error in
             if let user = user {
-                let localUser = User()
-                localUser.id = user.userID ?? ""
-                localUser.name = user.profile?.name ?? ""
-                localUser.email = user.profile?.email ?? ""
-                subject.send(localUser)
+                Logger.info("Google login was successful with user: \(user)")
+                let name = user.profile?.name ?? ""
+                let email = user.profile?.email ?? ""
+                subject.send((name, email))
                 subject.send(completion: .finished)
             }
             if let error = error {

@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol LoginGoogleInteractor {
-    func login() -> AnyPublisher<User, Error>
+    func login() -> AnyPublisher<UserData, Error>
 }

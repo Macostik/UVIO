@@ -24,7 +24,11 @@ struct DexcomService: DexcomInteractor {
         return oauth2.authorizePublisher(callbackURL: Constant.returnURL,
                                          scope: Constant.authScope,
                                          state: state)
-            .map { credential, _, _ in credential.oauthToken }
+            .map { credential, _, _ in
+                let token = credential.oauthToken
+                Logger.info("Dexcom login was successful with token: \(token)")
+                return token
+            }
             .mapError { $0 }
             .eraseToAnyPublisher()
     }

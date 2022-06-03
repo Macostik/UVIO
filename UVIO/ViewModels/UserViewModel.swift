@@ -113,10 +113,13 @@ extension UserViewModel {
         googlePublisher
             .flatMap({ _ in self.dependency.provider.googleLoginService.login() })
         Publishers.MergeMany(facebookPublisher, googlePublisher)
-            .flatMap(save)
+            .map({ name, email -> Bool in
+                self.name = name
+                self.email = email
+                return true
+            })
             .replaceError(with: false)
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.userWasUpdated, on: self)
+            .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
     func checkUser() {

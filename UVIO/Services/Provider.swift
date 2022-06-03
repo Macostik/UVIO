@@ -8,6 +8,7 @@
 import Foundation
 import Resolver
 
+typealias UserData = (String, String)
 typealias ProviderType = LoginFacebookProvider & LoginGoogleProvider & DexcomProvider  & StoreProvider
 
 struct Provider: ProviderType {
