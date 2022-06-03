@@ -14,8 +14,8 @@ struct Constant {
     static let dexcomSecretClientID = "9qaNhXG3p1TzxpuW0ywa8Do3BkzPlAif"
     static let dexcomSecretKey = "hu7RAwDqqF7UDIQt"
     static let returnURL: String = "cone://com.GYS.UVIO"
-    static let authURL: String = "https://sandbox-api.dexcom.com/v2/oauth2/login"
-    static let authToken: String = "https://sandbox-api.dexcom.com/v2/oauth2/token"
+    static let authURL: String = "https://api.dexcom.com/v2/oauth2/login"
+    static let authToken: String = "https://api.dexcom.com/v2/oauth2/token"
     static let authType: String = "code"
     static let authScope: String = "offline_access"
 }

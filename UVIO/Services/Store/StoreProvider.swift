@@ -46,7 +46,9 @@ class StoreService: StoreInteractor {
             .mapError { _ in RealmError.unknow }
             .eraseToAnyPublisher()
     }
-    func setupCredentionals(email: String? = nil, password: String? = nil) -> AnyPublisher<Bool, Error> {
+    func updateUserParams(email: String? = nil,
+                          password: String? = nil,
+                          dexcomToken: String? = nil) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = RealmProvider.shared.realm
         guard let currentUser = realm.objects(User.self).first else {
@@ -62,7 +64,9 @@ class StoreService: StoreInteractor {
             if let password = password {
                 currentUser.password = password
             }
-            currentUser.isLogin = true
+            if let dexcomToken = dexcomToken {
+                currentUser.dexcomToken = dexcomToken
+            }
             realm.add(currentUser, update: .modified)
         }, onComplete: { error in
             guard let error = error else {

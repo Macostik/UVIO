@@ -29,7 +29,6 @@ struct LoginGoogleService: LoginGoogleInteractor {
                 localUser.id = user.userID ?? ""
                 localUser.name = user.profile?.name ?? ""
                 localUser.email = user.profile?.email ?? ""
-                localUser.isLogin = true
                 subject.send(localUser)
                 subject.send(completion: .finished)
             }

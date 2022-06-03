@@ -51,6 +51,14 @@ class UserViewModel: ObservableObject {
     // Onboarding alert
     @Published var isVibrate: Bool = false
     @Published var isNotDisturb: Bool = false
+    // Dexcome data
+    @Published var dexcomToken: String = "" {
+        didSet {
+            if !dexcomToken.isEmpty {
+                createNewUser.send(User())
+            }
+        }
+    }
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
@@ -95,7 +103,6 @@ extension UserViewModel {
             })
             .filter({ $0 })
             .sink { _ in
-                _ = self.setupCredentials(email: self.email, password: self.password)
             }.store(in: &cancellableSet)
     }
     func handleLoginViaThirdParty() {
@@ -127,6 +134,8 @@ extension UserViewModel {
             .map { user -> User in
                 user.id = UUID().uuidString
                 user.name = self.name
+                user.email = self.email
+                user.password = self.password
                 user.birthDate = self.birthDate
                 user.gender = self.genderSelectedItem?.type ?? ""
                 user.diabetsType = self.diabetSelectedItem?.type ?? ""
@@ -135,24 +144,27 @@ extension UserViewModel {
                 user.glucoseTargetUpperBound = "\(self.glucoseRangeValue.upperBound)"
                 user.hypo = "\(self.hypoValue)"
                 user.hyper = "\(self.hyperValue)"
+                user.isVibrate = self.isVibrate
+                user.isNotDisturb = self.isNotDisturb
+                user.dexcomToken = self.dexcomToken
                 return user
             }
             .flatMap(save)
-            .assertNoFailure()
+            .replaceError(with: false)
             .assign(to: \.userCreateCompleted, on: self)
             .store(in: &cancellableSet)
     }
     func handleSignIn() {
         signInClickPublisher
             .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
-            .assertNoFailure()
+            .replaceError(with: false)
             .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
     func handleSignUp() {
         signUpClickPublisher
             .map({ self.signUp })
-            .assertNoFailure()
+            .replaceError(with: false)
             .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
@@ -191,11 +203,13 @@ extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
         dependency.provider.storeService.getUser()
     }
-    func setupCredentials(email: String,
-                          password: String) -> AnyPublisher<Bool, Error> {
+    func updateUserParams(email: String? = nil,
+                          password: String? = nil,
+                          dexcomToken: String? = nil) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService
-            .setupCredentionals(email: email,
-                                password: password)
+            .updateUserParams(email: email,
+                              password: password,
+                              dexcomToken: dexcomToken)
     }
     func save(user: User) -> AnyPublisher<Bool, Error> {
         return dependency.provider.storeService.save(user: user)
@@ -248,11 +262,8 @@ extension UserViewModel {
 extension UserViewModel {
     func dexcomLogin() {
         dependency.provider.dexcomService.getBearer()
-            .sink { error in
-                print(error)
-            } receiveValue: { token in
-                Logger.debug("Dexcom token - \(token)")
-            }
+            .replaceError(with: "")
+            .assign(to: \.dexcomToken, on: self)
             .store(in: &cancellableSet)
     }
 }

@@ -40,7 +40,6 @@ struct LoginFacebookService: LoginFacebookInteractor {
                             localUser.id =  fbDetails["id"] ?? ""
                             localUser.name = fbDetails["name"] ?? ""
                             localUser.email = fbDetails["email"] ?? ""
-                            localUser.isLogin = true
                             subject.send(localUser)
                             subject.send(completion: .finished)
                         }

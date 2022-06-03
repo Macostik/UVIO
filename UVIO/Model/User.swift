@@ -21,5 +21,8 @@ class User: Object {
     @Persisted var glucoseTargetUpperBound: String = ""
     @Persisted var hyper: String = ""
     @Persisted var hypo: String = ""
-    @Persisted var isLogin: Bool = false
+    @Persisted var isLogin: Bool = true
+    @Persisted var isVibrate: Bool = false
+    @Persisted var isNotDisturb: Bool = false
+    @Persisted var dexcomToken: String = ""
 }

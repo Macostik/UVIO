@@ -19,6 +19,11 @@ struct CompleteOnboardingView: View {
                 Spacer()
             }
             NativigationBarView(action: {}, content: {})
+            NavigationLink(isActive: $viewModel.userCreateCompleted) {
+                ConnectCGMView(userViewModel: viewModel, viewModel: ConnectCGMViewModel())
+            } label: {
+                EmptyView()
+            }
         }
         .navigationBarHidden(true)
     }
