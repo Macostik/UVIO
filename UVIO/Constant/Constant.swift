@@ -18,4 +18,6 @@ struct Constant {
     static let authToken: String = "https://api.dexcom.com/v2/oauth2/token"
     static let authType: String = "code"
     static let authScope: String = "offline_access"
+    static let gcmMessageID: String = "gcm.message_id"
+    static let fcmTokenKey: String = "FCMToken"
 }

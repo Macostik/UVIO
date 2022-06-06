@@ -33,6 +33,8 @@
 		563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B72840E8A9003C5A09 /* DiabetType.swift */; };
 		563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DB284DE9D800610F7C /* AppleProvider.swift */; };
 		563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DD284DEA9400610F7C /* AppleInteractor.swift */; };
+		563E02E2284E396400610F7C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 563E02E1284E396400610F7C /* FirebaseMessaging */; };
+		563E02E4284E398000610F7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 563E02E3284E398000610F7C /* GoogleService-Info.plist */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -118,6 +120,7 @@
 		563E02DB284DE9D800610F7C /* AppleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProvider.swift; sourceTree = "<group>"; };
 		563E02DD284DEA9400610F7C /* AppleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleInteractor.swift; sourceTree = "<group>"; };
 		563E02DF284E147E00610F7C /* UVIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UVIO.entitlements; sourceTree = "<group>"; };
+		563E02E3284E398000610F7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563E02E2284E396400610F7C /* FirebaseMessaging in Frameworks */,
 				5659808F283B776C00669F15 /* RealmSwift in Frameworks */,
 				563713B2283FD8FF003C5A09 /* GoogleSignIn in Frameworks */,
 				56C0A7452848AA77001D5D00 /* OAuthSwift in Frameworks */,
@@ -325,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				563E02DF284E147E00610F7C /* UVIO.entitlements */,
+				563E02E3284E398000610F7C /* GoogleService-Info.plist */,
 				5637138F283F7022003C5A09 /* Constant */,
 				56E6F193283D456000623AE2 /* Logger */,
 				5645D6AE2837D7290081EA5A /* Unit */,
@@ -500,6 +505,7 @@
 				56598091283B77D700669F15 /* FacebookLogin */,
 				563713B1283FD8FF003C5A09 /* GoogleSignIn */,
 				56C0A7442848AA77001D5D00 /* OAuthSwift */,
+				563E02E1284E396400610F7C /* FirebaseMessaging */,
 			);
 			productName = UVIO;
 			productReference = 56A8534E28322350000DFE3D /* UVIO.app */;
@@ -535,6 +541,7 @@
 				56598090283B77D700669F15 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				563713B0283FD8FF003C5A09 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				56C0A7432848AA77001D5D00 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				563E02E0284E396400610F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 56A8534F28322350000DFE3D /* Products */;
 			projectDirPath = "";
@@ -550,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563E02E4284E398000610F7C /* GoogleService-Info.plist in Resources */,
 				56953FCD283259C90025C1A2 /* Poppins-Bold.ttf in Resources */,
 				568C172528369B6200C77384 /* swiftlint.yml in Resources */,
 				56C7720F2835642B0000E579 /* fonts_swift5_swiftui.stencil in Resources */,
@@ -846,7 +854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UVIO/UVIO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XRN8AF3HH;
@@ -866,7 +874,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ConeApp_developer_profile;
+				PROVISIONING_PROFILE_SPECIFIER = ConeApp_distribution_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -933,7 +941,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UVIO/UVIO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XRN8AF3HH;
@@ -953,7 +961,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = ConeApp_developer_profile;
+				PROVISIONING_PROFILE_SPECIFIER = ConeApp_distribution_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -992,6 +1000,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
+			};
+		};
+		563E02E0284E396400610F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
 		5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */ = {
@@ -1033,6 +1049,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 563713B0283FD8FF003C5A09 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		563E02E1284E396400610F7C /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 563E02E0284E396400610F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		5659808B283B771600669F15 /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
