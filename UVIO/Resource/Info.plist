@@ -26,7 +26,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.GYS.UVIO</string>
+			<string>com.cone.uvio</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>cone</string>
