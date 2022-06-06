@@ -9,6 +9,6 @@ import Resolver
 import Combine
 import FacebookLogin
 
-protocol LoginFacebookInteractor {
-    func login() -> AnyPublisher<UserData, Error>
+protocol FacebookInteractor {
+    func singIn() -> AnyPublisher<UserData, Error>
 }

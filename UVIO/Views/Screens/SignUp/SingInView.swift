@@ -88,7 +88,7 @@ extension SignInView {
                     .foregroundColor(.black))
             }
             Button {
-                //                self.facebookProvider.facebookLogin(cUser: currentGiver)
+                self.viewModel.applePublisher.send()
             } label: {
                 ZStack {
                     HStack {

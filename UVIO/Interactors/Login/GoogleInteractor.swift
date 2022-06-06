@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-protocol LoginGoogleInteractor {
-    func login() -> AnyPublisher<UserData, Error>
+protocol GoogleInteractor {
+    func singIn() -> AnyPublisher<UserData, Error>
 }

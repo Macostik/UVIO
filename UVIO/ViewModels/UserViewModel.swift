@@ -76,6 +76,7 @@ class UserViewModel: ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
     var facebookPublisher = PassthroughSubject<Void, Error>()
     var googlePublisher = PassthroughSubject<Void, Error>()
+    var applePublisher = PassthroughSubject<Void, Error>()
     init() {
         createUser()
         checkUser()
@@ -108,11 +109,14 @@ extension UserViewModel {
     func handleLoginViaThirdParty() {
         let facebookPublisher =
         facebookPublisher
-            .flatMap({ _ in self.dependency.provider.facebookLoginService.login() })
+            .flatMap({ _ in self.dependency.provider.facebookService.singIn() })
         let googlePublisher =
         googlePublisher
-            .flatMap({ _ in self.dependency.provider.googleLoginService.login() })
-        Publishers.MergeMany(facebookPublisher, googlePublisher)
+            .flatMap({ _ in self.dependency.provider.googleService.singIn() })
+       let applePublisher =
+        applePublisher
+            .flatMap({ _ in self.dependency.provider.appleService.signIn() })
+        Publishers.MergeMany(facebookPublisher, googlePublisher, applePublisher)
             .map({ name, email -> Bool in
                 self.name = name
                 self.email = email

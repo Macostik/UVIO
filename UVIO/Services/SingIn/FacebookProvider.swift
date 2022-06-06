@@ -1,5 +1,5 @@
 //
-//  LoginFacebookProvider.swift
+//  FacebookProvider.swift
 //  UVIO
 //
 //  Created by Macostik on 23.05.2022.
@@ -10,13 +10,13 @@ import FBSDKLoginKit
 import Combine
 import UIKit
 
-protocol LoginFacebookProvider {
-    var facebookLoginService: LoginFacebookInteractor { get }
+protocol FacebookProvider {
+    var facebookService: FacebookInteractor { get }
 }
 
-struct LoginFacebookService: LoginFacebookInteractor {
+struct FacebookService: FacebookInteractor {
     let loginManager = LoginManager()
-    func login() -> AnyPublisher<UserData, Error> {
+    func singIn() -> AnyPublisher<UserData, Error> {
         let subject = PassthroughSubject<UserData, Error>()
         loginManager.logIn(permissions: [.publicProfile, .email],
                            viewController: nil) { loginResult in

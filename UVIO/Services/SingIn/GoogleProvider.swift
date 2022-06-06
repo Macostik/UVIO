@@ -1,5 +1,5 @@
 //
-//  LoginGoogleProvider.swift
+//  GoogleProvider.swift
 //  UVIO
 //
 //  Created by Macostik on 25.05.2022.
@@ -9,18 +9,15 @@ import Combine
 import GoogleSignIn
 import RealmSwift
 
-protocol LoginGoogleProvider {
-    var googleLoginService: LoginGoogleInteractor { get }
+protocol GoogleProvider {
+    var googleService: GoogleInteractor { get }
 }
 
-struct LoginGoogleService: LoginGoogleInteractor {
+struct GoogleService: GoogleInteractor {
     private var configuration: GIDConfiguration = {
         return GIDConfiguration(clientID: Constant.clientID)
     }()
-    private let rootViewController: UIViewController = {
-        UIApplication.shared.windows.first?.rootViewController ?? UIViewController()
-    }()
-    func login() -> AnyPublisher<UserData, Error> {
+    func singIn() -> AnyPublisher<UserData, Error> {
         let subject = PassthroughSubject<UserData, Error>()
         GIDSignIn.sharedInstance.signIn(with: configuration,
                                         presenting: rootViewController) { user, error in

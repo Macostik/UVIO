@@ -31,6 +31,8 @@
 		563713B42840E48F003C5A09 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B32840E48F003C5A09 /* GenderType.swift */; };
 		563713B62840E732003C5A09 /* GlucoseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B52840E732003C5A09 /* GlucoseType.swift */; };
 		563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B72840E8A9003C5A09 /* DiabetType.swift */; };
+		563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DB284DE9D800610F7C /* AppleProvider.swift */; };
+		563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DD284DEA9400610F7C /* AppleInteractor.swift */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -38,7 +40,7 @@
 		5659808C283B771600669F15 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808B283B771600669F15 /* Resolver */; };
 		5659808F283B776C00669F15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808E283B776C00669F15 /* RealmSwift */; };
 		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
-		56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* LoginFacebookProvider.swift */; };
+		56598095283B789800669F15 /* FacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* FacebookProvider.swift */; };
 		565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCDE283BD45A004D9924 /* NativigationBarView.swift */; };
 		565FDCE1283BDA29004D9924 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCE0283BDA29004D9924 /* View+Ext.swift */; };
 		56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56749FA5283BAA0C00A2D4B7 /* ToastView.swift */; };
@@ -73,15 +75,15 @@
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
 		56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958212833D3430053E65C /* GenderOnboardingView.swift */; };
 		56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2867E28354EAE0095FD9F /* SignUpView.swift */; };
-		56E537BF283E950900929282 /* LoginGoogleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537BE283E950900929282 /* LoginGoogleInteractor.swift */; };
-		56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C0283E958300929282 /* LoginGoogleProvider.swift */; };
+		56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537BE283E950900929282 /* GoogleInteractor.swift */; };
+		56E537C1283E958300929282 /* GoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C0283E958300929282 /* GoogleProvider.swift */; };
 		56E537C5283E960300929282 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C4283E960300929282 /* Provider.swift */; };
 		56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C9283E998E00929282 /* DependencyProvider.swift */; };
 		56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */; };
 		56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F37283CC0A90085D4DD /* CheckInboxView.swift */; };
 		56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F39283CC3E90085D4DD /* NewPasswordView.swift */; };
 		56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */; };
-		56E6F190283D24A500623AE2 /* LoginFacebookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F18F283D24A500623AE2 /* LoginFacebookInteractor.swift */; };
+		56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F18F283D24A500623AE2 /* FacebookInteractor.swift */; };
 		56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F194283D458900623AE2 /* SlimLogglyDestinationConfig.swift */; };
 		56E6F19A283D458900623AE2 /* SlimLogglyDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F195283D458900623AE2 /* SlimLogglyDestination.swift */; };
 		56E6F19B283D458900623AE2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F196283D458900623AE2 /* Logger.swift */; };
@@ -113,11 +115,14 @@
 		563713B32840E48F003C5A09 /* GenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderType.swift; sourceTree = "<group>"; };
 		563713B52840E732003C5A09 /* GlucoseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseType.swift; sourceTree = "<group>"; };
 		563713B72840E8A9003C5A09 /* DiabetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetType.swift; sourceTree = "<group>"; };
+		563E02DB284DE9D800610F7C /* AppleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProvider.swift; sourceTree = "<group>"; };
+		563E02DD284DEA9400610F7C /* AppleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleInteractor.swift; sourceTree = "<group>"; };
+		563E02DF284E147E00610F7C /* UVIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UVIO.entitlements; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		56598094283B789800669F15 /* LoginFacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacebookProvider.swift; sourceTree = "<group>"; };
+		56598094283B789800669F15 /* FacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookProvider.swift; sourceTree = "<group>"; };
 		565FDCDE283BD45A004D9924 /* NativigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativigationBarView.swift; sourceTree = "<group>"; };
 		565FDCE0283BDA29004D9924 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		56749FA5283BAA0C00A2D4B7 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -153,15 +158,15 @@
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		56D958212833D3430053E65C /* GenderOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingView.swift; sourceTree = "<group>"; };
 		56E2867E28354EAE0095FD9F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		56E537BE283E950900929282 /* LoginGoogleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGoogleInteractor.swift; sourceTree = "<group>"; };
-		56E537C0283E958300929282 /* LoginGoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGoogleProvider.swift; sourceTree = "<group>"; };
+		56E537BE283E950900929282 /* GoogleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleInteractor.swift; sourceTree = "<group>"; };
+		56E537C0283E958300929282 /* GoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleProvider.swift; sourceTree = "<group>"; };
 		56E537C4283E960300929282 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		56E537C9283E998E00929282 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryEmailView.swift; sourceTree = "<group>"; };
 		56E55F37283CC0A90085D4DD /* CheckInboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInboxView.swift; sourceTree = "<group>"; };
 		56E55F39283CC3E90085D4DD /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
 		56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordSuccessView.swift; sourceTree = "<group>"; };
-		56E6F18F283D24A500623AE2 /* LoginFacebookInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacebookInteractor.swift; sourceTree = "<group>"; };
+		56E6F18F283D24A500623AE2 /* FacebookInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookInteractor.swift; sourceTree = "<group>"; };
 		56E6F194283D458900623AE2 /* SlimLogglyDestinationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogglyDestinationConfig.swift; sourceTree = "<group>"; };
 		56E6F195283D458900623AE2 /* SlimLogglyDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogglyDestination.swift; sourceTree = "<group>"; };
 		56E6F196283D458900623AE2 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -268,7 +273,7 @@
 				56E537C9283E998E00929282 /* DependencyProvider.swift */,
 				56E537C4283E960300929282 /* Provider.swift */,
 				56E537C7283E98E400929282 /* Store */,
-				56E537C2283E95B700929282 /* Login */,
+				56E537C2283E95B700929282 /* SingIn */,
 				5623A10A283D49460097AF78 /* EnvironmentProvider.swift */,
 			);
 			path = Services;
@@ -319,6 +324,7 @@
 		56A8535028322350000DFE3D /* UVIO */ = {
 			isa = PBXGroup;
 			children = (
+				563E02DF284E147E00610F7C /* UVIO.entitlements */,
 				5637138F283F7022003C5A09 /* Constant */,
 				56E6F193283D456000623AE2 /* Logger */,
 				5645D6AE2837D7290081EA5A /* Unit */,
@@ -420,22 +426,24 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		56E537C2283E95B700929282 /* Login */ = {
+		56E537C2283E95B700929282 /* SingIn */ = {
 			isa = PBXGroup;
 			children = (
-				56598094283B789800669F15 /* LoginFacebookProvider.swift */,
-				56E537C0283E958300929282 /* LoginGoogleProvider.swift */,
+				56598094283B789800669F15 /* FacebookProvider.swift */,
+				56E537C0283E958300929282 /* GoogleProvider.swift */,
 				56C0A7462848AB67001D5D00 /* DexComProvider.swift */,
+				563E02DB284DE9D800610F7C /* AppleProvider.swift */,
 			);
-			path = Login;
+			path = SingIn;
 			sourceTree = "<group>";
 		};
 		56E537C3283E95C300929282 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				56E6F18F283D24A500623AE2 /* LoginFacebookInteractor.swift */,
-				56E537BE283E950900929282 /* LoginGoogleInteractor.swift */,
+				56E6F18F283D24A500623AE2 /* FacebookInteractor.swift */,
+				56E537BE283E950900929282 /* GoogleInteractor.swift */,
 				56C0A7482848AB8C001D5D00 /* DexcomInteractor.swift */,
+				563E02DD284DEA9400610F7C /* AppleInteractor.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -604,7 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56E6F19A283D458900623AE2 /* SlimLogglyDestination.swift in Sources */,
-				56E537BF283E950900929282 /* LoginGoogleInteractor.swift in Sources */,
+				56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */,
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
@@ -634,7 +642,7 @@
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
 				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,
-				56E537C1283E958300929282 /* LoginGoogleProvider.swift in Sources */,
+				56E537C1283E958300929282 /* GoogleProvider.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
 				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
@@ -643,13 +651,15 @@
 				563713B42840E48F003C5A09 /* GenderType.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56C0A7472848AB67001D5D00 /* DexComProvider.swift in Sources */,
-				56E6F190283D24A500623AE2 /* LoginFacebookInteractor.swift in Sources */,
+				56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
+				563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */,
-				56598095283B789800669F15 /* LoginFacebookProvider.swift in Sources */,
+				56598095283B789800669F15 /* FacebookProvider.swift in Sources */,
 				562822B12846651100F0F6DC /* OnboardingView.swift in Sources */,
 				56C0A74E28490BB1001D5D00 /* OAuth+Ext.swift in Sources */,
+				563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */,
 				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				563713B62840E732003C5A09 /* GlucoseType.swift in Sources */,
@@ -803,9 +813,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = UVIO/UVIO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 224SJKKLQ3;
+				DEVELOPMENT_TEAM = 8XRN8AF3HH;
 				ENV = DEV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UVIO/Resource/Info.plist;
@@ -822,6 +834,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ConeApp_developer_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -832,9 +845,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = UVIO/UVIO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 224SJKKLQ3;
+				DEVELOPMENT_TEAM = 8XRN8AF3HH;
 				ENV = PROD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UVIO/Resource/Info.plist;
@@ -851,6 +866,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ConeApp_developer_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -916,9 +932,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = UVIO/UVIO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 224SJKKLQ3;
+				DEVELOPMENT_TEAM = 8XRN8AF3HH;
 				ENV = STG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UVIO/Resource/Info.plist;
@@ -935,6 +953,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = ConeApp_developer_profile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
