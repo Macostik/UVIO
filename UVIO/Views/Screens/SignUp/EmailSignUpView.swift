@@ -75,7 +75,7 @@ extension EmailSignUpView {
             Button {
                 viewModel.signUpClickPublisher.send()
             } label: {
-                Text(L10n.signUp)
+                Text(viewModel.loginMode == .signUp ? L10n.signUp: L10n.signIn)
                     .font(.poppins(.medium, size: 14))
                     .frame(maxWidth: .infinity)
                     .frame(height: 48)

@@ -7,8 +7,12 @@
 
 import Combine
 import SwiftUI
+import RealmSwift
 
 class UserViewModel: ObservableObject {
+    enum LoginMode {
+        case signUp, signIn
+    }
     @Environment(\.dependency) var dependency
     // User name
     @Published var name: String = ""
@@ -55,7 +59,7 @@ class UserViewModel: ObservableObject {
         willSet {
             if !newValue.isEmpty {
                 Logger.info("Login was successful with auth token: \(newValue)")
-                self.signUpConfirmed = true
+                isloginModeSignUp = true
             }
         }
     }
@@ -67,12 +71,25 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    // Handle login mode
+    @Published var loginMode = LoginMode.signUp
+    @Published var isloginModeSignUp: Bool = false {
+        willSet {
+            if newValue {
+                switch loginMode {
+                case .signUp:  self.signUpConfirmed = true
+                case .signIn: self.signInConfirmed = true
+                }
+            }
+        }
+    }
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
     @Published var newPassword: String = ""
     @Published var signUp = false
     @Published var signUpConfirmed = false
+    @Published var signInConfirmed = false
     @Published var userWasUpdated = false
     @Published var userPersist = false
     @Published var userCreateCompleted = false
@@ -146,18 +163,12 @@ extension UserViewModel {
             .assign(to: \.userCreateCompleted, on: self)
             .store(in: &cancellableSet)
     }
-    func handleSignIn() {
-        signInClickPublisher
-            .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
-            .replaceError(with: false)
-            .assign(to: \.signUpConfirmed, on: self)
-            .store(in: &cancellableSet)
-    }
     func handleSignUp() {
         signUpClickPublisher
             .map({ self.signUp })
+            .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
             .replaceError(with: false)
-            .assign(to: \.signUpConfirmed, on: self)
+            .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
     func handleOnboardingScreen() {
@@ -208,8 +219,13 @@ extension UserViewModel {
     }
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error> {
-        return dependency.provider.storeService
-            .validateCredentials(email: email, password: password)
+        if loginMode == .signIn {
+            return dependency.provider.storeService
+                .validateCredentials(email: email, password: password)
+        }
+        return Just(true)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
     func logOut() -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.logOut()
@@ -262,7 +278,7 @@ extension UserViewModel {
         dependency.provider.appleService.singIn()
             .map({ $0 == .authorized })
             .replaceError(with: false)
-            .assign(to: \.signUpConfirmed, on: self)
+            .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
     func facebookLogin() {

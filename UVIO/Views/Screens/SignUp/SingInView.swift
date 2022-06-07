@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct SignInView: View {
-    @ObservedObject var viewModel: UserViewModel
+    @ObservedObject private var viewModel: UserViewModel
+    init(viewModel: UserViewModel) {
+        self.viewModel = viewModel
+    }
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -25,12 +28,16 @@ struct SignInView: View {
                     .multilineTextAlignment(.center)
             }.padding(.top, 60)
             NavigationLink(destination:
-                            OnboardingView(viewModel: viewModel),
-                           isActive: $viewModel.signUpConfirmed) {
+                            ConnectCGMView(userViewModel: viewModel,
+                                           viewModel: ConnectCGMViewModel()),
+                           isActive: $viewModel.signInConfirmed) {
                 EmptyView()
             }
             NativigationBackBarView {}
         }
+        .onAppear(perform: {
+            viewModel.loginMode = .signIn
+        })
         .navigationBarHidden(true)
     }
 }

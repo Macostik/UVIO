@@ -9,7 +9,10 @@ import SwiftUI
 import Combine
 
 struct SignUpView: View {
-    @ObservedObject var viewModel: UserViewModel
+    @ObservedObject private var viewModel: UserViewModel
+    init(viewModel: UserViewModel) {
+        self.viewModel = viewModel
+    }
     var body: some View {
         ZStack(alignment: .top) {
             Image.loginViewBackground
@@ -32,6 +35,9 @@ struct SignUpView: View {
             }
             NativigationBackBarView {}
         }
+        .onAppear(perform: {
+            viewModel.loginMode = .signUp
+        })
         .navigationBarHidden(true)
     }
 }

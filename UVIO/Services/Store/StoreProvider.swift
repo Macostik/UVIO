@@ -92,6 +92,7 @@ class StoreService: StoreInteractor {
             return subject.eraseToAnyPublisher()
         }
         let isValidate = currentUser.email == email && currentUser.password == password
+        Logger.info("Credentials were not matched")
         subject.send(isValidate)
         return subject.eraseToAnyPublisher()
     }
