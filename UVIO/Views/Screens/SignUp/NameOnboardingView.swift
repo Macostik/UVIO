@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import Resolver
 
 struct NameOnboardingView: View, Identifiable {
     let id = UUID()

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Resolver
 import UIKit
 
 typealias UserData = (String, String)

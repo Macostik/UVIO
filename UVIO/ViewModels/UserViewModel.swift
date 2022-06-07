@@ -6,11 +6,10 @@
 //
 
 import Combine
-import Resolver
 import SwiftUI
 
 class UserViewModel: ObservableObject {
-    @Injected var dependency: Dependency
+    @Environment(\.dependency) var dependency
     // User name
     @Published var name: String = ""
     // User birthDate

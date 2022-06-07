@@ -29,7 +29,7 @@ struct SplashView: View {
                     }
                 }
             }
-        }
+        }.environment(\.dependency, Dependency())
     }
     var splashIconView: some View {
         ZStack {

@@ -5,7 +5,6 @@
 //  Created by Macostik on 20.05.2022.
 //
 
-import Resolver
 import Combine
 
 protocol StoreInteractor {

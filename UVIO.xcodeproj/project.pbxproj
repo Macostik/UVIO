@@ -38,11 +38,9 @@
 		563E02E6284F3EAE00610F7C /* ASAuthorizationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */; };
 		563E02EA284F498900610F7C /* AuthFacebook+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */; };
 		563E02EC284F5D8400610F7C /* AuthGoogle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */; };
-		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
 		5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AF2837D73F0081EA5A /* String+Ext.swift */; };
-		5659808C283B771600669F15 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808B283B771600669F15 /* Resolver */; };
 		5659808F283B776C00669F15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808E283B776C00669F15 /* RealmSwift */; };
 		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
 		56598095283B789800669F15 /* FacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* FacebookProvider.swift */; };
@@ -127,7 +125,6 @@
 		563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+Ext.swift"; sourceTree = "<group>"; };
 		563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthFacebook+Ext.swift"; sourceTree = "<group>"; };
 		563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthGoogle+Ext.swift"; sourceTree = "<group>"; };
-		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -192,7 +189,6 @@
 				5659808F283B776C00669F15 /* RealmSwift in Frameworks */,
 				563713B2283FD8FF003C5A09 /* GoogleSignIn in Frameworks */,
 				56C0A7452848AA77001D5D00 /* OAuthSwift in Frameworks */,
-				5659808C283B771600669F15 /* Resolver in Frameworks */,
 				56598092283B77D700669F15 /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +356,6 @@
 			children = (
 				56A8535128322350000DFE3D /* AppDelegate.swift */,
 				56A8535328322350000DFE3D /* SceneDelegate.swift */,
-				5645D6A52837884C0081EA5A /* UVIO+Injection.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -509,7 +504,6 @@
 			);
 			name = UVIO;
 			packageProductDependencies = (
-				5659808B283B771600669F15 /* Resolver */,
 				5659808E283B776C00669F15 /* RealmSwift */,
 				56598091283B77D700669F15 /* FacebookLogin */,
 				563713B1283FD8FF003C5A09 /* GoogleSignIn */,
@@ -690,7 +684,6 @@
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
-				5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,
@@ -1066,11 +1059,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 563E02E0284E396400610F7C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
-		};
-		5659808B283B771600669F15 /* Resolver */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5659808A283B771600669F15 /* XCRemoteSwiftPackageReference "Resolver" */;
-			productName = Resolver;
 		};
 		5659808E283B776C00669F15 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

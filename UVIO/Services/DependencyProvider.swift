@@ -6,10 +6,22 @@
 //
 
 import Foundation
-import Resolver
+import Combine
+import SwiftUI
 
 protocol DependencyProvider {
     var provider: Provider { get set }
+}
+
+private struct DependencyKey: EnvironmentKey {
+  static let defaultValue = Dependency()
+}
+
+extension EnvironmentValues {
+  var dependency: Dependency {
+    get { self[DependencyKey.self] }
+    set { self[DependencyKey.self] = newValue }
+  }
 }
 
 struct Dependency: DependencyProvider {
