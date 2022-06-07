@@ -16,6 +16,7 @@ struct RealmProvider {
       configuration = config
       Logger.info("\(configuration.fileURL!)")
   }
+
   public var realm: Realm? {
         do {
             return try Realm(configuration: configuration)

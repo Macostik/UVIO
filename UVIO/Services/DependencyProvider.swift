@@ -14,7 +14,7 @@ protocol DependencyProvider {
 }
 
 private struct DependencyKey: EnvironmentKey {
-  static let defaultValue = Dependency()
+  static let defaultValue = Dependency(provider: Provider())
 }
 
 extension EnvironmentValues {
@@ -25,5 +25,9 @@ extension EnvironmentValues {
 }
 
 struct Dependency: DependencyProvider {
-     var provider = Provider()
+    var provider: Provider
+    init(provider: Provider) {
+        Logger.debug("Init dependency")
+        self.provider = provider
+    }
 }

@@ -15,19 +15,19 @@ let rootViewController: UIViewController = {
 }()
 
 struct Provider: ProviderType {
-    var facebookService: FacebookInteractor {
+    var facebookService: FacebookInteractor = {
         FacebookService()
-    }
-    var googleService: GoogleInteractor {
+    }()
+    var googleService: GoogleInteractor = {
         GoogleService()
-    }
-    var appleService: AppleInteractor {
+    }()
+    var appleService: AppleInteractor = {
         AppleService()
-    }
-    var dexcomService: DexcomInteractor {
+    }()
+    var dexcomService: DexcomInteractor = {
         DexcomService()
-    }
-    var storeService: StoreInteractor {
+    }()
+    var storeService: StoreInteractor = {
         StoreService()
-    }
+    }()
 }
