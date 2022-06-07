@@ -73,7 +73,7 @@ extension SignUpView {
                     .foregroundColor(.black))
             }
             Button {
-                self.viewModel.googlePublisher.send()
+                self.viewModel.googleLogin()
             } label: {
                 ZStack {
                     HStack {

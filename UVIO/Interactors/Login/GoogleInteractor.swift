@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol GoogleInteractor {
-    func singIn() -> AnyPublisher<UserData, Error>
+    func getBearer() -> AnyPublisher<Token?, Error>
 }

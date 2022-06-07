@@ -82,12 +82,10 @@ class UserViewModel: ObservableObject {
     var signInClickPublisher = PassthroughSubject<Void, Error>()
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
-    var googlePublisher = PassthroughSubject<Void, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     init() {
         createUser()
         checkUser()
-//        handleLoginViaThirdParty()
         validateCredintials()
         fillUserCredentials()
         handleSignUp()
@@ -112,17 +110,6 @@ extension UserViewModel {
             .filter({ $0 })
             .sink { _ in
             }.store(in: &cancellableSet)
-    }
-    func handleLoginViaThirdParty() {
-        self.dependency.provider.googleService.singIn()
-            .map({ name, email -> Bool in
-                self.name = name
-                self.email = email
-                return true
-            })
-            .replaceError(with: false)
-            .assign(to: \.signUpConfirmed, on: self)
-            .store(in: &cancellableSet)
     }
     func checkUser() {
         getUser()
@@ -281,6 +268,13 @@ extension UserViewModel {
     }
     func facebookLogin() {
         dependency.provider.facebookService.getBearer()
+            .replaceError(with: "")
+            .compactMap({ $0 })
+            .assign(to: \.authToken, on: self)
+            .store(in: &cancellableSet)
+    }
+    func googleLogin() {
+        dependency.provider.googleService.getBearer()
             .replaceError(with: "")
             .compactMap({ $0 })
             .assign(to: \.authToken, on: self)

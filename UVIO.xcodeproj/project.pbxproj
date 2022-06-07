@@ -37,6 +37,7 @@
 		563E02E4284E398000610F7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 563E02E3284E398000610F7C /* GoogleService-Info.plist */; };
 		563E02E6284F3EAE00610F7C /* ASAuthorizationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */; };
 		563E02EA284F498900610F7C /* AuthFacebook+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */; };
+		563E02EC284F5D8400610F7C /* AuthGoogle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */; };
 		5645D6A62837884C0081EA5A /* UVIO+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6A52837884C0081EA5A /* UVIO+Injection.swift */; };
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
@@ -125,6 +126,7 @@
 		563E02E3284E398000610F7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationController+Ext.swift"; sourceTree = "<group>"; };
 		563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthFacebook+Ext.swift"; sourceTree = "<group>"; };
+		563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthGoogle+Ext.swift"; sourceTree = "<group>"; };
 		5645D6A52837884C0081EA5A /* UVIO+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UVIO+Injection.swift"; sourceTree = "<group>"; };
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				56C0A74D28490BB1001D5D00 /* OAuth+Ext.swift */,
 				563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */,
 				563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */,
+				563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,
 				5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
+				563E02EC284F5D8400610F7C /* AuthGoogle+Ext.swift in Sources */,
 				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
