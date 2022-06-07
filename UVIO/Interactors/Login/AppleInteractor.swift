@@ -7,7 +7,8 @@
 
 import Foundation
 import Combine
+import AuthenticationServices
 
 protocol AppleInteractor {
-    func signIn() -> AnyPublisher<UserData, Error>
+    func singIn() -> AnyPublisher<ASAuthorizationAppleIDProvider.CredentialState, Error>
 }

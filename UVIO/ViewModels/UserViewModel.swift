@@ -113,10 +113,10 @@ extension UserViewModel {
         let googlePublisher =
         googlePublisher
             .flatMap({ _ in self.dependency.provider.googleService.singIn() })
-       let applePublisher =
-        applePublisher
-            .flatMap({ _ in self.dependency.provider.appleService.signIn() })
-        Publishers.MergeMany(facebookPublisher, googlePublisher, applePublisher)
+//       let applePublisher =
+//        applePublisher
+//            .flatMap({ _ in self.dependency.provider.appleService.signIn() })
+        Publishers.MergeMany(facebookPublisher, googlePublisher)
             .map({ name, email -> Bool in
                 self.name = name
                 self.email = email
@@ -271,6 +271,13 @@ extension UserViewModel {
         dependency.provider.dexcomService.getBearer()
             .replaceError(with: "")
             .assign(to: \.dexcomToken, on: self)
+            .store(in: &cancellableSet)
+    }
+    func appleLogin() {
+        dependency.provider.appleService.singIn()
+            .map({ $0 == .authorized })
+            .replaceError(with: false)
+            .assign(to: \.signUpConfirmed, on: self)
             .store(in: &cancellableSet)
     }
 }

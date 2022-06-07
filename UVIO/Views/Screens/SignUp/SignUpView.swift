@@ -89,7 +89,8 @@ extension SignUpView {
                     .foregroundColor(.black))
             }
             Button {
-                self.viewModel.applePublisher.send()
+//                self.viewModel.applePublisher.send()
+                self.viewModel.appleLogin()
             } label: {
                 ZStack {
                     HStack {
