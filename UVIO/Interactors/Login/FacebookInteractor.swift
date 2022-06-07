@@ -10,5 +10,5 @@ import Combine
 import FacebookLogin
 
 protocol FacebookInteractor {
-    func singIn() -> AnyPublisher<UserData, Error>
+    func getBearer() -> AnyPublisher<Token?, Error>
 }

@@ -24,5 +24,6 @@ class User: Object {
     @Persisted var isLogin: Bool = true
     @Persisted var isVibrate: Bool = false
     @Persisted var isNotDisturb: Bool = false
+    @Persisted var authToken: String = ""
     @Persisted var dexcomToken: String = ""
 }

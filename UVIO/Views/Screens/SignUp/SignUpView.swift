@@ -57,7 +57,7 @@ extension SignUpView {
                        title: Text(L10n.continueWithEmail),
                        destination: EmailSignUpView(viewModel: viewModel))
             Button {
-                self.viewModel.facebookPublisher.send()
+                self.viewModel.facebookLogin()
             } label: {
                 ZStack {
                     HStack {
@@ -89,7 +89,6 @@ extension SignUpView {
                     .foregroundColor(.black))
             }
             Button {
-//                self.viewModel.applePublisher.send()
                 self.viewModel.appleLogin()
             } label: {
                 ZStack {

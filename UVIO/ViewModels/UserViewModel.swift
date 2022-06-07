@@ -51,6 +51,15 @@ class UserViewModel: ObservableObject {
     // Onboarding alert
     @Published var isVibrate: Bool = false
     @Published var isNotDisturb: Bool = false
+    // Facebook token
+    @Published var authToken: String = "" {
+        willSet {
+            if !newValue.isEmpty {
+                Logger.info("Login was successful with auth token: \(newValue)")
+                self.signUpConfirmed = true
+            }
+        }
+    }
     // Dexcome data
     @Published var dexcomToken: String = "" {
         didSet {
@@ -73,14 +82,12 @@ class UserViewModel: ObservableObject {
     var signInClickPublisher = PassthroughSubject<Void, Error>()
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
-    private var cancellableSet = Set<AnyCancellable>()
-    var facebookPublisher = PassthroughSubject<Void, Error>()
     var googlePublisher = PassthroughSubject<Void, Error>()
-    var applePublisher = PassthroughSubject<Void, Error>()
+    private var cancellableSet = Set<AnyCancellable>()
     init() {
         createUser()
         checkUser()
-        handleLoginViaThirdParty()
+//        handleLoginViaThirdParty()
         validateCredintials()
         fillUserCredentials()
         handleSignUp()
@@ -107,16 +114,7 @@ extension UserViewModel {
             }.store(in: &cancellableSet)
     }
     func handleLoginViaThirdParty() {
-        let facebookPublisher =
-        facebookPublisher
-            .flatMap({ _ in self.dependency.provider.facebookService.singIn() })
-        let googlePublisher =
-        googlePublisher
-            .flatMap({ _ in self.dependency.provider.googleService.singIn() })
-//       let applePublisher =
-//        applePublisher
-//            .flatMap({ _ in self.dependency.provider.appleService.signIn() })
-        Publishers.MergeMany(facebookPublisher, googlePublisher)
+        self.dependency.provider.googleService.singIn()
             .map({ name, email -> Bool in
                 self.name = name
                 self.email = email
@@ -153,6 +151,7 @@ extension UserViewModel {
                 user.hyper = "\(self.hyperValue)"
                 user.isVibrate = self.isVibrate
                 user.isNotDisturb = self.isNotDisturb
+                user.authToken = self.authToken
                 user.dexcomToken = self.dexcomToken
                 return user
             }
@@ -265,7 +264,7 @@ extension UserViewModel {
         }
     }
 }
-// Handle dexcom API
+// Handle third party login
 extension UserViewModel {
     func dexcomLogin() {
         dependency.provider.dexcomService.getBearer()
@@ -278,6 +277,13 @@ extension UserViewModel {
             .map({ $0 == .authorized })
             .replaceError(with: false)
             .assign(to: \.signUpConfirmed, on: self)
+            .store(in: &cancellableSet)
+    }
+    func facebookLogin() {
+        dependency.provider.facebookService.getBearer()
+            .replaceError(with: "")
+            .compactMap({ $0 })
+            .assign(to: \.authToken, on: self)
             .store(in: &cancellableSet)
     }
 }
