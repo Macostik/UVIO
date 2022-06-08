@@ -15,6 +15,7 @@ class MainViewModel: ObservableObject {
     @Published var timeValue = "27 minutes ago"
     @Published var glucoseUnitValue = "mmol/l"
     @Published var user = User()
+    @Published var presentMenu = false
     private var cancellable = Set<AnyCancellable>()
     init() {
         getUser()

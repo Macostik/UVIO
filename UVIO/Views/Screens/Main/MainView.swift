@@ -78,12 +78,18 @@ extension MainView {
                     Image.spiralIcon
                 }
                 .padding()
+                .padding(.leading)
                 Spacer()
             }
             .padding(.top)
             .overlay(icecreamOverlay, alignment: .trailing)
-            Image.plusIcon
-                .offset(y: 50)
+            Button {
+                viewModel.presentMenu = true
+            } label: {
+                Image.plusIcon
+                    .offset(y: 50)
+                    .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
+            }
         }
     }
     var icecreamOverlay: some View {
