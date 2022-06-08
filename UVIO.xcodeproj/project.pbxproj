@@ -73,6 +73,8 @@
 		56C7720928355AEB0000E579 /* Base.strings in Resources */ = {isa = PBXBuildFile; fileRef = 56C7720728355AEB0000E579 /* Base.strings */; };
 		56C7720F2835642B0000E579 /* fonts_swift5_swiftui.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 56C7720E2835642B0000E579 /* fonts_swift5_swiftui.stencil */; };
 		56C772112835645A0000E579 /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C772102835645A0000E579 /* Fonts+Generated.swift */; };
+		56C9315B2850820D001E26AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9315A2850820D001E26AD /* MainView.swift */; };
+		56C9315D2850CEBE001E26AD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9315C2850CEBE001E26AD /* MainViewModel.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
@@ -159,6 +161,8 @@
 		56C7720828355AEB0000E579 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Base.strings; sourceTree = "<group>"; };
 		56C7720E2835642B0000E579 /* fonts_swift5_swiftui.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fonts_swift5_swiftui.stencil; sourceTree = "<group>"; };
 		56C772102835645A0000E579 /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
+		56C9315A2850820D001E26AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		56C9315C2850CEBE001E26AD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -371,6 +375,7 @@
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				56C93159285081FD001E26AD /* Main */,
 				56371392283F71B9003C5A09 /* ConnectCGM */,
 				56598096283B896A00669F15 /* SingIn */,
 				568C171628364DB400C77384 /* SignUp */,
@@ -384,6 +389,7 @@
 			children = (
 				5645D6AC283795560081EA5A /* UserViewModel.swift */,
 				56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */,
+				56C9315C2850CEBE001E26AD /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -417,6 +423,14 @@
 				56C7720E2835642B0000E579 /* fonts_swift5_swiftui.stencil */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		56C93159285081FD001E26AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				56C9315A2850820D001E26AD /* MainView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		56D9581A283392990053E65C /* Components */ = {
@@ -666,7 +680,9 @@
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56C0A7472848AB67001D5D00 /* DexComProvider.swift in Sources */,
 				56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */,
+				56C9315D2850CEBE001E26AD /* MainViewModel.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
+				56C9315B2850820D001E26AD /* MainView.swift in Sources */,
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
 				563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */,

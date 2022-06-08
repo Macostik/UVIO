@@ -12,13 +12,13 @@ import SwiftUI
 class ConnectCGMViewModel: ObservableObject {
     var timer = PassthroughSubject<Void, Never>()
     private var cancellableSet = Set<AnyCancellable>()
-    @Published var isHidden = false
+    @Published var isHiddenWelcomeSplashScreen = false
     init() {
         timer
             .timeout(.seconds(3), scheduler: DispatchQueue.main)
             .sink(receiveCompletion: { _  in
                 withAnimation(Animation.linear(duration: 1.5)) {
-                    self.isHidden.toggle()
+                    self.isHiddenWelcomeSplashScreen.toggle()
                 }
             }, receiveValue: { _ in
             })

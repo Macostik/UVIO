@@ -126,6 +126,9 @@ public enum L10n {
   public static let pleaseEnterYourEmailPassword = L10n.tr("Base", "please_enter_your_email_password")
   /// Prediabetes
   public static let prediabetes = L10n.tr("Base", "prediabetes")
+  /// Press “Plus” button to
+  /// add your first entry
+  public static let pressPlus = L10n.tr("Base", "press_plus")
   ///  Privacy Policy.
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own

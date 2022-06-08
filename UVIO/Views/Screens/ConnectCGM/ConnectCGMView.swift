@@ -28,13 +28,23 @@ struct ConnectCGMView: View {
                     Spacer()
                 }
             }
-//            welcomeContent
-//                .opacity(viewModel.isHidden ? 0 : 1)
+            welcomeContent
+                .opacity(viewModel.isHiddenWelcomeSplashScreen ? 0 : 1)
         }
         .background(Color.grayBackgroundColor)
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
     }
+}
+
+struct WelcomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConnectCGMView(userViewModel: UserViewModel(),
+                       viewModel: ConnectCGMViewModel())
+    }
+}
+
+extension ConnectCGMView {
     var welcomeContent: some View {
         ZStack {
             Image.connectBackground
@@ -62,12 +72,16 @@ struct ConnectCGMView: View {
             } label: {
                 Image.connectCGMIcon
             }
-            HStack {
-                Text(L10n.willConnectCGM)
-                    .font(.poppins(.regular, size: 14))
-                Image.chevronIcon
+            NavigationLink {
+                MainView(viewModel: MainViewModel())
+            } label: {
+                HStack {
+                    Text(L10n.willConnectCGM)
+                        .font(.poppins(.regular, size: 14))
+                    Image.chevronIcon
+                }
+                .foregroundColor(Color.complementaryColor)
             }
-            .foregroundColor(Color.complementaryColor)
         }
     }
     var subContainer: some View {
@@ -93,12 +107,5 @@ struct ConnectCGMView: View {
                 .frame(width: 58, height: 28)
 
         }.padding(.horizontal, 34)
-    }
-}
-
-struct WelcomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectCGMView(userViewModel: UserViewModel(),
-                       viewModel: ConnectCGMViewModel())
     }
 }
