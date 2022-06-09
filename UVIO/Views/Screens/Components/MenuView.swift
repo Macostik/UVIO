@@ -8,34 +8,48 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State var isClosed = false
-    private var menuAction: (MenuAction) -> Void
+    @Binding var isPresented: Bool
+    var menuAction: (MenuAction) -> Void
     let columns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
-    init(menuAction: @escaping (MenuAction) -> Void) {
-        self.menuAction = menuAction
-    }
     var body: some View {
-        ZStack {
-            VStack {
-                contentView
-                    .padding(.bottom, 40)
-                    .background(Color.white)
-                    .animation(.easeInOut, value: isClosed)
-                    .transition(.move(edge: .bottom))
+                ZStack {
+                    VStack {
+                        if isPresented {
+                            contentView
+                                .padding(.bottom, 40)
+                                .background(Color.white)
+                                .transition(.move(edge: .bottom))
+                            }
+                        }
+                    }
+//                .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
+        }
+}
+struct JustTheSlider: View {
+    @Binding var val: Double
+    var body: some View {
+        VStack {
+            Text("Slider")
+                .font(.title)
+            HStack {
+                Text("Value: ")
+                    .frame(minWidth: 80, alignment: .leading)
+                Slider(value: $val, in: 0...30, step: 1)
+                Text("\(Int(val))")
+                    .frame(minWidth: 20, alignment: .trailing)
+                    .font(Font.body.monospacedDigit())
+                    .padding(.horizontal)
             }
         }
-        .clipShape(RoundedCorner(radius: 24,
-                                 corners: [.topLeft, .topRight]))
-        .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
     }
 }
-
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(menuAction: { _ in })
+        MenuView(isPresented: .constant(false),
+                 menuAction: { _ in })
     }
 }
 
@@ -51,6 +65,8 @@ extension MenuView {
             buttonsContent
             closeButton
         }
+        .clipShape(RoundedCorner(radius: 24,
+                                  corners: [.topLeft, .topRight]))
     }
     var buttonsContent: some View {
         ScrollView([]) {
@@ -81,7 +97,9 @@ extension MenuView {
     }
     var closeButton: some View {
         Button {
-            isClosed = true
+            withAnimation {
+                isPresented = false
+            }
         } label: {
             Rectangle()
                 .foregroundColor(Color.white)

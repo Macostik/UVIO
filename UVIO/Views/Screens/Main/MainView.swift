@@ -13,6 +13,8 @@ struct MainView: View {
         ZStack(alignment: .bottom) {
             backgroundView
             contentView
+                .overlay(Rectangle()
+                    .fill(viewModel.isMenuPresented ? Color.black.opacity(0.2) : Color.clear))
             menuView
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -85,7 +87,9 @@ extension MainView {
             .padding(.top)
             .overlay(icecreamOverlay, alignment: .trailing)
             Button {
-                viewModel.presentMenu = true
+                withAnimation {
+                    viewModel.isMenuPresented = true
+                }
             } label: {
                 Image.plusIcon
                     .offset(y: 50)
@@ -183,8 +187,9 @@ extension MainView {
         .padding()
     }
     var menuView: some View {
-        MenuView { action in
+        MenuView(isPresented: $viewModel.isMenuPresented,
+                 menuAction: { action in
             viewModel.menuActionPubliser.send(action)
-        }
+        })
     }
 }

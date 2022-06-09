@@ -15,9 +15,8 @@ class MainViewModel: ObservableObject {
     @Published var timeValue = "27 minutes ago"
     @Published var glucoseUnitValue = "mmol/l"
     @Published var user = User()
-    @Published var presentMenu = false
     @Published var menuAction: MenuAction = .logBG
-    @Published var isClosed = false
+    @Published var isMenuPresented = false
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private var cancellable = Set<AnyCancellable>()
     init() {
