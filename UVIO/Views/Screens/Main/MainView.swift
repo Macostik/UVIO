@@ -14,7 +14,7 @@ struct MainView: View {
             backgroundView
             contentView
                 .overlay(Rectangle()
-                    .fill(viewModel.isMenuPresented ? Color.black.opacity(0.2) : Color.clear))
+                    .fill(viewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear))
             menuView
         }
         .edgesIgnoringSafeArea(.bottom)
