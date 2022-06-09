@@ -25,10 +25,12 @@ internal extension Image {
   static var arrowBottomIcon : Image { Image("arrowBottomIcon", bundle: BundleToken.bundle) }
   static var awesomeIcon : Image { Image("awesomeIcon", bundle: BundleToken.bundle) }
   static var backButtonIcon : Image { Image("backButtonIcon", bundle: BundleToken.bundle) }
+  static var bgLevelIcon : Image { Image("bgLevelIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
   static var chevronIcon : Image { Image("chevronIcon", bundle: BundleToken.bundle) }
   static var clockIcon : Image { Image("clockIcon", bundle: BundleToken.bundle) }
+  static var closeIcon : Image { Image("closeIcon", bundle: BundleToken.bundle) }
   static var connectBackground : Image { Image("connectBackground", bundle: BundleToken.bundle) }
   static var connectCGMIcon : Image { Image("connectCGMIcon", bundle: BundleToken.bundle) }
   static var dexicomDeviceIcon : Image { Image("dexicomDeviceIcon", bundle: BundleToken.bundle) }
@@ -36,16 +38,19 @@ internal extension Image {
   static var dotsIcon : Image { Image("dotsIcon", bundle: BundleToken.bundle) }
   static var emailIcon : Image { Image("emailIcon", bundle: BundleToken.bundle) }
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
+  static var foodIcon : Image { Image("foodIcon", bundle: BundleToken.bundle) }
   static var freestyleDeviceIcon : Image { Image("freestyleDeviceIcon", bundle: BundleToken.bundle) }
   static var googleIcon : Image { Image("googleIcon", bundle: BundleToken.bundle) }
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
   static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
   static var icecreamIcon : Image { Image("icecreamIcon", bundle: BundleToken.bundle) }
+  static var insulinIcon : Image { Image("insulinIcon", bundle: BundleToken.bundle) }
   static var loadIcon : Image { Image("loadIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
   static var menuIcon : Image { Image("menuIcon", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
   static var plusIcon : Image { Image("plusIcon", bundle: BundleToken.bundle) }
+  static var remainderIcon : Image { Image("remainderIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }
   static var spiralIcon : Image { Image("spiralIcon", bundle: BundleToken.bundle) }
   static var splashBackgroundImage : Image { Image("splashBackgroundImage", bundle: BundleToken.bundle) }

@@ -103,3 +103,8 @@
 "dexcom" = "Dexcom ";
 "get_started" = "and get you started";
 "press_plus" = "Press “Plus” button to\nadd your first entry";
+"create_entry" = "Create a New Entry";
+"log_BG" = "Log BG Level";
+"add_reminder" = "Add a Reminder";
+"log_food" = "Log Food/Carbs";
+"log_insulin" = "Log Food/Carbs";

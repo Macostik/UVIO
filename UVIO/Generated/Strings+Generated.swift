@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// Add a Reminder
+  public static let addReminder = L10n.tr("Base", "add_reminder")
   ///  and
   public static let and = L10n.tr("Base", "and")
   /// Awesome! Now, let’s finalize your account creation.
@@ -46,6 +48,8 @@ public enum L10n {
   public static let continueWithGoogle = L10n.tr("Base", "continue_with_google")
   /// CREATE ACCOUNT
   public static let createAccount = L10n.tr("Base", "create_account")
+  /// Create a New Entry
+  public static let createEntry = L10n.tr("Base", "create_entry")
   /// Dexcom 
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// Dexcom G6
@@ -96,6 +100,12 @@ public enum L10n {
   public static let lada = L10n.tr("Base", "lada")
   /// Now, let’s connect your 
   public static let letsConnectDexcom = L10n.tr("Base", "lets_connect_dexcom")
+  /// Log BG Level
+  public static let logBG = L10n.tr("Base", "log_BG")
+  /// Log Food/Carbs
+  public static let logFood = L10n.tr("Base", "log_food")
+  /// Log Food/Carbs
+  public static let logInsulin = L10n.tr("Base", "log_insulin")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
   /// Male

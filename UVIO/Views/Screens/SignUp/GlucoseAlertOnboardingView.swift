@@ -10,10 +10,6 @@ import SwiftUI
 struct GlucoseAlertOnboardingView: View, Identifiable {
     let id = UUID()
     @ObservedObject var viewModel: UserViewModel
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
