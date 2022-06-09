@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct MenuView: View {
-    private var closeAction: () -> Void
+    @State var isClosed = false
     private var menuAction: (MenuAction) -> Void
     let columns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
-    init(menuAction: @escaping (MenuAction) -> Void,
-         closeAction: @escaping () -> Void) {
+    init(menuAction: @escaping (MenuAction) -> Void) {
         self.menuAction = menuAction
-        self.closeAction = closeAction
     }
     var body: some View {
         ZStack {
-            contentView
-                .frame(height: UIScreen.main.bounds.height/2)
+            VStack {
+                contentView
+                    .padding(.bottom, 40)
+                    .background(Color.white)
+                    .animation(.easeInOut, value: isClosed)
+                    .transition(.move(edge: .bottom))
+            }
         }
         .clipShape(RoundedCorner(radius: 24,
                                  corners: [.topLeft, .topRight]))
+        .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
     }
 }
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(menuAction: { _ in },
-                 closeAction: {})
+        MenuView(menuAction: { _ in })
     }
 }
 
@@ -74,10 +77,11 @@ extension MenuView {
             }
             .padding()
         }
+        .frame(height: 284)
     }
     var closeButton: some View {
         Button {
-            closeAction()
+            isClosed = true
         } label: {
             Rectangle()
                 .foregroundColor(Color.white)

@@ -10,11 +10,12 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var viewModel: MainViewModel
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .bottom) {
             backgroundView
             contentView
-                .edgesIgnoringSafeArea(.bottom)
+            menuView
         }
+        .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
     }
 }
@@ -180,5 +181,10 @@ extension MainView {
             }
         }
         .padding()
+    }
+    var menuView: some View {
+        MenuView { action in
+            viewModel.menuActionPubliser.send(action)
+        }
     }
 }
