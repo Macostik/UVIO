@@ -15,9 +15,9 @@ class ConnectCGMViewModel: ObservableObject {
     @Published var isHiddenWelcomeSplashScreen = false
     init() {
         timer
-            .timeout(.seconds(3), scheduler: DispatchQueue.main)
+            .timeout(.seconds(1.5), scheduler: DispatchQueue.main)
             .sink(receiveCompletion: { _  in
-                withAnimation(Animation.linear(duration: 1.5)) {
+                withAnimation(Animation.linear(duration: 1.0)) {
                     self.isHiddenWelcomeSplashScreen.toggle()
                 }
             }, receiveValue: { _ in

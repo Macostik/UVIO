@@ -58,7 +58,7 @@ struct SplashView: View {
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)
                 .frame(maxWidth: .infinity, maxHeight: 48)
-                .background(Color.black)
+                .background(Color.complementaryColor)
                 .cornerRadius(12)
                 .padding()
         }

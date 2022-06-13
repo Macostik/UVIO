@@ -75,10 +75,11 @@ class UserViewModel: ObservableObject {
     @Published var loginMode = LoginMode.signUp
     @Published var isloginModeSignUp: Bool = false {
         willSet {
+            self.showErrorAlert = !newValue
             if newValue {
                 switch loginMode {
-                case .signUp:  self.signUpConfirmed = true
-                case .signIn: self.signInConfirmed = true
+                case .signUp:  self.signUpConfirmed = signUp
+                case .signIn: self.signInConfirmed = signUp
                 }
             }
         }
@@ -95,7 +96,6 @@ class UserViewModel: ObservableObject {
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
     var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.name)
-    var signInClickPublisher = PassthroughSubject<Void, Error>()
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
@@ -119,10 +119,6 @@ extension UserViewModel {
     func fillUserCredentials() {
         $signUpConfirmed
             .dropFirst()
-            .map({ isConfirm in
-                self.showErrorAlert = !isConfirm
-                return isConfirm
-            })
             .filter({ $0 })
             .sink { _ in
             }.store(in: &cancellableSet)
@@ -168,6 +164,7 @@ extension UserViewModel {
             .map({ self.signUp })
             .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
             .replaceError(with: false)
+            .print("sign")
             .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
@@ -223,7 +220,7 @@ extension UserViewModel {
             return dependency.provider.storeService
                 .validateCredentials(email: email, password: password)
         }
-        return Just(true)
+        return Just(signUp)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }

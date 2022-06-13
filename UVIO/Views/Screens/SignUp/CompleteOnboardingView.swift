@@ -44,7 +44,7 @@ extension CompleteOnboardingView {
     }
     var contentView: some View {
         VStack {
-            Image.awesomeIcon
+            Image.successMarkIcon
                 .padding(.bottom, 22)
             Text(L10n.awosomeYouMadeIt)
                 .font(.poppins(.bold, size: 24))
