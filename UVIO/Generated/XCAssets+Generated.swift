@@ -5,7 +5,6 @@ import SwiftUI
 
 internal extension Color {
   // Assets.xcassets
-  static var accentColor : Color { Color("AccentColor", bundle: BundleToken.bundle) }
   // Colors.xcassets
   static var bottomBGColor : Color { Color("bottomBGColor", bundle: BundleToken.bundle) }
   static var capsulaGrayColor : Color { Color("capsulaGrayColor", bundle: BundleToken.bundle) }

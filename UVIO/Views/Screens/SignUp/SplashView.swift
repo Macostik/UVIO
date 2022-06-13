@@ -11,7 +11,6 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
-            MainView(viewModel: MainViewModel())
             if viewModel.userPersist {
                ConnectCGMView(userViewModel: viewModel,
                                viewModel: ConnectCGMViewModel())
