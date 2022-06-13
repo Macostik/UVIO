@@ -84,6 +84,16 @@ extension EmailSignUpView {
                     .cornerRadius(12)
                     .padding(.horizontal)
             }
+            if viewModel.loginMode == .signIn {
+                NavigationLink {
+                    RecoveryEmailView(viewModel: viewModel)
+                } label: {
+                    Text(L10n.forgotPassword)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.complementaryColor)
+                        .padding(.top, 32)
+                }
+            }
         }
     }
     var hideOverlay: some View {

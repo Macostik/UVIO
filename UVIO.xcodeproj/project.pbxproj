@@ -255,7 +255,7 @@
 			path = Unit;
 			sourceTree = "<group>";
 		};
-		56598096283B896A00669F15 /* SingIn */ = {
+		56598096283B896A00669F15 /* RecoveryPassword */ = {
 			isa = PBXGroup;
 			children = (
 				56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */,
@@ -263,7 +263,7 @@
 				56E55F39283CC3E90085D4DD /* NewPasswordView.swift */,
 				56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */,
 			);
-			path = SingIn;
+			path = RecoveryPassword;
 			sourceTree = "<group>";
 		};
 		568C171628364DB400C77384 /* SignUp */ = {
@@ -383,7 +383,7 @@
 			children = (
 				56C93159285081FD001E26AD /* Main */,
 				56371392283F71B9003C5A09 /* ConnectCGM */,
-				56598096283B896A00669F15 /* SingIn */,
+				56598096283B896A00669F15 /* RecoveryPassword */,
 				568C171628364DB400C77384 /* SignUp */,
 				56D9581A283392990053E65C /* Components */,
 			);
