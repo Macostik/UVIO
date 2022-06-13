@@ -53,7 +53,7 @@ struct SplashView: View {
         }
     }
     var createAccountButton: some View {
-        NavigationLink(destination: SignUpView(viewModel: viewModel)) {
+        NavigationLink(destination: SignUpFlow(viewModel: viewModel)) {
             Text(L10n.createAccount)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.white)
@@ -64,7 +64,7 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignInView(viewModel: viewModel)) {
+        NavigationLink(destination: SignInFlow(viewModel: viewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)

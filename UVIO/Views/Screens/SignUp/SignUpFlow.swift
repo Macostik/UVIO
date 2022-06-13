@@ -1,14 +1,13 @@
 //
-//  OnboardingView.swift
+//  SignUpFlow.swift
 //  UVIO
 //
-//  Created by Macostik on 31.05.2022.
+//  Created by Macostik on 13.06.2022.
 //
 
 import SwiftUI
-import AVFoundation
 
-struct OnboardingView: View {
+struct SignUpFlow: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
@@ -16,32 +15,46 @@ struct OnboardingView: View {
             containerViews
         }
         .navigationBarHidden(true)
+        .toast(isShowing: $viewModel.showErrorAlert)
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
+struct SignUpFlow_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(viewModel: UserViewModel())
+        SignUpFlow(viewModel: UserViewModel())
     }
 }
 
-extension OnboardingView {
+extension SignUpFlow {
     var backgroundColor: some View {
-        LinearGradient(
-            colors: [Color.grayBackgroundColor],
-            startPoint: .top, endPoint: .bottom)
-        .ignoresSafeArea()
+        Group {
+            if viewModel.selectedOnboardingItem == .singUp ||
+                viewModel.selectedOnboardingItem == .emailSignUp {
+                Image.loginViewBackground
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
+            } else {
+                LinearGradient(
+                    colors: [Color.grayBackgroundColor],
+                    startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            }
+        }
     }
     var containerViews: some View {
         VStack {
             NativigationBackBarViewAction(action: {
                 withAnimation {
-                    viewModel.selectedItem = viewModel.previousType
+                    viewModel.selectedOnboardingItem = viewModel.previousOnboardingType
                 }
             }, content: {
                 ProgressView(completed: viewModel.completionValue)
             })
-            TabView(selection: $viewModel.selectedItem) {
+            TabView(selection: $viewModel.selectedOnboardingItem) {
+                SignUpView(viewModel: viewModel)
+                    .tag(OnboardingViewType.singUp)
+                EmailSignUpView(viewModel: viewModel)
+                    .tag(OnboardingViewType.emailSignUp)
                 NameOnboardingView(viewModel: viewModel)
                     .tag(OnboardingViewType.name)
                 BirthDateOnboardingView(viewModel: viewModel)

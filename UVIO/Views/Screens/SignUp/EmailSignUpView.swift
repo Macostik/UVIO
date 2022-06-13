@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EmailSignUpView: View {
-    @ObservedObject private var keyboardHandler = KeyboardHandler()
     @ObservedObject private var viewModel: UserViewModel
     @State private var showPassword: Bool = false
     init(viewModel: UserViewModel) {
@@ -16,9 +15,6 @@ struct EmailSignUpView: View {
     }
     var body: some View {
         ZStack(alignment: .top) {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 signUpBanner
                     .padding(.bottom, 40)
@@ -29,16 +25,7 @@ struct EmailSignUpView: View {
                 privatePolicy
                     .multilineTextAlignment(.center)
             }
-            .padding(.top, 45)
-            NavigationLink(destination:
-                            OnboardingView(viewModel: viewModel),
-                           isActive: $viewModel.signUpConfirmed) {
-                EmptyView()
-            }
-            NativigationBackBarView {}
         }
-        .navigationBarHidden(true)
-        .toast(isShowing: $viewModel.showErrorAlert)
     }
 }
 
@@ -85,8 +72,8 @@ extension EmailSignUpView {
                     .padding(.horizontal)
             }
             if viewModel.loginMode == .signIn {
-                NavigationLink {
-                    RecoveryEmailView(viewModel: viewModel)
+                Button {
+                    self.viewModel.presentLoginView.value = .recoveryEmail
                 } label: {
                     Text(L10n.forgotPassword)
                         .font(.poppins(.medium, size: 14))

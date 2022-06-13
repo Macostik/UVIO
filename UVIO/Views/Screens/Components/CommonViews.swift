@@ -130,37 +130,7 @@ struct ProgressView: View {
                     .frame(width: 126 * completed, height: 6)
                     .foregroundColor(Color.black)
             }
-        }
-    }
-}
-
-struct LogoButton<Destination: View, Logo: View, Title: View>: View {
-    private var destination: Destination
-    private var logo: Logo
-    private var  title: Title
-    init(logo: Logo, title: Title, destination: Destination) {
-        self.title = title
-        self.logo = logo
-        self.destination = destination
-    }
-    var body: some View {
-        NavigationLink(destination: destination) {
-            ZStack {
-                HStack {
-                    logo.padding()
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
-            .background(Color.white.opacity(0.6))
-            .cornerRadius(12)
-            .padding(.horizontal)
-            .overlay(textOverlay)
-        }
-    }
-    var textOverlay: some View {
-        title
-            .font(.poppins(.medium, size: 14))
-            .foregroundColor(.black)
+        }.opacity(completed == 0.0 ? 0 : 1)
     }
 }
 

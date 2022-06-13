@@ -50,7 +50,9 @@ class UserViewModel: ObservableObject {
         }
     }
     // Onboarding selection
-    @Published var selectedItem: OnboardingViewType = .name
+    @Published var selectedOnboardingItem: OnboardingViewType = .singUp
+    // Login  selection
+    @Published var selectedLoginItem: LoginViewType = .signIn
     // Onboarding alert
     @Published var isVibrate: Bool = false
     @Published var isNotDisturb: Bool = false
@@ -59,6 +61,7 @@ class UserViewModel: ObservableObject {
         willSet {
             if !newValue.isEmpty {
                 Logger.info("Login was successful with auth token: \(newValue)")
+                signUp = true
                 isloginModeSignUp = true
             }
         }
@@ -78,24 +81,31 @@ class UserViewModel: ObservableObject {
             self.showErrorAlert = !newValue
             if newValue {
                 switch loginMode {
-                case .signUp:  self.signUpConfirmed = signUp
+                case .signUp: self.signUpConfirmed = signUp
                 case .signIn: self.signInConfirmed = signUp
                 }
             }
         }
     }
+    @Published var signUpConfirmed = false {
+        willSet {
+            if newValue {
+                self.presentOnboardingView.value = .name
+            }
+        }
+    }
+    @Published var signInConfirmed = false
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
     @Published var newPassword: String = ""
     @Published var signUp = false
-    @Published var signUpConfirmed = false
-    @Published var signInConfirmed = false
     @Published var userWasUpdated = false
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
-    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.name)
+    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
+    var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
@@ -106,6 +116,7 @@ class UserViewModel: ObservableObject {
         fillUserCredentials()
         handleSignUp()
         handleOnboardingScreen()
+        handleLoginScreen()
     }
 }
 // Init
@@ -164,7 +175,6 @@ extension UserViewModel {
             .map({ self.signUp })
             .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
             .replaceError(with: false)
-            .print("sign")
             .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
@@ -174,7 +184,18 @@ extension UserViewModel {
             .sink { _ in
             } receiveValue: { type in
                 withAnimation {
-                    self.selectedItem = type
+                    self.selectedOnboardingItem = type
+                }
+            }
+            .store(in: &cancellableSet)
+    }
+    func handleLoginScreen() {
+        presentLoginView
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+            } receiveValue: { type in
+                withAnimation {
+                    self.selectedLoginItem = type
                 }
             }
             .store(in: &cancellableSet)
@@ -245,7 +266,9 @@ extension UserViewModel {
 // Handle onboarding
 extension UserViewModel {
     var completionValue: CGFloat {
-        switch selectedItem {
+        switch selectedOnboardingItem {
+        case .singUp: return 0.0
+        case .emailSignUp: return 0.0
         case .name:  return 0.2
         case .birthDate: return 0.4
         case .gender: return 0.6
@@ -253,13 +276,25 @@ extension UserViewModel {
         case .glucoseAlert: return 1.0
         }
     }
-    var previousType: OnboardingViewType {
-        switch selectedItem {
-        case .name: return .name
+    var previousOnboardingType: OnboardingViewType {
+        switch selectedOnboardingItem {
+        case .singUp: return .singUp
+        case .emailSignUp: return .singUp
+        case .name: return .emailSignUp
         case .birthDate: return .name
         case .gender: return .birthDate
         case .glucoseUnit: return .gender
         case .glucoseAlert: return .glucoseUnit
+        }
+    }
+    var previousLoginType: LoginViewType {
+        switch selectedLoginItem {
+        case .signIn: return .signIn
+        case .emailSignUp: return .signIn
+        case .recoveryEmail: return .emailSignUp
+        case .checkInBox: return .recoveryEmail
+        case .newPassword: return .checkInBox
+        case .newPasswordSuccess: return .newPassword
         }
     }
 }

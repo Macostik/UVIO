@@ -14,7 +14,6 @@
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
-		562822B12846651100F0F6DC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B02846651100F0F6DC /* OnboardingView.swift */; };
 		562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* OnboardingViewType.swift */; };
 		56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56295BE1284A4F3D003811F5 /* SingInView.swift */; };
 		562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */; };
@@ -41,6 +40,9 @@
 		5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */; };
 		5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AC283795560081EA5A /* UserViewModel.swift */; };
 		5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5645D6AF2837D73F0081EA5A /* String+Ext.swift */; };
+		5659428C28573C8700A1A168 /* SignUpFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5659428B28573C8700A1A168 /* SignUpFlow.swift */; };
+		5659428E2857671300A1A168 /* SignInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5659428D2857671300A1A168 /* SignInFlow.swift */; };
+		565942902857684400A1A168 /* LoginViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5659428F2857684400A1A168 /* LoginViewType.swift */; };
 		5659808F283B776C00669F15 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5659808E283B776C00669F15 /* RealmSwift */; };
 		56598092283B77D700669F15 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 56598091283B77D700669F15 /* FacebookLogin */; };
 		56598095283B789800669F15 /* FacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56598094283B789800669F15 /* FacebookProvider.swift */; };
@@ -107,7 +109,6 @@
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
-		562822B02846651100F0F6DC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* OnboardingViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewType.swift; sourceTree = "<group>"; };
 		56295BE1284A4F3D003811F5 /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
 		562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseUnitOnboardingView.swift; sourceTree = "<group>"; };
@@ -133,6 +134,9 @@
 		5645D6AA28378C390081EA5A /* StoreUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUserInteractor.swift; sourceTree = "<group>"; };
 		5645D6AC283795560081EA5A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		5645D6AF2837D73F0081EA5A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		5659428B28573C8700A1A168 /* SignUpFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlow.swift; sourceTree = "<group>"; };
+		5659428D2857671300A1A168 /* SignInFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInFlow.swift; sourceTree = "<group>"; };
+		5659428F2857684400A1A168 /* LoginViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewType.swift; sourceTree = "<group>"; };
 		56598094283B789800669F15 /* FacebookProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookProvider.swift; sourceTree = "<group>"; };
 		565BDF6D2851D505000BE00C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		565BDF6F2851D92B000BE00C /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -255,15 +259,17 @@
 			path = Unit;
 			sourceTree = "<group>";
 		};
-		56598096283B896A00669F15 /* RecoveryPassword */ = {
+		56598096283B896A00669F15 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5659428D2857671300A1A168 /* SignInFlow.swift */,
+				56295BE1284A4F3D003811F5 /* SingInView.swift */,
 				56E55F35283CBC2D0085D4DD /* RecoveryEmailView.swift */,
 				56E55F37283CC0A90085D4DD /* CheckInboxView.swift */,
 				56E55F39283CC3E90085D4DD /* NewPasswordView.swift */,
 				56E55F3B283CC5D80085D4DD /* NewPasswordSuccessView.swift */,
 			);
-			path = RecoveryPassword;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		568C171628364DB400C77384 /* SignUp */ = {
@@ -271,7 +277,6 @@
 			children = (
 				56A8537328323934000DFE3D /* SplashView.swift */,
 				56E2867E28354EAE0095FD9F /* SignUpView.swift */,
-				56295BE1284A4F3D003811F5 /* SingInView.swift */,
 				568C171728364DDB00C77384 /* EmailSignUpView.swift */,
 				56D958212833D3430053E65C /* GenderOnboardingView.swift */,
 				56953FD02832745C0025C1A2 /* NameOnboardingView.swift */,
@@ -279,8 +284,8 @@
 				561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */,
 				562A6BB5284778AC002152B0 /* GlucoseUnitOnboardingView.swift */,
 				5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */,
-				562822B02846651100F0F6DC /* OnboardingView.swift */,
 				562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */,
+				5659428B28573C8700A1A168 /* SignUpFlow.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -383,7 +388,7 @@
 			children = (
 				56C93159285081FD001E26AD /* Main */,
 				56371392283F71B9003C5A09 /* ConnectCGM */,
-				56598096283B896A00669F15 /* RecoveryPassword */,
+				56598096283B896A00669F15 /* Login */,
 				568C171628364DB400C77384 /* SignUp */,
 				56D9581A283392990053E65C /* Components */,
 			);
@@ -409,6 +414,7 @@
 				563713B72840E8A9003C5A09 /* DiabetType.swift */,
 				565BDF712851E28D000BE00C /* MenuType.swift */,
 				562822B2284672CE00F0F6DC /* OnboardingViewType.swift */,
+				5659428F2857684400A1A168 /* LoginViewType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -663,6 +669,7 @@
 				563E02EC284F5D8400610F7C /* AuthGoogle+Ext.swift in Sources */,
 				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */,
+				5659428C28573C8700A1A168 /* SignUpFlow.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */,
@@ -699,7 +706,6 @@
 				563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */,
 				56598095283B789800669F15 /* FacebookProvider.swift in Sources */,
-				562822B12846651100F0F6DC /* OnboardingView.swift in Sources */,
 				56C0A74E28490BB1001D5D00 /* OAuth+Ext.swift in Sources */,
 				563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */,
 				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
@@ -713,9 +719,11 @@
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
+				5659428E2857671300A1A168 /* SignInFlow.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
+				565942902857684400A1A168 /* LoginViewType.swift in Sources */,
 				568C171828364DDB00C77384 /* EmailSignUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

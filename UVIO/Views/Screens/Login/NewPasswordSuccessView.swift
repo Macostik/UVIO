@@ -11,21 +11,13 @@ struct NewPasswordSuccessView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
                 container
                 Spacer()
                 openEmailAppLink
             }
-            NativigationBackBarView {
-                Text(L10n.newPassword)
-                    .font(.poppins(.medium, size: 18))
-            }
         }
-        .navigationBarHidden(true)
     }
     var container: some View {
         VStack(spacing: 18) {
@@ -39,12 +31,12 @@ struct NewPasswordSuccessView: View {
     }
     var openEmailAppLink: some View {
         NavigationLink {
-            SignUpView(viewModel: viewModel)
+            SignUpFlow(viewModel: viewModel)
         } label: {
             Text(L10n.signIn)
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
-                .background(Color.black)
+                .background(Color.complementaryColor)
                 .foregroundColor(Color.white)
                 .cornerRadius(16)
                 .padding(.horizontal)

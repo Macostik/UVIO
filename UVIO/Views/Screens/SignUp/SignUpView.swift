@@ -15,9 +15,6 @@ struct SignUpView: View {
     }
     var body: some View {
         ZStack(alignment: .top) {
-            Image.loginViewBackground
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
             VStack {
                 signUpBanner
                 VStack {
@@ -27,18 +24,11 @@ struct SignUpView: View {
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
-            }.padding(.top, 60)
-            NavigationLink(destination:
-                            OnboardingView(viewModel: viewModel),
-                           isActive: $viewModel.signUpConfirmed) {
-                EmptyView()
             }
-            NativigationBackBarView {}
         }
         .onAppear(perform: {
             viewModel.loginMode = .signUp
         })
-        .navigationBarHidden(true)
     }
 }
 
@@ -59,9 +49,22 @@ extension SignUpView {
     }
     var containerButtons: some View {
         VStack(spacing: 12) {
-            LogoButton(logo: Image.emailIcon,
-                       title: Text(L10n.continueWithEmail),
-                       destination: EmailSignUpView(viewModel: viewModel))
+            Button {
+                self.viewModel.presentOnboardingView.value = .emailSignUp
+            } label: {
+                ZStack {
+                    HStack {
+                        Image.emailIcon.padding()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
+                .background(Color.white.opacity(0.6))
+                .cornerRadius(12)
+                .padding(.horizontal)
+                .overlay(Text(L10n.continueWithEmail)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(.black))
+            }
             Button {
                 self.viewModel.facebookLogin()
             } label: {
