@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// Add a note
+  public static let addNote = L10n.tr("Base", "add_note")
   /// Add a Reminder
   public static let addReminder = L10n.tr("Base", "add_reminder")
   ///  and
@@ -88,6 +90,8 @@ public enum L10n {
   public static let gestationalDiabetes = L10n.tr("Base", "gestational_diabetes")
   /// and get you started
   public static let getStarted = L10n.tr("Base", "get_started")
+  /// Glucose
+  public static let glucose = L10n.tr("Base", "glucose")
   /// Hyper (High Glucose)
   public static let hyperHighGlucose = L10n.tr("Base", "hyper_high_glucose")
   /// Hypers and hypos
@@ -106,6 +110,8 @@ public enum L10n {
   public static let logFood = L10n.tr("Base", "log_food")
   /// Log Food/Carbs
   public static let logInsulin = L10n.tr("Base", "log_insulin")
+  /// Log mannualy your BG level
+  public static let logManualyBGLevel = L10n.tr("Base", "log_manualy_BG_level")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
   /// Male
@@ -179,6 +185,8 @@ public enum L10n {
   public static let someText = L10n.tr("Base", "some_text")
   /// Specify another
   public static let specifyAnother = L10n.tr("Base", "specify_another")
+  /// Submit BG Log
+  public static let submitBGLog = L10n.tr("Base", "submit_BG_log")
   /// You have successfully
   ///  changed your Password.
   public static let successfullyChangedPassword = L10n.tr("Base", "successfully_changed_password")
@@ -192,6 +200,8 @@ public enum L10n {
   public static let targetRange = L10n.tr("Base", "target_range")
   ///  Terms of Service
   public static let termsOfService = L10n.tr("Base", "terms_of_service")
+  /// Time
+  public static let time = L10n.tr("Base", "time")
   /// When turned ON, your phone will vibrate
   ///  instead of making sound alerts.
   public static let turnOnArerts = L10n.tr("Base", "turn_on_arerts")
@@ -217,6 +227,8 @@ public enum L10n {
   public static let whatIsYourGender = L10n.tr("Base", "what_is_your_gender")
   /// What is your Name?
   public static let whatName = L10n.tr("Base", "what_name")
+  /// When
+  public static let when = L10n.tr("Base", "when")
   /// Which type of diabetes do you have?
   public static let whichTypeDiabetes = L10n.tr("Base", "which_type_diabetes")
   /// I will connect CGM later

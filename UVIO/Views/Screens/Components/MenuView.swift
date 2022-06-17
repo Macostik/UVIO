@@ -29,7 +29,7 @@ struct MenuView: View {
 }
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(isPresented: .constant(false),
+        MenuView(isPresented: .constant(true),
                  menuAction: { _ in })
     }
 }

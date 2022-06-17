@@ -15,7 +15,9 @@ struct MainView: View {
             contentView
                 .overlay(Rectangle()
                     .fill(viewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear))
+                .ignoresSafeArea()
             menuView
+            logBGView
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
@@ -44,6 +46,7 @@ extension MainView {
             topView
             bottomView
         }
+        .padding(.top, safeAreaInsets.top)
     }
     var topView: some View {
         RoundedRectangle(cornerRadius: 16)
@@ -186,7 +189,6 @@ extension MainView {
                         Text("12h")
                         Spacer()
                         Text("24h")
-            
                     }
                 }
                 .font(.poppins(.medium, size: 12))
@@ -208,6 +210,11 @@ extension MainView {
                  menuAction: { action in
             viewModel.menuActionPubliser.send(action)
         })
+    }
+    var logBGView: some View {
+        LogBGLevelView(isPresented: .constant(true), inputValue: .constant("")) { _ in
+            
+        }
     }
 }
 

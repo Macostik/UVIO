@@ -13,6 +13,7 @@ typealias ProviderType = FacebookProvider & GoogleProvider & AppleProvider & Dex
 let rootViewController: UIViewController = {
     UIApplication.shared.windows.first?.rootViewController ?? UIViewController()
 }()
+let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? .zero
 
 struct Provider: ProviderType {
     var facebookService: FacebookInteractor = {

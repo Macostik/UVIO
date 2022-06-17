@@ -110,3 +110,9 @@
 "log_insulin" = "Log Food/Carbs";
 "online" = "Online";
 "your_glucose" = "Your Glucose";
+"log_manualy_BG_level" =  "Log mannualy your BG level";
+"add_note" = "Add a note";
+"submit_BG_log" = "Submit BG Log";
+"glucose" = "Glucose";
+"when" = "When";
+"time" = "Time";
