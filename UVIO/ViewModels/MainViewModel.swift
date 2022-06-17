@@ -12,6 +12,7 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var glucoseValue = "5.4"
+    @Published var glucoseCorrectionValue = "+18"
     @Published var timeValue = "27 minutes ago"
     @Published var glucoseUnitValue = "mmol/l"
     @Published var user = User()

@@ -31,13 +31,16 @@ struct MainView_Previews: PreviewProvider {
 extension MainView {
     var backgroundView: some View {
         LinearGradient(
-            colors: [Color.grayBackgroundColor],
+            colors: [Color.white],
             startPoint: .top, endPoint: .bottom)
         .ignoresSafeArea()
     }
     var contentView: some View {
         VStack(spacing: 20) {
-            NativigationBarView(action: {}, content: {})
+            NativigationBarView(action: {}, content: {
+                Text(L10n.yourGlucose)
+                    .font(.poppins(.bold, size: 18))
+            })
             topView
             bottomView
         }
@@ -55,7 +58,6 @@ extension MainView {
                 headerTopView
                 graphView
                     .padding(.top, 10)
-                Image.arrowBottomIcon
             }
         }
     }
@@ -103,68 +105,75 @@ extension MainView {
     }
     var headerTopView: some View {
         HStack {
+            Capsule()
+                .frame(width: 82, height: 32)
+                .foregroundColor(Color.white)
+                .overlay(dexcomOverlay)
+            Spacer()
             VStack(alignment: .leading, spacing: -10) {
-                HStack {
+                HStack(alignment: .top, spacing: 0) {
                     Text(viewModel.glucoseValue)
-                        .foregroundColor(Color.primaryGreenColor)
+                        .foregroundColor(Color.greenSuccessColor)
                         .font(.poppins(.bold, size: 40))
-                    Image.greenArrowIcon
+                    Text(viewModel.glucoseCorrectionValue)
+                        .font(.poppins(.medium, size: 14))
                 }
                 HStack {
                     Text(viewModel.glucoseUnitValue)
                     //                    Text(viewModel.user.glucoseUnit)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
-                    Image.clockIcon
-                        .foregroundColor(Color.grayScaleColor)
-                    Text(viewModel.timeValue)
-                        .foregroundColor(Color.grayScaleColor)
-                        .font(.poppins(.medium, size: 12))
+                        .padding(.horizontal, 5)
                 }
             }
             Spacer()
-            Capsule()
-                .frame(width: 94, height: 32)
-                .foregroundColor(Color.complementaryColor.opacity(0.1))
-                .overlay(dexcomOverlay)
+            Image.glucoseLevelArrow
         }
-        .padding()
+        .padding(.horizontal, 40)
     }
     var dexcomOverlay: some View {
-        HStack {
-            Image.bluetoothIcon
-                .resizable()
-                .frame(width: 7, height: 13)
-            Text(L10n.dexcom)
-                .font(.poppins(.bold, size: 12))
+        ZStack {
+            HStack {
+                Image.bluetoothIcon
+                    .resizable()
+                    .foregroundColor(.black)
+                    .frame(width: 7, height: 13)
+                Text(L10n.online)
+                    .font(.poppins(.medium, size: 12))
+            }
+            .foregroundColor(Color.black)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color.capsulaGrayColor, lineWidth: 1)
         }
-        .foregroundColor(Color.complementaryColor)
     }
     var graphView: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack(alignment: .top) {
+            VStack(spacing: 20) {
+                HStack {
                     VStack(alignment: .trailing, spacing: 18) {
-                        Text("18")
-                        Text("12")
-                        Text("6")
+                        Text("21")
+                        Text("15")
+                        Text("9")
+                        Text("3")
                     }
                     .font(.poppins(.medium, size: 12))
-                    .offset(y: -10)
                     VStack(spacing: 0) {
-                        Divider()
-                            .foregroundColor(Color.blue)
-                            .padding(.bottom, 20)
-                        Rectangle()
-                            .foregroundColor(Color.primaryOrangeColor.opacity(0.2))
-                            .frame(height: 20)
                         Rectangle()
                             .foregroundColor(Color.primaryGreenColor.opacity(0.2))
-                            .frame(height: 40)
-                        Rectangle()
-                            .foregroundColor(Color.primaryOrangeColor.opacity(0.2))
-                            .frame(height: 20)
+                            .frame(height: 32)
+                            .overlay(graphLine)
                     }
+                }
+                HStack {
+                    Group {
+                        Text("4PM")
+                        Spacer()
+                        Text("5PM")
+                        Spacer()
+                        Text("6PM")
+                    }
+                    .padding(.leading)
+                    .font(.poppins(.medium, size: 12))
                 }
                 HStack {
                     Group {
@@ -177,19 +186,36 @@ extension MainView {
                         Text("12h")
                         Spacer()
                         Text("24h")
-                        Spacer()
+            
                     }
                 }
                 .font(.poppins(.medium, size: 12))
-                .padding(.leading)
+                .padding(.horizontal, 30)
             }
         }
         .padding()
+    }
+    var graphLine: some View {
+        Line()
+            .stroke(style: StrokeStyle(lineWidth: 1,
+                                       dash: [5, 3],
+                                       dashPhase: 1))
+            .frame(height: 1)
+            .foregroundColor(Color.capsulaGrayColor)
     }
     var menuView: some View {
         MenuView(isPresented: $viewModel.isMenuPresented,
                  menuAction: { action in
             viewModel.menuActionPubliser.send(action)
         })
+    }
+}
+
+struct Line: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: rect.width, y: 0))
+        return path
     }
 }

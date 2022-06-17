@@ -59,7 +59,7 @@ struct NativigationBarView<Content: View>: View {
                     .frame(width: 28, height: 25)
                     .aspectRatio(contentMode: .fit)
                 Spacer()
-                Image.menuIcon
+                Image.settingsIcon
                     .onLongPressGesture {
                         action()
                     }

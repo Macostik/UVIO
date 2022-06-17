@@ -12,6 +12,7 @@ internal extension Color {
   static var grayBackgroundColor : Color { Color("grayBackgroundColor", bundle: BundleToken.bundle) }
   static var grayLightColor : Color { Color("grayLightColor", bundle: BundleToken.bundle) }
   static var grayScaleColor : Color { Color("grayScaleColor", bundle: BundleToken.bundle) }
+  static var greenSuccessColor : Color { Color("greenSuccessColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }
   static var primaryGreenColor : Color { Color("primaryGreenColor", bundle: BundleToken.bundle) }
   static var primaryOrangeColor : Color { Color("primaryOrangeColor", bundle: BundleToken.bundle) }
@@ -39,6 +40,7 @@ internal extension Image {
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
   static var foodIcon : Image { Image("foodIcon", bundle: BundleToken.bundle) }
   static var freestyleDeviceIcon : Image { Image("freestyleDeviceIcon", bundle: BundleToken.bundle) }
+  static var glucoseLevelArrow : Image { Image("glucoseLevelArrow", bundle: BundleToken.bundle) }
   static var googleIcon : Image { Image("googleIcon", bundle: BundleToken.bundle) }
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
   static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
@@ -50,6 +52,7 @@ internal extension Image {
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
   static var plusIcon : Image { Image("plusIcon", bundle: BundleToken.bundle) }
   static var remainderIcon : Image { Image("remainderIcon", bundle: BundleToken.bundle) }
+  static var settingsIcon : Image { Image("settingsIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }
   static var spiralIcon : Image { Image("spiralIcon", bundle: BundleToken.bundle) }
   static var splashBackgroundImage : Image { Image("splashBackgroundImage", bundle: BundleToken.bundle) }

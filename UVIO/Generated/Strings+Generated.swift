@@ -124,6 +124,8 @@ public enum L10n {
   public static let nonBinary = L10n.tr("Base", "non_binary")
   /// Off
   public static let off = L10n.tr("Base", "off")
+  /// Online
+  public static let online = L10n.tr("Base", "online")
   /// Open Email App
   public static let openEmailApp = L10n.tr("Base", "open_email_app")
   /// Other
@@ -219,6 +221,8 @@ public enum L10n {
   public static let whichTypeDiabetes = L10n.tr("Base", "which_type_diabetes")
   /// I will connect CGM later
   public static let willConnectCGM = L10n.tr("Base", "will_connect_CGM")
+  /// Your Glucose
+  public static let yourGlucose = L10n.tr("Base", "your_glucose")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
