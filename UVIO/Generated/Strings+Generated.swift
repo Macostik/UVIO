@@ -26,6 +26,8 @@ public enum L10n {
   public static let byContinuing = L10n.tr("Base", "by_continuing")
   /// Cancel
   public static let cancel = L10n.tr("Base", "cancel")
+  /// Carbs (g)
+  public static let carbs = L10n.tr("Base", "carbs")
   /// Check your Inbox.
   ///  We’ve just sent you a link to
   ///  reset your Password.
@@ -78,6 +80,8 @@ public enum L10n {
   public static let enterNewPasswordAndContinue = L10n.tr("Base", "enter_new_password_and_continue")
   /// Female
   public static let female = L10n.tr("Base", "female")
+  /// Food eaten
+  public static let foodEaten = L10n.tr("Base", "food_eaten")
   /// Forgot Password?
   public static let forgotPassword = L10n.tr("Base", "forgot_password")
   /// Freestyle Libre
@@ -221,6 +225,8 @@ public enum L10n {
   public static let welcome = L10n.tr("Base", "welcome")
   /// Welcome back! Please log in to continue.
   public static let welcomeBack = L10n.tr("Base", "welcome_back")
+  /// What did you eat?
+  public static let whatEat = L10n.tr("Base", "what_eat")
   /// What is your Birth Date?
   public static let whatIsYourBD = L10n.tr("Base", "what_is_your_BD")
   /// What is your Gender?

@@ -14,10 +14,11 @@ struct MainView: View {
             backgroundView
             contentView
                 .overlay(Rectangle()
-                    .fill(viewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear))
+                    .fill(viewModel.isPresented ? Color.black.opacity(0.3) : Color.clear))
                 .ignoresSafeArea()
             menuView
             logBGView
+            foodView
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
@@ -213,6 +214,14 @@ extension MainView {
     }
     var logBGView: some View {
         LogBGLevelView(isPresented: $viewModel.isLogBGPresented,
+                       inputValue: $viewModel.logBGInput,
+                       whenValue: $viewModel.logBGDateValue,
+                       timeValue: $viewModel.logBGDateValue) { value in
+            print(value)
+        }
+    }
+    var foodView: some View {
+        FoodView(isPresented: $viewModel.isFoodPresented,
                        inputValue: $viewModel.logBGInput,
                        whenValue: $viewModel.logBGDateValue,
                        timeValue: $viewModel.logBGDateValue) { value in

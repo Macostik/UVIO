@@ -116,3 +116,6 @@
 "glucose" = "Glucose";
 "when" = "When";
 "time" = "Time";
+"what_eat" = "What did you eat?";
+"food_eaten" = "Food eaten";
+"carbs" = "Carbs (g)";
