@@ -212,8 +212,11 @@ extension MainView {
         })
     }
     var logBGView: some View {
-        LogBGLevelView(isPresented: .constant(true), inputValue: .constant("")) { _ in
-            
+        LogBGLevelView(isPresented: $viewModel.isLogBGPresented,
+                       inputValue: $viewModel.logBGInput,
+                       whenValue: $viewModel.logBGDateValue,
+                       timeValue: $viewModel.logBGDateValue) { value in
+            print(value)
         }
     }
 }

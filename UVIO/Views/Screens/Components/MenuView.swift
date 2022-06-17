@@ -74,6 +74,9 @@ extension MenuView {
                 ForEach(menuTypeList,
                         id: \.id) { item in
                     Button {
+                        withAnimation {
+                            isPresented = false
+                        }
                         menuAction(item.menuAction)
                     } label: {
                         RoundedRectangle(cornerRadius: 12)

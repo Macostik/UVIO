@@ -81,6 +81,8 @@
 		56C9315B2850820D001E26AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9315A2850820D001E26AD /* MainView.swift */; };
 		56C9315D2850CEBE001E26AD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C9315C2850CEBE001E26AD /* MainViewModel.swift */; };
 		56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D83285C7B4F0097DF69 /* LogBGLevelView.swift */; };
+		56CA6D86285CA4400097DF69 /* TextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D85285CA4400097DF69 /* TextField+Ext.swift */; };
+		56CA6D8A285CC4A90097DF69 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D89285CC4A90097DF69 /* Date+Ext.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
@@ -175,6 +177,8 @@
 		56C9315A2850820D001E26AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		56C9315C2850CEBE001E26AD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		56CA6D83285C7B4F0097DF69 /* LogBGLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBGLevelView.swift; sourceTree = "<group>"; };
+		56CA6D85285CA4400097DF69 /* TextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Ext.swift"; sourceTree = "<group>"; };
+		56CA6D89285CC4A90097DF69 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				563E02E5284F3EAE00610F7C /* ASAuthorizationController+Ext.swift */,
 				563E02E9284F498900610F7C /* AuthFacebook+Ext.swift */,
 				563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */,
+				56CA6D85285CA4400097DF69 /* TextField+Ext.swift */,
+				56CA6D89285CC4A90097DF69 /* Date+Ext.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				568C171C28368AAD00C77384 /* User.swift in Sources */,
 				565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */,
 				5659428C28573C8700A1A168 /* SignUpFlow.swift in Sources */,
+				56CA6D86285CA4400097DF69 /* TextField+Ext.swift in Sources */,
 				561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */,
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */,
@@ -714,6 +721,7 @@
 				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				563713B62840E732003C5A09 /* GlucoseType.swift in Sources */,
+				56CA6D8A285CC4A90097DF69 /* Date+Ext.swift in Sources */,
 				5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */,
 				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,
 				56C0A7492848AB8C001D5D00 /* DexcomInteractor.swift in Sources */,

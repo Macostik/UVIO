@@ -10,8 +10,10 @@ import SwiftUI
 struct LogBGLevelView: View {
     @Binding var isPresented: Bool
     @Binding var inputValue: String
+    @Binding var whenValue: Date
+    @Binding var timeValue: Date
     @State var offset = 0.0
-    var menuAction: (MenuAction) -> Void
+    var submitAction: (CGFloat) -> Void
     var body: some View {
                 ZStack {
                     VStack {
@@ -29,7 +31,9 @@ struct LogBGLevelView_Previews: PreviewProvider {
     static var previews: some View {
         LogBGLevelView(isPresented: .constant(true),
                        inputValue: .constant("0.0"),
-                       menuAction: { _ in })
+                       whenValue: .constant(Date()),
+                       timeValue: .constant(Date()),
+                       submitAction: { _ in })
     }
 }
 
@@ -86,9 +90,10 @@ extension LogBGLevelView {
     }
     var inputOverlay: some View {
         VStack(spacing: 12) {
-            TextField("", text: $inputValue)
+            TextField("0.0", text: $inputValue)
                 .font(.poppins(.bold, size: 80))
                 .multilineTextAlignment(.center)
+                .keyboardType(.numberPad)
                 .foregroundColor(Color.capsulaGrayColor)
             Text(L10n.mmolL)
                 .font(.poppins(.medium, size: 18))
@@ -109,8 +114,8 @@ extension LogBGLevelView {
         HStack {
             Text(L10n.when)
                 .font(.poppins(.medium, size: 14))
-            Text(L10n.when)
-                .font(.poppins(.medium, size: 14))
+            Text(whenValue.date)
+                .font(.poppins(.bold, size: 14))
         }
         .padding()
     }
@@ -127,8 +132,8 @@ extension LogBGLevelView {
         HStack {
             Text(L10n.time)
                 .font(.poppins(.medium, size: 14))
-            Text(L10n.time)
-                .font(.poppins(.medium, size: 14))
+            Text(timeValue.time)
+                .font(.poppins(.bold, size: 14))
         }
         .padding()
     }
@@ -155,6 +160,9 @@ extension LogBGLevelView {
     }
     var cancelButton: some View {
         Button {
+            withAnimation {
+                isPresented = false
+            }
         } label: {
             Text(L10n.cancel)
                 .font(.poppins(.medium, size: 14))
