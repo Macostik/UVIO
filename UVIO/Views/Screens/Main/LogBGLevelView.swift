@@ -12,6 +12,10 @@ struct LogBGLevelView: View {
     @Binding var inputValue: String
     @Binding var whenValue: Date
     @Binding var timeValue: Date
+    @State var isCalendarOpen = false
+    @State var isTimePickerOpen = false
+    @State var isAddedNode = false
+    @State var note = ""
     @State var offset = 0.0
     var submitAction: (CGFloat) -> Void
     var body: some View {
@@ -52,10 +56,7 @@ extension LogBGLevelView {
                 inputContainer
                 whenContainer
                 timeContainer
-                Text(L10n.addNote)
-                    .font(.poppins(.medium, size: 14))
-                    .foregroundColor(Color.complementaryColor)
-                    .padding(.top)
+                addNote
                 submitLogButton
                 cancelButton
                     .padding(.bottom, 40)
@@ -96,6 +97,7 @@ extension LogBGLevelView {
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .foregroundColor(Color.capsulaGrayColor)
+                .accentColor(Color.black)
             Text(L10n.mmolL)
                 .font(.poppins(.medium, size: 18))
             Text(L10n.glucose)
@@ -104,11 +106,15 @@ extension LogBGLevelView {
     }
     var whenContainer: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color.white)
-                .overlay(whenOverlay, alignment: .leading)
-                .frame(height: 48)
-                .padding(.horizontal)
+            Button {
+                isCalendarOpen.toggle()
+            } label: {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color.white)
+                    .overlay(whenOverlay, alignment: .leading)
+                    .frame(height: 48)
+                    .padding(.horizontal)
+            }
         }
     }
     var whenOverlay: some View {
@@ -118,15 +124,31 @@ extension LogBGLevelView {
             Text(whenValue.date)
                 .font(.poppins(.bold, size: 14))
         }
+        .foregroundColor(Color.black)
         .padding()
     }
     var timeContainer: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color.white)
-                .overlay(timeOverlay, alignment: .leading)
-                .frame(height: 48)
+            if isCalendarOpen {
+                VStack(alignment: .trailing) {
+                    DatePicker("", selection: $whenValue, displayedComponents: [.date])
+                        .datePickerStyle(.graphical)
+                }
+                .background(Color.white)
+                .cornerRadius(16)
                 .padding(.horizontal)
+                .animation(.easeInOut)
+            } else {
+                Button {
+                    isTimePickerOpen.toggle()
+                } label: {
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundColor(Color.white)
+                        .overlay(timeOverlay, alignment: .leading)
+                        .frame(height: 48)
+                        .padding(.horizontal)
+                }
+            }
         }
     }
     var timeOverlay: some View {
@@ -136,7 +158,56 @@ extension LogBGLevelView {
             Text(timeValue.time)
                 .font(.poppins(.bold, size: 14))
         }
+        .foregroundColor(Color.black)
         .padding()
+    }
+    var addNote: some View {
+        VStack {
+            if isTimePickerOpen {
+                VStack(alignment: .trailing) {
+                    DatePicker("", selection: $timeValue, displayedComponents: [.hourAndMinute])
+                        .datePickerStyle(.wheel)
+                }
+                .background(Color.white)
+                .cornerRadius(16)
+                .padding(.horizontal)
+                .animation(.easeInOut)
+            } else {
+                Button {
+                    isAddedNode = true
+                } label: {
+                    noteOverlay
+                }
+            }
+        }
+    }
+    var noteOverlay: some View {
+        VStack {
+            if isAddedNode {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color.white)
+                    .overlay(inputNoteOverlay, alignment: .leading)
+                    .frame(height: 48)
+                    .padding(.horizontal)
+            } else {
+                Text(L10n.addNote)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(Color.complementaryColor)
+                    .padding(.top)
+            }
+        }
+    }
+    var inputNoteOverlay: some View {
+        HStack {
+            Text(L10n.myNote)
+                .font(.poppins(.medium, size: 14))
+            TextField("", text: $note)
+                .font(.poppins(.bold, size: 14))
+                .accentColor(Color.black)
+                .multilineTextAlignment(.leading)
+        }
+        .foregroundColor(Color.black)
+        .padding(.horizontal)
     }
     var submitLogButton: some View {
         Button {

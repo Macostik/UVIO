@@ -23,6 +23,7 @@ class MainViewModel: ObservableObject {
     @Published var logBGInput = ""
     @Published var logBGWhenValue = ""
     @Published var logBGDateValue = Date()
+    @Published var isCalendarOpen = false
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private var cancellable = Set<AnyCancellable>()
      var isPresented: Bool {

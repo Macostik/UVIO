@@ -126,6 +126,8 @@ public enum L10n {
   public static let mmolL = L10n.tr("Base", "mmol/l")
   /// MODY
   public static let mody = L10n.tr("Base", "mody")
+  /// My Note
+  public static let myNote = L10n.tr("Base", "my_note")
   /// New Password
   public static let newPassword = L10n.tr("Base", "new_password")
   /// Next
