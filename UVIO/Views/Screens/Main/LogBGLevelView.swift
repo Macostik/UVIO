@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct LogBGLevelView: View {
-    @Binding var isPresented: Bool
-    @Binding var inputValue: String
-    @Binding var whenValue: Date
-    @Binding var timeValue: Date
+    @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isAddedNode = false
     @State var note = ""
     @State var offset = 0.0
-    var submitAction: (CGFloat) -> Void
     var body: some View {
                 ZStack {
                     VStack {
-                        if isPresented {
+                        if viewModel.isLogBGPresented {
                             contentView
                                 .transition(.move(edge: .bottom))
                             }
@@ -33,11 +29,7 @@ struct LogBGLevelView: View {
 
 struct LogBGLevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LogBGLevelView(isPresented: .constant(true),
-                       inputValue: .constant("0.0"),
-                       whenValue: .constant(Date()),
-                       timeValue: .constant(Date()),
-                       submitAction: { _ in })
+        LogBGLevelView(viewModel: MainViewModel())
     }
 }
 
@@ -68,13 +60,13 @@ extension LogBGLevelView {
             .gesture(DragGesture()
                 .onChanged { gesture in
                     let yOffset = gesture.location.y
-                    if yOffset > 0 {
+                    if yOffset > 0 && !isCalendarOpen && !isTimePickerOpen {
                         offset = yOffset
                     }
                 }
                 .onEnded { _ in
                     withAnimation {
-                        self.isPresented = !(offset > 200)
+                        self.viewModel.isLogBGPresented = !(offset > 200)
                         self.offset = 0
                     }
                 }
@@ -92,7 +84,7 @@ extension LogBGLevelView {
     }
     var inputOverlay: some View {
         VStack(spacing: 12) {
-            TextField("0.0", text: $inputValue)
+            TextField("0.0", text: $viewModel.logBGInput)
                 .font(.poppins(.bold, size: 80))
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
@@ -107,6 +99,7 @@ extension LogBGLevelView {
     var whenContainer: some View {
         VStack {
             Button {
+                isTimePickerOpen = false
                 isCalendarOpen.toggle()
             } label: {
                 RoundedRectangle(cornerRadius: 12)
@@ -121,7 +114,7 @@ extension LogBGLevelView {
         HStack {
             Text(L10n.when)
                 .font(.poppins(.medium, size: 14))
-            Text(whenValue.date)
+            Text(viewModel.selectedLogBGDate)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)
@@ -131,7 +124,7 @@ extension LogBGLevelView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $whenValue, displayedComponents: [.date])
+                    DatePicker("", selection: $viewModel.logBGWhenValue, displayedComponents: [.date])
                         .datePickerStyle(.graphical)
                 }
                 .background(Color.white)
@@ -155,7 +148,7 @@ extension LogBGLevelView {
         HStack {
             Text(L10n.time)
                 .font(.poppins(.medium, size: 14))
-            Text(timeValue.time)
+            Text(viewModel.selectedLogBGTime)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)
@@ -165,7 +158,7 @@ extension LogBGLevelView {
         VStack {
             if isTimePickerOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $timeValue, displayedComponents: [.hourAndMinute])
+                    DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
                         .datePickerStyle(.wheel)
                 }
                 .background(Color.white)
@@ -233,7 +226,7 @@ extension LogBGLevelView {
     var cancelButton: some View {
         Button {
             withAnimation {
-                isPresented = false
+                viewModel.isLogBGPresented = false
             }
         } label: {
             Text(L10n.cancel)

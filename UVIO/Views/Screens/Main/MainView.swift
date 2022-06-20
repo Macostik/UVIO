@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var viewModel: MainViewModel
+    @StateObject var viewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .bottom) {
             backgroundView
@@ -213,18 +213,13 @@ extension MainView {
         })
     }
     var logBGView: some View {
-        LogBGLevelView(isPresented: $viewModel.isLogBGPresented,
-                       inputValue: $viewModel.logBGInput,
-                       whenValue: $viewModel.logBGDateValue,
-                       timeValue: $viewModel.logBGDateValue) { value in
-            print(value)
-        }
+        LogBGLevelView(viewModel: viewModel)
     }
     var foodView: some View {
         FoodView(isPresented: $viewModel.isFoodPresented,
                        inputValue: $viewModel.logBGInput,
-                       whenValue: $viewModel.logBGDateValue,
-                       timeValue: $viewModel.logBGDateValue) { value in
+                       whenValue: $viewModel.logBGWhenValue,
+                       timeValue: $viewModel.logBGTimeValue) { value in
             print(value)
         }
     }

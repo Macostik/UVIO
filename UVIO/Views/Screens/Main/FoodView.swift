@@ -29,7 +29,7 @@ struct FoodView: View {
 
 struct FoodView_Previews: PreviewProvider {
     static var previews: some View {
-        LogBGLevelView(isPresented: .constant(true),
+        FoodView(isPresented: .constant(true),
                        inputValue: .constant("0.0"),
                        whenValue: .constant(Date()),
                        timeValue: .constant(Date()),
@@ -94,7 +94,7 @@ extension FoodView {
         HStack {
             Text(L10n.when)
                 .font(.poppins(.medium, size: 14))
-            Text(whenValue.date)
+            Text(whenValue.convertToString())
                 .font(.poppins(.bold, size: 14))
         }
         .padding()
@@ -130,7 +130,7 @@ extension FoodView {
         HStack {
             Text(L10n.foodEaten)
                 .font(.poppins(.medium, size: 14))
-            Text(whenValue.date)
+            Text(whenValue.convertToString())
                 .font(.poppins(.bold, size: 14))
         }
         .padding()
@@ -148,7 +148,7 @@ extension FoodView {
         HStack {
             Text(L10n.carbs)
                 .font(.poppins(.medium, size: 14))
-            Text(whenValue.date)
+            Text(whenValue.convertToString())
                 .font(.poppins(.bold, size: 14))
         }
         .padding()
