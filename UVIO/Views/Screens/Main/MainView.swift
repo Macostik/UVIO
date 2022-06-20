@@ -216,12 +216,7 @@ extension MainView {
         LogBGLevelView(viewModel: viewModel)
     }
     var foodView: some View {
-        FoodView(isPresented: $viewModel.isFoodPresented,
-                       inputValue: $viewModel.logBGInput,
-                       whenValue: $viewModel.logBGWhenValue,
-                       timeValue: $viewModel.logBGTimeValue) { value in
-            print(value)
-        }
+        FoodView(viewModel: viewModel)
     }
 }
 

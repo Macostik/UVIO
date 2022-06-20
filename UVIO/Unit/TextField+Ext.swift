@@ -18,7 +18,8 @@ struct TextFieldDone: UIViewRepresentable {
                                          style: .done,
                                          target: self,
                                          action: #selector(textfield.doneButtonTapped(button:)))
-        toolBar.items = [doneButton]
+        let flexableSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([flexableSpace, doneButton], animated: true)
         toolBar.setItems([doneButton], animated: true)
         textfield.inputAccessoryView = toolBar
         return textfield

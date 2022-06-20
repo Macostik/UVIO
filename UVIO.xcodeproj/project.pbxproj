@@ -12,6 +12,7 @@
 		5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
+		5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* OnboardingViewType.swift */; };
@@ -112,6 +113,7 @@
 		5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseAlertOnboardingView.swift; sourceTree = "<group>"; };
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
+		561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Ext.swift"; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* OnboardingViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewType.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				563E02EB284F5D8300610F7C /* AuthGoogle+Ext.swift */,
 				56CA6D85285CA4400097DF69 /* TextField+Ext.swift */,
 				56CA6D89285CC4A90097DF69 /* Date+Ext.swift */,
+				561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				56C9315B2850820D001E26AD /* MainView.swift in Sources */,
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
+				5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */,
 				563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */,
 				56598095283B789800669F15 /* FacebookProvider.swift in Sources */,

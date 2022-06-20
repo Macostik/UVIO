@@ -23,6 +23,9 @@ class MainViewModel: ObservableObject {
     @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
+    @Published var foodWhenValue = Date()
+    @Published var foodTimeValue = Date()
+    @Published var foodCarbs = ""
     @Published var isCalendarOpen = false
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private var cancellable = Set<AnyCancellable>()
@@ -69,5 +72,16 @@ extension MainViewModel {
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .none
         return dateFormatter.string(from: logBGTimeValue)
+    }
+    var selectedFoodDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter.string(from: foodWhenValue)
+    }
+    var selectedFoodTime: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .none
+        return dateFormatter.string(from: foodTimeValue)
     }
 }

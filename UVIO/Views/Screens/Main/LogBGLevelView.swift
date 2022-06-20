@@ -11,7 +11,7 @@ struct LogBGLevelView: View {
     @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
-    @State var isAddedNode = false
+    @State var isNodeAdded = false
     @State var note = ""
     @State var offset = 0.0
     var body: some View {
@@ -156,27 +156,27 @@ extension LogBGLevelView {
     }
     var addNote: some View {
         VStack {
-            if isTimePickerOpen {
-                VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
-                        .datePickerStyle(.wheel)
-                }
-                .background(Color.white)
-                .cornerRadius(16)
-                .padding(.horizontal)
-                .animation(.easeInOut)
+            if isNodeAdded {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color.white)
+                    .overlay(inputNoteOverlay, alignment: .leading)
+                    .frame(height: 48)
+                    .padding(.horizontal)
             } else {
                 Button {
-                    isAddedNode = true
+                    isNodeAdded = true
                 } label: {
-                    noteOverlay
+                    Text(L10n.addNote)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.complementaryColor)
+                        .padding(.top)
                 }
             }
         }
     }
     var noteOverlay: some View {
         VStack {
-            if isAddedNode {
+            if isNodeAdded {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(inputNoteOverlay, alignment: .leading)
