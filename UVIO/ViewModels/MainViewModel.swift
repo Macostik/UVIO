@@ -20,21 +20,33 @@ class MainViewModel: ObservableObject {
     @Published var isMenuPresented = false
     @Published var isLogBGPresented = false
     @Published var isFoodPresented = false
+    @Published var isInsulinPresented = false
     @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
     @Published var foodWhenValue = Date()
     @Published var foodTimeValue = Date()
-    @Published var foodCarbs = ""
+    @Published var foodCarbs: CarbsPickerData = .c15
     @Published var isCalendarOpen = false
+    // Handel segmentControl
+    let segementItems = [L10n.rapidAction, L10n.logAction]
+    @Published var selectedSegementItem = L10n.rapidAction
+    // Handle insulin data
+    @Published var counter: Int = 0
+    @Published var subtitle: String = L10n.units
+    @Published var insulinMainColor: Color = Color.rapidOrangeColor
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private var cancellable = Set<AnyCancellable>()
      var isPresented: Bool {
-        isMenuPresented || isLogBGPresented || isFoodPresented
+        isMenuPresented ||
+         isLogBGPresented ||
+         isFoodPresented ||
+         isInsulinPresented
     }
     init() {
         getUser()
         handleMenuAction()
+        handleInsulinSegmentTap()
     }
     // Init handler
     func getUser() {
@@ -51,12 +63,24 @@ class MainViewModel: ObservableObject {
                 withAnimation {
                     switch action {
                     case .logBG: self.isLogBGPresented = true
-                    case .insulin: self.isLogBGPresented = true
+                    case .insulin: self.isInsulinPresented = true
                     case .food: self.isFoodPresented = true
                     case .reminder: self.isLogBGPresented = true
                     }
                 }
             }
+            .store(in: &cancellable)
+    }
+    func handleInsulinSegmentTap() {
+        $selectedSegementItem
+            .map({ item -> Color in
+                if item == L10n.rapidAction {
+                    return Color.rapidOrangeColor
+                } else {
+                    return Color.primaryCayanColor
+                }
+            })
+            .assign(to: \.insulinMainColor, on: self)
             .store(in: &cancellable)
     }
 }

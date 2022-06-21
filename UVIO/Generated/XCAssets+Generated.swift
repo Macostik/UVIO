@@ -14,8 +14,10 @@ internal extension Color {
   static var grayScaleColor : Color { Color("grayScaleColor", bundle: BundleToken.bundle) }
   static var greenSuccessColor : Color { Color("greenSuccessColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }
+  static var primaryCayanColor : Color { Color("primaryCayanColor", bundle: BundleToken.bundle) }
   static var primaryGreenColor : Color { Color("primaryGreenColor", bundle: BundleToken.bundle) }
   static var primaryOrangeColor : Color { Color("primaryOrangeColor", bundle: BundleToken.bundle) }
+  static var rapidOrangeColor : Color { Color("rapidOrangeColor", bundle: BundleToken.bundle) }
 }
 
 internal extension Image {
@@ -45,12 +47,15 @@ internal extension Image {
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
   static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
   static var icecreamIcon : Image { Image("icecreamIcon", bundle: BundleToken.bundle) }
-  static var insulinIcon : Image { Image("insulinIcon", bundle: BundleToken.bundle) }
   static var loadIcon : Image { Image("loadIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
+  static var longInsulinIcon : Image { Image("longInsulinIcon", bundle: BundleToken.bundle) }
   static var menuIcon : Image { Image("menuIcon", bundle: BundleToken.bundle) }
+  static var minusIcon : Image { Image("minusIcon", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
+  static var plusButtonIcon : Image { Image("plusButtonIcon", bundle: BundleToken.bundle) }
   static var plusIcon : Image { Image("plusIcon", bundle: BundleToken.bundle) }
+  static var rapidInsulinIcon : Image { Image("rapidInsulinIcon", bundle: BundleToken.bundle) }
   static var remainderIcon : Image { Image("remainderIcon", bundle: BundleToken.bundle) }
   static var settingsIcon : Image { Image("settingsIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }

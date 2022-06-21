@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */; };
+		560EF5AA2861D518003D6A30 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EF5A92861D518003D6A30 /* SegmentControl.swift */; };
+		560EF5AE28620107003D6A30 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560EF5AD28620107003D6A30 /* CounterView.swift */; };
 		561238052834D35A00DCB87B /* DiabetsOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */; };
 		5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */; };
+		561F3B132861B095002F4308 /* InsulinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B122861B095002F4308 /* InsulinView.swift */; };
+		561F3B152861C81E002F4308 /* CrabsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B142861C81E002F4308 /* CrabsType.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
 		562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */; };
 		562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562822B2284672CE00F0F6DC /* OnboardingViewType.swift */; };
@@ -109,11 +113,15 @@
 
 /* Begin PBXFileReference section */
 		5609ED782832AD1400A8B144 /* BirthDateOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateOnboardingView.swift; sourceTree = "<group>"; };
+		560EF5A92861D518003D6A30 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
+		560EF5AD28620107003D6A30 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		561238042834D35A00DCB87B /* DiabetsOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetsOnboardingView.swift; sourceTree = "<group>"; };
 		5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseAlertOnboardingView.swift; sourceTree = "<group>"; };
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Ext.swift"; sourceTree = "<group>"; };
+		561F3B122861B095002F4308 /* InsulinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsulinView.swift; sourceTree = "<group>"; };
+		561F3B142861C81E002F4308 /* CrabsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrabsType.swift; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
 		562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardHandler.swift; sourceTree = "<group>"; };
 		562822B2284672CE00F0F6DC /* OnboardingViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewType.swift; sourceTree = "<group>"; };
@@ -430,6 +438,7 @@
 				565BDF712851E28D000BE00C /* MenuType.swift */,
 				562822B2284672CE00F0F6DC /* OnboardingViewType.swift */,
 				5659428F2857684400A1A168 /* LoginViewType.swift */,
+				561F3B142861C81E002F4308 /* CrabsType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -461,6 +470,7 @@
 				56C9315A2850820D001E26AD /* MainView.swift */,
 				56CA6D8B285CC63E0097DF69 /* FoodView.swift */,
 				56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */,
+				561F3B122861B095002F4308 /* InsulinView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -478,6 +488,8 @@
 				562822AC284622CB00F0F6DC /* KeyBoardHandler.swift */,
 				562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */,
 				565BDF6F2851D92B000BE00C /* RoundedCorner.swift */,
+				560EF5A92861D518003D6A30 /* SegmentControl.swift */,
+				560EF5AD28620107003D6A30 /* CounterView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -682,7 +694,9 @@
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */,
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,
+				561F3B152861C81E002F4308 /* CrabsType.swift in Sources */,
 				56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */,
+				560EF5AA2861D518003D6A30 /* SegmentControl.swift in Sources */,
 				5637139A283FC895003C5A09 /* EstablishConnectionView.swift in Sources */,
 				56A8537428323934000DFE3D /* SplashView.swift in Sources */,
 				563E02EC284F5D8400610F7C /* AuthGoogle+Ext.swift in Sources */,
@@ -726,6 +740,7 @@
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,
 				5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */,
 				563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */,
+				560EF5AE28620107003D6A30 /* CounterView.swift in Sources */,
 				5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */,
 				56598095283B789800669F15 /* FacebookProvider.swift in Sources */,
 				56C0A74E28490BB1001D5D00 /* OAuth+Ext.swift in Sources */,
@@ -743,6 +758,7 @@
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */,
+				561F3B132861B095002F4308 /* InsulinView.swift in Sources */,
 				5659428E2857671300A1A168 /* SignInFlow.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,

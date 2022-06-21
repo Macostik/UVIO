@@ -120,3 +120,12 @@
 "food_eaten" = "Food eaten";
 "carbs" = "Carbs (g)";
 "my_note" = "My Note";
+"log_insulin" = "Log Insulin";
+"rapid_action" = "Rapid acting";
+"log_action" = "Long acting";
+"submit_insulin" = "Submit Insulin Log";
+"submit_food" = "Submit Food Log";
+"units" = "units";
+"minutes" = "minutes";
+"set_reminder" = "Set reminder";
+"add_reminder" = "Add Remidner";

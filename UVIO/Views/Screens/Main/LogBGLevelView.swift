@@ -98,15 +98,24 @@ extension LogBGLevelView {
     }
     var whenContainer: some View {
         VStack {
-            Button {
-                isTimePickerOpen = false
-                isCalendarOpen.toggle()
-            } label: {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color.white)
-                    .overlay(whenOverlay, alignment: .leading)
-                    .frame(height: 48)
+            if isTimePickerOpen {
+                DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(.wheel)
+                    .background(Color.white)
+                    .cornerRadius(16)
                     .padding(.horizontal)
+                    .animation(.easeInOut)
+            } else {
+                Button {
+                    isTimePickerOpen = false
+                    isCalendarOpen.toggle()
+                } label: {
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundColor(Color.white)
+                        .overlay(whenOverlay, alignment: .leading)
+                        .frame(height: 48)
+                        .padding(.horizontal)
+                }
             }
         }
     }

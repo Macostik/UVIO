@@ -9,20 +9,6 @@ import SwiftUI
 
 typealias PickerListEntryType = [String]
 
-enum CarbsPickerData: StringLiteralType, CaseIterable {
-    case c15, c30, c45, c60, c75, c90
-    var description: String {
-        switch self {
-        case .c15: return "15 carbs"
-        case .c30: return "30 carbs"
-        case .c45: return "45 carbs"
-        case .c60: return "60 carbs"
-        case .c75: return "75 carbs"
-        case .c90: return "90 carbs"
-        }
-    }
-}
-
 struct CarbsDataPicker: UIViewRepresentable {
     @Binding var selectedItem: String
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {

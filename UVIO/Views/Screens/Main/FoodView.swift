@@ -146,11 +146,18 @@ extension FoodView {
                     .padding(.horizontal)
                     .animation(.easeInOut)
             } else if isCarbsAdded {
-                CarbsDataPicker(selectedItem: $viewModel.foodCarbs)
-                    .datePickerStyle(.wheel)
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .animation(.easeInOut)
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color.white)
+                    .overlay(
+                        Picker("", selection: $viewModel.foodCarbs) {
+                            ForEach(CarbsPickerData.allCases, id: \.self) {
+                                Text($0.description)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                    )
+                    .frame(height: 156)
+                .padding(.horizontal)
             } else {
                 VStack {
                     RoundedRectangle(cornerRadius: 12)
@@ -191,7 +198,7 @@ extension FoodView {
         HStack {
             Text(L10n.carbs)
                 .font(.poppins(.medium, size: 14))
-            Text(viewModel.foodCarbs)
+            Text(viewModel.foodCarbs.description)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)
@@ -243,7 +250,7 @@ extension FoodView {
             .cornerRadius(12)
             .padding(.horizontal)
             .overlay(
-                Text(L10n.submitBGLog)
+                Text(L10n.submitFood)
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(Color.white)
             )

@@ -19,6 +19,7 @@ struct MainView: View {
             menuView
             logBGView
             foodView
+            insulinView
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
@@ -97,7 +98,7 @@ extension MainView {
                     viewModel.isMenuPresented = true
                 }
             } label: {
-                Image.plusIcon
+                Image.plusButtonIcon
                     .offset(y: 50)
                     .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
             }
@@ -217,6 +218,9 @@ extension MainView {
     }
     var foodView: some View {
         FoodView(viewModel: viewModel)
+    }
+    var insulinView: some View {
+        InsulinView(viewModel: viewModel)
     }
 }
 

@@ -12,7 +12,7 @@ import Foundation
 public enum L10n {
   /// Add a note
   public static let addNote = L10n.tr("Base", "add_note")
-  /// Add a Reminder
+  /// Add Remidner
   public static let addReminder = L10n.tr("Base", "add_reminder")
   ///  and
   public static let and = L10n.tr("Base", "and")
@@ -108,11 +108,13 @@ public enum L10n {
   public static let lada = L10n.tr("Base", "lada")
   /// Now, let’s connect your 
   public static let letsConnectDexcom = L10n.tr("Base", "lets_connect_dexcom")
+  /// Long acting
+  public static let logAction = L10n.tr("Base", "log_action")
   /// Log BG Level
   public static let logBG = L10n.tr("Base", "log_BG")
   /// Log Food/Carbs
   public static let logFood = L10n.tr("Base", "log_food")
-  /// Log Food/Carbs
+  /// Log Insulin
   public static let logInsulin = L10n.tr("Base", "log_insulin")
   /// Log mannualy your BG level
   public static let logManualyBGLevel = L10n.tr("Base", "log_manualy_BG_level")
@@ -122,6 +124,8 @@ public enum L10n {
   public static let male = L10n.tr("Base", "male")
   /// mg/dL
   public static let mgDL = L10n.tr("Base", "mg/dL")
+  /// minutes
+  public static let minutes = L10n.tr("Base", "minutes")
   /// mmol/l
   public static let mmolL = L10n.tr("Base", "mmol/l")
   /// MODY
@@ -157,6 +161,8 @@ public enum L10n {
   public static let privacyPolicy = L10n.tr("Base", "privacy_policy")
   /// Provide own
   public static let provideOwn = L10n.tr("Base", "provideOwn")
+  /// Rapid acting
+  public static let rapidAction = L10n.tr("Base", "rapid_action")
   /// Select preferred Blood Glucose units
   public static let selectGlucose = L10n.tr("Base", "select_glucose")
   /// Select supporting device
@@ -165,6 +171,8 @@ public enum L10n {
   public static let sendEmailRecovery = L10n.tr("Base", "send_email_recovery")
   /// Set Glucose Alerts
   public static let setGlucoseAlert = L10n.tr("Base", "set_glucose_Alert")
+  /// Set reminder
+  public static let setReminder = L10n.tr("Base", "set_reminder")
   /// Sign In
   public static let signIn = L10n.tr("Base", "sign_in")
   /// Sign In with Apple
@@ -193,6 +201,10 @@ public enum L10n {
   public static let specifyAnother = L10n.tr("Base", "specify_another")
   /// Submit BG Log
   public static let submitBGLog = L10n.tr("Base", "submit_BG_log")
+  /// Submit Food Log
+  public static let submitFood = L10n.tr("Base", "submit_food")
+  /// Submit Insulin Log
+  public static let submitInsulin = L10n.tr("Base", "submit_insulin")
   /// You have successfully
   ///  changed your Password.
   public static let successfullyChangedPassword = L10n.tr("Base", "successfully_changed_password")
@@ -219,6 +231,8 @@ public enum L10n {
   public static let type1Diabetes = L10n.tr("Base", "type_1_diabetes")
   /// Type 2 diabetes
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
+  /// units
+  public static let units = L10n.tr("Base", "units")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
   /// Vibrate only

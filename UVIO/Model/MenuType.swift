@@ -48,7 +48,7 @@ class MenuType {
              menuAction: .food),
     MenuType(id: 4,
              title: L10n.logInsulin,
-             icon: Image.insulinIcon,
+             icon: Image.longInsulinIcon,
              shadowColor: .blue.opacity(0.2),
              menuAction: .insulin)
 ]
