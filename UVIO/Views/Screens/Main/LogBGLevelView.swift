@@ -12,7 +12,6 @@ struct LogBGLevelView: View {
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
-    @State var note = ""
     @State var offset = 0.0
     var body: some View {
                 ZStack {
@@ -203,7 +202,7 @@ extension LogBGLevelView {
         HStack {
             Text(L10n.myNote)
                 .font(.poppins(.medium, size: 14))
-            TextField("", text: $note)
+            TextField("", text: $viewModel.logBGNote)
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)

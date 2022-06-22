@@ -13,7 +13,6 @@ struct FoodView: View {
     @State var isTimePickerOpen = false
     @State var isCarbsAdded = false
     @State var isNodeAdded = false
-    @State var note = ""
     @State var offset = 0.0
     var body: some View {
         ZStack {
@@ -96,7 +95,7 @@ extension FoodView {
         HStack {
             Text(L10n.when)
                 .font(.poppins(.medium, size: 14))
-            Text(viewModel.selectedLogBGDate)
+            Text(viewModel.selectedFoodDate)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)
@@ -106,7 +105,7 @@ extension FoodView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.logBGWhenValue, displayedComponents: [.date])
+                    DatePicker("", selection: $viewModel.foodWhenValue, displayedComponents: [.date])
                         .datePickerStyle(.graphical)
                 }
                 .background(Color.white)
@@ -139,7 +138,7 @@ extension FoodView {
     var foodContainer: some View {
         VStack(alignment: .trailing) {
             if isTimePickerOpen {
-                DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
+                DatePicker("", selection: $viewModel.foodTimeValue, displayedComponents: [.hourAndMinute])
                     .datePickerStyle(.wheel)
                     .background(Color.white)
                     .cornerRadius(16)
@@ -173,7 +172,7 @@ extension FoodView {
         HStack {
             Text(L10n.foodEaten)
                 .font(.poppins(.medium, size: 14))
-            TextField("", text: $note)
+            TextField("", text: $viewModel.foodName)
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)
@@ -228,7 +227,7 @@ extension FoodView {
         HStack {
             Text(L10n.myNote)
                 .font(.poppins(.medium, size: 14))
-            TextField("", text: $note)
+            TextField("", text: $viewModel.foodNote)
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)

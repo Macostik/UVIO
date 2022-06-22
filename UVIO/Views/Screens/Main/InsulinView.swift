@@ -12,7 +12,6 @@ struct InsulinView: View {
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
-    @State var note = ""
     @State var offset = 0.0
     @Namespace var aniamtion
     var body: some View {
@@ -119,7 +118,7 @@ extension InsulinView {
         HStack {
             Text(L10n.myNote)
                 .font(.poppins(.medium, size: 14))
-            TextField("", text: $note)
+            TextField("", text: $viewModel.insulineNote)
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)
@@ -164,7 +163,7 @@ extension InsulinView {
     var whenContainer: some View {
         VStack {
             if isTimePickerOpen {
-                DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
+                DatePicker("", selection: $viewModel.insulinTimeValue, displayedComponents: [.hourAndMinute])
                     .datePickerStyle(.wheel)
                     .background(Color.white)
                     .cornerRadius(16)
@@ -190,7 +189,7 @@ extension InsulinView {
         HStack {
             Text(L10n.when)
                 .font(.poppins(.medium, size: 14))
-            Text(viewModel.selectedLogBGDate)
+            Text(viewModel.selectedInsulinDate)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)
@@ -200,7 +199,7 @@ extension InsulinView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.logBGWhenValue, displayedComponents: [.date])
+                    DatePicker("", selection: $viewModel.insulinWhenValue, displayedComponents: [.date])
                         .datePickerStyle(.graphical)
                 }
                 .background(Color.white)
@@ -224,7 +223,7 @@ extension InsulinView {
         HStack {
             Text(L10n.time)
                 .font(.poppins(.medium, size: 14))
-            Text(viewModel.selectedLogBGTime)
+            Text(viewModel.selectedInsulinTime)
                 .font(.poppins(.bold, size: 14))
         }
         .foregroundColor(Color.black)

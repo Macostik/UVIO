@@ -55,6 +55,10 @@
 		565BDF702851D92B000BE00C /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565BDF6F2851D92B000BE00C /* RoundedCorner.swift */; };
 		565BDF722851E28D000BE00C /* MenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565BDF712851E28D000BE00C /* MenuType.swift */; };
 		565F21D12862FD5D00020C27 /* RemainderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F21D02862FD5D00020C27 /* RemainderView.swift */; };
+		565F21D3286334E400020C27 /* LogBGEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F21D2286334E400020C27 /* LogBGEntry.swift */; };
+		565F21D5286335AB00020C27 /* FoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F21D4286335AB00020C27 /* FoodEntry.swift */; };
+		565F21D7286335F500020C27 /* InsulinEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F21D6286335F500020C27 /* InsulinEntry.swift */; };
+		565F21D92863374D00020C27 /* RemainderEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F21D82863374D00020C27 /* RemainderEntry.swift */; };
 		565FDCDF283BD45A004D9924 /* NativigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCDE283BD45A004D9924 /* NativigationBarView.swift */; };
 		565FDCE1283BDA29004D9924 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565FDCE0283BDA29004D9924 /* View+Ext.swift */; };
 		56749FA6283BAA0C00A2D4B7 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56749FA5283BAA0C00A2D4B7 /* ToastView.swift */; };
@@ -158,6 +162,10 @@
 		565BDF6F2851D92B000BE00C /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		565BDF712851E28D000BE00C /* MenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuType.swift; sourceTree = "<group>"; };
 		565F21D02862FD5D00020C27 /* RemainderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderView.swift; sourceTree = "<group>"; };
+		565F21D2286334E400020C27 /* LogBGEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBGEntry.swift; sourceTree = "<group>"; };
+		565F21D4286335AB00020C27 /* FoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntry.swift; sourceTree = "<group>"; };
+		565F21D6286335F500020C27 /* InsulinEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsulinEntry.swift; sourceTree = "<group>"; };
+		565F21D82863374D00020C27 /* RemainderEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderEntry.swift; sourceTree = "<group>"; };
 		565FDCDE283BD45A004D9924 /* NativigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativigationBarView.swift; sourceTree = "<group>"; };
 		565FDCE0283BDA29004D9924 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		56749FA5283BAA0C00A2D4B7 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -441,6 +449,10 @@
 				562822B2284672CE00F0F6DC /* OnboardingViewType.swift */,
 				5659428F2857684400A1A168 /* LoginViewType.swift */,
 				561F3B142861C81E002F4308 /* CrabsType.swift */,
+				565F21D2286334E400020C27 /* LogBGEntry.swift */,
+				565F21D4286335AB00020C27 /* FoodEntry.swift */,
+				565F21D6286335F500020C27 /* InsulinEntry.swift */,
+				565F21D82863374D00020C27 /* RemainderEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -687,6 +699,7 @@
 				56CA6D8C285CC63E0097DF69 /* FoodView.swift in Sources */,
 				565BDF722851E28D000BE00C /* MenuType.swift in Sources */,
 				56E6F19A283D458900623AE2 /* SlimLogglyDestination.swift in Sources */,
+				565F21D5286335AB00020C27 /* FoodEntry.swift in Sources */,
 				56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */,
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */,
@@ -730,7 +743,10 @@
 				56E537C1283E958300929282 /* GoogleProvider.swift in Sources */,
 				565BDF6E2851D505000BE00C /* MenuView.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
+				565F21D3286334E400020C27 /* LogBGEntry.swift in Sources */,
+				565F21D92863374D00020C27 /* RemainderEntry.swift in Sources */,
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
+				565F21D7286335F500020C27 /* InsulinEntry.swift in Sources */,
 				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
 				568C17222836949D00C77384 /* StoreProvider.swift in Sources */,
 				5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */,
