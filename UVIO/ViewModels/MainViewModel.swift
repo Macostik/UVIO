@@ -21,6 +21,7 @@ class MainViewModel: ObservableObject {
     @Published var isLogBGPresented = false
     @Published var isFoodPresented = false
     @Published var isInsulinPresented = false
+    @Published var isRemainderPresented = false
     @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
@@ -32,16 +33,20 @@ class MainViewModel: ObservableObject {
     let segementItems = [L10n.rapidAction, L10n.logAction]
     @Published var selectedSegementItem = L10n.rapidAction
     // Handle insulin data
-    @Published var counter: Int = 0
+    @Published var insulinCounter: Int = 0
     @Published var subtitle: String = L10n.units
     @Published var insulinMainColor: Color = Color.rapidOrangeColor
+    // Handle remainder data
+    @Published var remainderCounter: Int = 0
+    @Published var remainderColor: Color = Color.white
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private var cancellable = Set<AnyCancellable>()
      var isPresented: Bool {
         isMenuPresented ||
          isLogBGPresented ||
          isFoodPresented ||
-         isInsulinPresented
+         isInsulinPresented ||
+         isRemainderPresented
     }
     init() {
         getUser()
@@ -65,7 +70,7 @@ class MainViewModel: ObservableObject {
                     case .logBG: self.isLogBGPresented = true
                     case .insulin: self.isInsulinPresented = true
                     case .food: self.isFoodPresented = true
-                    case .reminder: self.isLogBGPresented = true
+                    case .reminder: self.isRemainderPresented = true
                     }
                 }
             }

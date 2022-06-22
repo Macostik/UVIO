@@ -20,6 +20,7 @@ struct MainView: View {
             logBGView
             foodView
             insulinView
+            remainderView
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
@@ -221,6 +222,9 @@ extension MainView {
     }
     var insulinView: some View {
         InsulinView(viewModel: viewModel)
+    }
+    var remainderView: some View {
+        RemainderView(viewModel: viewModel)
     }
 }
 

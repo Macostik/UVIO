@@ -14,7 +14,6 @@ struct InsulinView: View {
     @State var isNodeAdded = false
     @State var note = ""
     @State var offset = 0.0
-   
     @Namespace var aniamtion
     var body: some View {
         ZStack {
@@ -52,7 +51,7 @@ extension InsulinView {
                     .font(.poppins(.medium, size: 18))
                     .padding(.top)
                 segmentControlView
-                CounterView(counter: $viewModel.counter,
+                CounterView(counter: $viewModel.insulinCounter,
                             unit: $viewModel.subtitle,
                             color: $viewModel.insulinMainColor)
                 whenContainer

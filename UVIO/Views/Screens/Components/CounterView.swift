@@ -11,6 +11,7 @@ struct CounterView: View {
     @Binding var counter: Int
     @Binding var unit: String
     @Binding var color: Color
+    var isInvertedColor = false
     var body: some View {
         HStack(spacing: 25) {
             plusButtonView
@@ -34,20 +35,36 @@ extension CounterView {
         Button {
             counter += 1
         } label: {
-            Image.plusIcon
-                .frame(width: 40, height: 48)
-                .background(color)
-                .cornerRadius(8)
+            Group {
+                if isInvertedColor {
+                    Image.plusIcon
+                        .colorInvert()
+                } else {
+                    Image.plusIcon
+                }
+            }
+            .frame(width: 40, height: 48)
+            .background(color)
+            .cornerRadius(8)
         }
     }
     var minusButtonView: some View {
         Button {
-            counter -= 1
+            if counter > 0 {
+                counter -= 1
+            }
         } label: {
-            Image.minusIcon
-                .frame(width: 40, height: 48)
-                .background(color)
-                .cornerRadius(8)
+            Group {
+                if isInvertedColor {
+                    Image.minusIcon
+                        .colorInvert()
+                } else {
+                    Image.minusIcon
+                }
+            }
+            .frame(width: 40, height: 48)
+            .background(color)
+            .cornerRadius(8)
         }
     }
     var counerContainer: some View {
