@@ -6,10 +6,11 @@
 //
 
 import Combine
+import RealmSwift
 
 protocol StoreInteractor {
-    func save(user: User) -> AnyPublisher<Bool, Error>
-    func getUser() -> AnyPublisher<User?, Error>
+    func saveEntry(entry: Object) -> AnyPublisher<Bool, Error>
+    func getEntry<E: Object>() -> AnyPublisher<E?, Error>
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error>
     func updateUserParams(email: String?,

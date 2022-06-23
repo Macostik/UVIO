@@ -212,6 +212,7 @@ extension LogBGLevelView {
     }
     var submitLogButton: some View {
         Button {
+            viewModel.subminLogBGPublisher.send()
         } label: {
             ZStack {
                 HStack {

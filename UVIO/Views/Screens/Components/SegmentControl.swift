@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SegmentControl: View {
-    @Binding var selectedTab: String
-    var title: String
+    @Binding var selectedTab: InsulinAction
+    var title: InsulinAction
     var animation: Namespace.ID
     var body: some View {
         Button(action: {
@@ -17,7 +17,7 @@ struct SegmentControl: View {
                 selectedTab = title
             }
         }, label: {
-            Text(title)
+            Text(title.rawValue)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(isSelected ? selectedColor : Color.black)
                 .padding(.vertical, 10)
@@ -39,9 +39,8 @@ struct SegmentControl: View {
     }
     var selectedColor: Color {
         switch selectedTab {
-        case L10n.logAction: return Color.primaryCayanColor
-        case L10n.rapidAction: return Color.rapidOrangeColor
-        default: return Color.black
+        case .long: return Color.primaryCayanColor
+        case .rapid: return Color.rapidOrangeColor
         }
     }
 }

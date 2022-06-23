@@ -222,7 +222,7 @@ extension UserViewModel {
 // Handle store user
 extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
-        dependency.provider.storeService.getUser()
+        dependency.provider.storeService.getEntry()
     }
     func updateUserParams(email: String? = nil,
                           password: String? = nil,
@@ -232,8 +232,8 @@ extension UserViewModel {
                               password: password,
                               dexcomToken: dexcomToken)
     }
-    func save(user: User) -> AnyPublisher<Bool, Error> {
-        return dependency.provider.storeService.save(user: user)
+    func save(entry: Object) -> AnyPublisher<Bool, Error> {
+        return dependency.provider.storeService.saveEntry(entry: entry)
     }
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error> {

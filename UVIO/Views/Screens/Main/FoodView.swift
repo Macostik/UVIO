@@ -237,6 +237,7 @@ extension FoodView {
     }
     var submitLogButton: some View {
         Button {
+            viewModel.subminFoodPublisher.send()
         } label: {
             ZStack {
                 HStack {

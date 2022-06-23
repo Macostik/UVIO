@@ -10,8 +10,8 @@ import RealmSwift
 
 class InsulineEntry: Object {
     @Persisted(primaryKey: true) var id: String
-    @Persisted var insulinValue: String
-    @Persisted var date: Date
-    @Persisted var time: Date
-    @Persisted var note: String
+    @Persisted var insulinValue: String = ""
+    @Persisted var date: Date = Date()
+    @Persisted var time: Date = Date()
+    @Persisted var note: String = ""
 }

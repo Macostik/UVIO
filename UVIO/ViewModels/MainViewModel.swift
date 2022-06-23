@@ -8,10 +8,12 @@
 import Foundation
 import Combine
 import SwiftUI
+import RealmSwift
 
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
+    @Published var entryWasUpdated = false
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
@@ -42,31 +44,39 @@ class MainViewModel: ObservableObject {
     @Published var insulinMainColor: Color = Color.rapidOrangeColor
     @Published var insulinWhenValue = Date()
     @Published var insulinTimeValue = Date()
-    // Handle remainder data
-    @Published var remainderNote = ""
-    @Published var remainderCounter: Int = 0
-    @Published var isRemainderPresented = false
-    @Published var remainderColor: Color = Color.white
+    @Published var insulinAction: InsulinAction = .rapid
+    // Handle reminder data
+    @Published var reminderNote = ""
+    @Published var reminderCounter: Int = 0
+    @Published var isReminderPresented = false
+    @Published var reminderColor: Color = Color.white
     // Handel segmentControl
-    let segementItems = [L10n.rapidAction, L10n.logAction]
-    @Published var selectedSegementItem = L10n.rapidAction
+    let segementItems = InsulinAction.allCases
+    @Published var selectedSegementItem = InsulinAction.rapid
+    // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
+    private(set) var subminLogBGPublisher = PassthroughSubject<Void, Error>()
+    private(set) var subminInsulinPublisher = PassthroughSubject<Void, Error>()
+    private(set) var subminFoodPublisher = PassthroughSubject<Void, Error>()
+    private(set) var subminReminderPublisher = PassthroughSubject<Void, Error>()
     private var cancellable = Set<AnyCancellable>()
-     var isPresented: Bool {
+    var isPresented: Bool {
         isMenuPresented ||
-         isLogBGPresented ||
-         isFoodPresented ||
-         isInsulinPresented ||
-         isRemainderPresented
+        isLogBGPresented ||
+        isFoodPresented ||
+        isInsulinPresented ||
+        isReminderPresented
     }
     init() {
         getUser()
         handleMenuAction()
         handleInsulinSegmentTap()
+        handleLogBG_FoodSubmition()
+        handleSubmition()
     }
     // Init handler
     func getUser() {
-        dependency.provider.storeService.getUser()
+        dependency.provider.storeService.getEntry()
             .replaceError(with: nil)
             .compactMap({ $0 })
             .assign(to: \.user, on: self)
@@ -81,7 +91,7 @@ class MainViewModel: ObservableObject {
                     case .logBG: self.isLogBGPresented = true
                     case .insulin: self.isInsulinPresented = true
                     case .food: self.isFoodPresented = true
-                    case .reminder: self.isRemainderPresented = true
+                    case .reminder: self.isReminderPresented = true
                     }
                 }
             }
@@ -90,7 +100,8 @@ class MainViewModel: ObservableObject {
     func handleInsulinSegmentTap() {
         $selectedSegementItem
             .map({ item -> Color in
-                if item == L10n.rapidAction {
+                self.insulinAction = item
+                if item == .rapid {
                     return Color.rapidOrangeColor
                 } else {
                     return Color.primaryCayanColor
@@ -98,6 +109,91 @@ class MainViewModel: ObservableObject {
             })
             .assign(to: \.insulinMainColor, on: self)
             .store(in: &cancellable)
+    }
+    func handleLogBG_FoodSubmition() {
+            Publishers.Merge(
+                subminLogBGPublisher
+                    .flatMap({
+                        self.getLogBG()
+                            .map({ $0 ?? LogBGEntry() })
+                            .map { entry in
+                                entry.id = UUID().uuidString
+                                entry.value = self.logBGInput
+                                entry.note = self.logBGNote
+                                entry.date = self.logBGWhenValue
+                                entry.time = self.logBGTimeValue
+                                return entry
+                            }
+                    }).eraseToAnyPublisher(),
+                subminFoodPublisher
+                    .flatMap({
+                        self.getFood()
+                            .map({ $0 ?? FoodEntry() })
+                            .map { entry in
+                                entry.id = UUID().uuidString
+                                entry.carbsValue = self.foodCarbs.description
+                                entry.note = self.foodNote
+                                entry.foodName = self.foodName
+                                entry.date = self.foodWhenValue
+                                entry.time = self.foodTimeValue
+                                return entry
+                            }
+                    }).eraseToAnyPublisher()
+            )
+            .flatMap(save)
+            .replaceError(with: false)
+            .assign(to: \.entryWasUpdated, on: self)
+            .store(in: &cancellable)
+        }
+        func handleSubmition() {
+            Publishers.Merge(
+                subminInsulinPublisher
+                    .flatMap({
+                        self.getInsulin()
+                            .map({ $0 ?? InsulineEntry() })
+                            .map { entry in
+                                entry.id = UUID().uuidString
+                                entry.insulinValue = "\(self.insulinCounter)"
+                                entry.note = self.insulineNote
+                                entry.date = self.insulinWhenValue
+                                entry.time = self.insulinTimeValue
+                                return entry
+                            }
+                    }).eraseToAnyPublisher(),
+                subminReminderPublisher
+                    .flatMap({
+                        self.getReminder()
+                            .map({ $0 ?? ReminderEntry() })
+                            .map { entry in
+                                entry.id = UUID().uuidString
+                                entry.reminderValue = "\(self.reminderCounter)"
+                                entry.note = self.reminderNote
+                                return entry
+                            }
+                    }).eraseToAnyPublisher())
+            .flatMap(save)
+            .replaceError(with: false)
+            .assign(to: \.entryWasUpdated, on: self)
+            .store(in: &cancellable)
+        }
+}
+
+// Handle store entries
+extension MainViewModel {
+    func getLogBG() -> AnyPublisher<LogBGEntry?, Error> {
+        dependency.provider.storeService.getEntry()
+    }
+    func getFood() -> AnyPublisher<FoodEntry?, Error> {
+        dependency.provider.storeService.getEntry()
+    }
+    func getInsulin() -> AnyPublisher<InsulineEntry?, Error> {
+        dependency.provider.storeService.getEntry()
+    }
+    func getReminder() -> AnyPublisher<ReminderEntry?, Error> {
+        dependency.provider.storeService.getEntry()
+    }
+    func save(entry: Object) -> AnyPublisher<Bool, Error> {
+        return dependency.provider.storeService.saveEntry(entry: entry)
     }
 }
 

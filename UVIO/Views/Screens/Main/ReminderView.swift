@@ -1,5 +1,5 @@
 //
-//  RemainderView.swift
+//  ReminderView.swift
 //  UVIO
 //
 //  Created by Macostik on 22.06.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RemainderView: View {
+struct ReminderView: View {
     @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
@@ -17,7 +17,7 @@ struct RemainderView: View {
     var body: some View {
         ZStack {
             VStack {
-                if viewModel.isRemainderPresented {
+                if viewModel.isReminderPresented {
                     contentView
                         .transition(.move(edge: .bottom))
                 }
@@ -29,11 +29,11 @@ struct RemainderView: View {
 
 struct RemainderView_Previews: PreviewProvider {
     static var previews: some View {
-        RemainderView(viewModel: MainViewModel())
+        ReminderView(viewModel: MainViewModel())
     }
 }
 
-extension RemainderView {
+extension ReminderView {
     var contentView: some View {
         VStack {
             VStack {
@@ -45,9 +45,9 @@ extension RemainderView {
                 Text(L10n.setReminder)
                     .font(.poppins(.medium, size: 18))
                     .padding(.top)
-                CounterView(counter: $viewModel.remainderCounter,
+                CounterView(counter: $viewModel.reminderCounter,
                             unit: $viewModel.subtitle,
-                            color: $viewModel.remainderColor, isInvertedColor: true)
+                            color: $viewModel.reminderColor, isInvertedColor: true)
                 addNote
                 submitLogButton
                 cancelButton
@@ -66,7 +66,7 @@ extension RemainderView {
                 }
                 .onEnded { _ in
                     withAnimation {
-                        self.viewModel.isRemainderPresented = !(offset > 200)
+                        self.viewModel.isReminderPresented = !(offset > 200)
                         self.offset = 0
                     }
                 }
@@ -75,6 +75,7 @@ extension RemainderView {
     }
     var submitLogButton: some View {
         Button {
+            viewModel.subminReminderPublisher.send()
         } label: {
             ZStack {
                 HStack {
@@ -97,7 +98,7 @@ extension RemainderView {
     var cancelButton: some View {
         Button {
             withAnimation {
-                viewModel.isRemainderPresented = false
+                viewModel.isReminderPresented = false
             }
         } label: {
             Text(L10n.cancel)
@@ -131,7 +132,7 @@ extension RemainderView {
         HStack {
             Text(L10n.myNote)
                 .font(.poppins(.medium, size: 14))
-            TextField("", text: $viewModel.remainderNote)
+            TextField("", text: $viewModel.reminderNote)
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)

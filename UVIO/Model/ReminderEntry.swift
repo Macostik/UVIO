@@ -1,5 +1,5 @@
 //
-//  RemainderEntry.swift
+//  ReminderEntry.swift
 //  UVIO
 //
 //  Created by Macostik on 22.06.2022.
@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 
-class RemainderEntry: Object {
+class ReminderEntry: Object {
     @Persisted(primaryKey: true) var id: String
-    @Persisted var remainderValue: String
-    @Persisted var note: String
+    @Persisted var reminderValue: String = ""
+    @Persisted var note: String = ""
 }

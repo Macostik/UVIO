@@ -12,6 +12,10 @@ enum MenuAction {
     case logBG, reminder, food, insulin
 }
 
+enum InsulinAction: StringLiteralType, CaseIterable {
+    case rapid, long
+}
+
 class MenuType {
     let id: Int
     let title: String

@@ -224,7 +224,7 @@ extension MainView {
         InsulinView(viewModel: viewModel)
     }
     var remainderView: some View {
-        RemainderView(viewModel: viewModel)
+        ReminderView(viewModel: viewModel)
     }
 }
 
