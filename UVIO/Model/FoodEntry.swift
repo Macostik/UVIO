@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class FoodEntry: Object {
-    @Persisted(primaryKey: true) var id: String
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var carbsValue: String = ""
     @Persisted var foodName: String = ""
     @Persisted var date: Date = Date()

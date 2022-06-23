@@ -111,26 +111,27 @@ class MainViewModel: ObservableObject {
             .store(in: &cancellable)
     }
     func handleLogBG_FoodSubmition() {
-            Publishers.Merge(
-                subminLogBGPublisher
-                    .flatMap({
-                        self.getLogBG()
-                            .map({ $0 ?? LogBGEntry() })
-                            .map { entry in
-                                entry.id = UUID().uuidString
+        Publishers.Merge(
+            subminLogBGPublisher
+                .flatMap({
+                    self.getLogBG()
+                        .map({ $0 ?? LogBGEntry() })
+                        .flatMap { entry in
+                            return self.updateEntry {
                                 entry.value = self.logBGInput
                                 entry.note = self.logBGNote
                                 entry.date = self.logBGWhenValue
                                 entry.time = self.logBGTimeValue
                                 return entry
                             }
-                    }).eraseToAnyPublisher(),
-                subminFoodPublisher
-                    .flatMap({
-                        self.getFood()
-                            .map({ $0 ?? FoodEntry() })
-                            .map { entry in
-                                entry.id = UUID().uuidString
+                        }
+                }),
+            subminFoodPublisher
+                .flatMap({
+                    self.getFood()
+                        .map({ $0 ?? FoodEntry() })
+                        .flatMap { entry in
+                            return self.updateEntry {
                                 entry.carbsValue = self.foodCarbs.description
                                 entry.note = self.foodNote
                                 entry.foodName = self.foodName
@@ -138,44 +139,46 @@ class MainViewModel: ObservableObject {
                                 entry.time = self.foodTimeValue
                                 return entry
                             }
-                    }).eraseToAnyPublisher()
-            )
-            .flatMap(save)
-            .replaceError(with: false)
-            .assign(to: \.entryWasUpdated, on: self)
-            .store(in: &cancellable)
-        }
-        func handleSubmition() {
-            Publishers.Merge(
-                subminInsulinPublisher
-                    .flatMap({
-                        self.getInsulin()
-                            .map({ $0 ?? InsulineEntry() })
-                            .map { entry in
-                                entry.id = UUID().uuidString
+                        }
+                })
+        )
+        .replaceError(with: false)
+        .assign(to: \.entryWasUpdated, on: self)
+        .store(in: &cancellable)
+    }
+    func handleSubmition() {
+        Publishers.Merge(
+            subminInsulinPublisher
+                .flatMap({
+                    self.getInsulin()
+                        .map({ $0 ?? InsulineEntry() })
+                        .flatMap { entry in
+                            return self.updateEntry {
                                 entry.insulinValue = "\(self.insulinCounter)"
                                 entry.note = self.insulineNote
                                 entry.date = self.insulinWhenValue
                                 entry.time = self.insulinTimeValue
                                 return entry
                             }
-                    }).eraseToAnyPublisher(),
-                subminReminderPublisher
-                    .flatMap({
-                        self.getReminder()
-                            .map({ $0 ?? ReminderEntry() })
-                            .map { entry in
-                                entry.id = UUID().uuidString
+                        }
+                }),
+            subminReminderPublisher
+                .flatMap({
+                    self.getReminder()
+                        .map({ $0 ?? ReminderEntry() })
+                        .flatMap { entry in
+                            return self.updateEntry {
                                 entry.reminderValue = "\(self.reminderCounter)"
                                 entry.note = self.reminderNote
                                 return entry
                             }
-                    }).eraseToAnyPublisher())
-            .flatMap(save)
-            .replaceError(with: false)
-            .assign(to: \.entryWasUpdated, on: self)
-            .store(in: &cancellable)
-        }
+                        }
+                })
+        )
+        .replaceError(with: false)
+        .assign(to: \.entryWasUpdated, on: self)
+        .store(in: &cancellable)
+    }
 }
 
 // Handle store entries
@@ -193,7 +196,10 @@ extension MainViewModel {
         dependency.provider.storeService.getEntry()
     }
     func save(entry: Object) -> AnyPublisher<Bool, Error> {
-        return dependency.provider.storeService.saveEntry(entry: entry)
+        dependency.provider.storeService.saveEntry(entry: entry)
+    }
+    func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
+        dependency.provider.storeService.updateEntry(entry)
     }
 }
 

@@ -99,7 +99,7 @@ class StoreService: StoreInteractor {
             .mapError { _ in RealmError.unknow }
             .eraseToAnyPublisher()
     }
-    func saveEntry(entry: Object) -> AnyPublisher<Bool, Error> {
+    func saveEntry<E: Object>(entry: E) -> AnyPublisher<Bool, Error> {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = realmProvider.realm
         realm?.writeAsync({
@@ -112,6 +112,24 @@ class StoreService: StoreInteractor {
                 return subject.send(completion: .finished)
             }
             Logger.error("Entry wasn't saved to DB with error: \(error)")
+            subject.send(completion: .failure(error))
+        })
+        return subject.eraseToAnyPublisher()
+    }
+    func updateEntry<T: Object>(_ block: @escaping () -> T) -> AnyPublisher<Bool, Error> {
+        let subject = PassthroughSubject<Bool, Error>()
+        let realm = realmProvider.realm
+        realm?.writeAsync({
+            let entry = block()
+            Logger.debug("Entry is updating to DB")
+            realm?.add(entry, update: .modified)
+        }, onComplete: { error in
+            guard let error = error else {
+                Logger.debug("Entry was updated successfully")
+                subject.send(true)
+                return subject.send(completion: .finished)
+            }
+            Logger.error("Entry wasn't updated to DB with error: \(error)")
             subject.send(completion: .failure(error))
         })
         return subject.eraseToAnyPublisher()
