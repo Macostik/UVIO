@@ -10,7 +10,7 @@ import RealmSwift
 
 class LogBGEntry: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
-    @Persisted var value: String = ""
+    @Persisted var logValue: String = ""
     @Persisted var date: Date = Date()
     @Persisted var time: Date = Date()
     @Persisted var note: String = ""

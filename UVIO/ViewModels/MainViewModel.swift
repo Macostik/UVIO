@@ -27,7 +27,7 @@ class MainViewModel: ObservableObject {
     @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
-    @Published var isLogBGPresented = false 
+    @Published var isLogBGPresented = false
     // Handle food data
     @Published var foodNote = ""
     @Published var foodName = ""
@@ -136,66 +136,54 @@ extension MainViewModel {
 // Handle submit publishers
 extension MainViewModel {
     var logBGPublisher: AnyPublisher<Bool, Error> {
-        subminInsulinPublisher
-        .flatMap({
-            self.getInsulin()
-                .map({ $0 ?? InsulinEntry() })
-                .flatMap { entry in
-                    return self.updateEntry {
-                        entry.insulinValue = "\(self.insulinCounter)"
-                        entry.note = self.insulineNote
-                        entry.date = self.insulinWhenValue
-                        entry.time = self.insulinTimeValue
-                        return entry
-                    }
-                }
-        }).eraseToAnyPublisher()
-    }
-    var reminderPublisher: AnyPublisher<Bool, Error> {
-        subminReminderPublisher
-            .flatMap({
-                self.getReminder()
-                    .map({ $0 ?? ReminderEntry() })
-                    .flatMap { entry in
-                        return self.updateEntry {
-                            entry.reminderValue = "\(self.reminderCounter)"
-                            entry.note = self.reminderNote
-                            return entry
-                        }
-                    }
-            }).eraseToAnyPublisher()
-    }
-    var foodPublisher: AnyPublisher<Bool, Error> {
         subminLogBGPublisher
             .flatMap({
-            self.getLogBG()
-                .map({ $0 ?? LogBGEntry() })
-                .flatMap { entry in
-                    return self.updateEntry {
-                        entry.value = self.logBGInput
-                        entry.note = self.logBGNote
-                        entry.date = self.logBGWhenValue
-                        entry.time = self.logBGTimeValue
-                        return entry
-                    }
+                return self.updateEntry {
+                    let entry = LogBGEntry()
+                    entry.logValue = "\(self.logBGInput)"
+                    entry.note = self.insulineNote
+                    entry.date = self.insulinWhenValue
+                    entry.time = self.insulinTimeValue
+                    return entry
                 }
             }).eraseToAnyPublisher()
     }
     var insulinPublisher: AnyPublisher<Bool, Error> {
+        subminInsulinPublisher
+            .flatMap({
+                return self.updateEntry {
+                    let entry = InsulinEntry()
+                    entry.insulinValue = "\(self.insulinCounter)"
+                    entry.note = self.foodNote
+                    entry.date = self.foodWhenValue
+                    entry.time = self.foodTimeValue
+                    return entry
+                }
+            }).eraseToAnyPublisher()
+    }
+    var foodPublisher: AnyPublisher<Bool, Error> {
         subminFoodPublisher
             .flatMap({
-                self.getFood()
-                    .map({ $0 ?? FoodEntry() })
-                    .flatMap { entry in
-                        return self.updateEntry {
-                            entry.carbsValue = self.foodCarbs.description
-                            entry.note = self.foodNote
-                            entry.foodName = self.foodName
-                            entry.date = self.foodWhenValue
-                            entry.time = self.foodTimeValue
-                            return entry
-                        }
-                    }
+                return self.updateEntry {
+                    let entry = FoodEntry()
+                    entry.carbsValue = self.foodCarbs.description
+                    entry.note = self.foodNote
+                    entry.foodName = self.foodName
+                    entry.date = self.foodWhenValue
+                    entry.time = self.foodTimeValue
+                    return entry
+                }
+            }).eraseToAnyPublisher()
+    }
+    var reminderPublisher: AnyPublisher<Bool, Error> {
+        subminReminderPublisher
+            .flatMap({
+                return self.updateEntry {
+                    let entry = ReminderEntry()
+                    entry.reminderValue = "\(self.reminderCounter)"
+                    entry.note = self.reminderNote
+                    return entry
+                }
             }).eraseToAnyPublisher()
     }
     func handleSubmition() {

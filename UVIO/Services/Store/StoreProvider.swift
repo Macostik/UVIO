@@ -103,11 +103,11 @@ class StoreService: StoreInteractor {
         let subject = PassthroughSubject<Bool, Error>()
         let realm = realmProvider.realm
         realm?.writeAsync({
-            Logger.debug("Entry is writing to DB")
+            Logger.debug("Entry is writing to DB:\n \(entry)")
             realm?.add(entry, update: .modified)
         }, onComplete: { error in
             guard let error = error else {
-                Logger.debug("Entry was saved successfully")
+                Logger.info("Entry was saved successfully")
                 subject.send(true)
                 return subject.send(completion: .finished)
             }
@@ -121,11 +121,11 @@ class StoreService: StoreInteractor {
         let realm = realmProvider.realm
         realm?.writeAsync({
             let entry = block()
-            Logger.debug("Entry is updating to DB")
+            Logger.debug("Entry is updating to DB:\n \(entry)")
             realm?.add(entry, update: .modified)
         }, onComplete: { error in
             guard let error = error else {
-                Logger.debug("Entry was updated successfully")
+                Logger.info("Entry was updated successfully")
                 subject.send(true)
                 return subject.send(completion: .finished)
             }
