@@ -76,6 +76,9 @@ extension ReminderView {
     var submitLogButton: some View {
         Button {
             viewModel.subminReminderPublisher.send()
+            withAnimation {
+                viewModel.isReminderPresented = false
+            }
         } label: {
             ZStack {
                 HStack {

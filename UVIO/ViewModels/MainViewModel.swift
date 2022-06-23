@@ -13,7 +13,6 @@ import RealmSwift
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
-    @Published var entryWasUpdated = false
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
@@ -28,7 +27,7 @@ class MainViewModel: ObservableObject {
     @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
-    @Published var isLogBGPresented = false
+    @Published var isLogBGPresented = false 
     // Handle food data
     @Published var foodNote = ""
     @Published var foodName = ""
@@ -60,6 +59,7 @@ class MainViewModel: ObservableObject {
     private(set) var subminFoodPublisher = PassthroughSubject<Void, Error>()
     private(set) var subminReminderPublisher = PassthroughSubject<Void, Error>()
     private var cancellable = Set<AnyCancellable>()
+    @Published var entryWasUpdated = false
     var isPresented: Bool {
         isMenuPresented ||
         isLogBGPresented ||
@@ -71,7 +71,6 @@ class MainViewModel: ObservableObject {
         getUser()
         handleMenuAction()
         handleInsulinSegmentTap()
-        handleLogBG_FoodSubmition()
         handleSubmition()
     }
     // Init handler
@@ -110,75 +109,6 @@ class MainViewModel: ObservableObject {
             .assign(to: \.insulinMainColor, on: self)
             .store(in: &cancellable)
     }
-    func handleLogBG_FoodSubmition() {
-        Publishers.Merge(
-            subminLogBGPublisher
-                .flatMap({
-                    self.getLogBG()
-                        .map({ $0 ?? LogBGEntry() })
-                        .flatMap { entry in
-                            return self.updateEntry {
-                                entry.value = self.logBGInput
-                                entry.note = self.logBGNote
-                                entry.date = self.logBGWhenValue
-                                entry.time = self.logBGTimeValue
-                                return entry
-                            }
-                        }
-                }),
-            subminFoodPublisher
-                .flatMap({
-                    self.getFood()
-                        .map({ $0 ?? FoodEntry() })
-                        .flatMap { entry in
-                            return self.updateEntry {
-                                entry.carbsValue = self.foodCarbs.description
-                                entry.note = self.foodNote
-                                entry.foodName = self.foodName
-                                entry.date = self.foodWhenValue
-                                entry.time = self.foodTimeValue
-                                return entry
-                            }
-                        }
-                })
-        )
-        .replaceError(with: false)
-        .assign(to: \.entryWasUpdated, on: self)
-        .store(in: &cancellable)
-    }
-    func handleSubmition() {
-        Publishers.Merge(
-            subminInsulinPublisher
-                .flatMap({
-                    self.getInsulin()
-                        .map({ $0 ?? InsulineEntry() })
-                        .flatMap { entry in
-                            return self.updateEntry {
-                                entry.insulinValue = "\(self.insulinCounter)"
-                                entry.note = self.insulineNote
-                                entry.date = self.insulinWhenValue
-                                entry.time = self.insulinTimeValue
-                                return entry
-                            }
-                        }
-                }),
-            subminReminderPublisher
-                .flatMap({
-                    self.getReminder()
-                        .map({ $0 ?? ReminderEntry() })
-                        .flatMap { entry in
-                            return self.updateEntry {
-                                entry.reminderValue = "\(self.reminderCounter)"
-                                entry.note = self.reminderNote
-                                return entry
-                            }
-                        }
-                })
-        )
-        .replaceError(with: false)
-        .assign(to: \.entryWasUpdated, on: self)
-        .store(in: &cancellable)
-    }
 }
 
 // Handle store entries
@@ -189,7 +119,7 @@ extension MainViewModel {
     func getFood() -> AnyPublisher<FoodEntry?, Error> {
         dependency.provider.storeService.getEntry()
     }
-    func getInsulin() -> AnyPublisher<InsulineEntry?, Error> {
+    func getInsulin() -> AnyPublisher<InsulinEntry?, Error> {
         dependency.provider.storeService.getEntry()
     }
     func getReminder() -> AnyPublisher<ReminderEntry?, Error> {
@@ -200,6 +130,79 @@ extension MainViewModel {
     }
     func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.updateEntry(entry)
+    }
+}
+
+// Handle submit publishers
+extension MainViewModel {
+    var logBGPublisher: AnyPublisher<Bool, Error> {
+        subminInsulinPublisher
+        .flatMap({
+            self.getInsulin()
+                .map({ $0 ?? InsulinEntry() })
+                .flatMap { entry in
+                    return self.updateEntry {
+                        entry.insulinValue = "\(self.insulinCounter)"
+                        entry.note = self.insulineNote
+                        entry.date = self.insulinWhenValue
+                        entry.time = self.insulinTimeValue
+                        return entry
+                    }
+                }
+        }).eraseToAnyPublisher()
+    }
+    var reminderPublisher: AnyPublisher<Bool, Error> {
+        subminReminderPublisher
+            .flatMap({
+                self.getReminder()
+                    .map({ $0 ?? ReminderEntry() })
+                    .flatMap { entry in
+                        return self.updateEntry {
+                            entry.reminderValue = "\(self.reminderCounter)"
+                            entry.note = self.reminderNote
+                            return entry
+                        }
+                    }
+            }).eraseToAnyPublisher()
+    }
+    var foodPublisher: AnyPublisher<Bool, Error> {
+        subminLogBGPublisher
+            .flatMap({
+            self.getLogBG()
+                .map({ $0 ?? LogBGEntry() })
+                .flatMap { entry in
+                    return self.updateEntry {
+                        entry.value = self.logBGInput
+                        entry.note = self.logBGNote
+                        entry.date = self.logBGWhenValue
+                        entry.time = self.logBGTimeValue
+                        return entry
+                    }
+                }
+            }).eraseToAnyPublisher()
+    }
+    var insulinPublisher: AnyPublisher<Bool, Error> {
+        subminFoodPublisher
+            .flatMap({
+                self.getFood()
+                    .map({ $0 ?? FoodEntry() })
+                    .flatMap { entry in
+                        return self.updateEntry {
+                            entry.carbsValue = self.foodCarbs.description
+                            entry.note = self.foodNote
+                            entry.foodName = self.foodName
+                            entry.date = self.foodWhenValue
+                            entry.time = self.foodTimeValue
+                            return entry
+                        }
+                    }
+            }).eraseToAnyPublisher()
+    }
+    func handleSubmition() {
+        Publishers.Merge4(logBGPublisher, reminderPublisher, insulinPublisher, foodPublisher)
+        .replaceError(with: false)
+        .assign(to: \.entryWasUpdated, on: self)
+        .store(in: &cancellable)
     }
 }
 

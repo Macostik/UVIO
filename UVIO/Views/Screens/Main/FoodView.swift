@@ -238,6 +238,9 @@ extension FoodView {
     var submitLogButton: some View {
         Button {
             viewModel.subminFoodPublisher.send()
+            withAnimation {
+                viewModel.isFoodPresented = false
+            }
         } label: {
             ZStack {
                 HStack {

@@ -129,6 +129,9 @@ extension InsulinView {
     var submitLogButton: some View {
         Button {
             viewModel.subminInsulinPublisher.send()
+            withAnimation {
+                viewModel.isInsulinPresented = false
+            }
         } label: {
             ZStack {
                 HStack {
