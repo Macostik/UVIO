@@ -46,6 +46,7 @@ internal extension Image {
   static var googleIcon : Image { Image("googleIcon", bundle: BundleToken.bundle) }
   static var greenArrowIcon : Image { Image("greenArrowIcon", bundle: BundleToken.bundle) }
   static var hideIcon : Image { Image("hideIcon", bundle: BundleToken.bundle) }
+  static var historyIcon : Image { Image("historyIcon", bundle: BundleToken.bundle) }
   static var icecreamIcon : Image { Image("icecreamIcon", bundle: BundleToken.bundle) }
   static var loadIcon : Image { Image("loadIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
@@ -64,6 +65,7 @@ internal extension Image {
   static var successMarkIcon : Image { Image("successMarkIcon", bundle: BundleToken.bundle) }
   static var timerIcon : Image { Image("timerIcon", bundle: BundleToken.bundle) }
   static var uvioIcon : Image { Image("uvioIcon", bundle: BundleToken.bundle) }
+  static var vDotsIcon : Image { Image("vDotsIcon", bundle: BundleToken.bundle) }
   static var vibrateIcon : Image { Image("vibrateIcon", bundle: BundleToken.bundle) }
   // Colors.xcassets
 }

@@ -13,20 +13,25 @@ class ReminderEntry: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var reminderValue: String = ""
     @Persisted var note: String = ""
+    @Persisted var createdAt: Date = Date()
 }
 
 extension ReminderEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
-        listViewEntry.image = Image.rapidInsulinIcon
+        listViewEntry.createdAt = createdAt.convertToString()
+        listViewEntry.image = Image.foodIcon
         listViewEntry.type =
-        Text("BG level log")
-            .foregroundColor(Color.black)
+        Text("Reminder")
+            .foregroundColor(Color.primaryGreenColor)
             .font(.poppins(.bold, size: 12))
         listViewEntry.value =
         Text("\(reminderValue)")
-            .foregroundColor(Color.primaryGreenColor)
-            .font(.poppins(.bold, size: 16))
+            .foregroundColor(Color.black)
+            .font(.poppins(.bold, size: 12))
+        listViewEntry.timer =
+        Text("\(createdAt.time)")
+            .font(.poppins(.medium, size: 10))
         return listViewEntry
     }
 }

@@ -13,11 +13,16 @@ protocol Mapable {
     func map() -> ListViewEntry
 }
 
-struct ListViewEntry {
+struct ListViewEntry: Hashable {
+    var id = UUID().uuidString
+    var createdAt = ""
     var image = Image("")
     var type = Text("")
     var value = Text("")
     var action = Text("")
     var note = Text("")
     var timer = Text("")
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

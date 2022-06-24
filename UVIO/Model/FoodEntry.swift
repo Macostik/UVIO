@@ -15,21 +15,28 @@ class FoodEntry: Object {
     @Persisted var foodName: String = ""
     @Persisted var date: Date = Date()
     @Persisted var time: Date = Date()
+    @Persisted var createdAt: Date = Date()
     @Persisted var note: String = ""
 }
 
 extension FoodEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
+        listViewEntry.createdAt = createdAt.convertToString()
         listViewEntry.image = Image.foodIcon
         listViewEntry.type =
-        Text("BG level log")
+        Text(L10n.logFood)
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
         listViewEntry.value =
         Text("\(carbsValue)")
-            .foregroundColor(Color.primaryGreenColor)
-            .font(.poppins(.bold, size: 16))
+            .foregroundColor(Color.black)
+            .font(.poppins(.bold, size: 10))
+        listViewEntry.action =
+        Text("Carbs - \(carbsValue)g")
+            .font(.poppins(.medium, size: 10))
+        listViewEntry.timer =
+        Text("\(createdAt.time)")
         return listViewEntry
     }
 }

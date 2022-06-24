@@ -13,7 +13,7 @@ import RealmSwift
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
-    @Published var listEntries = [ListViewEntry]()
+    @Published var listEntries = [[ListViewEntry]]()
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
@@ -113,7 +113,7 @@ class MainViewModel: ObservableObject {
     }
     private func handleGettingEntries() {
         getListEntries()
-            .replaceError(with: [])
+            .replaceError(with: [[]])
             .assign(to: \.listEntries, on: self)
             .store(in: &cancellable)
     }
@@ -139,7 +139,7 @@ extension MainViewModel {
     func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.updateEntry(entry)
     }
-    func getListEntries() -> AnyPublisher<[ListViewEntry], Error> {
+    func getListEntries() -> AnyPublisher<[[ListViewEntry]], Error> {
         dependency.provider.storeService.getListEntries()
     }
 }
@@ -168,6 +168,7 @@ extension MainViewModel {
                     entry.note = self.foodNote
                     entry.date = self.foodWhenValue
                     entry.time = self.foodTimeValue
+                    entry.action = self.insulinAction.rawValue
                     return entry
                 }
             }).eraseToAnyPublisher()

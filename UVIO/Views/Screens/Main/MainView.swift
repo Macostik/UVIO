@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel
+    let columns = Array(repeating: GridItem(.flexible(minimum: 100), spacing: 0), count: 6)
     var body: some View {
         ZStack(alignment: .bottom) {
             backgroundView
@@ -41,15 +42,32 @@ extension MainView {
         .ignoresSafeArea()
     }
     var contentView: some View {
-        VStack(spacing: 20) {
-            NativigationBarView(action: {}, content: {
-                Text(L10n.yourGlucose)
-                    .font(.poppins(.bold, size: 18))
-            })
-            topView
-            bottomView
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                NativigationBarView(action: {}, content: {
+                    Text(L10n.yourGlucose)
+                        .font(.poppins(.bold, size: 18))
+                })
+                topView
+                if viewModel.listEntries.isEmpty {
+                    bottomView
+                } else {
+                    listView
+                        .background(Color.grayBackgroundColor)
+                }
+            }
+            .padding(.top, safeAreaInsets.top)
+            Button {
+                withAnimation {
+                    viewModel.isMenuPresented = true
+                }
+            } label: {
+                Image.plusButtonIcon
+                    .offset(y: 50)
+                    .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
+            }
+            .padding(.bottom, safeAreaInsets.bottom + 20)
         }
-        .padding(.top, safeAreaInsets.top)
     }
     var topView: some View {
         RoundedRectangle(cornerRadius: 16)
@@ -75,34 +93,45 @@ extension MainView {
             .padding(.horizontal)
     }
     var bottomOverlay: some View {
-        ZStack(alignment: .bottom) {
-            HStack {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Hi Georege,")
-                    //            Text(viewModel.user.name)
-                        .font(.poppins(.bold, size: 24))
-                        .foregroundColor(Color.black)
-                    Text(L10n.pressPlus)
-                        .font(.poppins(.regular, size: 18))
-                        .foregroundColor(Color.black)
-                        .multilineTextAlignment(.leading)
-                    Image.spiralIcon
-                }
-                .padding()
-                .padding(.leading)
-                Spacer()
+        HStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Hi Georege,")
+                //            Text(viewModel.user.name)
+                    .font(.poppins(.bold, size: 24))
+                    .foregroundColor(Color.black)
+                Text(L10n.pressPlus)
+                    .font(.poppins(.regular, size: 18))
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.leading)
+                Image.spiralIcon
             }
-            .padding(.top)
-            .overlay(icecreamOverlay, alignment: .trailing)
-            Button {
-                withAnimation {
-                    viewModel.isMenuPresented = true
+            .padding()
+            .padding(.leading)
+            Spacer()
+        }
+        .padding(.top)
+        .overlay(icecreamOverlay, alignment: .trailing)
+    }
+    var listView: some View {
+        ScrollView(.vertical) {
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                ForEach(0 ..< viewModel.listEntries.count, id: \.self) { index in
+                    Section(header: headerView(viewModel.listEntries[index].first?.createdAt ?? "")) {
+                        ForEach(viewModel.listEntries[index], id: \.self) { entry in
+                            EntryView(listViewEntry: entry)
+                        }
+                    }
                 }
-            } label: {
-                Image.plusButtonIcon
-                    .offset(y: 50)
-                    .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
             }
+            .padding(.bottom, safeAreaInsets.bottom)
+        }
+    }
+    private func headerView(_ title: String) -> some View {
+        HStack {
+            Text(title)
+                .frame(height: 40)
+                .padding(.horizontal)
+            Spacer()
         }
     }
     var icecreamOverlay: some View {

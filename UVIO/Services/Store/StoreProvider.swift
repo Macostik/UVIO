@@ -134,17 +134,17 @@ class StoreService: StoreInteractor {
         })
         return subject.eraseToAnyPublisher()
     }
-    func getListEntries() -> AnyPublisher<[ListViewEntry], Error> {
-        let subject = PassthroughSubject<[ListViewEntry], Error>()
+    func getListEntries() -> AnyPublisher<[[ListViewEntry]], Error> {
+        let subject = CurrentValueSubject<[[ListViewEntry]], Error>([])
         let realm = realmProvider.realm
-        var entriesList = [ListViewEntry]()
+        var entriesList = [[ListViewEntry]]()
         for item in MenuAction.allCases {
-            if let result = realm?.objects(item.type) {
+            if let result = realm?.objects(item.type), !result.isEmpty {
                 let entries = result.compactMap({ ($0 as? Mapable)?.map() })
-                entriesList.append(contentsOf: entries)
+                entriesList.append(Array(entries))
             }
         }
-        subject.send(entriesList)
+        subject.value = entriesList
         return subject.eraseToAnyPublisher()
     }
 }

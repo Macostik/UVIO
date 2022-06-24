@@ -14,6 +14,7 @@
 		5612380B283506A400DCB87B /* GlucoseAlertOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */; };
 		5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380C283520FB00DCB87B /* RangedSliderView.swift */; };
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
+		561774352865AD3A00E6534A /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561774342865AD3A00E6534A /* EntryView.swift */; };
 		5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */; };
 		561F3B132861B095002F4308 /* InsulinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B122861B095002F4308 /* InsulinView.swift */; };
 		561F3B152861C81E002F4308 /* CrabsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B142861C81E002F4308 /* CrabsType.swift */; };
@@ -125,6 +126,7 @@
 		5612380A283506A400DCB87B /* GlucoseAlertOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseAlertOnboardingView.swift; sourceTree = "<group>"; };
 		5612380C283520FB00DCB87B /* RangedSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangedSliderView.swift; sourceTree = "<group>"; };
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
+		561774342865AD3A00E6534A /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Ext.swift"; sourceTree = "<group>"; };
 		561F3B122861B095002F4308 /* InsulinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsulinView.swift; sourceTree = "<group>"; };
 		561F3B142861C81E002F4308 /* CrabsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrabsType.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */,
 				561F3B122861B095002F4308 /* InsulinView.swift */,
 				565F21D02862FD5D00020C27 /* ReminderView.swift */,
+				561774342865AD3A00E6534A /* EntryView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				565F21D7286335F500020C27 /* InsulinEntry.swift in Sources */,
 				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
 				568C17222836949D00C77384 /* StoreProvider.swift in Sources */,
+				561774352865AD3A00E6534A /* EntryView.swift in Sources */,
 				5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */,
 				563713B42840E48F003C5A09 /* GenderType.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
