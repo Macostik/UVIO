@@ -13,6 +13,7 @@ import RealmSwift
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
+    @Published var listEntries = [ListViewEntry]()
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
@@ -72,16 +73,17 @@ class MainViewModel: ObservableObject {
         handleMenuAction()
         handleInsulinSegmentTap()
         handleSubmition()
+        handleGettingEntries()
     }
     // Init handler
-    func getUser() {
+    private func getUser() {
         dependency.provider.storeService.getEntry()
             .replaceError(with: nil)
             .compactMap({ $0 })
             .assign(to: \.user, on: self)
             .store(in: &cancellable)
     }
-    func handleMenuAction() {
+    private func handleMenuAction() {
         menuActionPubliser
             .sink { _ in
             } receiveValue: { action in
@@ -96,7 +98,7 @@ class MainViewModel: ObservableObject {
             }
             .store(in: &cancellable)
     }
-    func handleInsulinSegmentTap() {
+    private func handleInsulinSegmentTap() {
         $selectedSegementItem
             .map({ item -> Color in
                 self.insulinAction = item
@@ -107,6 +109,12 @@ class MainViewModel: ObservableObject {
                 }
             })
             .assign(to: \.insulinMainColor, on: self)
+            .store(in: &cancellable)
+    }
+    private func handleGettingEntries() {
+        getListEntries()
+            .replaceError(with: [])
+            .assign(to: \.listEntries, on: self)
             .store(in: &cancellable)
     }
 }
@@ -130,6 +138,9 @@ extension MainViewModel {
     }
     func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.updateEntry(entry)
+    }
+    func getListEntries() -> AnyPublisher<[ListViewEntry], Error> {
+        dependency.provider.storeService.getListEntries()
     }
 }
 

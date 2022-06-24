@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum MenuAction {
+enum MenuAction: CaseIterable {
     case logBG, reminder, food, insulin
 }
 

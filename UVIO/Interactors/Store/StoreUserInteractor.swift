@@ -12,6 +12,7 @@ protocol StoreInteractor {
     func getEntry<E: Object>() -> AnyPublisher<E?, Error>
     func saveEntry<E: Object>(entry: E) -> AnyPublisher<Bool, Error>
     func updateEntry<T: Object>(_ block: @escaping () -> T) -> AnyPublisher<Bool, Error>
+    func getListEntries() -> AnyPublisher<[ListViewEntry], Error>
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error>
     func updateUserParams(email: String?,

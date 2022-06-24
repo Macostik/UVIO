@@ -134,6 +134,19 @@ class StoreService: StoreInteractor {
         })
         return subject.eraseToAnyPublisher()
     }
+    func getListEntries() -> AnyPublisher<[ListViewEntry], Error> {
+        let subject = PassthroughSubject<[ListViewEntry], Error>()
+        let realm = realmProvider.realm
+        var entriesList = [ListViewEntry]()
+        for item in MenuAction.allCases {
+            if let result = realm?.objects(item.type) {
+                let entries = result.compactMap({ ($0 as? Mapable)?.map() })
+                entriesList.append(contentsOf: entries)
+            }
+        }
+        subject.send(entriesList)
+        return subject.eraseToAnyPublisher()
+    }
 }
 
 extension RealmProvider {
@@ -174,6 +187,17 @@ extension RealmProvider {
         func request(_ demand: Subscribers.Demand) {}
         func cancel() {
             subscriber = nil
+        }
+    }
+}
+
+extension MenuAction {
+    var type: Object.Type {
+        switch self {
+        case .logBG: return LogBGEntry.self
+        case .food: return FoodEntry.self
+        case .reminder: return ReminderEntry.self
+        case .insulin: return InsulinEntry.self
         }
     }
 }
