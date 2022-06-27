@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class InsulinEntry: Object {
+class InsulinEntry: Object, Identifiable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var insulinValue: String = ""
     @Persisted var date: Date = Date()

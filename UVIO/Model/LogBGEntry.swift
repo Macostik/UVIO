@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class LogBGEntry: Object {
+class LogBGEntry: Object, Identifiable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var logValue: String = ""
     @Persisted var date: Date = Date()

@@ -60,7 +60,13 @@ class MainViewModel: ObservableObject {
     private(set) var subminFoodPublisher = PassthroughSubject<Void, Error>()
     private(set) var subminReminderPublisher = PassthroughSubject<Void, Error>()
     private var cancellable = Set<AnyCancellable>()
-    @Published var entryWasUpdated = false
+    @Published var entryWasUpdated = false {
+        willSet {
+            if newValue {
+                handleGettingEntries()
+            }
+        }
+    }
     var isPresented: Bool {
         isMenuPresented ||
         isLogBGPresented ||
@@ -200,9 +206,9 @@ extension MainViewModel {
     }
     func handleSubmition() {
         Publishers.Merge4(logBGPublisher, reminderPublisher, insulinPublisher, foodPublisher)
-        .replaceError(with: false)
-        .assign(to: \.entryWasUpdated, on: self)
-        .store(in: &cancellable)
+            .replaceError(with: false)
+            .assign(to: \.entryWasUpdated, on: self)
+            .store(in: &cancellable)
     }
 }
 

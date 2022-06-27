@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class FoodEntry: Object {
+class FoodEntry: Object, Identifiable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var carbsValue: String = ""
     @Persisted var foodName: String = ""

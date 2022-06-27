@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class ReminderEntry: Object {
+class ReminderEntry: Object, Identifiable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var reminderValue: String = ""
     @Persisted var note: String = ""
