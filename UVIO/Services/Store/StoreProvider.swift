@@ -134,17 +134,23 @@ class StoreService: StoreInteractor {
         })
         return subject.eraseToAnyPublisher()
     }
-    func getListEntries() -> AnyPublisher<[[ListViewEntry]], Error> {
-        let subject = CurrentValueSubject<[[ListViewEntry]], Error>([])
+    func getListEntries() -> AnyPublisher<[ListItem], Error> {
+        let subject = CurrentValueSubject<[ListItem], Error>([])
         let realm = realmProvider.realm
-        var entriesList = [[ListViewEntry]]()
+        var listViewEntryList = [ListViewEntry]()
+        var itemList = [ListItem]()
         for item in MenuAction.allCases {
             if let result = realm?.objects(item.type), !result.isEmpty {
                 let entries = result.compactMap({ ($0 as? Mapable)?.map() })
-                entriesList.append(Array(entries))
+                listViewEntryList.append(contentsOf: entries)
             }
         }
-        subject.value = entriesList
+        let groupEntries = Dictionary(grouping: listViewEntryList,
+                                               by: { item in item.createdAt })
+        for key in groupEntries.keys.sorted() {
+            itemList.append(ListItem(keyObject: key, valueObjects: groupEntries[key]!))
+        }
+        subject.value = itemList
         return subject.eraseToAnyPublisher()
     }
 }

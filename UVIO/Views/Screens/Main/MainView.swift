@@ -116,9 +116,9 @@ extension MainView {
     var listView: some View {
         ScrollView(.vertical) {
             LazyVStack(pinnedViews: [.sectionHeaders]) {
-                ForEach(0 ..< viewModel.listEntries.count, id: \.self) { index in
-                    Section(header: headerView(viewModel.listEntries[index].first?.createdAt ?? "")) {
-                        ForEach(viewModel.listEntries[index], id: \.self) { entry in
+                ForEach(viewModel.listEntries, id: \.self) { listItem in
+                    Section(header: headerView(listItem.keyObject)) {
+                        ForEach(listItem.valueObjects, id: \.self) { entry in
                             EntryView(listViewEntry: entry)
                         }
                     }
@@ -131,6 +131,7 @@ extension MainView {
         HStack {
             Text(title)
                 .frame(height: 40)
+                .font(.poppins(.bold, size: 14))
                 .padding(.horizontal)
             Spacer()
         }

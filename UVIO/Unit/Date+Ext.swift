@@ -11,12 +11,12 @@ extension Date {
     func convertToString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        return dateFormatter.string(from: Self())
+        return dateFormatter.string(from: self)
     }
     var time: String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .none
-        return dateFormatter.string(from: Self())
+        return dateFormatter.string(from: self)
     }
 }
