@@ -33,7 +33,7 @@ extension FoodEntry: Mapable {
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
         listViewEntry.subTitle =
-        Text("\(carbsValue)")
+        Text("\(foodName)")
             .foregroundColor(Color.black)
             .font(.poppins(.medium, size: 12))
         listViewEntry.action =

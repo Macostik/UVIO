@@ -44,30 +44,44 @@ extension MainView {
     }
     var contentView: some View {
         ZStack(alignment: .bottom) {
-            VStack(spacing: 0) {
+            let isShownBottomPlaceholder =
+            viewModel.listEntries.isEmpty ||
+            viewModel.isShowInfoAlert
+            VStack(spacing: isShownBottomPlaceholder ? 20 : 0) {
                 NativigationBarView(action: {}, content: {
                     Text(L10n.yourGlucose)
                         .font(.poppins(.bold, size: 18))
                 })
-                topView
-                if viewModel.listEntries.isEmpty {
-                    bottomView
+                if !viewModel.isFullHistory {
+                    topView
+                        .frame(height: 300)
+                }
+                if !viewModel.isShowInfoAlert {
+                    if viewModel.listEntries.isEmpty {
+                        bottomView
+                    } else {
+                        listView
+                            .background(Color.grayBackgroundColor)
+                    }
                 } else {
-                    listView
-                        .background(Color.grayBackgroundColor)
+                    Spacer()
                 }
             }
             .padding(.top, safeAreaInsets.top)
-            Button {
-                withAnimation {
-                    viewModel.isMenuPresented = true
+            if viewModel.isShowInfoAlert {
+                InfoAlertView(viewModel: viewModel)
+            } else {
+                Button {
+                    withAnimation {
+                        viewModel.isMenuPresented = true
+                    }
+                } label: {
+                    Image.plusButtonIcon
+                        .offset(y: 50)
+                        .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
                 }
-            } label: {
-                Image.plusButtonIcon
-                    .offset(y: 50)
-                    .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
+                .padding(.bottom, safeAreaInsets.bottom)
             }
-            .padding(.bottom, safeAreaInsets.bottom + 20)
         }
     }
     var topView: some View {
@@ -132,9 +146,22 @@ extension MainView {
             Text(title)
                 .frame(height: 40)
                 .font(.poppins(.bold, size: 14))
-                .padding(.horizontal)
             Spacer()
+            Button {
+                withAnimation {
+                    viewModel.isFullHistory.toggle()
+                }
+            } label: {
+                HStack {
+                    Text(L10n.history)
+                        .font(.poppins(.medium, size: 12))
+                        .foregroundColor(Color.complementaryColor)
+                    Image.historyIcon
+                }
+            }
         }
+        .padding(.horizontal)
+        .background(Color.white)
     }
     var icecreamOverlay: some View {
         Image.icecreamIcon

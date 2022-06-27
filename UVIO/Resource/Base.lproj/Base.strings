@@ -135,4 +135,4 @@
 "low_bg_log" = "Low BG alert";
 "high_bg_log" = "High BG alert";
 "reminder" = "Reminder";
-
+"history" = "History";

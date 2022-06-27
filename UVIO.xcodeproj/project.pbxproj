@@ -97,6 +97,10 @@
 		56CA6D8A285CC4A90097DF69 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D89285CC4A90097DF69 /* Date+Ext.swift */; };
 		56CA6D8C285CC63E0097DF69 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D8B285CC63E0097DF69 /* FoodView.swift */; };
 		56CA6D8E285CC7120097DF69 /* BaseFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */; };
+		56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */; };
+		56D1F0F42869F43800B18BBE /* InfoAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F32869F43800B18BBE /* InfoAlertType.swift */; };
+		56D1F0F72869F58B00B18BBE /* InputInsulinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */; };
+		56D1F0F92869FB4800B18BBE /* CheckInTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
@@ -207,6 +211,10 @@
 		56CA6D89285CC4A90097DF69 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		56CA6D8B285CC63E0097DF69 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeaturesView.swift; sourceTree = "<group>"; };
+		56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
+		56D1F0F32869F43800B18BBE /* InfoAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertType.swift; sourceTree = "<group>"; };
+		56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInsulinView.swift; sourceTree = "<group>"; };
+		56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTimeView.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -423,6 +431,7 @@
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				56D1F0F52869F55900B18BBE /* InfoAlert */,
 				56C93159285081FD001E26AD /* Main */,
 				56371392283F71B9003C5A09 /* ConnectCGM */,
 				56598096283B896A00669F15 /* Login */,
@@ -458,6 +467,7 @@
 				565F21D6286335F500020C27 /* InsulinEntry.swift */,
 				565F21D82863374D00020C27 /* ReminderEntry.swift */,
 				565F21DC2864BA3A00020C27 /* ListViewEntry.swift */,
+				56D1F0F32869F43800B18BBE /* InfoAlertType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +504,16 @@
 				561774342865AD3A00E6534A /* EntryView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		56D1F0F52869F55900B18BBE /* InfoAlert */ = {
+			isa = PBXGroup;
+			children = (
+				56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */,
+				56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */,
+				56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */,
+			);
+			path = InfoAlert;
 			sourceTree = "<group>";
 		};
 		56D9581A283392990053E65C /* Components */ = {
@@ -704,6 +724,7 @@
 			files = (
 				56CA6D8C285CC63E0097DF69 /* FoodView.swift in Sources */,
 				565BDF722851E28D000BE00C /* MenuType.swift in Sources */,
+				56D1F0F42869F43800B18BBE /* InfoAlertType.swift in Sources */,
 				56E6F19A283D458900623AE2 /* SlimLogglyDestination.swift in Sources */,
 				565F21D5286335AB00020C27 /* FoodEntry.swift in Sources */,
 				56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */,
@@ -743,6 +764,7 @@
 				563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */,
 				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
+				56D1F0F72869F58B00B18BBE /* InputInsulinView.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
 				565F21D12862FD5D00020C27 /* ReminderView.swift in Sources */,
 				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,
@@ -754,6 +776,7 @@
 				56C77204283556B60000E579 /* XCAssets+Generated.swift in Sources */,
 				565F21D7286335F500020C27 /* InsulinEntry.swift in Sources */,
 				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
+				56D1F0F92869FB4800B18BBE /* CheckInTimeView.swift in Sources */,
 				568C17222836949D00C77384 /* StoreProvider.swift in Sources */,
 				561774352865AD3A00E6534A /* EntryView.swift in Sources */,
 				5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */,
@@ -783,6 +806,7 @@
 				565FDCE1283BDA29004D9924 /* View+Ext.swift in Sources */,
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
+				56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */,

@@ -102,6 +102,8 @@ public enum L10n {
   public static let glucose = L10n.tr("Base", "glucose")
   /// High BG alert
   public static let highBgLog = L10n.tr("Base", "high_bg_log")
+  /// History
+  public static let history = L10n.tr("Base", "history")
   /// Hyper (High Glucose)
   public static let hyperHighGlucose = L10n.tr("Base", "hyper_high_glucose")
   /// Hypers and hypos

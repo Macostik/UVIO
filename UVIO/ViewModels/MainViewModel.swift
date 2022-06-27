@@ -14,6 +14,8 @@ class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
     @Published var listEntries = [ListItem]()
+    @Published var isFullHistory = false
+    @Published var isShowInfoAlert = true
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
@@ -53,6 +55,8 @@ class MainViewModel: ObservableObject {
     // Handel segmentControl
     let segementItems = InsulinAction.allCases
     @Published var selectedSegementItem = InsulinAction.rapid
+    // Handle Info Alert
+    @Published var selectedInfoAlertItem: InfoAlertType = .inputValue
     // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private(set) var subminLogBGPublisher = PassthroughSubject<Void, Error>()
