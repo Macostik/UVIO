@@ -20,19 +20,32 @@ class InsulinEntry: Object {
 }
 
 extension InsulinEntry: Mapable {
+    var isRapidAction: Bool {
+        action == InsulinAction.rapid.rawValue
+    }
+    var color: Color {
+        isRapidAction  ?
+        Color.rapidOrangeColor.opacity(0.1) :
+        Color.primaryGreenColor.opacity(0.1)
+    }
+    var image: Image {
+        isRapidAction ?
+        Image.rapidInsulinIcon :
+        Image.longInsulinIcon
+    }
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
-        listViewEntry.image =
-        Image.rapidInsulinIcon
-        listViewEntry.type =
+        listViewEntry.mainColor = color
+        listViewEntry.image = image
+        listViewEntry.title =
         Text(L10n.logInsulin)
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
-        listViewEntry.value =
+        listViewEntry.subTitle =
         Text("\(insulinValue) " + "units")
             .foregroundColor(Color.primaryGreenColor)
-            .font(.poppins(.bold, size: 16))
+            .font(.poppins(.medium, size: 12))
         listViewEntry.action =
         Text("\(action)")
             .font(.poppins(.medium, size: 10))

@@ -22,15 +22,17 @@ extension LogBGEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
-        listViewEntry.image = Image.loadIcon
-        listViewEntry.type =
+        listViewEntry.mainColor = Color.grayScaleColor
+        listViewEntry.image = Image.bgLogIcon
+        listViewEntry.title =
         Text(L10n.logBG)
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
-        listViewEntry.value =
+        listViewEntry.subTitle =
         Text("\(logValue)")
             .foregroundColor(Color.primaryGreenColor)
-            .font(.poppins(.bold, size: 16)) +
+            .font(.poppins(.bold, size: 16))
+            +
         Text(" \(L10n.mmolL)")
             .foregroundColor(Color.black)
             .font(.poppins(.medium, size: 12))

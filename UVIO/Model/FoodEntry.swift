@@ -20,20 +20,24 @@ class FoodEntry: Object {
 }
 
 extension FoodEntry: Mapable {
+    var carbsIntValue: String {
+        String(carbsValue.split(separator: " ").first ?? "")
+    }
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
         listViewEntry.image = Image.foodIcon
-        listViewEntry.type =
-        Text(L10n.logFood)
+        listViewEntry.mainColor = Color.primaryFoodColor
+        listViewEntry.title =
+        Text(L10n.foodLog)
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
-        listViewEntry.value =
+        listViewEntry.subTitle =
         Text("\(carbsValue)")
             .foregroundColor(Color.black)
-            .font(.poppins(.bold, size: 10))
+            .font(.poppins(.medium, size: 12))
         listViewEntry.action =
-        Text("Carbs - \(carbsValue)g")
+        Text("Carbs - \(carbsIntValue) g")
             .font(.poppins(.medium, size: 10))
         listViewEntry.timer =
         Text("\(createdAt.time)")

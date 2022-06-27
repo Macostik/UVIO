@@ -129,3 +129,10 @@
 "minutes" = "minutes";
 "set_reminder" = "Set reminder";
 "add_reminder" = "Add Remidner";
+"insulin_log" = " Insulin log";
+"food_log" = "Food log";
+"bg_log" = "BG level log";
+"low_bg_log" = "Low BG alert";
+"high_bg_log" = "High BG alert";
+"reminder" = "Reminder";
+

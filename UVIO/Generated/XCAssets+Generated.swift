@@ -15,6 +15,7 @@ internal extension Color {
   static var greenSuccessColor : Color { Color("greenSuccessColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }
   static var primaryCayanColor : Color { Color("primaryCayanColor", bundle: BundleToken.bundle) }
+  static var primaryFoodColor : Color { Color("primaryFoodColor", bundle: BundleToken.bundle) }
   static var primaryGreenColor : Color { Color("primaryGreenColor", bundle: BundleToken.bundle) }
   static var primaryOrangeColor : Color { Color("primaryOrangeColor", bundle: BundleToken.bundle) }
   static var rapidOrangeColor : Color { Color("rapidOrangeColor", bundle: BundleToken.bundle) }
@@ -27,7 +28,9 @@ internal extension Image {
   static var arrowBottomIcon : Image { Image("arrowBottomIcon", bundle: BundleToken.bundle) }
   static var awesomeIcon : Image { Image("awesomeIcon", bundle: BundleToken.bundle) }
   static var backButtonIcon : Image { Image("backButtonIcon", bundle: BundleToken.bundle) }
+  static var bellIcon : Image { Image("bellIcon", bundle: BundleToken.bundle) }
   static var bgLevelIcon : Image { Image("bgLevelIcon", bundle: BundleToken.bundle) }
+  static var bgLogIcon : Image { Image("bgLogIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
   static var chevronIcon : Image { Image("chevronIcon", bundle: BundleToken.bundle) }

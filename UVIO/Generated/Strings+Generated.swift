@@ -20,6 +20,8 @@ public enum L10n {
   public static let awesome = L10n.tr("Base", "awesome")
   /// Awesome! You made it!
   public static let awosomeYouMadeIt = L10n.tr("Base", "awosome_you_made_it")
+  /// BG level log
+  public static let bgLog = L10n.tr("Base", "bg_log")
   /// Blood glucose unit
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
   /// By continuing, you agree to UVIO’s
@@ -82,6 +84,8 @@ public enum L10n {
   public static let female = L10n.tr("Base", "female")
   /// Food eaten
   public static let foodEaten = L10n.tr("Base", "food_eaten")
+  /// Food log
+  public static let foodLog = L10n.tr("Base", "food_log")
   /// Forgot Password?
   public static let forgotPassword = L10n.tr("Base", "forgot_password")
   /// Freestyle Libre
@@ -96,6 +100,8 @@ public enum L10n {
   public static let getStarted = L10n.tr("Base", "get_started")
   /// Glucose
   public static let glucose = L10n.tr("Base", "glucose")
+  /// High BG alert
+  public static let highBgLog = L10n.tr("Base", "high_bg_log")
   /// Hyper (High Glucose)
   public static let hyperHighGlucose = L10n.tr("Base", "hyper_high_glucose")
   /// Hypers and hypos
@@ -104,6 +110,8 @@ public enum L10n {
   public static let hypoLowGlucose = L10n.tr("Base", "hypo_low_glucose")
   /// I'm not sure which type I have
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
+  ///  Insulin log
+  public static let insulinLog = L10n.tr("Base", "insulin_log")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
   /// Now, let’s connect your 
@@ -120,6 +128,8 @@ public enum L10n {
   public static let logManualyBGLevel = L10n.tr("Base", "log_manualy_BG_level")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
+  /// Low BG alert
+  public static let lowBgLog = L10n.tr("Base", "low_bg_log")
   /// Male
   public static let male = L10n.tr("Base", "male")
   /// mg/dL
@@ -163,6 +173,8 @@ public enum L10n {
   public static let provideOwn = L10n.tr("Base", "provideOwn")
   /// Rapid acting
   public static let rapidAction = L10n.tr("Base", "rapid_action")
+  /// Reminder
+  public static let reminder = L10n.tr("Base", "reminder")
   /// Select preferred Blood Glucose units
   public static let selectGlucose = L10n.tr("Base", "select_glucose")
   /// Select supporting device
