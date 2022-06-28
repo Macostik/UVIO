@@ -58,6 +58,7 @@ class MainViewModel: ObservableObject {
     // Handle Info Alert
     @Published var selectedInfoAlertItem: InfoAlertType = .inputValue
     @Published var highAlertCounterValue: Int = 0
+    @Published var reminderAlertCounterValue: Int = 0
     @Published var presentAlertItem: InfoAlertType = .inputValue
     @Published var foodNameAlert = ""
     // Publishers

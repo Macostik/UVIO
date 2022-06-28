@@ -24,7 +24,15 @@ extension InfoAlertView {
     var infoAlertView: some View {
         RoundedRectangle(cornerRadius: 35)
             .frame(width: .infinity, height: 412)
-            .overlay(Image.alertBackgroundRed.resizable())
+            .overlay(
+                Group {
+                    if viewModel.selectedInfoAlertItem == .reminder {
+                        Image.alertBackgroundBlue.resizable()
+                    } else {
+                        Image.alertBackgroundRed.resizable()
+                    }
+                }
+            )
             .overlay(bottomInfoAlertOverlay, alignment: .top)
             .padding(.horizontal)
             .padding(.bottom, safeAreaInsets.bottom - 15)
@@ -32,12 +40,14 @@ extension InfoAlertView {
     var bottomInfoAlertOverlay: some View {
         ZStack {
             TabView(selection: $viewModel.selectedInfoAlertItem) {
-                LowGlucoseAlertView(viewModel: viewModel)
+                HighGlucoseAlertView(viewModel: viewModel)
                     .tag(InfoAlertType.inputValue)
-//                HighGlucoseAlertView(viewModel: viewModel)
-//                    .tag(InfoAlertType.inputValue)
-//                CheckInTimeView(viewModel: viewModel)
-//                    .tag(InfoAlertType.checkInTime)
+                CheckInTimeView(viewModel: viewModel)
+                    .tag(InfoAlertType.checkInTime)
+                //                LowGlucoseAlertView(viewModel: viewModel)
+                //                    .tag(InfoAlertType.inputValue)
+                RemainderAlertView(viewModel: viewModel)
+                    .tag(InfoAlertType.reminder)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }

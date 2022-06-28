@@ -79,6 +79,7 @@ extension LowGlucoseAlertView {
                     )
                     .frame(height: 156)
                     .padding(.horizontal)
+                    .animation(.easeInOut)
             } else {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)

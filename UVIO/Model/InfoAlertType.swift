@@ -8,5 +8,5 @@
 import Foundation
 
 enum InfoAlertType {
-    case inputValue, checkInTime
+    case inputValue, checkInTime, reminder
 }

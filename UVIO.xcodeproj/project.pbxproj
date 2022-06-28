@@ -102,6 +102,7 @@
 		56D1F0F72869F58B00B18BBE /* HighGlucoseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */; };
 		56D1F0F92869FB4800B18BBE /* CheckInTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */; };
 		56D1F0FB286B2F3700B18BBE /* LowGlucoseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */; };
+		56D1F0FD286B3B5100B18BBE /* RemainderAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0FC286B3B5100B18BBE /* RemainderAlertView.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
@@ -217,6 +218,7 @@
 		56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighGlucoseAlertView.swift; sourceTree = "<group>"; };
 		56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTimeView.swift; sourceTree = "<group>"; };
 		56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowGlucoseAlertView.swift; sourceTree = "<group>"; };
+		56D1F0FC286B3B5100B18BBE /* RemainderAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderAlertView.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */,
 				56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */,
 				56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */,
+				56D1F0FC286B3B5100B18BBE /* RemainderAlertView.swift */,
 			);
 			path = InfoAlert;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,
 				56E537C1283E958300929282 /* GoogleProvider.swift in Sources */,
 				565BDF6E2851D505000BE00C /* MenuView.swift in Sources */,
+				56D1F0FD286B3B5100B18BBE /* RemainderAlertView.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
 				565F21D3286334E400020C27 /* LogBGEntry.swift in Sources */,
 				565F21D92863374D00020C27 /* ReminderEntry.swift in Sources */,
