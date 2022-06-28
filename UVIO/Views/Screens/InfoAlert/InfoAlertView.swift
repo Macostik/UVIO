@@ -32,10 +32,12 @@ extension InfoAlertView {
     var bottomInfoAlertOverlay: some View {
         ZStack {
             TabView(selection: $viewModel.selectedInfoAlertItem) {
-                InputInsulinView(viewModel: viewModel)
+                LowGlucoseAlertView(viewModel: viewModel)
                     .tag(InfoAlertType.inputValue)
-                CheckInTimeView(viewModel: viewModel)
-                    .tag(InfoAlertType.checkInTime)
+//                HighGlucoseAlertView(viewModel: viewModel)
+//                    .tag(InfoAlertType.inputValue)
+//                CheckInTimeView(viewModel: viewModel)
+//                    .tag(InfoAlertType.checkInTime)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }

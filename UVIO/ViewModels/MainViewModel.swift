@@ -58,6 +58,8 @@ class MainViewModel: ObservableObject {
     // Handle Info Alert
     @Published var selectedInfoAlertItem: InfoAlertType = .inputValue
     @Published var highAlertCounterValue: Int = 0
+    @Published var presentAlertItem: InfoAlertType = .inputValue
+    @Published var foodNameAlert = ""
     // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private(set) var subminLogBGPublisher = PassthroughSubject<Void, Error>()
@@ -85,6 +87,7 @@ class MainViewModel: ObservableObject {
         handleInsulinSegmentTap()
         handleSubmition()
         handleGettingEntries()
+        handleInfoAlertShifting()
     }
     // Init handler
     private func getUser() {
@@ -126,6 +129,15 @@ class MainViewModel: ObservableObject {
         getListEntries()
             .replaceError(with: [])
             .assign(to: \.listEntries, on: self)
+            .store(in: &cancellable)
+    }
+    private func handleInfoAlertShifting() {
+        $presentAlertItem
+            .sink { type in
+                withAnimation {
+                    self.selectedInfoAlertItem = type
+                }
+            }
             .store(in: &cancellable)
     }
 }

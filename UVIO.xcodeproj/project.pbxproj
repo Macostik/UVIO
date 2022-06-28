@@ -99,8 +99,9 @@
 		56CA6D8E285CC7120097DF69 /* BaseFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */; };
 		56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */; };
 		56D1F0F42869F43800B18BBE /* InfoAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F32869F43800B18BBE /* InfoAlertType.swift */; };
-		56D1F0F72869F58B00B18BBE /* InputInsulinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */; };
+		56D1F0F72869F58B00B18BBE /* HighGlucoseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */; };
 		56D1F0F92869FB4800B18BBE /* CheckInTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */; };
+		56D1F0FB286B2F3700B18BBE /* LowGlucoseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */; };
 		56D95819283390180053E65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56D95818283390180053E65C /* Assets.xcassets */; };
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
@@ -213,8 +214,9 @@
 		56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeaturesView.swift; sourceTree = "<group>"; };
 		56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
 		56D1F0F32869F43800B18BBE /* InfoAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertType.swift; sourceTree = "<group>"; };
-		56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInsulinView.swift; sourceTree = "<group>"; };
+		56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighGlucoseAlertView.swift; sourceTree = "<group>"; };
 		56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTimeView.swift; sourceTree = "<group>"; };
+		56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowGlucoseAlertView.swift; sourceTree = "<group>"; };
 		56D95818283390180053E65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -510,8 +512,9 @@
 			isa = PBXGroup;
 			children = (
 				56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */,
-				56D1F0F62869F58B00B18BBE /* InputInsulinView.swift */,
+				56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */,
 				56D1F0F82869FB4800B18BBE /* CheckInTimeView.swift */,
+				56D1F0FA286B2F3700B18BBE /* LowGlucoseAlertView.swift */,
 			);
 			path = InfoAlert;
 			sourceTree = "<group>";
@@ -764,7 +767,8 @@
 				563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */,
 				56E55F3C283CC5D80085D4DD /* NewPasswordSuccessView.swift in Sources */,
 				56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */,
-				56D1F0F72869F58B00B18BBE /* InputInsulinView.swift in Sources */,
+				56D1F0F72869F58B00B18BBE /* HighGlucoseAlertView.swift in Sources */,
+				56D1F0FB286B2F3700B18BBE /* LowGlucoseAlertView.swift in Sources */,
 				56C7720628355A040000E579 /* Strings+Generated.swift in Sources */,
 				565F21D12862FD5D00020C27 /* ReminderView.swift in Sources */,
 				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,

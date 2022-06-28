@@ -37,8 +37,8 @@ extension CheckInTimeView {
                 .frame(height: 149)
                 .overlay(checkInTimeOverlay)
                 .padding(.horizontal)
-            NavigationLink(destination: {
-            }, label: {
+            Button {
+            } label: {
                 ZStack {
                     HStack {
                         Image.nextIcon
@@ -50,7 +50,7 @@ extension CheckInTimeView {
                 .cornerRadius(12)
                 .padding(.horizontal)
                 .overlay(buttonOverlay)
-            })
+            }
             Button {
             } label: {
                 Text(L10n.skipForNow)
