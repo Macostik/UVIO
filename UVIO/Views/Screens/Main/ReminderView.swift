@@ -47,7 +47,8 @@ extension ReminderView {
                     .padding(.top)
                 CounterView(counter: $viewModel.reminderCounter,
                             unit: $viewModel.subtitle,
-                            color: $viewModel.reminderColor, isInvertedColor: true)
+                            color: .constant(Color.grayScaleColor),
+                            buttonColor: $viewModel.reminderColor, isInvertedColor: true)
                 addNote
                 submitLogButton
                 cancelButton

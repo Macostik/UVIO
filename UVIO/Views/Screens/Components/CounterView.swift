@@ -11,6 +11,7 @@ struct CounterView: View {
     @Binding var counter: Int
     @Binding var unit: String
     @Binding var color: Color
+    @Binding var buttonColor: Color
     var isInvertedColor = false
     var body: some View {
         HStack(spacing: 25) {
@@ -26,7 +27,8 @@ struct CounterView_Previews: PreviewProvider {
     static var previews: some View {
         CounterView(counter: .constant(1),
                     unit: .constant("unit"),
-                    color: .constant(Color.rapidOrangeColor))
+                    color: .constant(Color.white.opacity(0.1)),
+                    buttonColor: .constant(Color.rapidOrangeColor))
     }
 }
 
@@ -44,7 +46,7 @@ extension CounterView {
                 }
             }
             .frame(width: 40, height: 48)
-            .background(color)
+            .background(buttonColor)
             .cornerRadius(8)
         }
     }
@@ -63,13 +65,13 @@ extension CounterView {
                 }
             }
             .frame(width: 40, height: 48)
-            .background(color)
+            .background(buttonColor)
             .cornerRadius(8)
         }
     }
     var counerContainer: some View {
         RoundedRectangle(cornerRadius: 12)
-            .foregroundColor(Color.grayScaleColor)
+            .foregroundColor(color)
             .frame(width: 140, height: 88)
             .overlay(counterOverlay)
     }

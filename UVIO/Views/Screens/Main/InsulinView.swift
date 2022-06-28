@@ -52,7 +52,8 @@ extension InsulinView {
                 segmentControlView
                 CounterView(counter: $viewModel.insulinCounter,
                             unit: $viewModel.subtitle,
-                            color: $viewModel.insulinMainColor)
+                            color: .constant(Color.grayScaleColor),
+                            buttonColor: $viewModel.insulinMainColor)
                 whenContainer
                 timeContainer
                 addNote

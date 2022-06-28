@@ -22,21 +22,22 @@ struct InfoAlertView_Previews: PreviewProvider {
 
 extension InfoAlertView {
     var infoAlertView: some View {
-        RoundedRectangle(cornerRadius: 16)
+        RoundedRectangle(cornerRadius: 35)
             .frame(width: .infinity, height: 412)
-            .foregroundColor(Color.primaryAlertColor.opacity(0.1))
+            .overlay(Image.alertBackgroundRed.resizable())
             .overlay(bottomInfoAlertOverlay, alignment: .top)
             .padding(.horizontal)
             .padding(.bottom, safeAreaInsets.bottom - 15)
     }
     var bottomInfoAlertOverlay: some View {
-        VStack {
+        ZStack {
             TabView(selection: $viewModel.selectedInfoAlertItem) {
                 InputInsulinView(viewModel: viewModel)
                     .tag(InfoAlertType.inputValue)
                 CheckInTimeView(viewModel: viewModel)
                     .tag(InfoAlertType.checkInTime)
-            }.tabViewStyle(.page(indexDisplayMode: .never))
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
         }
         .padding(.top)
     }

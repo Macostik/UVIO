@@ -24,16 +24,24 @@ public enum L10n {
   public static let bgLog = L10n.tr("Base", "bg_log")
   /// Blood glucose unit
   public static let bloodGlucoseUnit = L10n.tr("Base", "blood_glucose_unit")
+  /// Your blood sugar is trending high. Did you do a glucose correction?
+  public static let bloodSugarIsHigh = L10n.tr("Base", "blood_sugar_is_high")
+  /// Your blood sugar is trending low. Did you do a glucose correction?
+  public static let bloodSugarIsLow = L10n.tr("Base", "blood_sugar_is_low")
   /// By continuing, you agree to UVIO’s
   public static let byContinuing = L10n.tr("Base", "by_continuing")
   /// Cancel
   public static let cancel = L10n.tr("Base", "cancel")
   /// Carbs (g)
   public static let carbs = L10n.tr("Base", "carbs")
+  /// Check-in time!
+  public static let checkInTime = L10n.tr("Base", "check_in_time")
   /// Check your Inbox.
   ///  We’ve just sent you a link to
   ///  reset your Password.
   public static let checkYouInbox = L10n.tr("Base", "check_you_inbox")
+  /// Correction logged! When you would like me to check on your glucose?
+  public static let checkYourGlucose = L10n.tr("Base", "check_your_glucose")
   /// Complete
   public static let complete = L10n.tr("Base", "complete")
   /// CONE
@@ -102,6 +110,8 @@ public enum L10n {
   public static let glucose = L10n.tr("Base", "glucose")
   /// High BG alert
   public static let highBgLog = L10n.tr("Base", "high_bg_log")
+  /// High Glucose Alert!
+  public static let highGlucoseAlert = L10n.tr("Base", "high_glucose_alert")
   /// History
   public static let history = L10n.tr("Base", "history")
   /// Hyper (High Glucose)
@@ -114,6 +124,8 @@ public enum L10n {
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
   ///  Insulin log
   public static let insulinLog = L10n.tr("Base", "insulin_log")
+  /// Insulin logged:
+  public static let insulinLogged = L10n.tr("Base", "insulin_logged")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
   /// Now, let’s connect your 
@@ -122,6 +134,8 @@ public enum L10n {
   public static let logAction = L10n.tr("Base", "log_action")
   /// Log BG Level
   public static let logBG = L10n.tr("Base", "log_BG")
+  /// Log Correction
+  public static let logCorrection = L10n.tr("Base", "log_correction")
   /// Log Food/Carbs
   public static let logFood = L10n.tr("Base", "log_food")
   /// Log Insulin
@@ -132,6 +146,8 @@ public enum L10n {
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
   /// Low BG alert
   public static let lowBgLog = L10n.tr("Base", "low_bg_log")
+  /// Low Glucose Alert!
+  public static let lowGlucoseAlert = L10n.tr("Base", "low_glucose_alert")
   /// Male
   public static let male = L10n.tr("Base", "male")
   /// mg/dL
@@ -185,7 +201,7 @@ public enum L10n {
   public static let sendEmailRecovery = L10n.tr("Base", "send_email_recovery")
   /// Set Glucose Alerts
   public static let setGlucoseAlert = L10n.tr("Base", "set_glucose_Alert")
-  /// Set reminder
+  /// Set a Reminder
   public static let setReminder = L10n.tr("Base", "set_reminder")
   /// Sign In
   public static let signIn = L10n.tr("Base", "sign_in")
@@ -209,6 +225,8 @@ public enum L10n {
   public static let signUpWithGoogle = L10n.tr("Base", "sign_up_with_google")
   /// Skip
   public static let skip = L10n.tr("Base", "skip")
+  /// Skip for now
+  public static let skipForNow = L10n.tr("Base", "skip_for_now")
   /// Lorem Ipsum is simply dummy text.
   public static let someText = L10n.tr("Base", "some_text")
   /// Specify another
@@ -245,12 +263,20 @@ public enum L10n {
   public static let type1Diabetes = L10n.tr("Base", "type_1_diabetes")
   /// Type 2 diabetes
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
+  /// I understand the risk
+  public static let understandRisk = L10n.tr("Base", "understand_risk")
   /// units
   public static let units = L10n.tr("Base", "units")
+  /// units of insulin
+  public static let unitsInsulin = L10n.tr("Base", "units_insulin")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
   /// Vibrate only
   public static let vibrateOnly = L10n.tr("Base", "vibrate_only")
+  /// Warning!
+  public static let warning = L10n.tr("Base", "warning")
+  /// This app is in testing mode and we can’t guarantee that any of the app features will work properly or will work at all (although we do our best). The app is for informational purposes only. Don’t use it to make any medical decisions.
+  public static let warningDescription = L10n.tr("Base", "warning_description")
   /// Welcome
   public static let welcome = L10n.tr("Base", "welcome")
   /// Welcome back! Please log in to continue.
@@ -269,8 +295,12 @@ public enum L10n {
   public static let whichTypeDiabetes = L10n.tr("Base", "which_type_diabetes")
   /// I will connect CGM later
   public static let willConnectCGM = L10n.tr("Base", "will_connect_CGM")
+  /// You’re reached target range
+  public static let youReachedTargetRange = L10n.tr("Base", "you_reached_target_range")
   /// Your Glucose
   public static let yourGlucose = L10n.tr("Base", "your_glucose")
+  /// Your glucose is still running high
+  public static let yourInsulinIsStillHigh = L10n.tr("Base", "your_insulin_is_still_high")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

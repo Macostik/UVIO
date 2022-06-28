@@ -24,6 +24,9 @@ internal extension Color {
 internal extension Image {
   // Assets.xcassets
   static var alertArrowIcon : Image { Image("alertArrowIcon", bundle: BundleToken.bundle) }
+  static var alertBackgroundBlue : Image { Image("alertBackgroundBlue", bundle: BundleToken.bundle) }
+  static var alertBackgroundGreen : Image { Image("alertBackgroundGreen", bundle: BundleToken.bundle) }
+  static var alertBackgroundRed : Image { Image("alertBackgroundRed", bundle: BundleToken.bundle) }
   static var appleIcon : Image { Image("appleIcon", bundle: BundleToken.bundle) }
   static var arrowBottomIcon : Image { Image("arrowBottomIcon", bundle: BundleToken.bundle) }
   static var awesomeIcon : Image { Image("awesomeIcon", bundle: BundleToken.bundle) }
@@ -31,6 +34,7 @@ internal extension Image {
   static var bellIcon : Image { Image("bellIcon", bundle: BundleToken.bundle) }
   static var bgLevelIcon : Image { Image("bgLevelIcon", bundle: BundleToken.bundle) }
   static var bgLogIcon : Image { Image("bgLogIcon", bundle: BundleToken.bundle) }
+  static var blackCircleArrowIcon : Image { Image("blackCircleArrowIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
   static var chevronIcon : Image { Image("chevronIcon", bundle: BundleToken.bundle) }
@@ -70,6 +74,7 @@ internal extension Image {
   static var uvioIcon : Image { Image("uvioIcon", bundle: BundleToken.bundle) }
   static var vDotsIcon : Image { Image("vDotsIcon", bundle: BundleToken.bundle) }
   static var vibrateIcon : Image { Image("vibrateIcon", bundle: BundleToken.bundle) }
+  static var waringIcon : Image { Image("waringIcon", bundle: BundleToken.bundle) }
   // Colors.xcassets
 }
 

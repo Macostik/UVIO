@@ -57,6 +57,7 @@ class MainViewModel: ObservableObject {
     @Published var selectedSegementItem = InsulinAction.rapid
     // Handle Info Alert
     @Published var selectedInfoAlertItem: InfoAlertType = .inputValue
+    @Published var highAlertCounterValue: Int = 0
     // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private(set) var subminLogBGPublisher = PassthroughSubject<Void, Error>()

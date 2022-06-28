@@ -22,9 +22,47 @@ struct InputInsulinView_Previews: PreviewProvider {
 
 extension InputInsulinView {
     var contentView: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 12) {
+            Image.waringIcon
+            Text(L10n.highGlucoseAlert)
+                .foregroundColor(Color.primaryAlertColor)
+                .font(.poppins(.bold, size: 18))
+            Text(L10n.bloodSugarIsHigh)
+                .foregroundColor(Color.black)
+                .font(.poppins(.regular, size: 14))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+            CounterView(counter: $viewModel.highAlertCounterValue,
+                        unit: .constant(L10n.unitsInsulin),
+                        color: .constant(Color.white.opacity(0.4)),
+                        buttonColor: .constant(Color.white), isInvertedColor: true)
+            NavigationLink(destination: {
+            }, label: {
+                ZStack {
+                    HStack {
+                        Image.nextIcon
+                            .padding()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
+                .background(Color.complementaryColor)
+                .cornerRadius(12)
+                .padding(.horizontal)
+                .overlay(buttonOverlay)
+            })
+            Button {
+            } label: {
+                Text(L10n.skipForNow)
+                    .foregroundColor(Color.black)
+                    .font(.poppins(.medium, size: 14))
+            }
+            .padding(.top)
+
         }
-        .background(Color.red)
+    }
+    var buttonOverlay: some View {
+        Text(L10n.logCorrection)
+            .foregroundColor(Color.white)
+            .font(.poppins(.medium, size: 14))
     }
 }
