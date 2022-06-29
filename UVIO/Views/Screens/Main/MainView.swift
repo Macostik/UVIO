@@ -57,7 +57,7 @@ extension MainView {
                 })
                 if !viewModel.isFullHistory {
                     topView
-                        .frame(height: 300)
+                        .frame(height: 325)
                 }
                 if !viewModel.isShowInfoAlert {
                     if viewModel.listEntries.isEmpty {
@@ -98,8 +98,8 @@ extension MainView {
         ZStack {
             VStack {
                 headerTopView
-                graphView
-                    .padding(.top, 10)
+                    .padding(.top, 30)
+                GraphView()
             }
         }
     }
@@ -131,24 +131,43 @@ extension MainView {
         .overlay(icecreamOverlay, alignment: .trailing)
     }
     var listView: some View {
-        ScrollView(.vertical) {
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                ForEach(viewModel.listEntries, id: \.self) { listItem in
-                    Section(header: headerView(listItem.keyObject)) {
-                        ForEach(listItem.valueObjects, id: \.self) { entry in
-                            EntryView(listViewEntry: entry)
+        ZStack(alignment: .top) {
+            Rectangle()
+                .frame(maxWidth: .infinity, maxHeight: 40)
+                .foregroundColor(Color.white)
+            ScrollView(.vertical) {
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    ForEach(viewModel.listEntries, id: \.self) { listItem in
+                        Section(header: section(listItem.keyObject, color: listItem.color)) {
+                            ForEach(listItem.valueObjects, id: \.self) { entry in
+                                EntryView(listViewEntry: entry)
+                            }
                         }
+//                        .onDisappear {
+//                            if let currentIndex = viewModel.listEntries.firstIndex(of: listItem) {
+//                                viewModel.listEntries[currentIndex + 1].color = Color.white
+//                            }
+//                        }
                     }
                 }
+                .padding(.bottom, safeAreaInsets.bottom)
             }
-            .padding(.bottom, safeAreaInsets.bottom)
+            historyOverlay
         }
     }
-    private func headerView(_ title: String) -> some View {
+    private func section(_ title: String, color: Color) -> some View {
         HStack {
             Text(title)
-                .frame(height: 40)
+                .foregroundColor(Color.black)
                 .font(.poppins(.bold, size: 14))
+                .frame(height: 40)
+            Spacer()
+        }
+//        .background(color)
+        .padding(.horizontal)
+    }
+    var historyOverlay: some View {
+        HStack {
             Spacer()
             Button {
                 withAnimation {
@@ -163,8 +182,8 @@ extension MainView {
                 }
             }
         }
-        .padding(.horizontal)
-        .background(Color.white)
+        .frame(height: 40)
+        .padding(.trailing)
     }
     var icecreamOverlay: some View {
         Image.icecreamIcon
@@ -181,7 +200,7 @@ extension MainView {
                 HStack(alignment: .top, spacing: 0) {
                     Text(viewModel.glucoseValue)
                         .foregroundColor(Color.greenSuccessColor)
-                        .font(.poppins(.bold, size: 40))
+                        .font(.poppins(.bold, size: 50))
                     Text(viewModel.glucoseCorrectionValue)
                         .font(.poppins(.medium, size: 14))
                 }
@@ -213,62 +232,6 @@ extension MainView {
                 .stroke(Color.capsulaGrayColor, lineWidth: 1)
         }
     }
-    var graphView: some View {
-        ZStack {
-            VStack(spacing: 20) {
-                HStack {
-                    VStack(alignment: .trailing, spacing: 18) {
-                        Text("21")
-                        Text("15")
-                        Text("9")
-                        Text("3")
-                    }
-                    .font(.poppins(.medium, size: 12))
-                    VStack(spacing: 0) {
-                        Rectangle()
-                            .foregroundColor(Color.primaryGreenColor.opacity(0.2))
-                            .frame(height: 32)
-                            .overlay(graphLine)
-                    }
-                }
-                HStack {
-                    Group {
-                        Text("4PM")
-                        Spacer()
-                        Text("5PM")
-                        Spacer()
-                        Text("6PM")
-                    }
-                    .padding(.leading)
-                    .font(.poppins(.medium, size: 12))
-                }
-                HStack {
-                    Group {
-                        Text("1h")
-                        Spacer()
-                        Text("3h")
-                        Spacer()
-                        Text("6h")
-                        Spacer()
-                        Text("12h")
-                        Spacer()
-                        Text("24h")
-                    }
-                }
-                .font(.poppins(.medium, size: 12))
-                .padding(.horizontal, 30)
-            }
-        }
-        .padding()
-    }
-    var graphLine: some View {
-        Line()
-            .stroke(style: StrokeStyle(lineWidth: 1,
-                                       dash: [5, 3],
-                                       dashPhase: 1))
-            .frame(height: 1)
-            .foregroundColor(Color.capsulaGrayColor)
-    }
     var menuView: some View {
         MenuView(isPresented: $viewModel.isMenuPresented,
                  menuAction: { action in
@@ -289,14 +252,5 @@ extension MainView {
     }
     var warningView: some View {
         WarningAlertView(viewModel: viewModel)
-    }
-}
-
-struct Line: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: rect.width, y: 0))
-        return path
     }
 }

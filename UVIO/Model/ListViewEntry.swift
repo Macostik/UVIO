@@ -16,6 +16,7 @@ protocol Mapable {
 struct ListItem: Hashable {
     let keyObject: String
     let valueObjects: [ListViewEntry]
+    var color = Color.clear
 }
 
 struct ListViewEntry: Hashable {

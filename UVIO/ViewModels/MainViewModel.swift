@@ -15,7 +15,7 @@ class MainViewModel: ObservableObject {
     @Published var user = User()
     @Published var listEntries = [ListItem]()
     @Published var isFullHistory = false
-    @Published var isShowInfoAlert = true
+    @Published var isShowInfoAlert = false
     // Common data
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"

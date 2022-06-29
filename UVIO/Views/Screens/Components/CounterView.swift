@@ -15,9 +15,9 @@ struct CounterView: View {
     var isInvertedColor = false
     var body: some View {
         HStack(spacing: 25) {
-            plusButtonView
-            counerContainer
             minusButtonView
+            counerContainer
+            plusButtonView
         }
         .padding(.vertical)
     }
