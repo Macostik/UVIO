@@ -23,6 +23,9 @@ struct MainView: View {
             foodView
             insulinView
             remainderView
+            if viewModel.isShownWarningAlert {
+                warningView
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
@@ -283,6 +286,9 @@ extension MainView {
     }
     var remainderView: some View {
         ReminderView(viewModel: viewModel)
+    }
+    var warningView: some View {
+        WarningAlertView(viewModel: viewModel)
     }
 }
 

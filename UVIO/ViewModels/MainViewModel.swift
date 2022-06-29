@@ -61,6 +61,7 @@ class MainViewModel: ObservableObject {
     @Published var reminderAlertCounterValue: Int = 0
     @Published var presentAlertItem: InfoAlertType = .inputValue
     @Published var foodNameAlert = ""
+    @Published var isShownWarningAlert = false
     // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
     private(set) var subminLogBGPublisher = PassthroughSubject<Void, Error>()
@@ -80,7 +81,8 @@ class MainViewModel: ObservableObject {
         isLogBGPresented ||
         isFoodPresented ||
         isInsulinPresented ||
-        isReminderPresented
+        isReminderPresented ||
+        isShownWarningAlert
     }
     init() {
         getUser()

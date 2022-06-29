@@ -37,7 +37,7 @@ extension RemainderAlertView {
                         color: .constant(Color.white.opacity(0.4)),
                         buttonColor: .constant(Color.white), isInvertedColor: true)
             Button {
-                viewModel.presentAlertItem = .checkInTime
+                viewModel.isShownWarningAlert = true
             } label: {
                 ZStack {
                     HStack {

@@ -42,6 +42,8 @@ public enum L10n {
   public static let checkYouInbox = L10n.tr("Base", "check_you_inbox")
   /// Correction logged! When you would like me to check on your glucose?
   public static let checkYourGlucose = L10n.tr("Base", "check_your_glucose")
+  /// Close
+  public static let close = L10n.tr("Base", "close")
   /// Complete
   public static let complete = L10n.tr("Base", "complete")
   /// CONE
@@ -122,6 +124,8 @@ public enum L10n {
   public static let hypoLowGlucose = L10n.tr("Base", "hypo_low_glucose")
   /// I'm not sure which type I have
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
+  /// I understand the risk
+  public static let iUnderstand = L10n.tr("Base", "i_understand")
   ///  Insulin log
   public static let insulinLog = L10n.tr("Base", "insulin_log")
   /// Insulin logged:
@@ -250,6 +254,8 @@ public enum L10n {
   public static let targetRange = L10n.tr("Base", "target_range")
   ///  Terms of Service
   public static let termsOfService = L10n.tr("Base", "terms_of_service")
+  /// This app is in testing mode and we can’t guarantee that any of the app features will work properly or will work at all (although we do our best). The app is for informational purposes only. Don’t use it to make any medical decisions.
+  public static let testModeWarning = L10n.tr("Base", "test_mode_warning")
   /// Time
   public static let time = L10n.tr("Base", "time")
   /// When turned ON, your phone will vibrate

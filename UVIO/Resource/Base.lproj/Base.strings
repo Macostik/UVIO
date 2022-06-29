@@ -152,3 +152,6 @@
 "warning" = "Warning!";
 "understand_risk" = "I understand the risk";
 "warning_description" =  "This app is in testing mode and we can’t guarantee that any of the app features will work properly or will work at all (although we do our best). The app is for informational purposes only. Don’t use it to make any medical decisions.";
+"test_mode_warning" = "This app is in testing mode and we can’t guarantee that any of the app features will work properly or will work at all (although we do our best). The app is for informational purposes only. Don’t use it to make any medical decisions.";
+"i_understand" = "I understand the risk";
+"close" = "Close";
