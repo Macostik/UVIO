@@ -36,10 +36,10 @@ struct TextFieldDone: UIViewRepresentable {
         textfield.keyboardType = keyType
         textfield.delegate = context.coordinator
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textfield.frame.size.width, height: 44))
-        let doneButton = UIBarButtonItem(title: "Done",
-                                         style: .done,
-                                         target: self,
-                                         action: #selector(textfield.doneButtonTapped(button:)))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done) {
+            text = textfield.text ?? "0.0"
+            textfield.resignFirstResponder()
+        }
         let flexableSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([flexableSpace, doneButton], animated: true)
         textfield.inputAccessoryView = toolBar
@@ -51,10 +51,32 @@ struct TextFieldDone: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(text: $text)
     }
-    
 }
-extension  UITextField {
-    @objc func doneButtonTapped(button: UIBarButtonItem) {
-        self.resignFirstResponder()
+
+private var actionKey: Void?
+
+extension UIBarButtonItem {
+
+    private var _action: (() -> Void)? {
+        get {
+            return objc_getAssociatedObject(self, &actionKey) as? () -> Void
+        }
+        set {
+            objc_setAssociatedObject(self,
+                                     &actionKey,
+                                     newValue,
+                                     objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
+
+    convenience init(title: String?, style: UIBarButtonItem.Style, action: @escaping () -> Void) {
+        self.init(title: title, style: style, target: nil, action: #selector(pressed))
+        self.target = self
+        self._action = action
+    }
+
+    @objc private func pressed(sender: UIBarButtonItem) {
+        _action?()
+    }
+
 }
