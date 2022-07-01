@@ -7,6 +7,63 @@
 
 import SwiftUI
 
+struct Points: Hashable {
+    var value: CGFloat
+    var color: Color {
+        return value >= 10 || value <= 4 ? Color.red : Color.greenSuccessColor
+    }
+    var id = UUID().uuidString
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+let points: [Points] = [
+    Points(value: 6),
+    Points(value: 5),
+    Points(value: 4),
+    Points(value: 3.5),
+    Points(value: 3.3),
+    Points(value: 3.5),
+    Points(value: 4),
+    Points(value: 4.5),
+    Points(value: 5),
+    Points(value: 6),
+    Points(value: 7),
+    Points(value: 7),
+    Points(value: 7),
+    Points(value: 8),
+    Points(value: 8),
+    Points(value: 9),
+    Points(value: 10),
+    Points(value: 11),
+    Points(value: 13),
+    Points(value: 15),
+    Points(value: 17),
+    Points(value: 17.5),
+    Points(value: 17.5),
+    Points(value: 17),
+    Points(value: 16),
+    Points(value: 14),
+    Points(value: 13),
+    Points(value: 11),
+    Points(value: 10),
+    Points(value: 9.5),
+    Points(value: 9),
+    Points(value: 8),
+    Points(value: 7),
+    Points(value: 6.5),
+    Points(value: 6),
+    Points(value: 7),
+    Points(value: 8),
+    Points(value: 9),
+    Points(value: 10),
+    Points(value: 10.5),
+    Points(value: 11),
+    Points(value: 12),
+    Points(value: 13)
+]
+
 struct GraphView: View {
     var body: some View {
         contentView
@@ -22,27 +79,17 @@ struct GraphView_Previews: PreviewProvider {
 extension GraphView {
     var contentView: some View {
         ZStack(alignment: .top) {
-            Path { path in
-                path.move(to: CGPoint(x: 10, y: 80))
-                path.addCurve(to: CGPoint(x: 80, y: 80),
-                              control1: CGPoint(x: 40, y: 60),
-                              control2: CGPoint(x: 25, y: 200)
-                )
-                path.addCurve(to: CGPoint(x: 200, y: 100),
-                              control1: CGPoint(x: 100, y: 50),
-                              control2: CGPoint(x: 150, y: 100 )
-                )
-                path.addCurve(to: CGPoint(x: UIScreen.main.bounds.width - 50, y: 20),
-                              control1: CGPoint(x: 300, y: 100),
-                              control2: CGPoint(x: 250, y: 0)
-                )
+            Group {
+                ForEach(0..<points.count, id: \.self) { index in
+                    let item = points[index]
+                    let point = CGPoint(x: CGFloat((index + 1) * ((index == 0) ? 10 : 8)),
+                                        y: (115 - item.value * 5))
+                    Circle()
+                        .foregroundColor(item.color)
+                        .frame(width: 3, height: 3)
+                        .position(point)
+                }
             }
-            .stroke(style: StrokeStyle(lineWidth: 3,
-                                       lineCap: .round,
-                                       lineJoin: .round,
-                                       dash: [0.1, 8],
-                                       dashPhase: 1))
-            .fill(Color.greenSuccessColor)
             VStack(spacing: 12) {
                 ZStack {
                     VStack(alignment: .trailing, spacing: 18) {
@@ -68,6 +115,7 @@ extension GraphView {
                         .frame(height: 32)
                         .foregroundColor(Color.greenSuccessColor.opacity(0.1))
                         .offset(x: 10, y: 20)
+                        .padding(.trailing, 10)
                 }
                 HStack {
                     Group {
@@ -105,16 +153,23 @@ extension GraphView {
             endPoint
         }
     }
+    private var lastPoint: CGPoint {
+        CGPoint(x: CGFloat(points.count *  8),
+                y: (117 - (points.last?.value ?? 0) * 5))
+    }
+    private var lastPointColor: Color {
+        points.last?.color ?? Color.greenSuccessColor
+    }
     var endPoint: some View {
         Circle()
             .frame(width: 8, height: 8)
-            .foregroundColor(Color.greenSuccessColor)
+            .foregroundColor(lastPointColor)
             .overlay(
                 Circle()
                 .frame(width: 15, height: 15)
-                .foregroundColor(Color.greenSuccessColor.opacity(0.3))
+                .foregroundColor(lastPointColor.opacity(0.3))
             )
-            .position(CGPoint(x: UIScreen.main.bounds.width - 45, y: 20))
+            .position(lastPoint)
     }
     var graphLine: some View {
         Line()
