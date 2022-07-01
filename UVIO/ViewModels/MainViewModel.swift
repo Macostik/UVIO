@@ -42,7 +42,7 @@ class MainViewModel: ObservableObject {
     @Published var insulineNote = ""
     @Published var insulinCounter: Int = 0
     @Published var isInsulinPresented = false
-    @Published var subtitle: String = L10n.units
+    @Published var insulinsubtitle: String = L10n.units
     @Published var insulinMainColor: Color = Color.rapidOrangeColor
     @Published var insulinWhenValue = Date()
     @Published var insulinTimeValue = Date()
@@ -52,6 +52,7 @@ class MainViewModel: ObservableObject {
     @Published var reminderCounter: Int = 0
     @Published var isReminderPresented = false
     @Published var reminderColor: Color = Color.white
+    @Published var reminderSubtitle: String = L10n.minutes
     // Handel segmentControl
     let segementItems = InsulinAction.allCases
     @Published var selectedSegementItem = InsulinAction.rapid
@@ -103,7 +104,7 @@ class MainViewModel: ObservableObject {
     private func handleMenuAction() {
         menuActionPubliser
             .sink { _ in
-            } receiveValue: { action in
+            } receiveValue: { [unowned self] action in
                 withAnimation {
                     switch action {
                     case .logBG: self.isLogBGPresented = true
@@ -117,7 +118,7 @@ class MainViewModel: ObservableObject {
     }
     private func handleInsulinSegmentTap() {
         $selectedSegementItem
-            .map({ item -> Color in
+            .map({ [unowned self] item -> Color in
                 self.insulinAction = item
                 if item == .rapid {
                     return Color.rapidOrangeColor
@@ -136,7 +137,7 @@ class MainViewModel: ObservableObject {
     }
     private func handleInfoAlertShifting() {
         $presentAlertItem
-            .sink { type in
+            .sink { [unowned self] type in
                 withAnimation {
                     self.selectedInfoAlertItem = type
                 }
@@ -174,7 +175,7 @@ extension MainViewModel {
 extension MainViewModel {
     var logBGPublisher: AnyPublisher<Bool, Error> {
         subminLogBGPublisher
-            .flatMap({
+            .flatMap({ [unowned self] _ in
                 return self.updateEntry {
                     let entry = LogBGEntry()
                     entry.logValue = "\(self.logBGInput)"
@@ -187,7 +188,7 @@ extension MainViewModel {
     }
     var insulinPublisher: AnyPublisher<Bool, Error> {
         subminInsulinPublisher
-            .flatMap({
+            .flatMap({ [unowned self] _ in
                 return self.updateEntry {
                     let entry = InsulinEntry()
                     entry.insulinValue = "\(self.insulinCounter)"
@@ -201,7 +202,7 @@ extension MainViewModel {
     }
     var foodPublisher: AnyPublisher<Bool, Error> {
         subminFoodPublisher
-            .flatMap({
+            .flatMap({ [unowned self] _ in
                 return self.updateEntry {
                     let entry = FoodEntry()
                     entry.carbsValue = self.foodCarbs.description
@@ -215,13 +216,17 @@ extension MainViewModel {
     }
     var reminderPublisher: AnyPublisher<Bool, Error> {
         subminReminderPublisher
-            .flatMap({
+            .flatMap({ [unowned self] _ in
                 return self.updateEntry {
                     let entry = ReminderEntry()
                     entry.reminderValue = "\(self.reminderCounter)"
                     entry.note = self.reminderNote
                     return entry
                 }
+                .map({[unowned self] value in
+                    self.startTimer()
+                    return value
+                })
             }).eraseToAnyPublisher()
     }
     func handleSubmition() {
@@ -229,6 +234,15 @@ extension MainViewModel {
             .replaceError(with: false)
             .assign(to: \.entryWasUpdated, on: self)
             .store(in: &cancellable)
+    }
+    private func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: CGFloat(self.self.reminderCounter * 60),
+                             repeats: false,
+                             block: { [unowned self] _ in
+            withAnimation {
+                self.isShowInfoAlert = true
+            }
+        })
     }
 }
 

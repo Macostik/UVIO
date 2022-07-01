@@ -83,7 +83,7 @@ extension MainView {
                         .offset(y: 50)
                         .shadow(color: Color.complementaryColor.opacity(0.5), radius: 20, y: 20)
                 }
-                .padding(.bottom, safeAreaInsets.bottom)
+                .padding(.bottom, safeAreaInsets.bottom + 15)
             }
         }
     }
@@ -98,23 +98,22 @@ extension MainView {
         ZStack {
             VStack {
                 headerTopView
-                    .padding(.top, 30)
+                    .padding(.top, 10)
                 GraphView()
             }
         }
     }
     var bottomView: some View {
         RoundedRectangle(cornerRadius: 16)
-            .frame(width: .infinity, height: 412)
             .foregroundColor(Color.bottomBGColor)
             .overlay(bottomOverlay, alignment: .top)
             .padding(.horizontal)
+            .padding(.bottom, safeAreaInsets.bottom - 10)
     }
     var bottomOverlay: some View {
         HStack {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Hi Georege,")
-                //            Text(viewModel.user.name)
+                Text(viewModel.user.name)
                     .font(.poppins(.bold, size: 24))
                     .foregroundColor(Color.black)
                 Text(L10n.pressPlus)
@@ -122,6 +121,7 @@ extension MainView {
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading)
                 Image.spiralIcon
+                    .padding(.top, 60)
             }
             .padding()
             .padding(.leading)
@@ -167,23 +167,28 @@ extension MainView {
         .padding(.horizontal)
     }
     var historyOverlay: some View {
-        HStack {
-            Spacer()
-            Button {
-                withAnimation {
-                    viewModel.isFullHistory.toggle()
-                }
-            } label: {
-                HStack {
-                    Text(L10n.history)
-                        .font(.poppins(.medium, size: 12))
-                        .foregroundColor(Color.complementaryColor)
-                    Image.historyIcon
+        ZStack(alignment: .top) {
+            Divider()
+                .frame(height: 1)
+                .foregroundColor(Color.grayScaleColor)
+            HStack {
+                Spacer()
+                Button {
+                    withAnimation {
+                        viewModel.isFullHistory.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Text(L10n.history)
+                            .font(.poppins(.medium, size: 12))
+                            .foregroundColor(Color.complementaryColor)
+                        Image.historyIcon
+                    }
                 }
             }
+            .frame(height: 40)
+            .padding(.trailing)
         }
-        .frame(height: 40)
-        .padding(.trailing)
     }
     var icecreamOverlay: some View {
         Image.icecreamIcon

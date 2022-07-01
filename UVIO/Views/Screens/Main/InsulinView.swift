@@ -51,7 +51,7 @@ extension InsulinView {
                     .padding(.top)
                 segmentControlView
                 CounterView(counter: $viewModel.insulinCounter,
-                            unit: $viewModel.subtitle,
+                            unit: $viewModel.insulinsubtitle,
                             color: .constant(Color.grayScaleColor),
                             buttonColor: $viewModel.insulinMainColor)
                 whenContainer
@@ -204,8 +204,15 @@ extension InsulinView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.insulinWhenValue, displayedComponents: [.date])
+                    DatePicker("",
+                               selection: $viewModel.insulinWhenValue,
+                               displayedComponents: [.date])
                         .datePickerStyle(.graphical)
+                        .onChange(of: viewModel.insulinWhenValue) { _ in
+                            withAnimation {
+                                isCalendarOpen = false
+                            }
+                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)

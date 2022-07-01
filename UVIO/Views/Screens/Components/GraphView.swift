@@ -43,7 +43,7 @@ extension GraphView {
                                        dash: [0.1, 8],
                                        dashPhase: 1))
             .fill(Color.greenSuccessColor)
-            VStack(spacing: 15) {
+            VStack(spacing: 12) {
                 ZStack {
                     VStack(alignment: .trailing, spacing: 18) {
                         HStack {
@@ -84,7 +84,12 @@ extension GraphView {
                     Group {
                         Text("1h")
                         Spacer()
-                        Text("3h")
+                        Capsule()
+                            .foregroundColor(
+                                Color.grayScaleColor)
+                            .overlay(Text("3h")
+                            )
+                            .frame(width: 40, height: 20)
                         Spacer()
                         Text("6h")
                         Spacer()

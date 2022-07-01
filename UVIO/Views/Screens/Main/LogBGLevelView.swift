@@ -24,6 +24,14 @@ struct LogBGLevelView: View {
                     }
                 .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
         }
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.decimalSeparator = "."
+        formatter.groupingSeparator = ""
+        return formatter
+    }()
 }
 
 struct LogBGLevelView_Previews: PreviewProvider {
@@ -82,13 +90,8 @@ extension LogBGLevelView {
         }
     }
     var inputOverlay: some View {
-        VStack(spacing: 12) {
-            TextField("0.0", text: $viewModel.logBGInput)
-                .font(.poppins(.bold, size: 80))
-                .multilineTextAlignment(.center)
-                .keyboardType(.numberPad)
-                .foregroundColor(Color.capsulaGrayColor)
-                .accentColor(Color.black)
+        VStack {
+            TextFieldDone(text: $viewModel.logBGInput, keyType: .numberPad)
             Text(L10n.mmolL)
                 .font(.poppins(.medium, size: 18))
             Text(L10n.glucose)
@@ -98,7 +101,9 @@ extension LogBGLevelView {
     var whenContainer: some View {
         VStack {
             if isTimePickerOpen {
-                DatePicker("", selection: $viewModel.logBGTimeValue, displayedComponents: [.hourAndMinute])
+                DatePicker("",
+                           selection: $viewModel.logBGTimeValue,
+                           displayedComponents: [.hourAndMinute])
                     .datePickerStyle(.wheel)
                     .background(Color.white)
                     .cornerRadius(16)
@@ -132,8 +137,15 @@ extension LogBGLevelView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.logBGWhenValue, displayedComponents: [.date])
+                    DatePicker("", selection:
+                                $viewModel.logBGWhenValue,
+                               displayedComponents: [.date])
                         .datePickerStyle(.graphical)
+                        .onChange(of: viewModel.logBGWhenValue) { _ in
+                            withAnimation {
+                                isCalendarOpen = false
+                            }
+                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)

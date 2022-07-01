@@ -105,8 +105,15 @@ extension FoodView {
         VStack {
             if isCalendarOpen {
                 VStack(alignment: .trailing) {
-                    DatePicker("", selection: $viewModel.foodWhenValue, displayedComponents: [.date])
+                    DatePicker("",
+                               selection: $viewModel.foodWhenValue,
+                               displayedComponents: [.date])
                         .datePickerStyle(.graphical)
+                        .onChange(of: viewModel.foodWhenValue) { _ in
+                            withAnimation {
+                                isCalendarOpen = false
+                            }
+                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)

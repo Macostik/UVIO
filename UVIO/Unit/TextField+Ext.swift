@@ -10,9 +10,31 @@ import SwiftUI
 struct TextFieldDone: UIViewRepresentable {
     @Binding var text: String
     var keyType: UIKeyboardType
+    class Coordinator: NSObject, UITextFieldDelegate {
+        var text: Binding<String>
+        init(text: Binding<String>) {
+            self.text = text
+        }
+        func textField(_ textField: UITextField,
+                       shouldChangeCharactersIn range: NSRange,
+                       replacementString string: String) -> Bool {
+            guard let text = textField.text else { return false }
+            if range.location == 3 {
+                textField.text = (text.split(separator: ".").last ?? "0") + "."
+            } else {
+                textField.text = "0."
+            }
+            return true
+        }
+    }
     func makeUIView(context: Context) -> UITextField {
         let textfield = UITextField()
+        textfield.placeholder = "0.0"
+        textfield.tintColor = UIColor.black
+        textfield.font = UIFont(name: "Poppins-Bold", size: 80)
+        textfield.textAlignment = .center
         textfield.keyboardType = keyType
+        textfield.delegate = context.coordinator
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textfield.frame.size.width, height: 44))
         let doneButton = UIBarButtonItem(title: "Done",
                                          style: .done,
@@ -20,13 +42,16 @@ struct TextFieldDone: UIViewRepresentable {
                                          action: #selector(textfield.doneButtonTapped(button:)))
         let flexableSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([flexableSpace, doneButton], animated: true)
-        toolBar.setItems([doneButton], animated: true)
         textfield.inputAccessoryView = toolBar
         return textfield
     }
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
     }
+    func makeCoordinator() -> Coordinator {
+        Coordinator(text: $text)
+    }
+    
 }
 extension  UITextField {
     @objc func doneButtonTapped(button: UIBarButtonItem) {

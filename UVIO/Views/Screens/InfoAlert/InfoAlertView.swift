@@ -11,6 +11,7 @@ struct InfoAlertView: View {
     @ObservedObject var viewModel: MainViewModel
     var body: some View {
         infoAlertView
+            .transition(.move(edge: .bottom))
     }
 }
 struct InfoAlertView_Previews: PreviewProvider {
