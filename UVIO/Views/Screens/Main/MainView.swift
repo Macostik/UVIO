@@ -51,7 +51,9 @@ extension MainView {
             viewModel.listEntries.isEmpty ||
             viewModel.isShowInfoAlert
             VStack(spacing: isShownBottomPlaceholder ? 20 : 0) {
-                NativigationBarView(action: {}, content: {
+                NavigationBarView(destination: {
+                    SettingsView(viewModel: UserViewModel())
+                }, content: {
                     Text(L10n.yourGlucose)
                         .font(.poppins(.bold, size: 18))
                 })
@@ -90,7 +92,7 @@ extension MainView {
     var topView: some View {
         RoundedRectangle(cornerRadius: 16)
             .foregroundColor(Color.white)
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             .overlay(topOverlay, alignment: .top)
             .padding(.horizontal)
     }
@@ -112,7 +114,7 @@ extension MainView {
     }
     var bottomOverlay: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text(viewModel.user.name)
                     .font(.poppins(.bold, size: 24))
                     .foregroundColor(Color.black)
@@ -211,7 +213,6 @@ extension MainView {
                 }
                 HStack {
                     Text(viewModel.glucoseUnitValue)
-                    //                    Text(viewModel.user.glucoseUnit)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
                         .padding(.horizontal, 5)

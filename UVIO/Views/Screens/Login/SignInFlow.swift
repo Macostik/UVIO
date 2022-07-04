@@ -15,7 +15,7 @@ struct SignInFlow: View {
             containerViews
             NavigationLink(isActive: $viewModel.signInConfirmed,
                            destination: {
-                ConnectCGMView(userViewModel: viewModel, viewModel: ConnectCGMViewModel())
+                MainView(viewModel: MainViewModel())
             }, label: {
                 EmptyView()
             })
@@ -39,7 +39,7 @@ extension SignInFlow {
     }
     var containerViews: some View {
         VStack {
-            NativigationBackBarViewAction(action: {
+            NavigationBackBarViewAction(action: {
                 withAnimation {
                     viewModel.selectedLoginItem = viewModel.previousLoginType
                 }

@@ -43,7 +43,7 @@ extension SignUpFlow {
     }
     var containerViews: some View {
         VStack {
-            NativigationBackBarViewAction(action: {
+            NavigationBackBarViewAction(action: {
                 withAnimation {
                     viewModel.selectedOnboardingItem = viewModel.previousOnboardingType
                 }

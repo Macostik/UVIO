@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct NativigationBackBarViewAction<Content: View>: View {
+struct NavigationBackBarViewAction<Content: View>: View {
     let action: () -> Void
     let content: Content?
     init(action:@escaping () -> Void, @ViewBuilder content: () -> Content?) {
@@ -44,11 +44,11 @@ struct NativigationBackBarView<Content: View>: View {
     }
 }
 
-struct NativigationBarView<Content: View>: View {
+struct NavigationBarView<Content: View, Destination: View>: View {
     let content: Content?
-    let action: (() -> Void)
-    init(action: @escaping (() -> Void), @ViewBuilder content: () -> Content?) {
-        self.action = action
+    let destination: (() -> Destination)
+    init(destination: @escaping (() -> Destination), @ViewBuilder content: () -> Content?) {
+        self.destination = destination
         self.content = content()
     }
     var body: some View {
@@ -59,10 +59,11 @@ struct NativigationBarView<Content: View>: View {
                     .frame(width: 28, height: 25)
                     .aspectRatio(contentMode: .fit)
                 Spacer()
-                Image.settingsIcon
-                    .onLongPressGesture {
-                        action()
-                    }
+                NavigationLink {
+                    destination()
+                } label: {
+                    Image.settingsIcon
+                }
             }
             .padding(.horizontal, 30)
         }

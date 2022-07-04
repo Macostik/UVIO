@@ -61,7 +61,8 @@ let points: [Points] = [
     Points(value: 10.5),
     Points(value: 11),
     Points(value: 12),
-    Points(value: 13)
+    Points(value: 13),
+    Points(value: 13.5)
 ]
 
 struct GraphView: View {
@@ -90,7 +91,7 @@ extension GraphView {
                         .position(point)
                 }
             }
-            VStack(spacing: 12) {
+            VStack(spacing: 20) {
                 ZStack {
                     VStack(alignment: .trailing, spacing: 18) {
                         HStack {
@@ -149,7 +150,6 @@ extension GraphView {
                 .font(.poppins(.medium, size: 12))
                 .padding(.horizontal, 30)
             }
-            .padding(.trailing)
             endPoint
         }
     }

@@ -13,8 +13,8 @@ struct ConnectCGMView: View {
     var body: some View {
         ZStack {
             VStack {
-                NativigationBarView(action: {
-                   _ = userViewModel.logOut()
+                NavigationBarView(destination: {
+                   EmptyView()
                 }, content: {})
                     .padding(.top, 50)
                 VStack(spacing: 8) {

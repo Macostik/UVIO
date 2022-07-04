@@ -124,6 +124,7 @@
 		56E6F19B283D458900623AE2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F196283D458900623AE2 /* Logger.swift */; };
 		56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F197283D458900623AE2 /* SlimLogger.swift */; };
 		56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F198283D458900623AE2 /* SlimLoggerConfig.swift */; };
+		56EF4D672872CB1A00C7EE88 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF4D662872CB1A00C7EE88 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +243,7 @@
 		56E6F196283D458900623AE2 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		56E6F197283D458900623AE2 /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogger.swift; sourceTree = "<group>"; };
 		56E6F198283D458900623AE2 /* SlimLoggerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLoggerConfig.swift; sourceTree = "<group>"; };
+		56EF4D662872CB1A00C7EE88 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +441,7 @@
 		56A853692832287F000DFE3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				56EF4D652872CB0B00C7EE88 /* Settings */,
 				56D1F0F52869F55900B18BBE /* InfoAlert */,
 				56C93159285081FD001E26AD /* Main */,
 				56371392283F71B9003C5A09 /* ConnectCGM */,
@@ -595,6 +598,14 @@
 				56E6F194283D458900623AE2 /* SlimLogglyDestinationConfig.swift */,
 			);
 			path = Logger;
+			sourceTree = "<group>";
+		};
+		56EF4D652872CB0B00C7EE88 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				56EF4D662872CB1A00C7EE88 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -799,6 +810,7 @@
 				563713B42840E48F003C5A09 /* GenderType.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
 				56C0A7472848AB67001D5D00 /* DexComProvider.swift in Sources */,
+				56EF4D672872CB1A00C7EE88 /* SettingsView.swift in Sources */,
 				56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */,
 				56C9315D2850CEBE001E26AD /* MainViewModel.swift in Sources */,
 				565F21DD2864BA3A00020C27 /* ListViewEntry.swift in Sources */,
@@ -990,7 +1002,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1024,7 +1036,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1113,7 +1125,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

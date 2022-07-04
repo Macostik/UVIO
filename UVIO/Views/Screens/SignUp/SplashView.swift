@@ -11,25 +11,23 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
+            if viewModel.userPersist {
             MainView(viewModel: MainViewModel())
-//            if viewModel.userPersist {
-//               ConnectCGMView(userViewModel: viewModel,
-//                               viewModel: ConnectCGMViewModel())
-//            } else {
-//                ZStack {
-//                    Image.splashBackgroundImage
-//                        .resizable()
-//                        .edgesIgnoringSafeArea(.all)
-//                    VStack(spacing: 16) {
-//                        Spacer()
-//                        splashIconView
-//                        contentView
-//                        Spacer()
-//                        createAccountButton
-//                        signInButton
-//                    }
-//                }
-//            }
+            } else {
+                ZStack {
+                    Image.splashBackgroundImage
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                    VStack(spacing: 16) {
+                        Spacer()
+                        splashIconView
+                        contentView
+                        Spacer()
+                        createAccountButton
+                        signInButton
+                    }
+                }
+            }
         }
     }
     var splashIconView: some View {

@@ -53,6 +53,9 @@ extension RemainderAlertView {
                 .padding(.top, 15)
             }
             Button {
+                withAnimation {
+                    viewModel.isShowInfoAlert = false
+                }
             } label: {
                 Text(L10n.skipForNow)
                     .foregroundColor(Color.black)

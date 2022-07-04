@@ -52,6 +52,9 @@ extension CheckInTimeView {
                 .overlay(buttonOverlay)
             }
             Button {
+                withAnimation {
+                    viewModel.isShowInfoAlert = false
+                }
             } label: {
                 Text(L10n.skipForNow)
                     .foregroundColor(Color.black)

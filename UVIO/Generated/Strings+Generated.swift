@@ -10,16 +10,26 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
+  /// Account Information
+  public static let accountInformation = L10n.tr("Base", "account_information")
   /// Add a note
   public static let addNote = L10n.tr("Base", "add_note")
   /// Add Remidner
   public static let addReminder = L10n.tr("Base", "add_reminder")
+  /// Alerts Devices
+  public static let alertsDevices = L10n.tr("Base", "alerts_devices")
   ///  and
   public static let and = L10n.tr("Base", "and")
+  /// Avg. Bg
+  public static let avgBG = L10n.tr("Base", "avg_BG")
   /// Awesome! Now, let’s finalize your account creation.
   public static let awesome = L10n.tr("Base", "awesome")
   /// Awesome! You made it!
   public static let awosomeYouMadeIt = L10n.tr("Base", "awosome_you_made_it")
+  /// BG level
+  public static let bgLevel = L10n.tr("Base", "bg_level")
+  /// BG levels
+  public static let bgLevels = L10n.tr("Base", "bg_levels")
   /// BG level log
   public static let bgLog = L10n.tr("Base", "bg_log")
   /// Blood glucose unit
@@ -66,6 +76,8 @@ public enum L10n {
   public static let createAccount = L10n.tr("Base", "create_account")
   /// Create a New Entry
   public static let createEntry = L10n.tr("Base", "create_entry")
+  /// Devices
+  public static let devices = L10n.tr("Base", "devices")
   /// Dexcom 
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// Dexcom G6
@@ -90,6 +102,8 @@ public enum L10n {
   public static let enterEmail = L10n.tr("Base", "enter_email")
   /// Enter a new Password and Continue
   public static let enterNewPasswordAndContinue = L10n.tr("Base", "enter_new_password_and_continue")
+  /// Est. A1C
+  public static let est = L10n.tr("Base", "est")
   /// Female
   public static let female = L10n.tr("Base", "female")
   /// Food eaten
@@ -110,6 +124,8 @@ public enum L10n {
   public static let getStarted = L10n.tr("Base", "get_started")
   /// Glucose
   public static let glucose = L10n.tr("Base", "glucose")
+  /// High BG events
+  public static let highBGEvents = L10n.tr("Base", "high_BG_events")
   /// High BG alert
   public static let highBgLog = L10n.tr("Base", "high_bg_log")
   /// High Glucose Alert!
@@ -130,6 +146,8 @@ public enum L10n {
   public static let insulinLog = L10n.tr("Base", "insulin_log")
   /// Insulin logged:
   public static let insulinLogged = L10n.tr("Base", "insulin_logged")
+  /// It’s your summary
+  public static let itsYourSummary = L10n.tr("Base", "its_your_summary")
   /// LADA
   public static let lada = L10n.tr("Base", "lada")
   /// Now, let’s connect your 
@@ -146,14 +164,20 @@ public enum L10n {
   public static let logInsulin = L10n.tr("Base", "log_insulin")
   /// Log mannualy your BG level
   public static let logManualyBGLevel = L10n.tr("Base", "log_manualy_BG_level")
+  /// Logout
+  public static let logout = L10n.tr("Base", "logout")
   /// Looking for device...
   public static let lookingForDevice = L10n.tr("Base", "looking_for_device")
+  /// Low BG events
+  public static let lowBGEvents = L10n.tr("Base", "low_BG_events")
   /// Low BG alert
   public static let lowBgLog = L10n.tr("Base", "low_bg_log")
   /// Low Glucose Alert!
   public static let lowGlucoseAlert = L10n.tr("Base", "low_glucose_alert")
   /// Male
   public static let male = L10n.tr("Base", "male")
+  /// Menu
+  public static let menu = L10n.tr("Base", "menu")
   /// mg/dL
   public static let mgDL = L10n.tr("Base", "mg/dL")
   /// minutes
@@ -164,6 +188,8 @@ public enum L10n {
   public static let mody = L10n.tr("Base", "mody")
   /// My Note
   public static let myNote = L10n.tr("Base", "my_note")
+  /// My Summary
+  public static let mySummary = L10n.tr("Base", "my_summary")
   /// New Password
   public static let newPassword = L10n.tr("Base", "new_password")
   /// Next
@@ -182,6 +208,8 @@ public enum L10n {
   public static let password = L10n.tr("Base", "password")
   /// Password is required
   public static let passwordIsRequired = L10n.tr("Base", "password_is_required")
+  /// Personal
+  public static let personal = L10n.tr("Base", "personal")
   /// Please enter your email and password to log in.
   public static let pleaseEnterYourEmailPassword = L10n.tr("Base", "please_enter_your_email_password")
   /// Prediabetes
@@ -197,6 +225,10 @@ public enum L10n {
   public static let rapidAction = L10n.tr("Base", "rapid_action")
   /// Reminder
   public static let reminder = L10n.tr("Base", "reminder")
+  /// Report an Issue
+  public static let reportIssue = L10n.tr("Base", "report_issue")
+  /// Save
+  public static let save = L10n.tr("Base", "save")
   /// Select preferred Blood Glucose units
   public static let selectGlucose = L10n.tr("Base", "select_glucose")
   /// Select supporting device

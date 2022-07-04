@@ -18,9 +18,11 @@ struct CompleteOnboardingView: View {
                 contentView
                 Spacer()
             }
-            NativigationBarView(action: {}, content: {})
+            NavigationBarView(destination: {
+                EmptyView()
+            }, content: {})
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
-                ConnectCGMView(userViewModel: viewModel, viewModel: ConnectCGMViewModel())
+                MainView(viewModel: MainViewModel())
             } label: {
                 EmptyView()
             }

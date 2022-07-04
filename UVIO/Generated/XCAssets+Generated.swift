@@ -34,6 +34,7 @@ internal extension Image {
   static var bellIcon : Image { Image("bellIcon", bundle: BundleToken.bundle) }
   static var bgLevelIcon : Image { Image("bgLevelIcon", bundle: BundleToken.bundle) }
   static var bgLogIcon : Image { Image("bgLogIcon", bundle: BundleToken.bundle) }
+  static var bgAlertIcon : Image { Image("bg_alertIcon", bundle: BundleToken.bundle) }
   static var blackCircleArrowIcon : Image { Image("blackCircleArrowIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
@@ -42,6 +43,7 @@ internal extension Image {
   static var closeIcon : Image { Image("closeIcon", bundle: BundleToken.bundle) }
   static var connectBackground : Image { Image("connectBackground", bundle: BundleToken.bundle) }
   static var connectCGMIcon : Image { Image("connectCGMIcon", bundle: BundleToken.bundle) }
+  static var devicesIcon : Image { Image("devicesIcon", bundle: BundleToken.bundle) }
   static var dexicomDeviceIcon : Image { Image("dexicomDeviceIcon", bundle: BundleToken.bundle) }
   static var dotIcon : Image { Image("dotIcon", bundle: BundleToken.bundle) }
   static var dotsIcon : Image { Image("dotsIcon", bundle: BundleToken.bundle) }
@@ -65,11 +67,13 @@ internal extension Image {
   static var plusIcon : Image { Image("plusIcon", bundle: BundleToken.bundle) }
   static var rapidInsulinIcon : Image { Image("rapidInsulinIcon", bundle: BundleToken.bundle) }
   static var remainderIcon : Image { Image("remainderIcon", bundle: BundleToken.bundle) }
+  static var reportIcon : Image { Image("reportIcon", bundle: BundleToken.bundle) }
   static var settingsIcon : Image { Image("settingsIcon", bundle: BundleToken.bundle) }
   static var signUpLogo : Image { Image("signUpLogo", bundle: BundleToken.bundle) }
   static var spiralIcon : Image { Image("spiralIcon", bundle: BundleToken.bundle) }
   static var splashBackgroundImage : Image { Image("splashBackgroundImage", bundle: BundleToken.bundle) }
   static var successMarkIcon : Image { Image("successMarkIcon", bundle: BundleToken.bundle) }
+  static var summaryIcon : Image { Image("summaryIcon", bundle: BundleToken.bundle) }
   static var timerIcon : Image { Image("timerIcon", bundle: BundleToken.bundle) }
   static var uvioIcon : Image { Image("uvioIcon", bundle: BundleToken.bundle) }
   static var vDotsIcon : Image { Image("vDotsIcon", bundle: BundleToken.bundle) }
