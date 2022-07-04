@@ -96,6 +96,8 @@ public enum L10n {
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Email is required
   public static let emailIsRequired = L10n.tr("Base", "email_is_required")
+  /// 
+  public static let empty = L10n.tr("Base", "empty")
   /// Enable Bluetooth for the Cone App.
   public static let enableBluetooth = L10n.tr("Base", "enable_bluetooth")
   /// Enter an Email address you registered with and Continue

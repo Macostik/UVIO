@@ -109,6 +109,12 @@
 		56D9581C283392AA0053E65C /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581B283392AA0053E65C /* CommonViews.swift */; };
 		56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9581F28339CBD0053E65C /* DatePickerView.swift */; };
 		56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D958212833D3430053E65C /* GenderOnboardingView.swift */; };
+		56DD17912872F1A30030F7F2 /* SettingsViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD17902872F1A30030F7F2 /* SettingsViewType.swift */; };
+		56DD17932872F3810030F7F2 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD17922872F3810030F7F2 /* SummaryView.swift */; };
+		56DD17952872F3990030F7F2 /* AccountInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD17942872F3990030F7F2 /* AccountInformationView.swift */; };
+		56DD17972872F3AC0030F7F2 /* BGLevelAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD17962872F3AC0030F7F2 /* BGLevelAlertView.swift */; };
+		56DD17992872F3B50030F7F2 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD17982872F3B50030F7F2 /* DevicesView.swift */; };
+		56DD179B287306650030F7F2 /* ReportIssueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD179A287306650030F7F2 /* ReportIssueView.swift */; };
 		56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E2867E28354EAE0095FD9F /* SignUpView.swift */; };
 		56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537BE283E950900929282 /* GoogleInteractor.swift */; };
 		56E537C1283E958300929282 /* GoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E537C0283E958300929282 /* GoogleProvider.swift */; };
@@ -228,6 +234,12 @@
 		56D9581B283392AA0053E65C /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		56D9581F28339CBD0053E65C /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		56D958212833D3430053E65C /* GenderOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOnboardingView.swift; sourceTree = "<group>"; };
+		56DD17902872F1A30030F7F2 /* SettingsViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewType.swift; sourceTree = "<group>"; };
+		56DD17922872F3810030F7F2 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		56DD17942872F3990030F7F2 /* AccountInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationView.swift; sourceTree = "<group>"; };
+		56DD17962872F3AC0030F7F2 /* BGLevelAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGLevelAlertView.swift; sourceTree = "<group>"; };
+		56DD17982872F3B50030F7F2 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
+		56DD179A287306650030F7F2 /* ReportIssueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueView.swift; sourceTree = "<group>"; };
 		56E2867E28354EAE0095FD9F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		56E537BE283E950900929282 /* GoogleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleInteractor.swift; sourceTree = "<group>"; };
 		56E537C0283E958300929282 /* GoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleProvider.swift; sourceTree = "<group>"; };
@@ -479,6 +491,7 @@
 				565F21D82863374D00020C27 /* ReminderEntry.swift */,
 				565F21DC2864BA3A00020C27 /* ListViewEntry.swift */,
 				56D1F0F32869F43800B18BBE /* InfoAlertType.swift */,
+				56DD17902872F1A30030F7F2 /* SettingsViewType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -604,6 +617,11 @@
 			isa = PBXGroup;
 			children = (
 				56EF4D662872CB1A00C7EE88 /* SettingsView.swift */,
+				56DD17922872F3810030F7F2 /* SummaryView.swift */,
+				56DD17942872F3990030F7F2 /* AccountInformationView.swift */,
+				56DD17962872F3AC0030F7F2 /* BGLevelAlertView.swift */,
+				56DD17982872F3B50030F7F2 /* DevicesView.swift */,
+				56DD179A287306650030F7F2 /* ReportIssueView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -746,6 +764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56CA6D8C285CC63E0097DF69 /* FoodView.swift in Sources */,
+				56DD17932872F3810030F7F2 /* SummaryView.swift in Sources */,
 				565BDF722851E28D000BE00C /* MenuType.swift in Sources */,
 				56D1F0F42869F43800B18BBE /* InfoAlertType.swift in Sources */,
 				56E6F19A283D458900623AE2 /* SlimLogglyDestination.swift in Sources */,
@@ -757,6 +776,7 @@
 				56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */,
 				56E55F36283CBC2D0085D4DD /* RecoveryEmailView.swift in Sources */,
 				5633494628468A09004AE426 /* Int+Ext.swift in Sources */,
+				56DD17912872F1A30030F7F2 /* SettingsViewType.swift in Sources */,
 				5645D6B02837D73F0081EA5A /* String+Ext.swift in Sources */,
 				562822AD284622CB00F0F6DC /* KeyBoardHandler.swift in Sources */,
 				56E6F19B283D458900623AE2 /* Logger.swift in Sources */,
@@ -775,6 +795,7 @@
 				5612380D283520FB00DCB87B /* RangedSliderView.swift in Sources */,
 				562A6BB6284778AC002152B0 /* GlucoseUnitOnboardingView.swift in Sources */,
 				56371391283F7033003C5A09 /* Constant.swift in Sources */,
+				56DD179B287306650030F7F2 /* ReportIssueView.swift in Sources */,
 				56E537C5283E960300929282 /* Provider.swift in Sources */,
 				5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */,
 				56E55F38283CC0A90085D4DD /* CheckInboxView.swift in Sources */,
@@ -795,6 +816,7 @@
 				56D1F101286C622900B18BBE /* GraphView.swift in Sources */,
 				562822B3284672CE00F0F6DC /* OnboardingViewType.swift in Sources */,
 				56E537C1283E958300929282 /* GoogleProvider.swift in Sources */,
+				56DD17952872F3990030F7F2 /* AccountInformationView.swift in Sources */,
 				565BDF6E2851D505000BE00C /* MenuView.swift in Sources */,
 				56D1F0FD286B3B5100B18BBE /* RemainderAlertView.swift in Sources */,
 				56E6F199283D458900623AE2 /* SlimLogglyDestinationConfig.swift in Sources */,
@@ -827,6 +849,7 @@
 				56371398283FB92F003C5A09 /* SelectDeviceView.swift in Sources */,
 				56D9582028339CBD0053E65C /* DatePickerView.swift in Sources */,
 				563713B62840E732003C5A09 /* GlucoseType.swift in Sources */,
+				56DD17992872F3B50030F7F2 /* DevicesView.swift in Sources */,
 				56CA6D8A285CC4A90097DF69 /* Date+Ext.swift in Sources */,
 				5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */,
 				5645D6AD283795560081EA5A /* UserViewModel.swift in Sources */,
@@ -835,6 +858,7 @@
 				5609ED792832AD1400A8B144 /* BirthDateOnboardingView.swift in Sources */,
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */,
+				56DD17972872F3AC0030F7F2 /* BGLevelAlertView.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */,

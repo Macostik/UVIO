@@ -23,6 +23,7 @@ internal extension Color {
 
 internal extension Image {
   // Assets.xcassets
+  static var accountInfoIcon : Image { Image("accountInfoIcon", bundle: BundleToken.bundle) }
   static var alertArrowIcon : Image { Image("alertArrowIcon", bundle: BundleToken.bundle) }
   static var alertBackgroundBlue : Image { Image("alertBackgroundBlue", bundle: BundleToken.bundle) }
   static var alertBackgroundGreen : Image { Image("alertBackgroundGreen", bundle: BundleToken.bundle) }

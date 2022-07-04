@@ -43,37 +43,43 @@ extension SettingsView {
             VStack(alignment: .leading, spacing: 40) {
                 Text(L10n.menu)
                     .font(.poppins(.bold, size: 24))
-                Button {
+                NavigationLink {
+                     SummaryView(viewModel: viewModel)
                 } label: {
                     HStack(spacing: 15) {
                         Image.summaryIcon
                         Text(L10n.mySummary)
                     }
                 }
-                Button {
+                NavigationLink {
+                     AccountInformationView(viewModel: viewModel)
                 } label: {
                     HStack(spacing: 15) {
-                        Image.menuIcon
-                        Text(L10n.mySummary)
+                        Image.accountInfoIcon
+                        Text(L10n.accountInformation)
                     }
+                    .offset(x: -2)
                 }
-                Button {
+                NavigationLink {
+                     BGLevelAlertView(viewModel: viewModel)
                 } label: {
-                    HStack(spacing: 15)  {
+                    HStack(spacing: 15) {
                         Image.bgAlertIcon
-                        Text(L10n.mySummary)
+                        Text(L10n.bgLevels)
                     }
                 }
-                Button {
+                NavigationLink {
+                     DevicesView(viewModel: viewModel)
                 } label: {
                     HStack(spacing: 15) {
                         Image.devicesIcon
                         Text(L10n.devices)
                     }
                 }
-                Button {
+                NavigationLink {
+                    ReportIssueView(viewModel: viewModel)
                 } label: {
-                    HStack(spacing: 15)  {
+                    HStack(spacing: 15) {
                         Image.reportIcon
                         Text(L10n.reportIssue)
                     }
