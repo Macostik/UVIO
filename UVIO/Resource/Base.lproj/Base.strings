@@ -180,3 +180,7 @@
 "bg_level_alerts" = "BG Levels & Alerts";
 "alert_high_low" = "Alert when BG is Low or High";
 "notify_BG" = "Notify when BG is out of target range";
+"select_device" = "Select supporting device";
+"dexcom" = "DEXCOM";
+"dexcom_G6" = "dexcom G6";
+"connected" = "Connected";

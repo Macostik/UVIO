@@ -68,6 +68,8 @@ public enum L10n {
   public static let connectCGM = L10n.tr("Base", "connect_CGM")
   /// Connect Dexcom
   public static let connectDexcom = L10n.tr("Base", "connect_dexcom")
+  /// Connected
+  public static let connected = L10n.tr("Base", "connected")
   /// Continue
   public static let `continue` = L10n.tr("Base", "continue")
   /// Continue with Apple
@@ -84,9 +86,9 @@ public enum L10n {
   public static let createEntry = L10n.tr("Base", "create_entry")
   /// Devices
   public static let devices = L10n.tr("Base", "devices")
-  /// Dexcom 
+  /// DEXCOM
   public static let dexcom = L10n.tr("Base", "dexcom")
-  /// Dexcom G6
+  /// dexcom G6
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
   /// DONE
   public static let done = L10n.tr("Base", "done")
@@ -243,6 +245,8 @@ public enum L10n {
   public static let reportIssue = L10n.tr("Base", "report_issue")
   /// Save
   public static let save = L10n.tr("Base", "save")
+  /// Select supporting device
+  public static let selectDevice = L10n.tr("Base", "select_device")
   /// Select preferred Blood Glucose units
   public static let selectGlucose = L10n.tr("Base", "select_glucose")
   /// Select supporting device
