@@ -11,18 +11,22 @@ import Combine
 struct NavigationBackBarViewAction<Content: View>: View {
     let action: () -> Void
     let content: Content?
-    init(action:@escaping () -> Void, @ViewBuilder content: () -> Content?) {
+    let backgroundColor: Color
+    init(action:@escaping () -> Void,
+         @ViewBuilder content: () -> Content?,
+         backgroundColor: Color = .clear,
+         isTopInset: Bool = false) {
         self.action = action
         self.content = content()
+        self.backgroundColor = backgroundColor
     }
     var body: some View {
         ZStack {
-            HStack {
-                BackButtonAction(action: action)
-                    .padding()
-            }
+            BackButtonAction(action: action)
+                .padding()
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+        .background(backgroundColor)
         .overlay(content)
     }
 }

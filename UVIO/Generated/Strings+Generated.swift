@@ -16,6 +16,8 @@ public enum L10n {
   public static let addNote = L10n.tr("Base", "add_note")
   /// Add Remidner
   public static let addReminder = L10n.tr("Base", "add_reminder")
+  /// Alert when BG is Low or High
+  public static let alertHighLow = L10n.tr("Base", "alert_high_low")
   /// Alerts Devices
   public static let alertsDevices = L10n.tr("Base", "alerts_devices")
   ///  and
@@ -28,6 +30,8 @@ public enum L10n {
   public static let awosomeYouMadeIt = L10n.tr("Base", "awosome_you_made_it")
   /// BG level
   public static let bgLevel = L10n.tr("Base", "bg_level")
+  /// BG Levels & Alerts
+  public static let bgLevelAlerts = L10n.tr("Base", "bg_level_alerts")
   /// BG levels
   public static let bgLevels = L10n.tr("Base", "bg_levels")
   /// BG level log
@@ -38,6 +42,8 @@ public enum L10n {
   public static let bloodSugarIsHigh = L10n.tr("Base", "blood_sugar_is_high")
   /// Your blood sugar is trending low. Did you do a glucose correction?
   public static let bloodSugarIsLow = L10n.tr("Base", "blood_sugar_is_low")
+  /// Border
+  public static let border = L10n.tr("Base", "border")
   /// By continuing, you agree to UVIO’s
   public static let byContinuing = L10n.tr("Base", "by_continuing")
   /// Cancel
@@ -126,6 +132,8 @@ public enum L10n {
   public static let getStarted = L10n.tr("Base", "get_started")
   /// Glucose
   public static let glucose = L10n.tr("Base", "glucose")
+  /// Good
+  public static let good = L10n.tr("Base", "good")
   /// High BG events
   public static let highBGEvents = L10n.tr("Base", "high_BG_events")
   /// High BG alert
@@ -136,6 +144,8 @@ public enum L10n {
   public static let history = L10n.tr("Base", "history")
   /// Hyper (High Glucose)
   public static let hyperHighGlucose = L10n.tr("Base", "hyper_high_glucose")
+  /// Hyper, Hypo
+  public static let hyperHype = L10n.tr("Base", "hyper_hype")
   /// Hypers and hypos
   public static let hypersAndHypos = L10n.tr("Base", "hypers_and_hypos")
   /// Hypo (Low Glucose)
@@ -198,6 +208,8 @@ public enum L10n {
   public static let next = L10n.tr("Base", "next")
   /// Non-binary
   public static let nonBinary = L10n.tr("Base", "non_binary")
+  /// Notify when BG is out of target range
+  public static let notifyBG = L10n.tr("Base", "notify_BG")
   /// Off
   public static let off = L10n.tr("Base", "off")
   /// Online
@@ -292,6 +304,8 @@ public enum L10n {
   public static let testModeWarning = L10n.tr("Base", "test_mode_warning")
   /// Time
   public static let time = L10n.tr("Base", "time")
+  /// Time in target
+  public static let timeInTarget = L10n.tr("Base", "time_in_target")
   /// When turned ON, your phone will vibrate
   ///  instead of making sound alerts.
   public static let turnOnArerts = L10n.tr("Base", "turn_on_arerts")
@@ -311,6 +325,8 @@ public enum L10n {
   public static let unitsInsulin = L10n.tr("Base", "units_insulin")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
+  /// via
+  public static let via = L10n.tr("Base", "via")
   /// Vibrate only
   public static let vibrateOnly = L10n.tr("Base", "vibrate_only")
   /// Warning!

@@ -45,6 +45,7 @@ internal extension Image {
   static var connectBackground : Image { Image("connectBackground", bundle: BundleToken.bundle) }
   static var connectCGMIcon : Image { Image("connectCGMIcon", bundle: BundleToken.bundle) }
   static var devicesIcon : Image { Image("devicesIcon", bundle: BundleToken.bundle) }
+  static var dexcomIcon : Image { Image("dexcomIcon", bundle: BundleToken.bundle) }
   static var dexicomDeviceIcon : Image { Image("dexicomDeviceIcon", bundle: BundleToken.bundle) }
   static var dotIcon : Image { Image("dotIcon", bundle: BundleToken.bundle) }
   static var dotsIcon : Image { Image("dotsIcon", bundle: BundleToken.bundle) }

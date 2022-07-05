@@ -56,6 +56,8 @@ class UserViewModel: ObservableObject {
     // Onboarding alert
     @Published var isVibrate: Bool = false
     @Published var isNotDisturb: Bool = false
+    @Published var notifyBGLevelOutOfRange: Bool = false
+    @Published var alertBGLevelOutOfRange: Bool = false
     // Facebook token
     @Published var authToken: String = "" {
         willSet {

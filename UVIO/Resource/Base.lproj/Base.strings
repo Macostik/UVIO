@@ -172,3 +172,11 @@
 "menu" = "Menu";
 "devices" = "Devices";
 "empty" = "";
+"time_in_target" = "Time in target";
+"good" = "Good";
+"border" = "Border";
+"hyper_hype" = "Hyper, Hypo";
+"via" = "via";
+"bg_level_alerts" = "BG Levels & Alerts";
+"alert_high_low" = "Alert when BG is Low or High";
+"notify_BG" = "Notify when BG is out of target range";
