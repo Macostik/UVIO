@@ -7,7 +7,7 @@
 */
 
 "what_name" = "What is your Name?";
-"full_name" = "My full name";
+"full_name" = "Full name";
 "next" = "Next";
 "skip" = "Skip";
 "cone" = "CONE";
@@ -184,3 +184,9 @@
 "dexcom" = "DEXCOM";
 "dexcom_G6" = "dexcom G6";
 "connected" = "Connected";
+"change_password" = "Change Password";
+"metric" = "Metric";
+"email" = "Email";
+"gender" = "Gender";
+"dob" = "DOB";
+"diab_type" = "Diab. Type";

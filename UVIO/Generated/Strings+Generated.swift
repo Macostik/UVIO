@@ -50,6 +50,8 @@ public enum L10n {
   public static let cancel = L10n.tr("Base", "cancel")
   /// Carbs (g)
   public static let carbs = L10n.tr("Base", "carbs")
+  /// Change Password
+  public static let changePassword = L10n.tr("Base", "change_password")
   /// Check-in time!
   public static let checkInTime = L10n.tr("Base", "check_in_time")
   /// Check your Inbox.
@@ -90,6 +92,10 @@ public enum L10n {
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// dexcom G6
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
+  /// Diab. Type
+  public static let diabType = L10n.tr("Base", "diab_type")
+  /// DOB
+  public static let dob = L10n.tr("Base", "dob")
   /// DONE
   public static let done = L10n.tr("Base", "done")
   /// Override “Do not Disturb”
@@ -100,6 +106,8 @@ public enum L10n {
   public static let dot = L10n.tr("Base", "dot")
   /// E.g. John Icecream
   public static let eg = L10n.tr("Base", "e_g")
+  /// Email
+  public static let email = L10n.tr("Base", "email")
   /// Email Address
   public static let emailAddress = L10n.tr("Base", "email_address")
   /// Email is required
@@ -126,8 +134,10 @@ public enum L10n {
   public static let freestyleLibre = L10n.tr("Base", "freestyle_libre")
   /// Freestyle Libre 2
   public static let freestyleLibre2 = L10n.tr("Base", "freestyle_libre_2")
-  /// My full name
+  /// Full name
   public static let fullName = L10n.tr("Base", "full_name")
+  /// Gender
+  public static let gender = L10n.tr("Base", "gender")
   /// Gestational diabetes
   public static let gestationalDiabetes = L10n.tr("Base", "gestational_diabetes")
   /// and get you started
@@ -192,6 +202,8 @@ public enum L10n {
   public static let male = L10n.tr("Base", "male")
   /// Menu
   public static let menu = L10n.tr("Base", "menu")
+  /// Metric
+  public static let metric = L10n.tr("Base", "metric")
   /// mg/dL
   public static let mgDL = L10n.tr("Base", "mg/dL")
   /// minutes
