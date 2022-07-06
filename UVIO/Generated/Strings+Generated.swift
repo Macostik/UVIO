@@ -339,6 +339,8 @@ public enum L10n {
   public static let units = L10n.tr("Base", "units")
   /// units of insulin
   public static let unitsInsulin = L10n.tr("Base", "units_insulin")
+  /// US
+  public static let us = L10n.tr("Base", "us")
   /// UVIO
   public static let uvio = L10n.tr("Base", "uvio")
   /// via

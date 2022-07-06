@@ -14,6 +14,7 @@ class UserViewModel: ObservableObject {
         case signUp, signIn
     }
     @Environment(\.dependency) var dependency
+    @Published var user: User?
     // User name
     @Published var name: String = ""
     // User birthDate
@@ -39,6 +40,13 @@ class UserViewModel: ObservableObject {
             guard let item = newValue else { return }
             glucoseTypeList.forEach({ $0.isSelected = false })
             glucoseTypeList.first(where: { $0.id == item.id })?.isSelected = true
+        }
+    }
+    @Published var unitsSelectedItem: UnitsType? {
+        willSet {
+            guard let item = newValue else { return }
+            unitsList.forEach({ $0.isSelected = false })
+            unitsList.first(where: { $0.id == item.id })?.isSelected = true
         }
     }
     // User diabet
@@ -112,6 +120,7 @@ class UserViewModel: ObservableObject {
     var createNewUser = PassthroughSubject<User, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     init() {
+        handleGettinguser()
         createUser()
         checkUser()
         validateCredintials()
@@ -136,13 +145,16 @@ extension UserViewModel {
             .sink { _ in
             }.store(in: &cancellableSet)
     }
-    func checkUser() {
+    func handleGettinguser() {
         getUser()
-            .map({ user in
-                guard let user = user else { return false }
-                return user.isLogin
-            })
-            .replaceError(with: false)
+            .replaceError(with: nil)
+            .assign(to: \.user, on: self)
+            .store(in: &cancellableSet)
+    }
+    func checkUser() {
+        $user
+            .map { $0?.isLogin }
+            .replaceNil(with: false)
             .assign(to: \.userPersist, on: self)
             .store(in: &cancellableSet)
     }
@@ -235,6 +247,7 @@ extension UserViewModel {
                               dexcomToken: dexcomToken)
     }
     func save(entry: Object) -> AnyPublisher<Bool, Error> {
+        user = entry as? User
         return dependency.provider.storeService.saveEntry(entry: entry)
     }
     func validateCredentials(email: String,

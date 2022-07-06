@@ -78,5 +78,19 @@ extension UIBarButtonItem {
     @objc private func pressed(sender: UIBarButtonItem) {
         _action?()
     }
+}
 
+public struct PlaceholderStyle: ViewModifier {
+    var showPlaceHolder: Bool
+    var placeholder: String
+
+    public func body(content: Content) -> some View {
+        ZStack(alignment: .leading) {
+            if showPlaceHolder {
+                Text(placeholder)
+            }
+            content
+            .foregroundColor(Color.black)
+        }
+    }
 }

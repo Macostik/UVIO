@@ -102,22 +102,6 @@ struct SkipButton<Destination: View>: View {
     }
 }
 
-func genderOverlay(type: String,
-                   isSelected: Bool) -> some View {
-    HStack {
-        Circle()
-            .foregroundColor(Color.grayScaleColor)
-            .frame(width: 24, height: 24)
-            .padding(.leading)
-            .overlay(isSelected ?  Circle()
-                .foregroundColor(Color.complementaryColor).frame(width: 12, height: 12).cornerRadius(6)
-                .padding(.leading, 16) : nil)
-        Text(type)
-            .font(.poppins(.medium, size: 14))
-        Spacer()
-    }
-}
-
 struct ProgressView: View {
     var completed: Double = 1.0
     var body: some View {
@@ -186,4 +170,21 @@ var signInTitle: some View {
             .multilineTextAlignment(.center)
     }
     .padding(.bottom, 48)
+}
+
+@ViewBuilder
+func genderOverlay(type: String,
+                   isSelected: Bool) -> some View {
+    HStack {
+        Circle()
+            .foregroundColor(Color.grayScaleColor)
+            .frame(width: 24, height: 24)
+            .padding(.leading)
+            .overlay(isSelected ?  Circle()
+                .foregroundColor(Color.complementaryColor).frame(width: 12, height: 12).cornerRadius(6)
+                .padding(.leading, 16) : nil)
+        Text(type)
+            .font(.poppins(.medium, size: 14))
+        Spacer()
+    }
 }
