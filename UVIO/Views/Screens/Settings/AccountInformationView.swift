@@ -44,7 +44,7 @@ extension AccountInformationView {
     var backgroundView: some View {
         Rectangle()
             .foregroundColor(Color.grayScaleColor)
-            .ignoresSafeArea()
+            .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
     }
     var navigationBarView: some View {
         NavigationBackBarViewAction(action: {
