@@ -20,6 +20,7 @@ class UserViewModel: ObservableObject {
     // User birthDate
     @Published var birthDate: Date = Date()
     // User gender
+    @Published var isGenderPresented = false
     @Published var ownType: String = ""
     @Published var genderSelectedItem: GenderType? {
         willSet {

@@ -1,5 +1,5 @@
 //
-//  DevicesView.swift
+//  IntegrationsView.swift
 //  UVIO
 //
 //  Created by Macostik on 04.07.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DevicesView: View {
+struct IntegrationsView: View {
     @StateObject var viewModel: UserViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
@@ -22,13 +22,13 @@ struct DevicesView: View {
     }
 }
 
-struct DevicesView_Previews: PreviewProvider {
+struct IntegrationsView_Previews: PreviewProvider {
     static var previews: some View {
-        DevicesView(viewModel: UserViewModel())
+        IntegrationsView(viewModel: UserViewModel())
     }
 }
 
-extension DevicesView {
+extension IntegrationsView {
     var backgroundView: some View {
         Rectangle()
             .foregroundColor(Color.grayScaleColor)
@@ -39,7 +39,7 @@ extension DevicesView {
             self.presentationMode.wrappedValue.dismiss()
         }, content: {
             ZStack {
-                Text(L10n.devices)
+                Text(L10n.integrations)
                     .font(.poppins(.medium, size: 18))
             }
         }, backgroundColor: Color.white)

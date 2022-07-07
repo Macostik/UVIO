@@ -170,6 +170,8 @@ public enum L10n {
   public static let insulinLog = L10n.tr("Base", "insulin_log")
   /// Insulin logged:
   public static let insulinLogged = L10n.tr("Base", "insulin_logged")
+  /// Integrations
+  public static let integrations = L10n.tr("Base", "integrations")
   /// It’s your summary
   public static let itsYourSummary = L10n.tr("Base", "its_your_summary")
   /// LADA

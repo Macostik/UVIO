@@ -39,18 +39,10 @@ extension SettingsView {
     }
     var contentView: some View {
         VStack(alignment: .leading) {
-            Spacer()
-            VStack(alignment: .leading, spacing: 40) {
+            VStack(alignment: .leading, spacing: 30) {
                 Text(L10n.menu)
                     .font(.poppins(.bold, size: 24))
-                NavigationLink {
-                     SummaryView(viewModel: viewModel)
-                } label: {
-                    HStack(spacing: 15) {
-                        Image.summaryIcon
-                        Text(L10n.mySummary)
-                    }
-                }
+                    .padding(.top, 70)
                 NavigationLink {
                      AccountInformationView(viewModel: viewModel)
                 } label: {
@@ -69,19 +61,11 @@ extension SettingsView {
                     }
                 }
                 NavigationLink {
-                     DevicesView(viewModel: viewModel)
+                     IntegrationsView(viewModel: viewModel)
                 } label: {
                     HStack(spacing: 15) {
                         Image.devicesIcon
-                        Text(L10n.devices)
-                    }
-                }
-                NavigationLink {
-                    ReportIssueView(viewModel: viewModel)
-                } label: {
-                    HStack(spacing: 15) {
-                        Image.reportIcon
-                        Text(L10n.reportIssue)
+                        Text(L10n.integrations)
                     }
                 }
             }
@@ -101,7 +85,8 @@ extension SettingsView {
                     .foregroundColor(Color.black)
                     .padding(.top)
             }
-            Spacer()
+            .padding(.bottom, 30)
+
         }
         .padding(.leading, 30)
     }

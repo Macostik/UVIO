@@ -13,7 +13,6 @@ struct ReminderView: View {
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
     @State var offset = 0.0
-    @Namespace var aniamtion
     var body: some View {
         ZStack {
             VStack {

@@ -19,7 +19,7 @@ struct AccountInformationView: View {
             GridItem(.flexible())
         ]
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .bottom) {
             backgroundView
             VStack {
                 navigationBarView
@@ -29,6 +29,7 @@ struct AccountInformationView: View {
                 footerView
             }
             .edgesIgnoringSafeArea(.bottom)
+            genderMenuView
         }
         .navigationBarHidden(true)
     }
@@ -146,10 +147,15 @@ extension AccountInformationView {
                 .foregroundColor(Color.white)
                 .overlay(genderOverlay, alignment: .leading)
                 .frame(height: 48)
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isGenderPresented.toggle()
+                    }
+                }
         }
     }
     var genderOverlay: some View {
-        ZStack(alignment: .leading) {
+        HStack {
             Text(L10n.gender)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
@@ -158,8 +164,12 @@ extension AccountInformationView {
                 .font(.poppins(.bold, size: 14))
                 .foregroundColor(Color.black)
                 .accentColor(Color.black)
-                .offset(x: 100)
+                .offset(x: 9)
+            Spacer()
+            Image.arrowBottomIcon
+                .rotationEffect(.radians(.pi))
         }
+        .padding(.trailing)
     }
     var dobView: some View {
         VStack {
@@ -311,5 +321,8 @@ extension AccountInformationView {
                 .frame(width: 12, height: 12).cornerRadius(6)
                 .padding(.leading, 16)
         }
+    }
+    var genderMenuView: some View {
+        GenderView(viewModel: viewModel)
     }
 }
