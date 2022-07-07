@@ -36,17 +36,17 @@ extension LoginManager {
             self.subscriber = subscriber
         }
         func authorize(loginManager: LoginManager) {
-            loginManager.logIn(permissions: [.publicProfile, .email],
-                               viewController: nil) { result in
-                switch result {
-                case .success(_, _, let accessToken):
-                    _ = self.subscriber?.receive(accessToken?.tokenString)
-                case .cancelled:
-                    _ = self.subscriber?.receive(completion: Subscribers.Completion.finished)
-                case .failed(let error) :
-                    _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
+            loginManager.logIn(permissions: ["public_profile", "email"], from: nil, handler: { result, error  in
+                if let result = result {
+                    if result.isCancelled {
+                        _ = self.subscriber?.receive(completion: Subscribers.Completion.finished)
+                    } else if let error = error {
+                        _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
+                    } else {
+                        _ = self.subscriber?.receive(result.authenticationToken?.tokenString)
+                    }
                 }
-            }
+            })
         }
         func cancel() {
             subscriber = nil
