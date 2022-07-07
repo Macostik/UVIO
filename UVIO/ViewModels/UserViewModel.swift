@@ -323,7 +323,11 @@ extension UserViewModel {
     }
     func appleLogin() {
         dependency.provider.appleService.singIn()
-            .map({ $0 == .authorized })
+            .map({ [unowned self] value in
+                let authorized = value == .authorized
+                self.signUp = authorized
+                return authorized
+            })
             .replaceError(with: false)
             .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
