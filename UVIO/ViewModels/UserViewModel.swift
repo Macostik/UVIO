@@ -19,6 +19,7 @@ class UserViewModel: ObservableObject {
     @Published var name: String = ""
     // User birthDate
     @Published var birthDate: Date = Date()
+    @Published var isDOBPresented = false
     // User gender
     @Published var isGenderPresented = false
     @Published var ownType: String = ""

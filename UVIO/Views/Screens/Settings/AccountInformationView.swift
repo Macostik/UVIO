@@ -12,7 +12,6 @@ struct AccountInformationView: View {
     @StateObject var viewModel: UserViewModel
     @State var isEditUserName = false
     @State var isEditEmail = false
-    @State var isEditBirthDate = false
     @State var isEditDiabetType = false
     let columns = [
             GridItem(.flexible()),
@@ -30,6 +29,7 @@ struct AccountInformationView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             genderMenuView
+            dobMenuView
         }
         .navigationBarHidden(true)
     }
@@ -175,8 +175,13 @@ extension AccountInformationView {
         VStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
-                .overlay(dobOverlay, alignment: .leading)
                 .frame(height: 48)
+                .overlay(dobOverlay, alignment: .leading)
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isDOBPresented.toggle()
+                    }
+                }
         }
     }
     var dobOverlay: some View {
@@ -189,9 +194,6 @@ extension AccountInformationView {
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .offset(x: 100)
-                .onTapGesture {
-                    self.isEditBirthDate.toggle()
-                }
         }
     }
     var diabetTypeView: some View {
@@ -324,5 +326,8 @@ extension AccountInformationView {
     }
     var genderMenuView: some View {
         GenderView(viewModel: viewModel)
+    }
+    var dobMenuView: some View {
+        DOBView(viewModel: viewModel)
     }
 }

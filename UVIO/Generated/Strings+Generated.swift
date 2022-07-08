@@ -86,6 +86,8 @@ public enum L10n {
   public static let createAccount = L10n.tr("Base", "create_account")
   /// Create a New Entry
   public static let createEntry = L10n.tr("Base", "create_entry")
+  /// Date of Birth
+  public static let dateOfBirth = L10n.tr("Base", "date_of_birth")
   /// Devices
   public static let devices = L10n.tr("Base", "devices")
   /// DEXCOM

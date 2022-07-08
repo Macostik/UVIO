@@ -37,6 +37,7 @@
 		563713B62840E732003C5A09 /* GlucoseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B52840E732003C5A09 /* GlucoseType.swift */; };
 		563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B72840E8A9003C5A09 /* DiabetType.swift */; };
 		5639ABF7287716A30080FD3E /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF6287716A30080FD3E /* GenderView.swift */; };
+		5639ABF92878511F0080FD3E /* DOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF82878511F0080FD3E /* DOBView.swift */; };
 		563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DB284DE9D800610F7C /* AppleProvider.swift */; };
 		563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DD284DEA9400610F7C /* AppleInteractor.swift */; };
 		563E02E2284E396400610F7C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 563E02E1284E396400610F7C /* FirebaseMessaging */; };
@@ -163,6 +164,7 @@
 		563713B52840E732003C5A09 /* GlucoseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseType.swift; sourceTree = "<group>"; };
 		563713B72840E8A9003C5A09 /* DiabetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetType.swift; sourceTree = "<group>"; };
 		5639ABF6287716A30080FD3E /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		5639ABF82878511F0080FD3E /* DOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBView.swift; sourceTree = "<group>"; };
 		563E02DB284DE9D800610F7C /* AppleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProvider.swift; sourceTree = "<group>"; };
 		563E02DD284DEA9400610F7C /* AppleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleInteractor.swift; sourceTree = "<group>"; };
 		563E02DF284E147E00610F7C /* UVIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UVIO.entitlements; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				565F21D02862FD5D00020C27 /* ReminderView.swift */,
 				561774342865AD3A00E6534A /* EntryView.swift */,
 				5639ABF6287716A30080FD3E /* GenderView.swift */,
+				5639ABF82878511F0080FD3E /* DOBView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				565F21D5286335AB00020C27 /* FoodEntry.swift in Sources */,
 				56E537BF283E950900929282 /* GoogleInteractor.swift in Sources */,
 				568C1715283641B300C77384 /* StateButton.swift in Sources */,
+				5639ABF92878511F0080FD3E /* DOBView.swift in Sources */,
 				56E2867F28354EAE0095FD9F /* SignUpView.swift in Sources */,
 				56A8535228322350000DFE3D /* AppDelegate.swift in Sources */,
 				56E55F3A283CC3E90085D4DD /* NewPasswordView.swift in Sources */,
