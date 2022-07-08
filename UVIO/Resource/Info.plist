@@ -49,6 +49,8 @@
 	<string>5671538d56bd26edcce1add75ed05ed2</string>
 	<key>FacebookDisplayName</key>
 	<string>Cone app</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Regular.ttf</string>
@@ -84,7 +86,5 @@
 		<key>UIColorName</key>
 		<string>LaunchBackground</string>
 	</dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 </dict>
 </plist>

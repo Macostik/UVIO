@@ -30,8 +30,10 @@ struct AccountInformationView: View {
             .edgesIgnoringSafeArea(.bottom)
             genderMenuView
             dobMenuView
+            changePasswordView
         }
         .navigationBarHidden(true)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -64,7 +66,6 @@ extension AccountInformationView {
             emailView
             genderView
             dobView
-            diabetTypeView
             bloodGlucoseView
             unitsView
         }
@@ -75,7 +76,10 @@ extension AccountInformationView {
                 Text(L10n.personal)
                     .font(.poppins(.bold, size: 18))
                 Spacer()
-                NavigationLink {
+                Button {
+                    withAnimation {
+                        viewModel.isChangePassword.toggle()
+                    }
                 } label: {
                     Text(L10n.changePassword)
                         .font(.poppins(.medium, size: 14))
@@ -111,6 +115,7 @@ extension AccountInformationView {
             }
             .font(.poppins(.bold, size: 14))
             .offset(x: 100)
+            .padding(.trailing, 100)
         }
     }
     var emailView: some View {
@@ -139,6 +144,7 @@ extension AccountInformationView {
             }
             .font(.poppins(.bold, size: 14))
             .offset(x: 100)
+            .padding(.trailing, 100)
         }
     }
     var genderView: some View {
@@ -196,29 +202,6 @@ extension AccountInformationView {
                 .offset(x: 100)
         }
     }
-    var diabetTypeView: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color.white)
-                .overlay(diabetTypeOverlay, alignment: .leading)
-                .frame(height: 48)
-        }
-    }
-    var diabetTypeOverlay: some View {
-        ZStack(alignment: .leading) {
-            Text(L10n.gender)
-                .font(.poppins(.medium, size: 14))
-                .foregroundColor(Color.black)
-                .padding()
-            Text(viewModel.user?.diabetsType ?? "")
-                .font(.poppins(.bold, size: 14))
-                .accentColor(Color.black)
-                .offset(x: 100)
-                .onTapGesture {
-                    self.isEditDiabetType.toggle()
-                }
-        }
-    }
     var bloodGlucoseView: some View {
         VStack(alignment: .leading) {
             Text(L10n.bloodGlucoseUnit)
@@ -245,9 +228,8 @@ extension AccountInformationView {
                 }
             }
             .frame(height: 48)
-            Spacer()
         }
-        .padding(.top, 72)
+        .padding(.top)
     }
     var unitsView: some View {
         VStack(alignment: .leading) {
@@ -275,7 +257,6 @@ extension AccountInformationView {
                 }
             }
             .frame(height: 48)
-            Spacer()
         }
     }
     var footerView: some View {
@@ -329,5 +310,8 @@ extension AccountInformationView {
     }
     var dobMenuView: some View {
         DOBView(viewModel: viewModel)
+    }
+    var changePasswordView: some View {
+        ChangePasswordView(viewModel: viewModel)
     }
 }

@@ -50,6 +50,7 @@ internal extension Image {
   static var dotIcon : Image { Image("dotIcon", bundle: BundleToken.bundle) }
   static var dotsIcon : Image { Image("dotsIcon", bundle: BundleToken.bundle) }
   static var emailIcon : Image { Image("emailIcon", bundle: BundleToken.bundle) }
+  static var eyeIcon : Image { Image("eyeIcon", bundle: BundleToken.bundle) }
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
   static var foodIcon : Image { Image("foodIcon", bundle: BundleToken.bundle) }
   static var freestyleDeviceIcon : Image { Image("freestyleDeviceIcon", bundle: BundleToken.bundle) }

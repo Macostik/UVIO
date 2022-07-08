@@ -68,6 +68,8 @@ class UserViewModel: ObservableObject {
     @Published var isNotDisturb: Bool = false
     @Published var notifyBGLevelOutOfRange: Bool = false
     @Published var alertBGLevelOutOfRange: Bool = false
+    // Change password
+    @Published var isChangePassword = false
     // Facebook token
     @Published var authToken: String = "" {
         willSet {
@@ -111,6 +113,7 @@ class UserViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
     @Published var newPassword: String = ""
+    @Published var oldPassword: String = ""
     @Published var signUp = false
     @Published var userWasUpdated = false
     @Published var userPersist = false

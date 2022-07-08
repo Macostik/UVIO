@@ -38,6 +38,7 @@
 		563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B72840E8A9003C5A09 /* DiabetType.swift */; };
 		5639ABF7287716A30080FD3E /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF6287716A30080FD3E /* GenderView.swift */; };
 		5639ABF92878511F0080FD3E /* DOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF82878511F0080FD3E /* DOBView.swift */; };
+		5639ABFB28785F750080FD3E /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABFA28785F750080FD3E /* ChangePasswordView.swift */; };
 		563E02DC284DE9D800610F7C /* AppleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DB284DE9D800610F7C /* AppleProvider.swift */; };
 		563E02DE284DEA9400610F7C /* AppleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563E02DD284DEA9400610F7C /* AppleInteractor.swift */; };
 		563E02E2284E396400610F7C /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 563E02E1284E396400610F7C /* FirebaseMessaging */; };
@@ -165,6 +166,7 @@
 		563713B72840E8A9003C5A09 /* DiabetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetType.swift; sourceTree = "<group>"; };
 		5639ABF6287716A30080FD3E /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
 		5639ABF82878511F0080FD3E /* DOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBView.swift; sourceTree = "<group>"; };
+		5639ABFA28785F750080FD3E /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		563E02DB284DE9D800610F7C /* AppleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProvider.swift; sourceTree = "<group>"; };
 		563E02DD284DEA9400610F7C /* AppleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleInteractor.swift; sourceTree = "<group>"; };
 		563E02DF284E147E00610F7C /* UVIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UVIO.entitlements; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				561774342865AD3A00E6534A /* EntryView.swift */,
 				5639ABF6287716A30080FD3E /* GenderView.swift */,
 				5639ABF82878511F0080FD3E /* DOBView.swift */,
+				5639ABFA28785F750080FD3E /* ChangePasswordView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				561F3B132861B095002F4308 /* InsulinView.swift in Sources */,
 				5659428E2857671300A1A168 /* SignInFlow.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
+				5639ABFB28785F750080FD3E /* ChangePasswordView.swift in Sources */,
 				56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */,
 				56A8535428322350000DFE3D /* SceneDelegate.swift in Sources */,
 				565942902857684400A1A168 /* LoginViewType.swift in Sources */,
@@ -1030,7 +1034,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1064,7 +1068,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1153,7 +1157,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cone.uvio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

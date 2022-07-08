@@ -55,12 +55,12 @@ struct NewPasswordView: View {
     }
     var passwordInput: some View {
         Group {
-          if showPassword {
-              TextField(L10n.newPassword, text: $viewModel.newPassword)
+            if showPassword {
+                TextField(L10n.newPassword, text: $viewModel.newPassword)
             } else {
                 SecureField(L10n.newPassword, text: $viewModel.newPassword)
             }
-     }.padding(.leading)
+        }.padding(.leading)
             .font(.poppins(.medium, size: 14))
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)

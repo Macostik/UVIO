@@ -230,6 +230,8 @@ public enum L10n {
   public static let notifyBG = L10n.tr("Base", "notify_BG")
   /// Off
   public static let off = L10n.tr("Base", "off")
+  /// Old Password
+  public static let oldPassword = L10n.tr("Base", "old_password")
   /// Online
   public static let online = L10n.tr("Base", "online")
   /// Open Email App

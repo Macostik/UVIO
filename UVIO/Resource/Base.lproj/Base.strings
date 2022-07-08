@@ -193,3 +193,5 @@
 "us" = "US";
 "integrations" = "Integrations";
 "date_of_birth" = "Date of Birth";
+"old_password" = "Old Password";
+"new_password" = "New Password";
