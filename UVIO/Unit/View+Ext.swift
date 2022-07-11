@@ -16,6 +16,9 @@ extension View {
     func toast(isShowing: Binding<Bool>) -> some View {
         self.modifier(ToastView(isShowing: isShowing))
     }
+    func passwordToast(type: Binding<PasswordMode>) -> some View {
+        self.modifier(PasswordToastView(type: type))
+    }
     func getSize(onChange: @escaping (CGSize) -> Void) -> some View {
         background(
             GeometryReader { geometryProxy in

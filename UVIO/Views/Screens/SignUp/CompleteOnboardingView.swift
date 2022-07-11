@@ -22,7 +22,7 @@ struct CompleteOnboardingView: View {
                 EmptyView()
             }, content: {})
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
-                MainView(viewModel: MainViewModel())
+                MainView(userViewModel: viewModel, mainViewModel: MainViewModel())
             } label: {
                 EmptyView()
             }

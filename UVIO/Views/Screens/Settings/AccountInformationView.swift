@@ -34,6 +34,7 @@ struct AccountInformationView: View {
         }
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.bottom)
+        .passwordToast(type: $viewModel.passwordMode)
     }
 }
 

@@ -70,6 +70,8 @@ class UserViewModel: ObservableObject {
     @Published var alertBGLevelOutOfRange: Bool = false
     // Change password
     @Published var isChangePassword = false
+    @Published var isPasswordMatch = PassthroughSubject<Void, Error>()
+    @Published var passwordMode = PasswordMode.idle
     // Facebook token
     @Published var authToken: String = "" {
         willSet {
@@ -101,6 +103,8 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    // Update user data
+    @Published var updateUserDataPublisher = PassthroughSubject<Void, Error>()
     @Published var signUpConfirmed = false {
         willSet {
             if newValue {
@@ -108,8 +112,6 @@ class UserViewModel: ObservableObject {
             }
         }
     }
-    // Update user data
-    @Published var updateUserDataPublisher = PassthroughSubject<Void, Error>()
     @Published var signInConfirmed = false
     @Published var email: String = ""
     @Published var password: String = ""
@@ -136,6 +138,7 @@ class UserViewModel: ObservableObject {
         handleOnboardingScreen()
         handleLoginScreen()
         updateUserData()
+        updatePassword()
     }
 }
 // Init
@@ -223,11 +226,14 @@ extension UserViewModel {
             .store(in: &cancellableSet)
     }
     func updateUserData() {
-        guard let user = user else { return }
         updateUserDataPublisher
-            .flatMap { [unowned self, unowned user] _ in
+            .compactMap({ [unowned self] in self.user })
+            .flatMap { [unowned self] user in
                 updateEntry {
                     user.birthDate = self.birthDate
+                    user.gender = self.genderSelectedItem?.type ?? ""
+                    user.glucoseUnit = self.glucoseUnit
+                    user.password = self.newPassword
                     return user
                 }
             }
@@ -235,8 +241,35 @@ extension UserViewModel {
             } receiveValue: { success in
                 withAnimation {
                     self.isDOBPresented = !success
+                    self.isGenderPresented = !success
                 }
             }
+            .store(in: &cancellableSet)
+    }
+    func updatePassword() {
+        isPasswordMatch
+            .compactMap({ [unowned self] in self.user })
+            .flatMap { [unowned self] user -> AnyPublisher<Bool, Error> in
+                if user.password == self.oldPassword {
+                    return updateEntry {
+                        user.password = self.newPassword
+                        return user
+                    }
+                } else {
+                    return Just(false)
+                        .mapError({ _ in RealmError.unknow })
+                        .eraseToAnyPublisher()
+                }
+            }
+            .map({ success in
+                if success {
+                    return .match
+                } else {
+                    return .notMatch
+                }
+            })
+            .replaceError(with: .idle)
+            .assign(to: \.passwordMode, on: self)
             .store(in: &cancellableSet)
     }
 }
@@ -300,7 +333,7 @@ extension UserViewModel {
         return dateFormatter
     }
     var birthDateString: String {
-        dateFormatter.string(from: birthDate)
+        dateFormatter.string(from: user?.birthDate ?? birthDate)
     }
     var glucoseUnit: String {
         glucoseSelectedItem?.type ?? L10n.mgDL

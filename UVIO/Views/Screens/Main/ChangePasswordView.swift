@@ -10,8 +10,8 @@ import SwiftUI
 struct ChangePasswordView: View {
     @StateObject var viewModel: UserViewModel
     @State var offset: CGFloat = 0.0
-    @State var isEditOldPassword = false
-    @State var isEditNewPassword = false
+    @State var isShownOldPassword = false
+    @State var isShownNewPassword = false
     var body: some View {
         ZStack {
             VStack {
@@ -73,6 +73,10 @@ extension ChangePasswordView {
             .foregroundColor(Color.white)
             .overlay(oldPasswordViewOverlay, alignment: .leading)
             .frame(height: 48)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color.primaryAlertColor, lineWidth: isPasswordCorrect ? 0 : 1)
+            )
             .padding(.horizontal)
             .padding(.bottom, 15)
     }
@@ -83,7 +87,7 @@ extension ChangePasswordView {
                 .foregroundColor(Color.black)
                 .padding(.leading)
             Group {
-                if isEditOldPassword {
+                if isShownOldPassword {
                     TextField("", text: $viewModel.oldPassword)
                 } else {
                     SecureField("", text: $viewModel.oldPassword)
@@ -111,7 +115,7 @@ extension ChangePasswordView {
                 .foregroundColor(Color.black)
                 .padding(.leading)
             Group {
-                if isEditOldPassword {
+                if isShownNewPassword {
                     TextField("", text: $viewModel.newPassword)
                 } else {
                     SecureField("", text: $viewModel.newPassword)
@@ -123,32 +127,33 @@ extension ChangePasswordView {
             .overlay(hideNewOverlay, alignment: .trailing)
         }
     }
-    var hideNewOverlay: some View {
-        VStack {
-            if isEditNewPassword {
-                Image.eyeIcon
-            } else {
-                Image.hideIcon
-            }
-        }.padding(.trailing)
-            .onTapGesture {
-                $isEditNewPassword.wrappedValue.toggle()
-            }
-    }
     var hideOldOverlay: some View {
         VStack {
-            if isEditOldPassword {
+            if isShownOldPassword {
                 Image.eyeIcon
             } else {
                 Image.hideIcon
             }
         }.padding(.trailing)
             .onTapGesture {
-                $isEditOldPassword.wrappedValue.toggle()
+                $isShownOldPassword.wrappedValue.toggle()
+            }
+    }
+    var hideNewOverlay: some View {
+        VStack {
+            if isShownNewPassword {
+                Image.eyeIcon
+            } else {
+                Image.hideIcon
+            }
+        }.padding(.trailing)
+            .onTapGesture {
+                $isShownNewPassword.wrappedValue.toggle()
             }
     }
     var saveButton: some View {
         Button {
+            viewModel.isPasswordMatch.send()
         } label: {
             HStack {
                 Image.checkMarkIcon
@@ -175,5 +180,9 @@ extension ChangePasswordView {
                 .frame(height: 48)
                 .padding(.horizontal)
         }
+    }
+    private var isPasswordCorrect: Bool {
+        viewModel.passwordMode == .match ||
+        viewModel.passwordMode == .idle
     }
 }

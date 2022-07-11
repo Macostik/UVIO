@@ -9,21 +9,22 @@ import SwiftUI
 import RealmSwift
 
 struct MainView: View {
-    @StateObject var viewModel: MainViewModel
+    @ObservedObject var userViewModel: UserViewModel
+    @ObservedObject var mainViewModel: MainViewModel
     let columns = Array(repeating: GridItem(.flexible(minimum: 100), spacing: 0), count: 6)
     var body: some View {
         ZStack(alignment: .bottom) {
             backgroundView
             contentView
                 .overlay(Rectangle()
-                    .fill(viewModel.isPresented ? Color.black.opacity(0.3) : Color.clear))
+                    .fill(mainViewModel.isPresented ? Color.black.opacity(0.3) : Color.clear))
                 .ignoresSafeArea()
             menuView
             logBGView
             foodView
             insulinView
             remainderView
-            if viewModel.isShownWarningAlert {
+            if mainViewModel.isShownWarningAlert {
                 warningView
             }
         }
@@ -34,7 +35,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(viewModel: MainViewModel())
+        MainView(userViewModel: UserViewModel(), mainViewModel: MainViewModel())
     }
 }
 
@@ -48,21 +49,21 @@ extension MainView {
     var contentView: some View {
         ZStack(alignment: .bottom) {
             let isShownBottomPlaceholder =
-            viewModel.listEntries.isEmpty ||
-            viewModel.isShowInfoAlert
+            mainViewModel.listEntries.isEmpty ||
+            mainViewModel.isShowInfoAlert
             VStack(spacing: isShownBottomPlaceholder ? 20 : 0) {
                 NavigationBarView(destination: {
-                    SettingsView(viewModel: UserViewModel())
+                    SettingsView(viewModel: userViewModel)
                 }, content: {
                     Text(L10n.yourGlucose)
                         .font(.poppins(.bold, size: 18))
                 })
-                if !viewModel.isFullHistory {
+                if !mainViewModel.isFullHistory {
                     topView
                         .frame(height: 325)
                 }
-                if !viewModel.isShowInfoAlert {
-                    if viewModel.listEntries.isEmpty {
+                if !mainViewModel.isShowInfoAlert {
+                    if mainViewModel.listEntries.isEmpty {
                         bottomView
                     } else {
                         listView
@@ -73,12 +74,12 @@ extension MainView {
                 }
             }
             .padding(.top, safeAreaInsets.top)
-            if viewModel.isShowInfoAlert {
-                InfoAlertView(viewModel: viewModel)
+            if mainViewModel.isShowInfoAlert {
+                InfoAlertView(viewModel: mainViewModel)
             } else {
                 Button {
                     withAnimation {
-                        viewModel.isMenuPresented = true
+                        mainViewModel.isMenuPresented = true
                     }
                 } label: {
                     Image.plusButtonIcon
@@ -115,7 +116,7 @@ extension MainView {
     var bottomOverlay: some View {
         HStack {
             VStack(alignment: .leading, spacing: 12) {
-                Text(viewModel.user.name)
+                Text(mainViewModel.user.name)
                     .font(.poppins(.bold, size: 24))
                     .foregroundColor(Color.black)
                 Text(L10n.pressPlus)
@@ -139,7 +140,7 @@ extension MainView {
                 .foregroundColor(Color.white)
             ScrollView(.vertical) {
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
-                    ForEach(viewModel.listEntries, id: \.self) { listItem in
+                    ForEach(mainViewModel.listEntries, id: \.self) { listItem in
                         Section(header: section(listItem.keyObject, color: listItem.color)) {
                             ForEach(listItem.valueObjects, id: \.self) { entry in
                                 EntryView(listViewEntry: entry)
@@ -177,7 +178,7 @@ extension MainView {
                 Spacer()
                 Button {
                     withAnimation {
-                        viewModel.isFullHistory.toggle()
+                        mainViewModel.isFullHistory.toggle()
                     }
                 } label: {
                     HStack {
@@ -205,14 +206,14 @@ extension MainView {
             Spacer()
             VStack(alignment: .leading, spacing: -10) {
                 HStack(alignment: .top, spacing: 0) {
-                    Text(viewModel.glucoseValue)
+                    Text(mainViewModel.glucoseValue)
                         .foregroundColor(Color.greenSuccessColor)
                         .font(.poppins(.bold, size: 50))
-                    Text(viewModel.glucoseCorrectionValue)
+                    Text(mainViewModel.glucoseCorrectionValue)
                         .font(.poppins(.medium, size: 14))
                 }
                 HStack {
-                    Text(viewModel.glucoseUnitValue)
+                    Text(mainViewModel.glucoseUnitValue)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
                         .padding(.horizontal, 5)
@@ -239,24 +240,24 @@ extension MainView {
         }
     }
     var menuView: some View {
-        MenuView(isPresented: $viewModel.isMenuPresented,
+        MenuView(isPresented: $mainViewModel.isMenuPresented,
                  menuAction: { action in
-            viewModel.menuActionPubliser.send(action)
+            mainViewModel.menuActionPubliser.send(action)
         })
     }
     var logBGView: some View {
-        LogBGLevelView(viewModel: viewModel)
+        LogBGLevelView(viewModel: mainViewModel)
     }
     var foodView: some View {
-        FoodView(viewModel: viewModel)
+        FoodView(viewModel: mainViewModel)
     }
     var insulinView: some View {
-        InsulinView(viewModel: viewModel)
+        InsulinView(viewModel: mainViewModel)
     }
     var remainderView: some View {
-        ReminderView(viewModel: viewModel)
+        ReminderView(viewModel: mainViewModel)
     }
     var warningView: some View {
-        WarningAlertView(viewModel: viewModel)
+        WarningAlertView(viewModel: mainViewModel)
     }
 }

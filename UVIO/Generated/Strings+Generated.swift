@@ -168,6 +168,8 @@ public enum L10n {
   public static let iNotSure = L10n.tr("Base", "i_not_sure")
   /// I understand the risk
   public static let iUnderstand = L10n.tr("Base", "i_understand")
+  /// Old password is incorrect
+  public static let incorrectPassword = L10n.tr("Base", "incorrect_password")
   ///  Insulin log
   public static let insulinLog = L10n.tr("Base", "insulin_log")
   /// Insulin logged:
@@ -242,6 +244,8 @@ public enum L10n {
   public static let password = L10n.tr("Base", "password")
   /// Password is required
   public static let passwordIsRequired = L10n.tr("Base", "password_is_required")
+  /// Password saved successfully
+  public static let passwordSuccess = L10n.tr("Base", "password_success")
   /// Personal
   public static let personal = L10n.tr("Base", "personal")
   /// Please enter your email and password to log in.

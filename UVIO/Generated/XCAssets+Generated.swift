@@ -19,6 +19,7 @@ internal extension Color {
   static var primaryGreenColor : Color { Color("primaryGreenColor", bundle: BundleToken.bundle) }
   static var primaryOrangeColor : Color { Color("primaryOrangeColor", bundle: BundleToken.bundle) }
   static var rapidOrangeColor : Color { Color("rapidOrangeColor", bundle: BundleToken.bundle) }
+  static var successBackgroundColor : Color { Color("successBackgroundColor", bundle: BundleToken.bundle) }
 }
 
 internal extension Image {
@@ -66,6 +67,7 @@ internal extension Image {
   static var menuIcon : Image { Image("menuIcon", bundle: BundleToken.bundle) }
   static var minusIcon : Image { Image("minusIcon", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }
+  static var passwordSuccessIcon : Image { Image("passwordSuccessIcon", bundle: BundleToken.bundle) }
   static var plusButtonIcon : Image { Image("plusButtonIcon", bundle: BundleToken.bundle) }
   static var plusIcon : Image { Image("plusIcon", bundle: BundleToken.bundle) }
   static var rapidInsulinIcon : Image { Image("rapidInsulinIcon", bundle: BundleToken.bundle) }

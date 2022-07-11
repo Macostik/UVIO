@@ -16,6 +16,7 @@
 		5612380F2835399000DCB87B /* SingleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612380E2835399000DCB87B /* SingleSliderView.swift */; };
 		561774352865AD3A00E6534A /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561774342865AD3A00E6534A /* EntryView.swift */; };
 		5618332A2860AFD600DDEEA7 /* DatePicker+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */; };
+		56184280287C4FE400C79B6E /* PasswordToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5618427F287C4FE400C79B6E /* PasswordToastView.swift */; };
 		561F3B132861B095002F4308 /* InsulinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B122861B095002F4308 /* InsulinView.swift */; };
 		561F3B152861C81E002F4308 /* CrabsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561F3B142861C81E002F4308 /* CrabsType.swift */; };
 		5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5623A10A283D49460097AF78 /* EnvironmentProvider.swift */; };
@@ -145,6 +146,7 @@
 		5612380E2835399000DCB87B /* SingleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSliderView.swift; sourceTree = "<group>"; };
 		561774342865AD3A00E6534A /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		561833292860AFD600DDEEA7 /* DatePicker+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Ext.swift"; sourceTree = "<group>"; };
+		5618427F287C4FE400C79B6E /* PasswordToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordToastView.swift; sourceTree = "<group>"; };
 		561F3B122861B095002F4308 /* InsulinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsulinView.swift; sourceTree = "<group>"; };
 		561F3B142861C81E002F4308 /* CrabsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrabsType.swift; sourceTree = "<group>"; };
 		5623A10A283D49460097AF78 /* EnvironmentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentProvider.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				560EF5A92861D518003D6A30 /* SegmentControl.swift */,
 				560EF5AD28620107003D6A30 /* CounterView.swift */,
 				56D1F100286C622900B18BBE /* GraphView.swift */,
+				5618427F287C4FE400C79B6E /* PasswordToastView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				5645D6AB28378C390081EA5A /* StoreUserInteractor.swift in Sources */,
 				56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */,
 				56DD17972872F3AC0030F7F2 /* BGLevelAlertView.swift in Sources */,
+				56184280287C4FE400C79B6E /* PasswordToastView.swift in Sources */,
 				56371396283F7B92003C5A09 /* ConnectCGMViewModel.swift in Sources */,
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */,

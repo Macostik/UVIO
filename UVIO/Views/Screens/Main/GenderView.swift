@@ -109,6 +109,7 @@ extension GenderView {
     }
     var saveButton: some View {
         Button {
+            self.viewModel.updateUserDataPublisher.send(())
         } label: {
             HStack {
                 Image.checkMarkIcon

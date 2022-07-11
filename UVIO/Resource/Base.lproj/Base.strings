@@ -195,3 +195,5 @@
 "date_of_birth" = "Date of Birth";
 "old_password" = "Old Password";
 "new_password" = "New Password";
+"incorrect_password" = "Old password is incorrect";
+"password_success" = "Password saved successfully";
