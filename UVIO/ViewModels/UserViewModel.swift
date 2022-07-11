@@ -108,6 +108,8 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    // Update user data
+    @Published var updateUserDataPublisher = PassthroughSubject<Void, Error>()
     @Published var signInConfirmed = false
     @Published var email: String = ""
     @Published var password: String = ""
@@ -133,6 +135,7 @@ class UserViewModel: ObservableObject {
         handleSignUp()
         handleOnboardingScreen()
         handleLoginScreen()
+        updateUserData()
     }
 }
 // Init
@@ -219,6 +222,23 @@ extension UserViewModel {
             }
             .store(in: &cancellableSet)
     }
+    func updateUserData() {
+        guard let user = user else { return }
+        updateUserDataPublisher
+            .flatMap { [unowned self, unowned user] _ in
+                updateEntry {
+                    user.birthDate = self.birthDate
+                    return user
+                }
+            }
+            .sink { _ in
+            } receiveValue: { success in
+                withAnimation {
+                    self.isDOBPresented = !success
+                }
+            }
+            .store(in: &cancellableSet)
+    }
 }
 // Handle publishers
 extension UserViewModel {
@@ -254,6 +274,9 @@ extension UserViewModel {
     func save(entry: Object) -> AnyPublisher<Bool, Error> {
         user = entry as? User
         return dependency.provider.storeService.saveEntry(entry: entry)
+    }
+    func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
+        dependency.provider.storeService.updateEntry(entry)
     }
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error> {

@@ -11,6 +11,7 @@ struct DOBView: View {
     @StateObject var viewModel: UserViewModel
     @State var offset: CGFloat = 0.0
     @State var isShowCalendar = false
+    var previousDOBValue = ""
     var body: some View {
         ZStack {
             VStack {
@@ -106,6 +107,7 @@ extension DOBView {
     }
     var saveButton: some View {
         Button {
+            viewModel.updateUserDataPublisher.send(())
         } label: {
             HStack {
                 Image.checkMarkIcon
