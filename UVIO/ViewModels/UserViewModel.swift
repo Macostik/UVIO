@@ -9,6 +9,8 @@ import Combine
 import SwiftUI
 import RealmSwift
 
+//swiftlint:disable file_length
+
 class UserViewModel: ObservableObject {
     enum LoginMode {
         case signUp, signIn

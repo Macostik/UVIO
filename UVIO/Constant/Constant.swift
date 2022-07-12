@@ -20,4 +20,5 @@ struct Constant {
     static let authScope: String = "offline_access"
     static let gcmMessageID: String = "gcm.message_id"
     static let fcmTokenKey: String = "FCMToken"
+    static let baseURL = "https://diabetes-api.dev/api"
 }

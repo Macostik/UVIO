@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 typealias UserData = (String, String)
-typealias ProviderType = FacebookProvider & GoogleProvider & AppleProvider & DexcomProvider  & StoreProvider & APIProvider
+typealias ProviderType =
+    FacebookProvider &
+    GoogleProvider &
+    AppleProvider &
+    DexcomProvider &
+    StoreProvider &
+    APIProvider
 let rootViewController: UIViewController = {
     UIApplication.shared.windows.first?.rootViewController ?? UIViewController()
 }()

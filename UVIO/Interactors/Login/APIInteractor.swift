@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol APIInteractor {
-
+    func allDevices<T: Decodable>() -> DataResponsePublisher<T>
 }
