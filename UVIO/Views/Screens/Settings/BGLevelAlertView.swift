@@ -49,20 +49,8 @@ extension BGLevelAlertView {
     }
     var contentView: some View {
         VStack(alignment: .leading) {
-            Text(L10n.targetLevel)
-                .font(.poppins(.bold, size: 18))
-                .padding(.top)
-            Text(L10n.takeBackControl)
-                .font(.poppins(.medium, size: 14))
             targetRangeView
-            notifyBGView
-            Text(L10n.hypersAndHypos)
-                .font(.poppins(.bold, size: 18))
-                .padding(.top)
-            Text(L10n.takeBackControl)
-                .font(.poppins(.medium, size: 14))
-            hypersAndHyposView
-            alertBGView
+            hypersAndHypos
         }
         .padding(.leading)
     }
@@ -74,6 +62,7 @@ extension BGLevelAlertView {
                 .overlay(rangeSliderOverlay)
         }
         .padding(.trailing)
+        .padding(.top, 10)
     }
     var rangeSliderOverlay: some View {
         ZStack {
@@ -97,32 +86,11 @@ extension BGLevelAlertView {
             }.padding()
         }
     }
-    var notifyBGView: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color.white)
-                .frame(height: 44)
-                .overlay(notifyBGOverlay)
-        }
-        .padding(.trailing)
-    }
-    var notifyBGOverlay: some View {
-        ZStack {
-            HStack {
-                Text(L10n.notifyBG)
-                    .font(.poppins(.medium, size: 14))
-                Spacer()
-                Toggle("", isOn: $viewModel.notifyBGLevelOutOfRange)
-                    .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
-            }
-            .padding(.horizontal)
-        }
-    }
-    var hypersAndHyposView: some View {
+    var hypersAndHypos: some View {
         VStack(alignment: .leading) {
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 224)
+                    .frame(height: 396)
                     .foregroundColor(Color.white)
                     .overlay(doubleSliderOverlay)
             }
@@ -137,6 +105,9 @@ extension BGLevelAlertView {
             RoundedRectangle(cornerRadius: 12)
                 .frame(height: 100)
                 .overlay(bottomSliderOverlay)
+                .padding(.bottom, 8)
+            vibrateView
+                .padding(.horizontal, 16)
         }
         .foregroundColor(Color.clear)
     }
@@ -183,25 +154,49 @@ extension BGLevelAlertView {
             .padding()
         }
     }
-    var alertBGView: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color.white)
-                .frame(height: 44)
-                .overlay(alertBGOverlay)
-        }
-        .padding(.trailing)
-    }
-    var alertBGOverlay: some View {
-        ZStack {
-            HStack {
-                Text(L10n.alertHighLow)
-                    .font(.poppins(.medium, size: 14))
-                Spacer()
-                Toggle("", isOn: $viewModel.alertBGLevelOutOfRange)
-                    .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+    var vibrateView: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Image.vibrateIcon
+                    Text(L10n.vibrateOnly)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                    Text(L10n.off)
+                        .font(.poppins(.medium, size: 12))
+                        .foregroundColor(Color.black)
+                    Toggle("", isOn: $viewModel.isVibrate)
+                        .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                }
+                Text(L10n.turnOnArerts)
+                    .font(.poppins(.medium, size: 10))
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 28)
             }
-            .padding(.horizontal)
+            Divider()
+                .padding(.leading, 40)
+            VStack {
+                VStack(alignment: .leading) {
+                HStack {
+                    Image.timerIcon
+                    Text(L10n.dontDisturb)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.black)
+                    Spacer()
+                    Text(L10n.off)
+                        .font(.poppins(.medium, size: 12))
+                        .foregroundColor(Color.black)
+                    Toggle("", isOn: $viewModel.isNotDisturb)
+                        .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                }
+                Text(L10n.turnOnDisturbMode)
+                    .font(.poppins(.medium, size: 10))
+                    .foregroundColor(Color.gray)
+                    .padding(.leading, 28)
+                }
+                .padding(.bottom, 8)
+            }
         }
     }
     var footerView: some View {
