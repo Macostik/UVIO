@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 import RealmSwift
 
-//swiftlint:disable file_length
+// swiftlint:disable file_length
 
 class UserViewModel: ObservableObject {
     enum LoginMode {
@@ -410,3 +410,18 @@ extension UserViewModel {
             .store(in: &cancellableSet)
     }
 }
+
+// Handle API
+//extension UserViewModel {
+//    func login() {
+//        var user = [TestUser?]()
+//        dependency.provider.apiService.login()
+//            .sink { result in
+//                user.append(result.value)
+//            }
+//            .store(in: &cancellableSet)
+//    }
+//}
+//
+//struct TestUser: Decodable {
+//}

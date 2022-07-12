@@ -15,6 +15,7 @@ protocol APIProvider {
 }
 
 private enum APIRequest: URLRequestConvertible {
+    case login([String: Any])
     case allDevices([String: Any])
     func asURLRequest() throws -> URLRequest {
         let headers: [String: String]? = nil
@@ -22,11 +23,14 @@ private enum APIRequest: URLRequestConvertible {
             switch self {
             case .allDevices:
                 return .get
+            case .login:
+                return .post
             }
         }
         let parameters: ([String: Any]?) = {
             switch self {
-            case .allDevices(let parameters):
+            case .allDevices(let parameters),
+                    .login(let parameters):
                 return parameters
             }
         }()
@@ -36,6 +40,8 @@ private enum APIRequest: URLRequestConvertible {
             switch self {
             case .allDevices:
                 query = "devices"
+            case .login:
+                query = "login"
             }
             if let query = query {
                 URL = URL.appendingPathComponent(query)
@@ -56,7 +62,7 @@ private enum APIRequest: URLRequestConvertible {
             }
         }
         switch self {
-        case .allDevices:
+        case .allDevices, .login:
             return try URLEncoding(arrayEncoding: .noBrackets).encode(urlRequest, with: parameters)
 //        default:
 //            return try URLEncoding.default.encode(urlRequest, with: parameters)
@@ -84,6 +90,10 @@ private enum APIRequest: URLRequestConvertible {
 }
 
 class APIService: APIInteractor {
+    func login<T: Decodable>() -> DataResponsePublisher<T> {
+        let params = ["email": "test@cone.co", "password": "pass"]
+        return APIRequest.login(params).json(T.self)
+    }
     func allDevices<T: Decodable>() -> DataResponsePublisher<T> {
         let params = ["name": "Dexcom", "version": "1.11", "model": "v1"]
         return APIRequest.allDevices(params).json(T.self)

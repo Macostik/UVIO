@@ -9,5 +9,6 @@ import Foundation
 import Alamofire
 
 protocol APIInteractor {
+    func login<T: Decodable>() -> DataResponsePublisher<T>
     func allDevices<T: Decodable>() -> DataResponsePublisher<T>
 }
