@@ -27,6 +27,8 @@
 		562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */; };
 		562A6BBA2847E134002152B0 /* CompleteOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */; };
 		5633494628468A09004AE426 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633494528468A09004AE426 /* Int+Ext.swift */; };
+		56369BD8287D4C5200CA13DA /* APIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56369BD7287D4C5200CA13DA /* APIInteractor.swift */; };
+		56369BDB287D4C8800CA13DA /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56369BDA287D4C8800CA13DA /* APIProvider.swift */; };
 		5637138C283F6E51003C5A09 /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637138B283F6E51003C5A09 /* RealmProvider.swift */; };
 		56371391283F7033003C5A09 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371390283F7033003C5A09 /* Constant.swift */; };
 		56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56371393283F71E0003C5A09 /* ConnectCGMView.swift */; };
@@ -157,6 +159,8 @@
 		562A6BB72847C53A002152B0 /* CustomizeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeToggleStyle.swift; sourceTree = "<group>"; };
 		562A6BB92847E134002152B0 /* CompleteOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteOnboardingView.swift; sourceTree = "<group>"; };
 		5633494528468A09004AE426 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		56369BD7287D4C5200CA13DA /* APIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInteractor.swift; sourceTree = "<group>"; };
+		56369BDA287D4C8800CA13DA /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		5637138B283F6E51003C5A09 /* RealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		56371390283F7033003C5A09 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		56371393283F71E0003C5A09 /* ConnectCGMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCGMView.swift; sourceTree = "<group>"; };
@@ -280,6 +284,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56369BD9287D4C7300CA13DA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				56369BDA287D4C8800CA13DA /* APIProvider.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		5637138A283F6E44003C5A09 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +378,7 @@
 		568C171D2836910700C77384 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				56369BD9287D4C7300CA13DA /* API */,
 				5637138A283F6E44003C5A09 /* Realm */,
 				56E537C9283E998E00929282 /* DependencyProvider.swift */,
 				56E537C4283E960300929282 /* Provider.swift */,
@@ -591,6 +604,7 @@
 				56E537BE283E950900929282 /* GoogleInteractor.swift */,
 				56C0A7482848AB8C001D5D00 /* DexcomInteractor.swift */,
 				563E02DD284DEA9400610F7C /* AppleInteractor.swift */,
+				56369BD7287D4C5200CA13DA /* APIInteractor.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -837,10 +851,12 @@
 				56295BE2284A4F3D003811F5 /* SingInView.swift in Sources */,
 				56D1F0F92869FB4800B18BBE /* CheckInTimeView.swift in Sources */,
 				568C17222836949D00C77384 /* StoreProvider.swift in Sources */,
+				56369BDB287D4C8800CA13DA /* APIProvider.swift in Sources */,
 				561774352865AD3A00E6534A /* EntryView.swift in Sources */,
 				5623A10B283D49460097AF78 /* EnvironmentProvider.swift in Sources */,
 				563713B42840E48F003C5A09 /* GenderType.swift in Sources */,
 				56D958222833D3430053E65C /* GenderOnboardingView.swift in Sources */,
+				56369BD8287D4C5200CA13DA /* APIInteractor.swift in Sources */,
 				56C0A7472848AB67001D5D00 /* DexComProvider.swift in Sources */,
 				56EF4D672872CB1A00C7EE88 /* SettingsView.swift in Sources */,
 				56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */,
