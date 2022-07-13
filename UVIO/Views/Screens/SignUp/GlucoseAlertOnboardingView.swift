@@ -158,7 +158,8 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.medium, size: 12))
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isVibrate)
-                        .toggleStyle(CustomToggleStyle())
+                        .toggleStyle(
+                            CustomToggleStyle(color: Color.complementaryColor))
                 }
                 Text(L10n.turnOnArerts)
                     .font(.poppins(.medium, size: 10))
@@ -179,7 +180,8 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.medium, size: 12))
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isNotDisturb)
-                        .toggleStyle(CustomToggleStyle())
+                        .toggleStyle(
+                            CustomToggleStyle(color: Color.complementaryColor))
                 }
                 Text(L10n.turnOnDisturbMode)
                     .font(.poppins(.medium, size: 10))

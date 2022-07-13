@@ -120,15 +120,15 @@ extension BGLevelAlertView {
                 HStack {
                     Image.alertArrowIcon
                         .rotationEffect(.radians(.pi))
-                    Text(L10n.hyperHighGlucose)
+                    Text(L10n.lowGlucoseAlarm)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hyperValue) \(viewModel.glucoseUnit)")
+                    Text("<\(viewModel.hypoValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
             }
             .padding()
         }
@@ -141,15 +141,15 @@ extension BGLevelAlertView {
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
-                    Text(L10n.hypoLowGlucose)
+                    Text(L10n.highGlucoseAlarm)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hypoValue) \(viewModel.glucoseUnit)")
+                    Text(">\(viewModel.hyperValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
             }
             .padding()
         }
