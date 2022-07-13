@@ -34,14 +34,15 @@ extension RecoveryEmailView {
     var container: some View {
         VStack(spacing: 24) {
             Text(L10n.enterEmail)
-                .font(.poppins(.regular, size: 21))
+                .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
+                .padding(.horizontal, 22)
             TextField(L10n.emailAddress, text: $viewModel.recoveryEmail)
                 .padding(.leading)
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
                 .keyboardType(.emailAddress)
         }
@@ -55,7 +56,7 @@ extension RecoveryEmailView {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.complementaryColor)
                 .foregroundColor(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
         }
     }

@@ -62,13 +62,15 @@ extension EmailSignUpView {
                     .cornerRadius(12)
                     .padding(.horizontal)
             }
-            Button {
-                self.viewModel.presentLoginView.value = .recoveryEmail
-            } label: {
-                Text(L10n.forgotPassword)
-                    .font(.poppins(.medium, size: 14))
-                    .foregroundColor(Color.complementaryColor)
-                    .padding(.top, 27)
+            if viewModel.loginMode == .signIn {
+                Button {
+                    self.viewModel.presentLoginView.value = .recoveryEmail
+                } label: {
+                    Text(L10n.forgotPassword)
+                        .font(.poppins(.medium, size: 14))
+                        .foregroundColor(Color.complementaryColor)
+                        .padding(.top, 32)
+                }
             }
         }
     }

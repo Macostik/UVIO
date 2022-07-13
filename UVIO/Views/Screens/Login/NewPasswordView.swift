@@ -26,7 +26,7 @@ struct NewPasswordView: View {
     var container: some View {
         VStack(spacing: 24) {
             Text(L10n.enterNewPasswordAndContinue)
-                .font(.poppins(.regular, size: 21))
+                .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             passwordInput
@@ -41,7 +41,7 @@ struct NewPasswordView: View {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.complementaryColor)
                 .foregroundColor(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
         }
     }
@@ -64,7 +64,7 @@ struct NewPasswordView: View {
             .font(.poppins(.medium, size: 14))
             .frame(maxWidth: .infinity, maxHeight: 48)
             .background(Color.white)
-            .cornerRadius(16)
+            .cornerRadius(12)
             .padding(.horizontal)
             .overlay(hideOverlay, alignment: .trailing)
     }

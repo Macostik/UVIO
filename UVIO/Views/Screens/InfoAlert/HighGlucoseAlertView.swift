@@ -27,6 +27,7 @@ extension HighGlucoseAlertView {
             Text(L10n.highGlucoseAlert)
                 .foregroundColor(Color.primaryAlertColor)
                 .font(.poppins(.bold, size: 18))
+                .padding(.bottom, 3)
             Text(L10n.bloodSugarIsHigh)
                 .foregroundColor(Color.black)
                 .font(.poppins(.regular, size: 14))

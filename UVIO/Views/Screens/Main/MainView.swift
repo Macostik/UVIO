@@ -120,7 +120,7 @@ extension MainView {
                     .font(.poppins(.bold, size: 24))
                     .foregroundColor(Color.black)
                 Text(L10n.pressPlus)
-                    .font(.poppins(.regular, size: 18))
+                    .font(.poppins(.regular, size: 16))
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.leading)
                 Image.spiralIcon

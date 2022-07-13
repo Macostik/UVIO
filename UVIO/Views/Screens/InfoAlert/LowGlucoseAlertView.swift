@@ -29,7 +29,7 @@ extension LowGlucoseAlertView {
             Text(L10n.lowGlucoseAlert)
                 .foregroundColor(Color.primaryAlertColor)
                 .font(.poppins(.bold, size: 18))
-                .padding(.bottom, 5)
+                .padding(.bottom, 3)
             Text(L10n.bloodSugarIsLow)
                 .foregroundColor(Color.black)
                 .font(.poppins(.regular, size: 14))

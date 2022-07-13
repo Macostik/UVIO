@@ -25,7 +25,7 @@ struct NewPasswordSuccessView: View {
                 .frame(width: 68, height: 68)
                 .aspectRatio(contentMode: .fill)
             Text(L10n.successfullyChangedPassword)
-                .font(.poppins(.regular, size: 21))
+                .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
         }
     }
@@ -38,7 +38,7 @@ struct NewPasswordSuccessView: View {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.complementaryColor)
                 .foregroundColor(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
         }
     }

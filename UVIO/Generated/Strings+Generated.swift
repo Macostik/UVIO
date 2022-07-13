@@ -55,8 +55,8 @@ public enum L10n {
   /// Check-in time!
   public static let checkInTime = L10n.tr("Base", "check_in_time")
   /// Check your Inbox.
-  ///  We’ve just sent you a link to
-  ///  reset your Password.
+  ///  We’ve just sent you a link to reset
+  ///  your Password.
   public static let checkYouInbox = L10n.tr("Base", "check_you_inbox")
   /// Correction logged! When you would like me to check on your glucose?
   public static let checkYourGlucose = L10n.tr("Base", "check_your_glucose")
@@ -118,9 +118,10 @@ public enum L10n {
   public static let empty = L10n.tr("Base", "empty")
   /// Enable Bluetooth for the Cone App.
   public static let enableBluetooth = L10n.tr("Base", "enable_bluetooth")
-  /// Enter an Email address you registered with and Continue
+  /// Enter an Email address you registered with
   public static let enterEmail = L10n.tr("Base", "enter_email")
-  /// Enter a new Password and Continue
+  /// Enter a new Password
+  ///  and Continue
   public static let enterNewPasswordAndContinue = L10n.tr("Base", "enter_new_password_and_continue")
   /// Est. A1C
   public static let est = L10n.tr("Base", "est")
@@ -319,8 +320,8 @@ public enum L10n {
   public static let submitFood = L10n.tr("Base", "submit_food")
   /// Submit Insulin Log
   public static let submitInsulin = L10n.tr("Base", "submit_insulin")
-  /// You have successfully
-  ///  changed your Password.
+  /// You have successfully changed
+  ///  your Password.
   public static let successfullyChangedPassword = L10n.tr("Base", "successfully_changed_password")
   /// Take back teh Control over your Diabetes
   public static let takeBack = L10n.tr("Base", "take_back")

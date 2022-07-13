@@ -21,12 +21,16 @@ struct CheckInboxView: View {
     }
     var container: some View {
         VStack(spacing: 24) {
-            Image.emailIcon
+            Circle()
                 .frame(width: 68, height: 68)
-                .background(Color.white)
-                .cornerRadius(34)
+                .foregroundColor(Color.white)
+                .overlay(
+                    Image.emailIcon
+                        .resizable()
+                        .frame(width: 32, height: 24)
+                )
             Text(L10n.checkYouInbox)
-                .font(.poppins(.regular, size: 21))
+                .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
         }
     }
@@ -39,7 +43,7 @@ struct CheckInboxView: View {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.complementaryColor)
                 .foregroundColor(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(12)
                 .padding(.horizontal)
         }
     }

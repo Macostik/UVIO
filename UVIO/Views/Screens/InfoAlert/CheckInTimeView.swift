@@ -27,6 +27,7 @@ extension CheckInTimeView {
             Text(L10n.checkInTime)
                 .foregroundColor(Color.black)
                 .font(.poppins(.bold, size: 18))
+                .padding(.bottom, 3)
             Text(L10n.yourInsulinIsStillHigh)
                 .foregroundColor(Color.primaryAlertColor)
                 .font(.poppins(.bold, size: 16))
