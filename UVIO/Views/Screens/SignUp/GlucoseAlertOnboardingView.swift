@@ -88,7 +88,7 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
             }
             .padding()
         }
@@ -109,7 +109,7 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
             }
             .padding()
         }
