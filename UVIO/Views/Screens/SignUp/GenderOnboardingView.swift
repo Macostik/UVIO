@@ -45,8 +45,11 @@ extension GenderOnboardingView {
                         RoundedRectangle(cornerRadius: 16)
                             .foregroundColor(item.isSelected ? Color.complementaryColor : Color.white)
                             .frame(height: 80)
-                            .overlay(genderOverlay(type: item.type)
-                                .foregroundColor( item.isSelected ? Color.white : Color.black))
+                            .overlay(
+                                Text(item.type)
+                                .foregroundColor( item.isSelected ? Color.white : Color.black)
+                                .font(.poppins(item.isSelected ? .bold : .medium, size: 14))
+                            )
                             .onTapGesture {
                                 self.viewModel.genderSelectedItem = item
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
@@ -59,9 +62,6 @@ extension GenderOnboardingView {
             }
             .frame(height: 175)
         }
-    }
-    func genderOverlay(type: String) -> some View {
-        Text(type)
-            .font(.poppins(.bold, size: 14))
+        .padding(.bottom)
     }
 }

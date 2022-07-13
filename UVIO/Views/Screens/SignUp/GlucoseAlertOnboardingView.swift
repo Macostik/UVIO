@@ -39,7 +39,6 @@ extension GlucoseAlertOnboardingView {
         VStack {
             Text(L10n.setGlucoseAlert)
                 .font(.poppins(.bold, size: 24))
-                .padding(.top, 32)
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
@@ -81,11 +80,11 @@ extension GlucoseAlertOnboardingView {
                 HStack {
                     Image.alertArrowIcon
                         .rotationEffect(.radians(.pi))
-                    Text(L10n.hyperHighGlucose)
+                    Text(L10n.lowGlucoseAlarm)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hyperValue) \(viewModel.glucoseUnit)")
+                    Text("<\(viewModel.hypoValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
@@ -102,11 +101,11 @@ extension GlucoseAlertOnboardingView {
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
-                    Text(L10n.hypoLowGlucose)
+                    Text(L10n.highGlucoseAlarm)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(.primary)
                     Spacer()
-                    Text("\(viewModel.hypoValue) \(viewModel.glucoseUnit)")
+                    Text(">\(viewModel.hyperValue) \(viewModel.glucoseUnit)")
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }

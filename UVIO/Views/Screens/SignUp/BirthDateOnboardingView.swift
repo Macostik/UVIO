@@ -43,6 +43,7 @@ extension BirthDateOnboardingView {
                 .font(.poppins(.bold, size: 24))
             DatePickerView(date: $viewModel.birthDate,
                            isPresentedDatePicker: $isPresentedDatePicker)
+            .padding(.top)
         }
     }
 }

@@ -50,7 +50,7 @@ extension GlucoseUnitOnboardingView {
                                     HStack {
                                         Text(item.type)
                                             .foregroundColor(item.isSelected ? Color.white : Color.black)
-                                            .font(.poppins(.medium, size: 14))
+                                            .font(.poppins(item.isSelected ? .bold : .medium, size: 14))
                                             .padding(.leading)
                                         Spacer()
                                     }
@@ -67,6 +67,7 @@ extension GlucoseUnitOnboardingView {
                 }
                 .frame(height: 48)
             }
-        }.padding(.top)
+        }
+        .padding(.bottom, 20)
     }
 }

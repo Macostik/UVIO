@@ -17,6 +17,7 @@ struct CompleteOnboardingView: View {
                 Spacer()
                 contentView
                 Spacer()
+                connectButton
             }
             NavigationBarView(destination: {
                 EmptyView()
@@ -47,29 +48,37 @@ extension CompleteOnboardingView {
     var contentView: some View {
         VStack {
             Image.successMarkIcon
-                .padding(.bottom, 22)
-            Text(L10n.awosomeYouMadeIt)
+                .padding(.bottom, -15)
+            Text(L10n.awesomeYouMadeIt)
                 .font(.poppins(.bold, size: 24))
-                .padding(.bottom, 40)
+                .padding(.bottom, 5)
             letsConnectText
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-                .padding(.bottom, 43)
-            completeButton
         }
+        .padding(.top, 60)
     }
-    var completeButton: some View {
+    var connectButton: some View {
         Button {
             viewModel.dexcomLogin()
         } label: {
-            Text(L10n.connectDexcom)
-                .font(.poppins(.medium, size: 14))
-                .foregroundColor(.white)
-            .frame(maxWidth: .infinity, maxHeight: 48)
+            ZStack {
+                HStack {
+                    Image.nextIcon
+                        .padding()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
             .background(Color.complementaryColor)
             .cornerRadius(12)
             .padding(.horizontal)
+            .overlay(
+                Text(L10n.connectDexcom)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(.white)
+            )
         }
+        .padding(.bottom, 40)
     }
     var letsConnectText: some View {
         Text(L10n.letsConnectDexcom)

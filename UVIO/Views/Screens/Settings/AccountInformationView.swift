@@ -55,7 +55,7 @@ extension AccountInformationView {
             self.presentationMode.wrappedValue.dismiss()
         }, content: {
             ZStack {
-                Text(L10n.bgLevelAlerts)
+                Text(L10n.accountInformation)
                     .font(.poppins(.medium, size: 18))
             }
         }, backgroundColor: Color.white)

@@ -27,7 +27,7 @@ public enum L10n {
   /// Awesome! Now, let’s finalize your account creation.
   public static let awesome = L10n.tr("Base", "awesome")
   /// Awesome! You made it!
-  public static let awosomeYouMadeIt = L10n.tr("Base", "awosome_you_made_it")
+  public static let awesomeYouMadeIt = L10n.tr("Base", "awesome_you_made_it")
   /// BG level
   public static let bgLevel = L10n.tr("Base", "bg_level")
   /// BG Levels & Alerts
@@ -90,7 +90,7 @@ public enum L10n {
   public static let dateOfBirth = L10n.tr("Base", "date_of_birth")
   /// Devices
   public static let devices = L10n.tr("Base", "devices")
-  /// DEXCOM
+  /// Dexcom 
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// dexcom G6
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
@@ -152,6 +152,8 @@ public enum L10n {
   public static let highBGEvents = L10n.tr("Base", "high_BG_events")
   /// High BG alert
   public static let highBgLog = L10n.tr("Base", "high_bg_log")
+  /// High Glucose alarm
+  public static let highGlucoseAlarm = L10n.tr("Base", "high_glucose_alarm")
   /// High Glucose Alert!
   public static let highGlucoseAlert = L10n.tr("Base", "high_glucose_alert")
   /// History
@@ -202,6 +204,8 @@ public enum L10n {
   public static let lowBGEvents = L10n.tr("Base", "low_BG_events")
   /// Low BG alert
   public static let lowBgLog = L10n.tr("Base", "low_bg_log")
+  /// Low Glucose alarm
+  public static let lowGlucoseAlarm = L10n.tr("Base", "low_glucose_alarm")
   /// Low Glucose Alert!
   public static let lowGlucoseAlert = L10n.tr("Base", "low_glucose_alert")
   /// Male
@@ -299,6 +303,8 @@ public enum L10n {
   public static let signUpWithFacebook = L10n.tr("Base", "sign_up_with_facebook")
   /// Sign Up with Google
   public static let signUpWithGoogle = L10n.tr("Base", "sign_up_with_google")
+  /// Please select a Sign up method
+  public static let signUpMethod = L10n.tr("Base", "signUp_method")
   /// Skip
   public static let skip = L10n.tr("Base", "skip")
   /// Skip for now
@@ -363,7 +369,8 @@ public enum L10n {
   public static let warningDescription = L10n.tr("Base", "warning_description")
   /// Welcome
   public static let welcome = L10n.tr("Base", "welcome")
-  /// Welcome back! Please log in to continue.
+  /// Welcome back! Please log in to
+  ///  continue.
   public static let welcomeBack = L10n.tr("Base", "welcome_back")
   /// What did you eat?
   public static let whatEat = L10n.tr("Base", "what_eat")

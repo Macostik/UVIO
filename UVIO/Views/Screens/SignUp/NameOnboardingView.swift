@@ -47,6 +47,7 @@ extension NameOnboardingView {
                 .background(Color.white)
                 .cornerRadius(12)
                 .padding(.horizontal)
+                .padding(.top, 7)
                 .shadow(color: Color.black.opacity(0.1),
                         radius: 7)
         }

@@ -45,10 +45,11 @@ struct SplashView: View {
                 .foregroundColor(.black)
                 .font(.poppins(.bold, size: 24))
             Text(L10n.takeBackControl)
-                .font(.poppins(.regular, size: 21))
+                .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, 2)
         }
     }
     var createAccountButton: some View {

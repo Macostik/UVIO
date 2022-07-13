@@ -40,12 +40,10 @@ struct PrefferableSignUpView_Previews: PreviewProvider {
 
 extension SignUpView {
     var signUpTitle: some View {
-        Text(L10n.awesome)
-            .font(.poppins(.medium, size: 21))
-            .padding(.horizontal)
+        Text(L10n.signUpMethod)
+            .font(.poppins(.medium, size: 18))
             .padding(.top, 60)
-            .multilineTextAlignment(.center)
-            .padding(.bottom, 48)
+            .padding(.bottom, 25)
     }
     var containerButtons: some View {
         VStack(spacing: 12) {

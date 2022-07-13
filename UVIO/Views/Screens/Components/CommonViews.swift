@@ -147,6 +147,7 @@ var signUpBanner: some View {
         Text(L10n.cone)
             .font(.poppins(.bold, size: 21))
     }
+    .padding(.top, 65)
 }
 
 var signInBanner: some View {

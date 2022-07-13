@@ -17,9 +17,8 @@ struct EmailSignUpView: View {
         ZStack(alignment: .top) {
             VStack {
                 signUpBanner
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 52)
                     .layoutPriority(0)
-                title
                 container
                 Spacer()
                 privatePolicy
@@ -36,14 +35,6 @@ struct EmailSugnUpView_Previews: PreviewProvider {
 }
 
 extension EmailSignUpView {
-    var title: some View {
-        Text(L10n.pleaseEnterYourEmailPassword)
-            .font(.poppins(.medium, size: 21))
-            .padding(.horizontal)
-            .multilineTextAlignment(.center)
-            .padding(.bottom, 30)
-            .minimumScaleFactor(0.68)
-    }
     var container: some View {
         VStack(spacing: 12) {
             TextField(L10n.emailAddress, text: $viewModel.email)
@@ -71,15 +62,13 @@ extension EmailSignUpView {
                     .cornerRadius(12)
                     .padding(.horizontal)
             }
-            if viewModel.loginMode == .signIn {
-                Button {
-                    self.viewModel.presentLoginView.value = .recoveryEmail
-                } label: {
-                    Text(L10n.forgotPassword)
-                        .font(.poppins(.medium, size: 14))
-                        .foregroundColor(Color.complementaryColor)
-                        .padding(.top, 32)
-                }
+            Button {
+                self.viewModel.presentLoginView.value = .recoveryEmail
+            } label: {
+                Text(L10n.forgotPassword)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(Color.complementaryColor)
+                    .padding(.top, 27)
             }
         }
     }

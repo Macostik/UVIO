@@ -74,7 +74,6 @@
 "will_connect_CGM" = "I will connect CGM later";
 "selecte_devices" = "Select supporting device";
 "dexcom_G6" = "Dexcom G6";
-"dexcom" = "DEXCOM";
 "freestyle_libre" = "Freestyle Libre";
 "freestyle_libre_2" = "Freestyle Libre 2";
 "enable_bluetooth" = "Enable Bluetooth for the Cone App.";
@@ -82,7 +81,7 @@
 "looking_for_device" = "Looking for device...";
 "cancel" = "Cancel";
 "awesome" = "Awesome! Now, let’s finalize your account creation.";
-"welcome_back" = "Welcome back! Please log in to continue.";
+"welcome_back" = "Welcome back! Please log in to\n continue.";
 "continue_with_email" = "Continue with Email";
 "continue_with_facebook" = "Continue with Facebook";
 "continue_with_google" = "Continue with Google";
@@ -91,7 +90,7 @@
 "e_g" = "E.g. John Icecream";
 "select_glucose" = "Select preferred Blood Glucose units";
 "set_glucose_Alert" = "Set Glucose Alerts";
-"awosome_you_made_it" = "Awesome! You made it!";
+"awesome_you_made_it" = "Awesome! You made it!";
 "connect_dexcom" = "Connect Dexcom";
 "vibrate_only" = "Vibrate only";
 "turn_on_arerts" = "When turned ON, your phone will vibrate\n instead of making sound alerts.";
@@ -181,7 +180,6 @@
 "alert_high_low" = "Alert when BG is Low or High";
 "notify_BG" = "Notify when BG is out of target range";
 "select_device" = "Select supporting device";
-"dexcom" = "DEXCOM";
 "dexcom_G6" = "dexcom G6";
 "connected" = "Connected";
 "change_password" = "Change Password";
@@ -197,3 +195,6 @@
 "new_password" = "New Password";
 "incorrect_password" = "Old password is incorrect";
 "password_success" = "Password saved successfully";
+"signUp_method" = "Please select a Sign up method";
+"low_glucose_alarm" = "Low Glucose alarm";
+"high_glucose_alarm" = "High Glucose alarm";
