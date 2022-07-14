@@ -13,16 +13,11 @@ struct AccountInformationView: View {
     @State var isEditUserName = false
     @State var isEditEmail = false
     @State var isEditDiabetType = false
+    @State var showFooter = false
     let columns = [
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
-    var glucoseUnitTypeList: [GlucoseType] {
-        glucoseTypeList.map({ value in
-            value.isSelected = value.type == self.viewModel.glucoseUnit
-            return value
-        })
-    }
     var body: some View {
         ZStack(alignment: .bottom) {
             backgroundView
@@ -31,7 +26,10 @@ struct AccountInformationView: View {
                 contentView
                     .padding(.horizontal)
                 Spacer()
-                footerView
+                if showFooter {
+                    footerView
+                        .transition(.move(edge: .bottom))
+                }
             }
             .edgesIgnoringSafeArea(.bottom)
             genderMenuView
@@ -216,7 +214,8 @@ extension AccountInformationView {
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(glucoseUnitTypeList, id: \.id) { item in
+                        ForEach(viewModel.glucoseTypeList,
+                                id: \.id) { item in
                             RoundedRectangle(cornerRadius: 12)
                                 .foregroundColor(item.isSelected ? Color.clear : Color.white)
                                 .frame(height: 48)
@@ -227,7 +226,12 @@ extension AccountInformationView {
                                     .stroke(lineWidth: item.isSelected ? 2.0 : 0.0)
                                     .foregroundColor(Color.white))
                                 .onTapGesture {
-                                    self.viewModel.glucoseSelectedItem = item
+                                    withAnimation {
+                                        if !showFooter {
+                                            showFooter = !item.isSelected
+                                        }
+                                    }
+                                    viewModel.glucoseTypeSelectedItem = item
                                 }
                         }
                     }
@@ -268,6 +272,10 @@ extension AccountInformationView {
     var footerView: some View {
         ZStack {
             Button {
+                viewModel.saveData.send()
+                withAnimation {
+                    showFooter = false
+                }
             } label: {
                 HStack {
                     Image.checkMarkIcon

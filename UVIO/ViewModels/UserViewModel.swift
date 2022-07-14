@@ -39,7 +39,7 @@ class UserViewModel: ObservableObject {
     @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
     @Published var hyperValue: Int = 200
     @Published var hypoValue: Int = 70
-    @Published var glucoseSelectedItem: GlucoseType? {
+    @Published var glucoseTypeSelectedItem: GlucoseType? {
         willSet {
             guard let item = newValue else { return }
             glucoseTypeList.forEach({ $0.isSelected = false })
@@ -114,6 +114,10 @@ class UserViewModel: ObservableObject {
             }
         }
     }
+    lazy var glucoseTypeList = [
+        GlucoseType(id: 1, type: L10n.mgDL, isSelected: user?.glucoseUnit == L10n.mgDL),
+        GlucoseType(id: 2, type: L10n.mmolL, isSelected: user?.glucoseUnit == L10n.mmolL)
+    ]
     @Published var signInConfirmed = false
     @Published var email: String = ""
     @Published var password: String = ""
@@ -129,6 +133,7 @@ class UserViewModel: ObservableObject {
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
+    var saveData = PassthroughSubject<Void, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     init() {
         handleGettinguser()
@@ -141,6 +146,7 @@ class UserViewModel: ObservableObject {
         handleLoginScreen()
         updateUserData()
         updatePassword()
+        updateGlucoseType()
     }
 }
 // Init
@@ -274,6 +280,22 @@ extension UserViewModel {
             .assign(to: \.passwordMode, on: self)
             .store(in: &cancellableSet)
     }
+    func updateGlucoseType() {
+        saveData
+            .map({ [unowned self] in
+                (self.glucoseTypeSelectedItem?.type ?? "", self.user)
+            })
+            .replaceError(with: ("", nil))
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { [unowned self] type, user in
+                guard let user = user else { return }
+                _ = self.updateEntry {
+                    user.glucoseUnit = type
+                    return user
+                }
+            })
+            .store(in: &cancellableSet)
+    }
 }
 // Handle publishers
 extension UserViewModel {
@@ -338,7 +360,7 @@ extension UserViewModel {
         dateFormatter.string(from: user?.birthDate ?? birthDate)
     }
     var glucoseUnit: String {
-        glucoseSelectedItem?.type ?? L10n.mgDL
+        glucoseTypeSelectedItem?.type ?? user?.glucoseUnit ?? L10n.mgDL
     }
 }
 // Handle onboarding

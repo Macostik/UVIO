@@ -41,8 +41,7 @@ extension GlucoseUnitOnboardingView {
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(glucoseTypeList,
-                                id: \.id) { item in
+                        ForEach(viewModel.glucoseTypeList, id: \.id) { item in
                             RoundedRectangle(cornerRadius: 16)
                                 .foregroundColor(item.isSelected ? Color.complementaryColor : Color.white)
                                 .frame(height: 48)
@@ -56,7 +55,7 @@ extension GlucoseUnitOnboardingView {
                                     }
                                 )
                                 .onTapGesture {
-                                    self.viewModel.glucoseSelectedItem = item
+                                    viewModel.glucoseTypeSelectedItem = item
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                                         viewModel.presentOnboardingView.value = .glucoseAlert
                                     })

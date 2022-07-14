@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GlucoseType {
+class GlucoseType: Equatable {
     let id: Int
     let type: String
     var isSelected: Bool
@@ -16,12 +16,10 @@ class GlucoseType {
         self.type = type
         self.isSelected = isSelected
     }
+    static func == (lhs: GlucoseType, rhs: GlucoseType) -> Bool {
+        lhs.id != rhs.id
+    }
 }
-var glucoseTypeList = [
-   GlucoseType(id: 1, type: L10n.mgDL, isSelected: false),
-   GlucoseType(id: 2, type: L10n.mmolL, isSelected: false)
-]
-
 class UnitsType {
     let id: Int
     let type: String
