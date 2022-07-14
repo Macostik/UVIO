@@ -11,9 +11,9 @@ struct TextFieldDone: UIViewRepresentable {
     @Binding var text: String
     var keyType: UIKeyboardType
     class Coordinator: NSObject, UITextFieldDelegate {
-        var text: Binding<String>
+        var textValue: Binding<String>
         init(text: Binding<String>) {
-            self.text = text
+            self.textValue = text
         }
         func textField(_ textField: UITextField,
                        shouldChangeCharactersIn range: NSRange,

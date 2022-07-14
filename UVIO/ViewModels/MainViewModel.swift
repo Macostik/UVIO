@@ -27,7 +27,11 @@ class MainViewModel: ObservableObject {
     @Published var isCalendarOpen = false
     // Handle logBG data
     @Published var logBGNote = ""
-    @Published var logBGInput = ""
+    @Published var logBGInput = "" {
+        willSet {
+            print(">> \(newValue)")
+        }
+    }
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
     @Published var isLogBGPresented = false
@@ -179,6 +183,7 @@ extension MainViewModel {
                 return self.updateEntry {
                     let entry = LogBGEntry()
                     entry.logValue = "\(self.logBGInput)"
+                    entry.logUnitType = self.user.glucoseUnit
                     entry.note = self.insulineNote
                     entry.date = self.insulinWhenValue
                     entry.time = self.insulinTimeValue

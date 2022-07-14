@@ -204,20 +204,18 @@ extension MainView {
                 .foregroundColor(Color.white)
                 .overlay(dexcomOverlay)
             Spacer()
-            VStack(alignment: .leading, spacing: -10) {
-                HStack(alignment: .top, spacing: 0) {
+            HStack(alignment: .top, spacing: 0) {
+                VStack(spacing: -10) {
                     Text(mainViewModel.glucoseValue)
                         .foregroundColor(Color.greenSuccessColor)
                         .font(.poppins(.bold, size: 50))
-                    Text(mainViewModel.glucoseCorrectionValue)
-                        .font(.poppins(.medium, size: 14))
-                }
-                HStack {
-                    Text(mainViewModel.glucoseUnitValue)
+                    Text(userViewModel.glucoseUnit)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
                         .padding(.horizontal, 5)
                 }
+                Text(mainViewModel.glucoseCorrectionValue)
+                    .font(.poppins(.medium, size: 14))
             }
             Spacer()
             Image.glucoseLevelArrow

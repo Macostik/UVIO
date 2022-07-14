@@ -410,18 +410,3 @@ extension UserViewModel {
             .store(in: &cancellableSet)
     }
 }
-
-// Handle API
-//extension UserViewModel {
-//    func login() {
-//        var user = [TestUser?]()
-//        dependency.provider.apiService.login()
-//            .sink { result in
-//                user.append(result.value)
-//            }
-//            .store(in: &cancellableSet)
-//    }
-//}
-//
-//struct TestUser: Decodable {
-//}

@@ -12,6 +12,7 @@ import SwiftUI
 class LogBGEntry: Object, Identifiable {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var logValue: String = ""
+    @Persisted var logUnitType: String = ""
     @Persisted var date: Date = Date()
     @Persisted var time: Date = Date()
     @Persisted var note: String = ""
@@ -33,7 +34,7 @@ extension LogBGEntry: Mapable {
             .foregroundColor(Color.primaryGreenColor)
             .font(.poppins(.bold, size: 16))
             +
-        Text(" \(L10n.mmolL)")
+        Text(" \(logUnitType)")
             .foregroundColor(Color.black)
             .font(.poppins(.medium, size: 12))
         listViewEntry.timer =

@@ -17,6 +17,12 @@ struct AccountInformationView: View {
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
+    var glucoseUnitTypeList: [GlucoseType] {
+        glucoseTypeList.map({ value in
+            value.isSelected = value.type == self.viewModel.glucoseUnit
+            return value
+        })
+    }
     var body: some View {
         ZStack(alignment: .bottom) {
             backgroundView
@@ -210,8 +216,7 @@ extension AccountInformationView {
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
-                        ForEach(glucoseTypeList,
-                                id: \.id) { item in
+                        ForEach(glucoseUnitTypeList, id: \.id) { item in
                             RoundedRectangle(cornerRadius: 12)
                                 .foregroundColor(item.isSelected ? Color.clear : Color.white)
                                 .frame(height: 48)
