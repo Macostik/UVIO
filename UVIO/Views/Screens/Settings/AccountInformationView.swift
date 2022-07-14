@@ -32,12 +32,14 @@ struct AccountInformationView: View {
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
-            genderMenuView
-            dobMenuView
-            changePasswordView
+            Group {
+                genderMenuView
+                dobMenuView
+                changePasswordView
+            }
+            .offset(y: 40)
         }
         .navigationBarHidden(true)
-        .edgesIgnoringSafeArea(.bottom)
         .passwordToast(type: $viewModel.passwordMode)
     }
 }
