@@ -85,6 +85,8 @@ extension AccountInformationView {
                 Spacer()
                 Button {
                     withAnimation {
+                        viewModel.isDOBPresented = false
+                        viewModel.isGenderPresented = false
                         viewModel.isChangePassword.toggle()
                     }
                 } label: {
@@ -162,6 +164,8 @@ extension AccountInformationView {
                 .frame(height: 48)
                 .onTapGesture {
                     withAnimation {
+                        viewModel.isDOBPresented = false
+                        viewModel.isChangePassword = false
                         viewModel.isGenderPresented.toggle()
                     }
                 }
@@ -192,6 +196,8 @@ extension AccountInformationView {
                 .overlay(dobOverlay, alignment: .leading)
                 .onTapGesture {
                     withAnimation {
+                        viewModel.isChangePassword = false
+                        viewModel.isGenderPresented = false
                         viewModel.isDOBPresented.toggle()
                     }
                 }

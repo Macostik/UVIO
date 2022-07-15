@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BGLevelAlertView: View {
     @StateObject var viewModel: UserViewModel
+    @State var showFooter = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
@@ -17,7 +18,10 @@ struct BGLevelAlertView: View {
                 navigationBarView
                 contentView
                 Spacer()
-                footerView
+                if showFooter {
+                    footerView
+                        .transition(.move(edge: .bottom))
+                }
             }
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -83,6 +87,11 @@ extension BGLevelAlertView {
                 }
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
+                .onChange(of: viewModel.glucoseRangeValue) { _ in
+                    withAnimation {
+                        showFooter = true
+                    }
+                }
             }.padding()
         }
     }
@@ -129,6 +138,11 @@ extension BGLevelAlertView {
                         .foregroundColor(Color.primaryAlertColor)
                 }
                 SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+                    .onChange(of: viewModel.hypoValue) { _ in
+                        withAnimation {
+                            showFooter = true
+                        }
+                    }
             }
             .padding()
         }
@@ -150,6 +164,11 @@ extension BGLevelAlertView {
                         .foregroundColor(Color.primaryAlertColor)
                 }
                 SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                    .onChange(of: viewModel.hyperValue) { _ in
+                        withAnimation {
+                            showFooter = true
+                        }
+                    }
             }
             .padding()
         }
@@ -168,6 +187,11 @@ extension BGLevelAlertView {
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isVibrate)
                         .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                        .onChange(of: viewModel.isVibrate) { _ in
+                            withAnimation {
+                                showFooter = true
+                            }
+                        }
                 }
                 Text(L10n.turnOnArerts)
                     .font(.poppins(.medium, size: 10))
@@ -189,8 +213,13 @@ extension BGLevelAlertView {
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isNotDisturb)
                         .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                        .onChange(of: viewModel.isNotDisturb) { _ in
+                            withAnimation {
+                                showFooter = true
+                            }
+                        }
                 }
-                Text(L10n.turnOnDisturbMode)
+                    Text(L10n.turnOnDisturbMode)
                     .font(.poppins(.medium, size: 10))
                     .foregroundColor(Color.gray)
                     .padding(.leading, 28)
@@ -202,6 +231,9 @@ extension BGLevelAlertView {
     var footerView: some View {
         ZStack {
             Button {
+                withAnimation {
+                    showFooter = false
+                }
             } label: {
                 HStack {
                     Image.checkMarkIcon
