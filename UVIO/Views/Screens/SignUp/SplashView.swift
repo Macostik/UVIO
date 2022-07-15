@@ -12,7 +12,8 @@ struct SplashView: View {
     var body: some View {
         NavigationView {
             if viewModel.userPersist {
-                MainView(userViewModel: viewModel, mainViewModel: MainViewModel())
+                MainView(userViewModel: viewModel,
+                         mainViewModel: MainViewModel())
             } else {
                 ZStack {
                     Image.splashBackgroundImage

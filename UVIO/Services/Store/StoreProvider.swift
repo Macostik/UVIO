@@ -147,8 +147,8 @@ class StoreService: StoreInteractor {
         }
         let groupEntries = Dictionary(grouping: listViewEntryList,
                                                by: { item in item.createdAt })
-        for key in groupEntries.keys.sorted() {
-            itemList.append(ListItem(keyObject: key, valueObjects: groupEntries[key]!))
+        for (index, key) in groupEntries.keys.sorted().enumerated() {
+            itemList.append(ListItem(index: index, keyObject: key, valueObjects: groupEntries[key]!))
         }
         subject.value = itemList
         return subject.eraseToAnyPublisher()

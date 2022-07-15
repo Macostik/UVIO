@@ -13,8 +13,14 @@ import RealmSwift
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user = User()
+    @Published var listEntriesOrigin = [ListItem]() {
+        willSet {
+            listEntries =  newValue
+        }
+    }
     @Published var listEntries = [ListItem]()
     @Published var isFullHistory = false
+    @Published var isShowCalendarHistory = false
     @Published var isShowInfoAlert = false
     // Common data
     @Published var glucoseValue = "5.4"
@@ -136,7 +142,7 @@ class MainViewModel: ObservableObject {
     private func handleGettingEntries() {
         getListEntries()
             .replaceError(with: [])
-            .assign(to: \.listEntries, on: self)
+            .assign(to: \.listEntriesOrigin, on: self)
             .store(in: &cancellable)
     }
     private func handleInfoAlertShifting() {
@@ -147,6 +153,12 @@ class MainViewModel: ObservableObject {
                 }
             }
             .store(in: &cancellable)
+    }
+    func sortListEntries(by date: String) {
+       listEntries = listEntriesOrigin.filter({ $0.keyObject == date })
+    }
+    func resoreListEntries() {
+       listEntries = listEntriesOrigin
     }
 }
 

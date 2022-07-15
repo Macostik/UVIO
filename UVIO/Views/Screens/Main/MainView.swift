@@ -11,6 +11,7 @@ import RealmSwift
 struct MainView: View {
     @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var mainViewModel: MainViewModel
+    @State var shouldScroll = true
     let columns = Array(repeating: GridItem(.flexible(minimum: 100), spacing: 0), count: 6)
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -35,7 +36,8 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(userViewModel: UserViewModel(), mainViewModel: MainViewModel())
+        MainView(userViewModel: UserViewModel(),
+                 mainViewModel: MainViewModel())
     }
 }
 
@@ -63,7 +65,8 @@ extension MainView {
                         .frame(height: 325)
                 }
                 if !mainViewModel.isShowInfoAlert {
-                    if mainViewModel.listEntries.isEmpty {
+                    if mainViewModel.listEntries.isEmpty &&
+                        !mainViewModel.isFullHistory {
                         bottomView
                     } else {
                         listView
@@ -133,38 +136,63 @@ extension MainView {
         .padding(.top)
         .overlay(icecreamOverlay, alignment: .trailing)
     }
+    private var axes: Axis.Set {
+            return shouldScroll ? .vertical : []
+        }
     var listView: some View {
         ZStack(alignment: .top) {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: 40)
                 .foregroundColor(Color.white)
-            ScrollView(.vertical) {
+            ScrollView(axes, showsIndicators: false) {
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
                     ForEach(mainViewModel.listEntries, id: \.self) { listItem in
-                        Section(header: section(listItem.keyObject, color: listItem.color)) {
+                        Section(header:
+                                    section(index: listItem.index,
+                                            title: listItem.keyObject,
+                                            color: listItem.color)) {
                             ForEach(listItem.valueObjects, id: \.self) { entry in
                                 EntryView(listViewEntry: entry)
                             }
                         }
-//                        .onDisappear {
-//                            if let currentIndex = viewModel.listEntries.firstIndex(of: listItem) {
-//                                viewModel.listEntries[currentIndex + 1].color = Color.white
-//                            }
-//                        }
                     }
+                    //                        .onDisappear {
+                    //                            if let currentIndex = viewModel.listEntries.firstIndex(of: listItem) {
+                    //                                viewModel.listEntries[currentIndex + 1].color = Color.white
+                    //                            }
+                    //                        }
                 }
                 .padding(.bottom, safeAreaInsets.bottom)
             }
             historyOverlay
         }
     }
-    private func section(_ title: String, color: Color) -> some View {
-        HStack {
-            Text(title)
-                .foregroundColor(Color.black)
-                .font(.poppins(.bold, size: 14))
-                .frame(height: 40)
-            Spacer()
+    private func section(index: Int, title: String, color: Color) -> some View {
+        VStack {
+            HStack {
+                Text(title)
+                    .foregroundColor(Color.black)
+                    .font(.poppins(.bold, size: 14))
+                    .frame(height: 40)
+                Spacer()
+            }
+            if mainViewModel.isShowCalendarHistory && index == 0 {
+                DatePicker("", selection:
+                            $mainViewModel.logBGWhenValue,
+                           displayedComponents: [.date])
+                .datePickerStyle(.graphical)
+                .background(Color.white)
+                .cornerRadius(13)
+                .animation(.easeInOut)
+                .onChange(of: mainViewModel.logBGWhenValue) { _ in
+                    withAnimation {
+                        mainViewModel
+                            .sortListEntries(by: mainViewModel.logBGWhenValue.convertToString())
+                        mainViewModel.isShowCalendarHistory = false
+                        shouldScroll = true
+                    }
+                }
+            }
         }
 //        .background(color)
         .padding(.horizontal)
@@ -179,14 +207,27 @@ extension MainView {
                 Button {
                     withAnimation {
                         mainViewModel.isFullHistory.toggle()
+                        mainViewModel.resoreListEntries()
+                        shouldScroll = true
+                        mainViewModel.isShowCalendarHistory = false
                     }
                 } label: {
                     HStack {
                         Text(L10n.history)
                             .font(.poppins(.medium, size: 12))
                             .foregroundColor(Color.complementaryColor)
-                        Image.historyIcon
                     }
+                }
+                Button {
+                    if mainViewModel.isFullHistory {
+                        withAnimation {
+                            shouldScroll = false
+                            mainViewModel.isShowCalendarHistory.toggle()
+                            mainViewModel.resoreListEntries()
+                        }
+                    }
+                } label: {
+                    Image.historyIcon
                 }
             }
             .frame(height: 40)
