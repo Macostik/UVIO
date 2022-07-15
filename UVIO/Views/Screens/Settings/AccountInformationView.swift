@@ -118,6 +118,9 @@ extension AccountInformationView {
                 TextField("", text: $viewModel.name)
                     .onChange(of: viewModel.name, perform: { _ in
                         self.isEditUserName = true
+                        withAnimation {
+                            self.showFooter = true
+                        }
                     })
                     .font(.poppins(.bold, size: 14))
                     .accentColor(Color.black)
@@ -145,8 +148,14 @@ extension AccountInformationView {
                 Text(viewModel.user?.email ?? "")
                     .foregroundColor(self.isEditEmail ? Color.clear : Color.black)
                 TextField("", text: $viewModel.email)
+                    .keyboardType(.emailAddress)
                     .onChange(of: viewModel.email, perform: { _ in
                         self.isEditEmail = true
+                        if viewModel.email.isValidEmail() {
+                            withAnimation {
+                                self.showFooter = true
+                            }
+                        }
                     })
                     .font(.poppins(.bold, size: 14))
                     .accentColor(Color.black)

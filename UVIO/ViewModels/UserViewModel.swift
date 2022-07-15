@@ -290,7 +290,15 @@ extension UserViewModel {
             }, receiveValue: { [unowned self] type, user in
                 guard let user = user else { return }
                 _ = self.updateEntry {
-                    user.glucoseUnit = type
+                    if !self.name.isEmpty {
+                        user.name =  self.name
+                    }
+                    if !self.email.isEmpty {
+                        user.email = self.email
+                    }
+                    if !type.isEmpty {
+                        user.glucoseUnit = type                        
+                    }
                     return user
                 }
             })
