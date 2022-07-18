@@ -10,6 +10,7 @@ import SwiftUI
 struct BGLevelAlertView: View {
     @StateObject var viewModel: UserViewModel
     @State var showFooter = false
+    @State var isSaved = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
@@ -26,6 +27,9 @@ struct BGLevelAlertView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.appearBGLevel.send()
+        }
     }
 }
 
@@ -231,6 +235,8 @@ extension BGLevelAlertView {
     var footerView: some View {
         ZStack {
             Button {
+                isSaved = true
+                viewModel.saveBGLevelsData.send()
                 withAnimation {
                     showFooter = false
                 }

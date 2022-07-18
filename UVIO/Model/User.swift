@@ -17,10 +17,10 @@ class User: Object {
     @Persisted var email: String = ""
     @Persisted var password: String = ""
     @Persisted var glucoseUnit: String = ""
-    @Persisted var glucoseTargetLowerBound: String = ""
-    @Persisted var glucoseTargetUpperBound: String = ""
-    @Persisted var hyper: String = ""
-    @Persisted var hypo: String = ""
+    @Persisted var glucoseTargetLowerBound: Int = 0
+    @Persisted var glucoseTargetUpperBound: Int = 0
+    @Persisted var hyper: Int = 0
+    @Persisted var hypo: Int = 0
     @Persisted var isLogin: Bool = true
     @Persisted var isVibrate: Bool = false
     @Persisted var isNotDisturb: Bool = false

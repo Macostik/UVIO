@@ -134,6 +134,8 @@ class UserViewModel: ObservableObject {
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<User, Error>()
     var saveData = PassthroughSubject<Void, Error>()
+    var saveBGLevelsData = PassthroughSubject<Void, Error>()
+    var appearBGLevel = PassthroughSubject<Void, Error>()
     private var cancellableSet = Set<AnyCancellable>()
     init() {
         handleGettinguser()
@@ -147,6 +149,7 @@ class UserViewModel: ObservableObject {
         updateUserData()
         updatePassword()
         updateGlucoseType()
+        updateBGLevelsData()
     }
 }
 // Init
@@ -188,10 +191,10 @@ extension UserViewModel {
                 user.gender = self.genderSelectedItem?.type ?? ""
                 user.diabetsType = self.diabetSelectedItem?.type ?? ""
                 user.glucoseUnit = self.glucoseUnit
-                user.glucoseTargetLowerBound = "\(self.glucoseRangeValue.lowerBound)"
-                user.glucoseTargetUpperBound = "\(self.glucoseRangeValue.upperBound)"
-                user.hypo = "\(self.hypoValue)"
-                user.hyper = "\(self.hyperValue)"
+                user.glucoseTargetLowerBound = Int(self.glucoseRangeValue.lowerBound)
+                user.glucoseTargetUpperBound = Int(self.glucoseRangeValue.upperBound)
+                user.hypo = Int(self.hypoValue)
+                user.hyper = Int(self.hyperValue)
                 user.isVibrate = self.isVibrate
                 user.isNotDisturb = self.isNotDisturb
                 user.authToken = self.authToken
@@ -303,6 +306,35 @@ extension UserViewModel {
                 }
             })
             .store(in: &cancellableSet)
+    }
+    func updateBGLevelsData() {
+        saveBGLevelsData
+            .compactMap({ [unowned self] _ in self.user })
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { [unowned self] user in
+                _ = self.updateEntry {
+                    user.glucoseTargetLowerBound = Int(self.glucoseRangeValue.lowerBound)
+                    user.glucoseTargetUpperBound = Int(self.glucoseRangeValue.upperBound)
+                    user.hypo = Int(self.hypoValue)
+                    user.hyper = Int(self.hyperValue)
+                    user.isVibrate = self.isVibrate
+                    user.isNotDisturb = self.isNotDisturb
+                    return user
+                }
+            })
+            .store(in: &cancellableSet)
+        appearBGLevel
+            .compactMap({ [unowned self] _ in self.user })
+            .sink { _ in
+            } receiveValue: { [unowned self] user in
+                self.glucoseRangeValue = user.glucoseTargetLowerBound...user.glucoseTargetUpperBound
+                self.hypoValue = user.hypo
+                self.hyperValue = user.hyper
+                self.isVibrate = user.isVibrate
+                self.isNotDisturb = user.isNotDisturb
+            }
+            .store(in: &cancellableSet)
+
     }
 }
 // Handle publishers
