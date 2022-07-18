@@ -18,39 +18,6 @@ protocol StoreProvider {
 
 class StoreService: StoreInteractor {
     let realmProvider = RealmProvider(config: .defaultConfiguration)
-    func updateUserParams(email: String? = nil,
-                          password: String? = nil,
-                          dexcomToken: String? = nil) -> AnyPublisher<Bool, Error> {
-        let subject = PassthroughSubject<Bool, Error>()
-        let realm = realmProvider.realm
-        guard let currentUser = realm?.objects(User.self).first else {
-            Logger.error("Realm doesn't contain user")
-            subject.send(completion: .failure(RealmError.empty))
-            return subject.eraseToAnyPublisher()
-        }
-        realm?.writeAsync({
-            Logger.debug("User is updating to DB")
-            if let email = email {
-                currentUser.email = email
-            }
-            if let password = password {
-                currentUser.password = password
-            }
-            if let dexcomToken = dexcomToken {
-                currentUser.dexcomToken = dexcomToken
-            }
-            realm?.add(currentUser, update: .modified)
-        }, onComplete: { error in
-            guard let error = error else {
-                Logger.debug("User credentials were saved successfully")
-                subject.send(true)
-                return  subject.send(completion: .finished)
-            }
-            Logger.error("User wasn't update to DB with error: \(error)")
-            subject.send(completion: .failure(error))
-        })
-        return subject.eraseToAnyPublisher()
-    }
     func validateCredentials(email: String, password: String) -> AnyPublisher<Bool, Error> {
         let subject = CurrentValueSubject<Bool, Error>(false)
         let realm = realmProvider.realm

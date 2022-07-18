@@ -8,7 +8,14 @@
 import Foundation
 import Alamofire
 
+// swiftlint:disable function_parameter_count
 protocol APIInteractor {
-    func login<T: Decodable>() -> DataResponsePublisher<T>
-    func allDevices<T: Decodable>() -> DataResponsePublisher<T>
+    func register(firstName: String,
+                  lastName: String,
+                  email: String,
+                  password: String,
+                  birthDate: String,
+                  gender: String) -> DataResponsePublisher<RegisterResponsable>
+    func login(email: String,
+               password: String) -> DataResponsePublisher<RegisterResponsable>
 }

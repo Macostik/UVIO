@@ -15,22 +15,20 @@ protocol APIProvider {
 }
 
 private enum APIRequest: URLRequestConvertible {
+    case register([String: Any])
     case login([String: Any])
-    case allDevices([String: Any])
     func asURLRequest() throws -> URLRequest {
         let headers: [String: String]? = nil
         var method: HTTPMethod {
             switch self {
-            case .allDevices:
-                return .get
-            case .login:
+            case .register, .login:
                 return .post
             }
         }
         let parameters: ([String: Any]?) = {
             switch self {
-            case .allDevices(let parameters),
-                    .login(let parameters):
+            case .login(let parameters),
+                    .register(let parameters):
                 return parameters
             }
         }()
@@ -38,10 +36,10 @@ private enum APIRequest: URLRequestConvertible {
             var URL = Foundation.URL(string: Constant.baseURL)!
             let query: String?
             switch self {
-            case .allDevices:
-                query = "devices"
             case .login:
                 query = "login"
+            case .register:
+                query = "register"
             }
             if let query = query {
                 URL = URL.appendingPathComponent(query)
@@ -62,7 +60,7 @@ private enum APIRequest: URLRequestConvertible {
             }
         }
         switch self {
-        case .allDevices, .login:
+        case .login, .register:
             return try URLEncoding(arrayEncoding: .noBrackets).encode(urlRequest, with: parameters)
 //        default:
 //            return try URLEncoding.default.encode(urlRequest, with: parameters)
@@ -89,13 +87,26 @@ private enum APIRequest: URLRequestConvertible {
     }
 }
 
+// swiftlint:disable function_parameter_count
 class APIService: APIInteractor {
-    func login<T: Decodable>() -> DataResponsePublisher<T> {
-        let params = ["email": "test@cone.co", "password": "pass"]
-        return APIRequest.login(params).json(T.self)
+    func register(firstName: String,
+                  lastName: String,
+                  email: String,
+                  password: String,
+                  birthDate: String,
+                  gender: String) -> DataResponsePublisher<RegisterResponsable> {
+        let params = [
+            "first_name": firstName,
+            "last_name": lastName,
+            "email": email,
+            "password": password,
+            "birth_date": birthDate,
+            "gender": gender
+        ]
+        return APIRequest.register(params).json(RegisterResponsable.self)
     }
-    func allDevices<T: Decodable>() -> DataResponsePublisher<T> {
-        let params = ["name": "Dexcom", "version": "1.11", "model": "v1"]
-        return APIRequest.allDevices(params).json(T.self)
+    func login(email: String, password: String) -> DataResponsePublisher<RegisterResponsable> {
+        let params = ["email": email, "password": password]
+        return APIRequest.login(params).json(RegisterResponsable.self)
     }
 }

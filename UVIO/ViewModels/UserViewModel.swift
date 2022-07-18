@@ -18,6 +18,7 @@ class UserViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
     @Published var user: User?
     // User name
+    @Published var userID: String = ""
     @Published var name: String = ""
     // User birthDate
     @Published var birthDate: Date = Date()
@@ -88,7 +89,7 @@ class UserViewModel: ObservableObject {
     @Published var dexcomToken: String = "" {
         didSet {
             if !dexcomToken.isEmpty {
-                createNewUser.send(User())
+                registerUser()
             }
         }
     }
@@ -132,7 +133,7 @@ class UserViewModel: ObservableObject {
     var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
-    var createNewUser = PassthroughSubject<User, Error>()
+    var createNewUser = PassthroughSubject<UserResponsable, Error>()
     var saveData = PassthroughSubject<Void, Error>()
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()
@@ -182,10 +183,11 @@ extension UserViewModel {
     }
     func createUser() {
         createNewUser
-            .map { user -> User in
-                user.id = UUID().uuidString
-                user.name = self.name
-                user.email = self.email
+            .map { value -> User in
+                let user = User()
+                user.id = value.id
+                user.name = value.name
+                user.email = value.email
                 user.password = self.password
                 user.birthDate = self.birthDate
                 user.gender = self.genderSelectedItem?.type ?? ""
@@ -197,8 +199,6 @@ extension UserViewModel {
                 user.hyper = Int(self.hyperValue)
                 user.isVibrate = self.isVibrate
                 user.isNotDisturb = self.isNotDisturb
-                user.authToken = self.authToken
-                user.dexcomToken = self.dexcomToken
                 return user
             }
             .flatMap(save)
@@ -360,14 +360,6 @@ extension UserViewModel {
     func getUser() -> AnyPublisher<User?, Error> {
         dependency.provider.storeService.getEntry()
     }
-    func updateUserParams(email: String? = nil,
-                          password: String? = nil,
-                          dexcomToken: String? = nil) -> AnyPublisher<Bool, Error> {
-        return dependency.provider.storeService
-            .updateUserParams(email: email,
-                              password: password,
-                              dexcomToken: dexcomToken)
-    }
     func save(entry: Object) -> AnyPublisher<Bool, Error> {
         user = entry as? User
         return dependency.provider.storeService.saveEntry(entry: entry)
@@ -395,6 +387,11 @@ extension UserViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         return dateFormatter
+    }
+    var birthDateParam: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return dateFormatter.string(from: user?.birthDate ?? birthDate)
     }
     var birthDateString: String {
         dateFormatter.string(from: user?.birthDate ?? birthDate)
@@ -444,6 +441,22 @@ extension UserViewModel {
         dependency.provider.dexcomService.getBearer()
             .replaceError(with: "")
             .assign(to: \.dexcomToken, on: self)
+            .store(in: &cancellableSet)
+    }
+    func registerUser() {
+        dependency.provider.apiService
+            .register(firstName: name,
+                   lastName: name,
+                   email: email,
+                   password: password,
+                   birthDate: birthDateParam,
+                   gender: genderSelectedItem?.type ?? "" )
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { response in
+                guard let response = response.value, response.success else { return }
+                let user = response.data.user
+                self.createNewUser.send(user)
+            })
             .store(in: &cancellableSet)
     }
     func appleLogin() {

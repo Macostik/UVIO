@@ -15,8 +15,5 @@ protocol StoreInteractor {
     func getListEntries() -> AnyPublisher<[ListItem], Error>
     func validateCredentials(email: String,
                              password: String) -> AnyPublisher<Bool, Error>
-    func updateUserParams(email: String?,
-                          password: String?,
-                          dexcomToken: String?) -> AnyPublisher<Bool, Error>
     func logOut() -> AnyPublisher<Bool, Error>
 }

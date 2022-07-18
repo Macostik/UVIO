@@ -8,8 +8,29 @@
 import Foundation
 import RealmSwift
 
+// swiftlint:disable identifier_name
+struct RegisterResponsable: Decodable {
+    let success: Bool
+    let data: DataResponsable
+}
+struct DataResponsable: Decodable {
+    let token: String
+    let user: UserResponsable
+}
+struct UserResponsable: Decodable {
+    let id: Int
+    let first_name: String
+    let last_name: String
+    let email: String
+    let birth_date: String
+    let gender: String
+    let name: String
+    let updated_at: String
+    let created_at: String
+}
+
 class User: Object {
-    @Persisted(primaryKey: true) var id: String
+    @Persisted(primaryKey: true) var id: Int
     @Persisted var name: String = ""
     @Persisted var birthDate: Date = Date()
     @Persisted var gender: String = ""
@@ -24,6 +45,4 @@ class User: Object {
     @Persisted var isLogin: Bool = true
     @Persisted var isVibrate: Bool = false
     @Persisted var isNotDisturb: Bool = false
-    @Persisted var authToken: String = ""
-    @Persisted var dexcomToken: String = ""
 }
