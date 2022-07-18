@@ -297,7 +297,7 @@ extension UserViewModel {
                         user.email = self.email
                     }
                     if !type.isEmpty {
-                        user.glucoseUnit = type                        
+                        user.glucoseUnit = type
                     }
                     return user
                 }

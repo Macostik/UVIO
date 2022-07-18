@@ -42,8 +42,10 @@ struct SingleSliderView: View {
                     .highPriorityGesture(DragGesture().onChanged { dragValue in
                         let dragLocation = dragValue.location
                         let xThumbOffset = min(max(0, dragLocation.x), sliderSize.width)
-                        currentValue.wrappedValue = Int(sliderBounds.lowerBound - 1) +
-                        Int(xThumbOffset / stepWidthInPixel)
+                        currentValue.wrappedValue =
+                        min(sliderBounds.upperBound,
+                            sliderBounds.lowerBound +
+                            Int(xThumbOffset / stepWidthInPixel))
                     })
             }
         }
