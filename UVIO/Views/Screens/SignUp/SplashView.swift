@@ -9,11 +9,12 @@ import SwiftUI
 
 struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
+    @ObservedObject var mainViewModel = MainViewModel()
     var body: some View {
         NavigationView {
             if viewModel.userPersist {
                 MainView(userViewModel: viewModel,
-                         mainViewModel: MainViewModel())
+                         mainViewModel: mainViewModel)
             } else {
                 ZStack {
                     Image.splashBackgroundImage
@@ -65,7 +66,8 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignInFlow(viewModel: viewModel)) {
+        NavigationLink(destination: SignInFlow(viewModel: viewModel,
+                                               mainViewModel: mainViewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)

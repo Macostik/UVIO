@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInFlow: View {
     @ObservedObject var viewModel: UserViewModel
+    @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .top) {
             backgroundColor
@@ -16,7 +17,7 @@ struct SignInFlow: View {
             NavigationLink(isActive: $viewModel.signInConfirmed,
                            destination: {
                 MainView(userViewModel: viewModel,
-                         mainViewModel: MainViewModel())
+                         mainViewModel: mainViewModel)
             }, label: {
                 EmptyView()
             })
@@ -28,7 +29,7 @@ struct SignInFlow: View {
 
 struct SignInFlow_Previews: PreviewProvider {
     static var previews: some View {
-        SignInFlow(viewModel: UserViewModel())
+        SignInFlow(viewModel: UserViewModel(), mainViewModel: MainViewModel())
     }
 }
 

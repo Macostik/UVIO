@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct EmailSignUpView: View {
-    @ObservedObject private var viewModel: UserViewModel
+    @ObservedObject var viewModel: UserViewModel
     @State private var showPassword: Bool = false
-    init(viewModel: UserViewModel) {
-        self.viewModel = viewModel
-    }
     var body: some View {
         ZStack(alignment: .top) {
             VStack {

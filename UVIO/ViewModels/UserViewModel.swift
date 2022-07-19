@@ -8,6 +8,7 @@
 import Combine
 import SwiftUI
 import RealmSwift
+import Alamofire
 
 // swiftlint:disable file_length
 
@@ -97,11 +98,10 @@ class UserViewModel: ObservableObject {
     @Published var loginMode = LoginMode.signUp
     @Published var isloginModeSignUp: Bool = false {
         willSet {
-            self.showErrorAlert = !newValue
             if newValue {
                 switch loginMode {
-                case .signUp: self.signUpConfirmed = signUp
-                case .signIn: self.signInConfirmed = signUp
+                case .signUp: self.signUpConfirmed = newValue
+                case .signIn: self.signInConfirmed = newValue
                 }
             }
         }
@@ -142,7 +142,7 @@ class UserViewModel: ObservableObject {
         handleGettinguser()
         createUser()
         checkUser()
-        validateCredintials()
+//        validateCredintials()
         fillUserCredentials()
         handleSignUp()
         handleOnboardingScreen()
@@ -155,12 +155,6 @@ class UserViewModel: ObservableObject {
 }
 // Init
 extension UserViewModel {
-    func validateCredintials() {
-        isComfirmedPublisher
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.signUp, on: self)
-            .store(in: &cancellableSet)
-    }
     func fillUserCredentials() {
         $signUpConfirmed
             .dropFirst()
@@ -208,8 +202,15 @@ extension UserViewModel {
     }
     func handleSignUp() {
         signUpClickPublisher
-            .map({ self.signUp })
-            .flatMap({ _ in self.validateCredentials(email: self.email, password: self.password) })
+            .replaceError(with: ())
+            .flatMap({ [unowned self] in self.isComfirmedPublisher })
+            .flatMap({ [unowned self] value -> AnyPublisher<Bool, Never> in
+                self.showErrorAlert = !value
+                return Just(value)
+                    .eraseToAnyPublisher()
+            })
+            .filter({ $0 })
+            .flatMap({ [unowned self] _ in self.login() })
             .replaceError(with: false)
             .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
@@ -337,20 +338,12 @@ extension UserViewModel {
 
     }
 }
-// Handle publishers
+// Handle validate publishers
 extension UserViewModel {
-    private var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> {
-        $password
-            .map { $0.count > 5}
-            .eraseToAnyPublisher()
-    }
-    private var isEmailValid: AnyPublisher<Bool, Never> {
-        $email
-            .map({ $0.isValidEmail() })
-            .eraseToAnyPublisher()
-    }
     private var isComfirmedPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(isEmailValid, isPasswordEmptyPublisher)
+        let isEmailValid = Just(email.isValidEmail())
+        let isPasswordEmptyPublisher = Just(password.count > 5)
+        return Publishers.CombineLatest(isEmailValid, isPasswordEmptyPublisher)
             .map { $0 && $1 }
             .eraseToAnyPublisher()
     }
@@ -366,16 +359,6 @@ extension UserViewModel {
     }
     func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.updateEntry(entry)
-    }
-    func validateCredentials(email: String,
-                             password: String) -> AnyPublisher<Bool, Error> {
-        if loginMode == .signIn {
-            return dependency.provider.storeService
-                .validateCredentials(email: email, password: password)
-        }
-        return Just(signUp)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
     }
     func logOut() -> AnyPublisher<Bool, Error> {
         dependency.provider.storeService.logOut()
@@ -453,12 +436,34 @@ extension UserViewModel {
                    gender: genderSelectedItem?.type ?? "" )
             .sink(receiveCompletion: { _ in
             }, receiveValue: { response in
-                guard let response = response.value, response.success else { return }
+                guard let response = response.value,
+                        let user = response.data.user,
+                        response.success else { return }
                 self.authToken = response.data.token
-                let user = response.data.user
                 self.createNewUser.send(user)
             })
             .store(in: &cancellableSet)
+    }
+    func login() -> AnyPublisher<Bool, Error> {
+        if loginMode == .signIn {
+            return dependency.provider.apiService
+                .login(email: email, password: password)
+                .flatMap({ response -> AnyPublisher<Bool, Error> in
+                    guard let response = response.value
+                    else { return Just(false)
+                            .setFailureType(to: Error.self)
+                            .eraseToAnyPublisher()
+                    }
+                    self.authToken = response.data.token
+                    return Just(response.success)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                })
+                .eraseToAnyPublisher()
+        }
+        return Just(true)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
     func appleLogin() {
         dependency.provider.appleService.singIn()

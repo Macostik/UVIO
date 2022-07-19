@@ -15,7 +15,8 @@ struct RegisterResponsable: Decodable {
 }
 struct DataResponsable: Decodable {
     let token: String
-    let user: UserResponsable
+    let user: UserResponsable?
+    let name: String
 }
 struct UserResponsable: Decodable {
     let id: Int

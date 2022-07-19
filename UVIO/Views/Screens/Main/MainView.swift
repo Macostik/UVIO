@@ -149,8 +149,7 @@ extension MainView {
                     ForEach(mainViewModel.listEntries, id: \.self) { listItem in
                         Section(header:
                                     section(index: listItem.index,
-                                            title: listItem.keyObject,
-                                            color: listItem.color)) {
+                                            title: listItem.keyObject)) {
                             ForEach(listItem.valueObjects, id: \.self) { entry in
                                 EntryView(listViewEntry: entry)
                             }
@@ -162,7 +161,7 @@ extension MainView {
             historyOverlay
         }
     }
-    private func section(index: Int, title: String, color: Color) -> some View {
+    private func section(index: Int, title: String) -> some View {
         VStack {
             HStack {
                 Text(title)

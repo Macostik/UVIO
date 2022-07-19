@@ -10,6 +10,7 @@ import SwiftUI
 struct ConnectCGMView: View {
     @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var viewModel: ConnectCGMViewModel
+    @ObservedObject var mainViewModel = MainViewModel()
     var body: some View {
         ZStack {
             VStack {
@@ -74,7 +75,7 @@ extension ConnectCGMView {
             }
             NavigationLink {
                 MainView(userViewModel: userViewModel,
-                         mainViewModel: MainViewModel())
+                         mainViewModel: mainViewModel)
             } label: {
                 HStack {
                     Text(L10n.willConnectCGM)
