@@ -41,6 +41,7 @@
 		563713B42840E48F003C5A09 /* GenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B32840E48F003C5A09 /* GenderType.swift */; };
 		563713B62840E732003C5A09 /* GlucoseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B52840E732003C5A09 /* GlucoseType.swift */; };
 		563713B82840E8A9003C5A09 /* DiabetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563713B72840E8A9003C5A09 /* DiabetType.swift */; };
+		5637C88C28868EF300A8679F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637C88B28868EF300A8679F /* BlurView.swift */; };
 		5639ABF7287716A30080FD3E /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF6287716A30080FD3E /* GenderView.swift */; };
 		5639ABF92878511F0080FD3E /* DOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABF82878511F0080FD3E /* DOBView.swift */; };
 		5639ABFB28785F750080FD3E /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639ABFA28785F750080FD3E /* ChangePasswordView.swift */; };
@@ -173,6 +174,7 @@
 		563713B32840E48F003C5A09 /* GenderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderType.swift; sourceTree = "<group>"; };
 		563713B52840E732003C5A09 /* GlucoseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseType.swift; sourceTree = "<group>"; };
 		563713B72840E8A9003C5A09 /* DiabetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiabetType.swift; sourceTree = "<group>"; };
+		5637C88B28868EF300A8679F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		5639ABF6287716A30080FD3E /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
 		5639ABF82878511F0080FD3E /* DOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOBView.swift; sourceTree = "<group>"; };
 		5639ABFA28785F750080FD3E /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				560EF5AD28620107003D6A30 /* CounterView.swift */,
 				56D1F100286C622900B18BBE /* GraphView.swift */,
 				5618427F287C4FE400C79B6E /* PasswordToastView.swift */,
+				5637C88B28868EF300A8679F /* BlurView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				56E6F190283D24A500623AE2 /* FacebookInteractor.swift in Sources */,
 				56C9315D2850CEBE001E26AD /* MainViewModel.swift in Sources */,
 				565F21DD2864BA3A00020C27 /* ListViewEntry.swift in Sources */,
+				5637C88C28868EF300A8679F /* BlurView.swift in Sources */,
 				56D9581C283392AA0053E65C /* CommonViews.swift in Sources */,
 				56C9315B2850820D001E26AD /* MainView.swift in Sources */,
 				56E537CA283E998E00929282 /* DependencyProvider.swift in Sources */,

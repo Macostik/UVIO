@@ -70,7 +70,7 @@ extension MainView {
                         bottomView
                     } else {
                         listView
-                            .background(Color.grayBackgroundColor)
+                            .background(Color.listGrayColor)
                     }
                 } else {
                     Spacer()
@@ -156,11 +156,6 @@ extension MainView {
                             }
                         }
                     }
-                    //                        .onDisappear {
-                    //                            if let currentIndex = viewModel.listEntries.firstIndex(of: listItem) {
-                    //                                viewModel.listEntries[currentIndex + 1].color = Color.white
-                    //                            }
-                    //                        }
                 }
                 .padding(.bottom, safeAreaInsets.bottom)
             }
@@ -194,8 +189,8 @@ extension MainView {
                 }
             }
         }
-//        .background(color)
         .padding(.horizontal)
+        .background(BlurView(style: .systemThinMaterialLight))
     }
     var historyOverlay: some View {
         ZStack(alignment: .top) {

@@ -454,6 +454,7 @@ extension UserViewModel {
             .sink(receiveCompletion: { _ in
             }, receiveValue: { response in
                 guard let response = response.value, response.success else { return }
+                self.authToken = response.data.token
                 let user = response.data.user
                 self.createNewUser.send(user)
             })
