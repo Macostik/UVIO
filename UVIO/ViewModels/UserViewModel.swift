@@ -437,8 +437,8 @@ extension UserViewModel {
             .sink(receiveCompletion: { _ in
             }, receiveValue: { response in
                 guard let response = response.value,
-                        let user = response.data.user,
                         response.success else { return }
+                let user = response.data.user
                 self.authToken = response.data.token
                 self.createNewUser.send(user)
             })
@@ -454,7 +454,9 @@ extension UserViewModel {
                             .setFailureType(to: Error.self)
                             .eraseToAnyPublisher()
                     }
+                    let user = response.data.user
                     self.authToken = response.data.token
+                    self.createNewUser.send(user)
                     return Just(response.success)
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
