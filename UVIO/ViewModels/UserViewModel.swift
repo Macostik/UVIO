@@ -12,7 +12,11 @@ import Alamofire
 
 // swiftlint:disable file_length
 
-class UserViewModel: ObservableObject {
+protocol UserViewModelProvider {
+    var userViewModel: BaseViewModel { get }
+}
+
+class UserViewModel: BaseViewModel {
     enum LoginMode {
         case signUp, signIn
     }
@@ -138,7 +142,8 @@ class UserViewModel: ObservableObject {
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()
     private var cancellableSet = Set<AnyCancellable>()
-    init() {
+    override init() {
+        super.init()
         handleGettinguser()
         createUser()
         checkUser()

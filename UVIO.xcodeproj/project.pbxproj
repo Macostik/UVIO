@@ -106,6 +106,7 @@
 		56CA6D8A285CC4A90097DF69 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D89285CC4A90097DF69 /* Date+Ext.swift */; };
 		56CA6D8C285CC63E0097DF69 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D8B285CC63E0097DF69 /* FoodView.swift */; };
 		56CA6D8E285CC7120097DF69 /* BaseFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */; };
+		56CF49902887F0240093C640 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF498F2887F0240093C640 /* ViewModel.swift */; };
 		56D1F0F22869EEAB00B18BBE /* InfoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */; };
 		56D1F0F42869F43800B18BBE /* InfoAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F32869F43800B18BBE /* InfoAlertType.swift */; };
 		56D1F0F72869F58B00B18BBE /* HighGlucoseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */; };
@@ -238,6 +239,7 @@
 		56CA6D89285CC4A90097DF69 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		56CA6D8B285CC63E0097DF69 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		56CA6D8D285CC7120097DF69 /* BaseFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFeaturesView.swift; sourceTree = "<group>"; };
+		56CF498F2887F0240093C640 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		56D1F0F12869EEAB00B18BBE /* InfoAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertView.swift; sourceTree = "<group>"; };
 		56D1F0F32869F43800B18BBE /* InfoAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAlertType.swift; sourceTree = "<group>"; };
 		56D1F0F62869F58B00B18BBE /* HighGlucoseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighGlucoseAlertView.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 		56A8536D283232BE000DFE3D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				56CF498F2887F0240093C640 /* ViewModel.swift */,
 				5645D6AC283795560081EA5A /* UserViewModel.swift */,
 				56371395283F7B92003C5A09 /* ConnectCGMViewModel.swift */,
 				56C9315C2850CEBE001E26AD /* MainViewModel.swift */,
@@ -902,6 +905,7 @@
 				562A6BB82847C53A002152B0 /* CustomizeToggleStyle.swift in Sources */,
 				56CA6D84285C7B4F0097DF69 /* LogBGLevelView.swift in Sources */,
 				561F3B132861B095002F4308 /* InsulinView.swift in Sources */,
+				56CF49902887F0240093C640 /* ViewModel.swift in Sources */,
 				5659428E2857671300A1A168 /* SignInFlow.swift in Sources */,
 				56953FD12832745C0025C1A2 /* NameOnboardingView.swift in Sources */,
 				5639ABFB28785F750080FD3E /* ChangePasswordView.swift in Sources */,

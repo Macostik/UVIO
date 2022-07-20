@@ -9,11 +9,16 @@ import Foundation
 import Combine
 import SwiftUI
 
-class ConnectCGMViewModel: ObservableObject {
+protocol ConnectCGMViewModelProvider {
+    var connectCGMViewModel: BaseViewModel { get }
+}
+
+class ConnectCGMViewModel: BaseViewModel {
     var timer = PassthroughSubject<Void, Never>()
     private var cancellableSet = Set<AnyCancellable>()
     @Published var isHiddenWelcomeSplashScreen = false
-    init() {
+    override init() {
+        super.init()
         timer
             .timeout(.seconds(1.5), scheduler: DispatchQueue.main)
             .sink(receiveCompletion: { _  in

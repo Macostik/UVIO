@@ -10,7 +10,11 @@ import Combine
 import SwiftUI
 import RealmSwift
 
-class MainViewModel: ObservableObject {
+protocol MainViewModelProvider {
+    var mainViewModel: BaseViewModel { get }
+}
+
+class MainViewModel: BaseViewModel {
     @Environment(\.dependency) var dependency
     @Published var user: User?
     @Published var listEntriesOrigin = [ListItem]() {
@@ -95,8 +99,8 @@ class MainViewModel: ObservableObject {
         isReminderPresented ||
         isShownWarningAlert
     }
-    init(user: User? = nil) {
-        self.user = user
+    override init() {
+        super.init()
         getUser()
         handleMenuAction()
         handleInsulinSegmentTap()
