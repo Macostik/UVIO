@@ -12,7 +12,7 @@ import RealmSwift
 
 class MainViewModel: ObservableObject {
     @Environment(\.dependency) var dependency
-    @Published var user = User()
+    @Published var user: User?
     @Published var listEntriesOrigin = [ListItem]() {
         willSet {
             listEntries =  newValue
@@ -95,7 +95,8 @@ class MainViewModel: ObservableObject {
         isReminderPresented ||
         isShownWarningAlert
     }
-    init() {
+    init(user: User? = nil) {
+        self.user = user
         getUser()
         handleMenuAction()
         handleInsulinSegmentTap()
@@ -195,7 +196,7 @@ extension MainViewModel {
                 return self.updateEntry {
                     let entry = LogBGEntry()
                     entry.logValue = "\(self.logBGInput)"
-                    entry.logUnitType = self.user.glucoseUnit
+                    entry.logUnitType = self.user?.glucoseUnit ?? ""
                     entry.note = self.insulineNote
                     entry.date = self.insulinWhenValue
                     entry.time = self.insulinTimeValue

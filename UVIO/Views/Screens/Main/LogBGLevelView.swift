@@ -92,7 +92,7 @@ extension LogBGLevelView {
     var inputOverlay: some View {
         VStack {
             TextFieldDone(text: $viewModel.logBGInput, keyType: .numberPad)
-            Text(viewModel.user.glucoseUnit)
+            Text(viewModel.user?.glucoseUnit ?? "")
                 .font(.poppins(.medium, size: 18))
             Text(L10n.glucose)
                 .font(.poppins(.bold, size: 18))

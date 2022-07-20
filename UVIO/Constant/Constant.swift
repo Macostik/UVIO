@@ -20,5 +20,5 @@ struct Constant {
     static let authScope: String = "offline_access"
     static let gcmMessageID: String = "gcm.message_id"
     static let fcmTokenKey: String = "FCMToken"
-    static let baseURL = "http://100.26.106.32/api"
+    static let baseURL = "http://3.82.236.173/api"
 }

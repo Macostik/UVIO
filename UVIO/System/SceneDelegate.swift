@@ -20,7 +20,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             UIScrollView.appearance().bounces = false
             let viewModel = UserViewModel()
-            let weeklyView = SplashView(viewModel: viewModel)
+            let weeklyView = SplashView(viewModel: viewModel,
+                                        mainViewModel: MainViewModel(user: viewModel.user))
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: weeklyView)
             self.window = window

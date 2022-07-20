@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CompleteOnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
-    @ObservedObject var mainViewModel = MainViewModel()
+    @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .top) {
             backgroundColor
@@ -36,7 +36,8 @@ struct CompleteOnboardingView: View {
 
 struct CompleteOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteOnboardingView(viewModel: UserViewModel())
+        CompleteOnboardingView(viewModel: UserViewModel(),
+                               mainViewModel: MainViewModel())
     }
 }
 

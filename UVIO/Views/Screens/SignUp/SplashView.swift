@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
-    @ObservedObject var mainViewModel = MainViewModel()
+    @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         NavigationView {
             if viewModel.userPersist {
@@ -77,6 +77,6 @@ struct SplashView: View {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(viewModel: UserViewModel())
+        SplashView(viewModel: UserViewModel(), mainViewModel: MainViewModel())
     }
 }

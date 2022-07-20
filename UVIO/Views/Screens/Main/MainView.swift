@@ -119,7 +119,7 @@ extension MainView {
     var bottomOverlay: some View {
         HStack {
             VStack(alignment: .leading, spacing: 12) {
-                Text(mainViewModel.user.name)
+                Text(mainViewModel.user?.name ?? "")
                     .font(.poppins(.bold, size: 24))
                     .foregroundColor(Color.black)
                 Text(L10n.pressPlus)
