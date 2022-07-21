@@ -134,6 +134,7 @@ class UserViewModel: BaseViewModel {
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
+    @Published var logOutPublisher = false
     var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
@@ -146,8 +147,6 @@ class UserViewModel: BaseViewModel {
         super.init()
         handleGettinguser()
         createUser()
-        checkUser()
-//        validateCredintials()
         fillUserCredentials()
         handleSignUp()
         handleOnboardingScreen()
@@ -173,13 +172,13 @@ extension UserViewModel {
             .assign(to: \.user, on: self)
             .store(in: &cancellableSet)
     }
-    func checkUser() {
-        $user
-            .map { $0?.isLogin }
-            .replaceNil(with: false)
-            .assign(to: \.userPersist, on: self)
-            .store(in: &cancellableSet)
-    }
+//    func checkUser() {
+//        $user
+//            .map { $0?.isLogin }
+//            .replaceNil(with: false)
+//            .assign(to: \.userPersist, on: self)
+//            .store(in: &cancellableSet)
+//    }
     func createUser() {
         createNewUser
             .map { value -> User in
@@ -342,6 +341,12 @@ extension UserViewModel {
             .store(in: &cancellableSet)
 
     }
+    func logOutUser() {
+        logOut()
+            .replaceError(with: false)
+            .assign(to: \.logOutPublisher, on: self)
+            .store(in: &cancellableSet)
+    }
 }
 // Handle validate publishers
 extension UserViewModel {
@@ -436,7 +441,7 @@ extension UserViewModel {
             .register(firstName: name,
                    lastName: name,
                    email: email,
-                   password: password,
+                      password: password.isEmpty ? "password" : password,
                    birthDate: birthDateParam,
                    gender: genderSelectedItem?.type ?? "" )
             .sink(receiveCompletion: { _ in
@@ -486,15 +491,23 @@ extension UserViewModel {
     func facebookLogin() {
         dependency.provider.facebookService.getBearer()
             .replaceError(with: "")
-            .compactMap({ $0 })
-            .assign(to: \.authToken, on: self)
+            .compactMap({ $0})
+            .map({ [unowned self] email in
+                self.email = email
+                return true
+            })
+            .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
     func googleLogin() {
         dependency.provider.googleService.getBearer()
             .replaceError(with: "")
-            .compactMap({ $0 })
-            .assign(to: \.authToken, on: self)
+            .compactMap({ $0})
+            .map({ [unowned self] email in
+                self.email = email
+                return true
+            })
+            .assign(to: \.isloginModeSignUp, on: self)
             .store(in: &cancellableSet)
     }
 }

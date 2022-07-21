@@ -12,7 +12,8 @@ struct SplashView: View {
     @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         NavigationView {
-            if viewModel.userPersist {
+            if (viewModel.user?.isLogin ?? false) &&
+                !viewModel.logOutPublisher {
                 MainView(userViewModel: viewModel,
                          mainViewModel: mainViewModel)
             } else {

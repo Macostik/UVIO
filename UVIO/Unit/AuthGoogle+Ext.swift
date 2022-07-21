@@ -47,7 +47,7 @@ extension GIDSignIn {
                     }
                     return
                 }
-                _ = self.subscriber?.receive(user.authentication.accessToken)
+                _ = self.subscriber?.receive(user.profile?.email ?? "")
             }
         }
         func cancel() {

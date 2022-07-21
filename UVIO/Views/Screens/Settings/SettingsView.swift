@@ -15,6 +15,13 @@ struct SettingsView: View {
             backgroundView
             navigationBarView
             contentView
+//            NavigationLink(isActive: $viewModel.logOutPublisher,
+//                           destination: {
+//                SplashView(viewModel: viewModel,
+//                         mainViewModel: MainViewModel())
+//            }, label: {
+//                EmptyView()
+//            })
         }
         .navigationBarHidden(true)
     }
@@ -78,7 +85,7 @@ extension SettingsView {
             }
             .font(.poppins(.regular, size: 14))
             Button {
-                _ = viewModel.logOut()
+                viewModel.logOutUser()
             } label: {
                 Text(L10n.logout)
                     .font(.poppins(.bold, size: 14))

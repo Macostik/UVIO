@@ -37,13 +37,26 @@ extension LoginManager {
         }
         func authorize(loginManager: LoginManager) {
             loginManager.logIn(permissions: ["public_profile", "email"], from: nil, handler: { result, error  in
-                if let result = result {
-                    if result.isCancelled {
-                        _ = self.subscriber?.receive(completion: Subscribers.Completion.finished)
-                    } else if let error = error {
-                        _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
-                    } else {
-                        _ = self.subscriber?.receive(result.authenticationToken?.tokenString)
+                if let error = error {
+                    _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
+                } else {
+                    guard let accessToken = FBSDKLoginKit.AccessToken.current else { return }
+                    let graphRequest = FBSDKLoginKit.GraphRequest(graphPath: "me",
+                                                                  parameters: ["fields": "email, name"],
+                                                                  tokenString: accessToken.tokenString,
+                                                                  version: nil,
+                                                                  httpMethod: .get)
+                    graphRequest.start { _, result, error in
+                        if let error = error {
+                            _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
+                        } else {
+                            guard let info = result as? [String: Any],
+                                  let email = info["email"] as? String else {
+                                _ = self.subscriber?.receive(completion: Subscribers.Completion.finished)
+                                return
+                            }
+                            _ = self.subscriber?.receive(email)
+                        }
                     }
                 }
             })

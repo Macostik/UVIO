@@ -88,7 +88,6 @@ extension MenuView {
                                     Text(item.title)
                                         .foregroundColor(Color.black)
                                         .font(.poppins(.medium, size: 14))
-                                        .padding(.leading)
                                 }
                             )
                             .shadow(color: item.shadowColor, radius: 12, x: 0, y: 5)
