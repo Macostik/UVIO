@@ -73,7 +73,11 @@ extension EmailSignUpView {
     }
     var hideOverlay: some View {
         VStack {
-            Image.hideIcon
+            if showPassword {
+                Image.eyeIcon
+            } else {
+                Image.hideIcon
+            }
         }.padding(.trailing, 32)
             .onTapGesture {
                 $showPassword.wrappedValue.toggle()
