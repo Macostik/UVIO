@@ -12,6 +12,7 @@ struct MainView: View {
     @ObservedObject var userViewModel: UserViewModel
     @ObservedObject var mainViewModel: MainViewModel
     @State var shouldScroll = true
+    @State var title = L10n.yourGlucose
     let columns = Array(repeating: GridItem(.flexible(minimum: 100), spacing: 0), count: 6)
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -57,9 +58,10 @@ extension MainView {
                 NavigationBarView(destination: {
                     SettingsView(viewModel: userViewModel)
                 }, content: {
-                    Text(L10n.yourGlucose)
+                    Text(title)
                         .font(.poppins(.bold, size: 18))
                 })
+                .padding(.bottom)
                 if !mainViewModel.isFullHistory {
                     topView
                         .frame(height: 325)
@@ -199,6 +201,7 @@ extension MainView {
             HStack {
                 Spacer()
                 Button {
+                    title = mainViewModel.isFullHistory ? L10n.yourGlucose : L10n.history
                     withAnimation {
                         mainViewModel.isFullHistory.toggle()
                         mainViewModel.resoreListEntries()

@@ -20,6 +20,7 @@ extension ReminderEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
+        listViewEntry.addedAt = createdAt
         listViewEntry.mainColor = Color.grayScaleColor
         listViewEntry.image = Image.bellIcon
         listViewEntry.title =

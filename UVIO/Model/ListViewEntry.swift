@@ -23,6 +23,7 @@ struct ListItem: Hashable {
 struct ListViewEntry: Hashable {
     var id = UUID().uuidString
     var createdAt = ""
+    var addedAt = Date()
     var image = Image("")
     var mainColor = Color.grayScaleColor
     var title = Text("")

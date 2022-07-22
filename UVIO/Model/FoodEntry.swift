@@ -26,6 +26,7 @@ extension FoodEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
+        listViewEntry.addedAt = createdAt
         listViewEntry.image = Image.foodIcon
         listViewEntry.mainColor = Color.primaryFoodColor
         listViewEntry.title =

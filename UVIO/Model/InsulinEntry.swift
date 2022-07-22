@@ -36,15 +36,15 @@ extension InsulinEntry: Mapable {
     func map() -> ListViewEntry {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
+        listViewEntry.addedAt = createdAt
         listViewEntry.mainColor = color
         listViewEntry.image = image
         listViewEntry.title =
-        Text(L10n.logInsulin)
+        Text(L10n.insulinLog)
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
         listViewEntry.subTitle =
         Text("\(insulinValue) " + "units")
-            .foregroundColor(Color.primaryGreenColor)
             .font(.poppins(.medium, size: 12))
         listViewEntry.action =
         Text("\(action)")

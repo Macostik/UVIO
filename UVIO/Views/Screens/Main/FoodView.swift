@@ -9,10 +9,6 @@ import SwiftUI
 
 struct FoodView: View {
     @ObservedObject var viewModel: MainViewModel
-    @State var isCalendarOpen = false
-    @State var isTimePickerOpen = false
-    @State var isCarbsAdded = false
-    @State var isNodeAdded = false
     @State var offset = 0.0
     var body: some View {
         ZStack {
@@ -62,9 +58,9 @@ extension FoodView {
                 .onChanged { gesture in
                     let yOffset = gesture.location.y
                     if yOffset > 0 &&
-                        !isCalendarOpen &&
-                        !isTimePickerOpen &&
-                        !isCarbsAdded {
+                        !viewModel.isFoodCalendarOpen &&
+                        !viewModel.isTimePickerOpen &&
+                        !viewModel.isCarbsAdded {
                         offset = yOffset
                     }
                 }
@@ -80,8 +76,8 @@ extension FoodView {
     var whenContainer: some View {
         VStack {
             Button {
-                isTimePickerOpen = false
-                isCalendarOpen.toggle()
+                viewModel.isTimePickerOpen = false
+                viewModel.isFoodCalendarOpen.toggle()
             } label: {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
@@ -103,7 +99,7 @@ extension FoodView {
     }
     var timeContainer: some View {
         VStack {
-            if isCalendarOpen {
+            if viewModel.isCalendarOpen {
                 VStack(alignment: .trailing) {
                     DatePicker("",
                                selection: $viewModel.foodWhenValue,
@@ -111,7 +107,7 @@ extension FoodView {
                         .datePickerStyle(.graphical)
                         .onChange(of: viewModel.foodWhenValue) { _ in
                             withAnimation {
-                                isCalendarOpen = false
+                                viewModel.isCalendarOpen = false
                             }
                         }
                 }
@@ -121,7 +117,7 @@ extension FoodView {
                 .animation(.easeInOut)
             } else {
                 Button {
-                    isTimePickerOpen.toggle()
+                    viewModel.isTimePickerOpen.toggle()
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
@@ -144,14 +140,14 @@ extension FoodView {
     }
     var foodContainer: some View {
         VStack(alignment: .trailing) {
-            if isTimePickerOpen {
+            if viewModel.isTimePickerOpen {
                 DatePicker("", selection: $viewModel.foodTimeValue, displayedComponents: [.hourAndMinute])
                     .datePickerStyle(.wheel)
                     .background(Color.white)
                     .cornerRadius(16)
                     .padding(.horizontal)
                     .animation(.easeInOut)
-            } else if isCarbsAdded {
+            } else if viewModel.isCarbsAdded {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(
@@ -189,7 +185,7 @@ extension FoodView {
     }
     var carbsContainer: some View {
         Button {
-            isCarbsAdded.toggle()
+            viewModel.isCarbsAdded.toggle()
         } label: {
             VStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -212,7 +208,7 @@ extension FoodView {
     }
     var addNote: some View {
         VStack {
-            if isNodeAdded {
+            if viewModel.isNodeAdded {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(inputNoteOverlay, alignment: .leading)
@@ -220,7 +216,10 @@ extension FoodView {
                     .padding(.horizontal)
             } else {
                 Button {
-                    isNodeAdded = true
+                    viewModel.isNodeAdded = true
+                    viewModel.isCalendarOpen = false
+                    viewModel.isTimePickerOpen = false
+                    viewModel.isCarbsAdded = false
                 } label: {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
@@ -244,10 +243,10 @@ extension FoodView {
     }
     var submitLogButton: some View {
         Button {
-            viewModel.subminFoodPublisher.send()
             withAnimation {
-                viewModel.isFoodPresented = false
+                    viewModel.isFoodPresented = false
             }
+            viewModel.subminFoodPublisher.send()
         } label: {
             ZStack {
                 HStack {

@@ -37,18 +37,27 @@ class MainViewModel: BaseViewModel {
     @Published var isCalendarOpen = false
     // Handle logBG data
     @Published var logBGNote = ""
-    @Published var logBGInput = "" {
-        willSet {
-            print(">> \(newValue)")
-        }
-    }
+    @Published var logBGInput = ""
     @Published var logBGWhenValue = Date()
     @Published var logBGTimeValue = Date()
     @Published var isLogBGPresented = false
     // Handle food data
     @Published var foodNote = ""
     @Published var foodName = ""
-    @Published var isFoodPresented = false
+    @Published var isFoodCalendarOpen = false
+    @Published var isTimePickerOpen = false
+    @Published var isCarbsAdded = false
+    @Published var isNodeAdded = false
+    @Published var isFoodPresented = false {
+        willSet {
+            if !newValue {
+                isFoodCalendarOpen = false
+                isTimePickerOpen = false
+                isCarbsAdded = false
+                isNodeAdded = false
+            }
+        }
+    }
     @Published var foodWhenValue = Date()
     @Published var foodTimeValue = Date()
     @Published var foodCarbs: CarbsPickerData = .c15
