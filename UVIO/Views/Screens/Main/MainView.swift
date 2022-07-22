@@ -135,7 +135,8 @@ extension MainView {
                     .lineLimit(4)
                     .multilineTextAlignment(.leading)
                 Image.spiralIcon
-                    .padding(.top, 60)
+                    .padding(.top, 45)
+                    .padding(.leading)
             }
             .padding(.leading, 20)
             .padding(.top)

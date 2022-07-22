@@ -15,8 +15,6 @@ protocol MainViewModelProvider {
 }
 
 class MainViewModel: BaseViewModel {
-    @Environment(\.dependency) var dependency
-    @Published var user: User?
     @Published var listEntriesOrigin = [ListItem]() {
         willSet {
             listEntries =  newValue
@@ -110,7 +108,7 @@ class MainViewModel: BaseViewModel {
     }
     override init() {
         super.init()
-        getUser()
+        print(">>main \(dependency)")
         handleMenuAction()
         handleInsulinSegmentTap()
         handleSubmition()
@@ -189,12 +187,6 @@ extension MainViewModel {
     }
     func getReminder() -> AnyPublisher<ReminderEntry?, Error> {
         dependency.provider.storeService.getEntry()
-    }
-    func save(entry: Object) -> AnyPublisher<Bool, Error> {
-        dependency.provider.storeService.saveEntry(entry: entry)
-    }
-    func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
-        dependency.provider.storeService.updateEntry(entry)
     }
     func getListEntries() -> AnyPublisher<[ListItem], Error> {
         dependency.provider.storeService.getListEntries()

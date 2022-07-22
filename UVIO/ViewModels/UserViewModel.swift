@@ -20,8 +20,6 @@ class UserViewModel: BaseViewModel {
     enum LoginMode {
         case signUp, signIn
     }
-    @Environment(\.dependency) var dependency
-    @Published var user: User?
     // User name
     @Published var userID: String = ""
     @Published var name: String = ""
@@ -142,9 +140,9 @@ class UserViewModel: BaseViewModel {
     var saveData = PassthroughSubject<Void, Error>()
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()
-    private var cancellableSet = Set<AnyCancellable>()
     override init() {
         super.init()
+        print(">>user \(dependency)")
         handleGettinguser()
         createUser()
         fillUserCredentials()
@@ -166,19 +164,6 @@ extension UserViewModel {
             .sink { _ in
             }.store(in: &cancellableSet)
     }
-    func handleGettinguser() {
-        getUser()
-            .replaceError(with: nil)
-            .assign(to: \.user, on: self)
-            .store(in: &cancellableSet)
-    }
-//    func checkUser() {
-//        $user
-//            .map { $0?.isLogin }
-//            .replaceNil(with: false)
-//            .assign(to: \.userPersist, on: self)
-//            .store(in: &cancellableSet)
-//    }
     func createUser() {
         createNewUser
             .map { value -> User in
@@ -358,22 +343,7 @@ extension UserViewModel {
             .eraseToAnyPublisher()
     }
 }
-// Handle store user
-extension UserViewModel {
-    func getUser() -> AnyPublisher<User?, Error> {
-        dependency.provider.storeService.getEntry()
-    }
-    func save(entry: Object) -> AnyPublisher<Bool, Error> {
-        user = entry as? User
-        return dependency.provider.storeService.saveEntry(entry: entry)
-    }
-    func updateEntry<T: Object>(_ entry: @escaping () -> T) -> AnyPublisher<Bool, Error> {
-        dependency.provider.storeService.updateEntry(entry)
-    }
-    func logOut() -> AnyPublisher<Bool, Error> {
-        dependency.provider.storeService.logOut()
-    }
-}
+
 // Handle user data converting
 extension UserViewModel {
     var dateFormatter: DateFormatter {

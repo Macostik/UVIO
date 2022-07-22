@@ -15,7 +15,6 @@ protocol ConnectCGMViewModelProvider {
 
 class ConnectCGMViewModel: BaseViewModel {
     var timer = PassthroughSubject<Void, Never>()
-    private var cancellableSet = Set<AnyCancellable>()
     @Published var isHiddenWelcomeSplashScreen = false
     override init() {
         super.init()
