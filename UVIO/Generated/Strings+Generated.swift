@@ -149,6 +149,8 @@ public enum L10n {
   public static let glucose = L10n.tr("Base", "glucose")
   /// Good
   public static let good = L10n.tr("Base", "good")
+  /// Hi 
+  public static let hi = L10n.tr("Base", "hi")
   /// High BG events
   public static let highBGEvents = L10n.tr("Base", "high_BG_events")
   /// High BG alert

@@ -20,8 +20,7 @@ struct GenderOnboardingView: View, Identifiable {
                 Spacer()
                 contentView
                 Spacer()
-                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel,
-                                                               mainViewModel: MainViewModel()))
+                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
             }
         }
         .edgesIgnoringSafeArea(.all)

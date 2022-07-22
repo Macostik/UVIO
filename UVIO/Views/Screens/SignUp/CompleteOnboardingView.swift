@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CompleteOnboardingView: View {
     @ObservedObject var viewModel: UserViewModel
-    @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         ZStack(alignment: .top) {
             backgroundColor
@@ -25,7 +24,7 @@ struct CompleteOnboardingView: View {
             }, content: {})
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
                 MainView(userViewModel: viewModel,
-                         mainViewModel: mainViewModel)
+                         mainViewModel: MainViewModel())
             } label: {
                 EmptyView()
             }
@@ -36,8 +35,7 @@ struct CompleteOnboardingView: View {
 
 struct CompleteOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteOnboardingView(viewModel: UserViewModel(),
-                               mainViewModel: MainViewModel())
+        CompleteOnboardingView(viewModel: UserViewModel())
     }
 }
 

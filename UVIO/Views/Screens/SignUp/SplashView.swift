@@ -9,13 +9,12 @@ import SwiftUI
 
 struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
-    @ObservedObject var mainViewModel: MainViewModel
     var body: some View {
         NavigationView {
             if (viewModel.user?.isLogin ?? false) &&
                 !viewModel.logOutPublisher {
                 MainView(userViewModel: viewModel,
-                         mainViewModel: mainViewModel)
+                         mainViewModel: MainViewModel())
             } else {
                 ZStack {
                     Image.splashBackgroundImage
@@ -67,8 +66,7 @@ struct SplashView: View {
         }
     }
     var signInButton: some View {
-        NavigationLink(destination: SignInFlow(viewModel: viewModel,
-                                               mainViewModel: mainViewModel)) {
+        NavigationLink(destination: SignInFlow(viewModel: viewModel)) {
             Text(L10n.signIn.uppercased())
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
@@ -78,6 +76,6 @@ struct SplashView: View {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(viewModel: UserViewModel(), mainViewModel: MainViewModel())
+        SplashView(viewModel: UserViewModel())
     }
 }

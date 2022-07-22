@@ -121,18 +121,24 @@ extension MainView {
     var bottomOverlay: some View {
         HStack {
             VStack(alignment: .leading, spacing: 12) {
-                Text(mainViewModel.user?.name ?? "")
-                    .font(.poppins(.bold, size: 24))
-                    .foregroundColor(Color.black)
+                HStack {
+                    Text(L10n.hi)
+                        .font(.poppins(.bold, size: 24))
+                        .foregroundColor(Color.black)
+                    Text(mainViewModel.user?.name ?? "")
+                        .font(.poppins(.bold, size: 24))
+                        .foregroundColor(Color.black)
+                }
                 Text(L10n.pressPlus)
                     .font(.poppins(.regular, size: 16))
                     .foregroundColor(Color.black)
+                    .lineLimit(4)
                     .multilineTextAlignment(.leading)
                 Image.spiralIcon
                     .padding(.top, 60)
             }
-            .padding()
-            .padding(.leading)
+            .padding(.leading, 20)
+            .padding(.top)
             Spacer()
         }
         .padding(.top)
@@ -234,6 +240,7 @@ extension MainView {
     var icecreamOverlay: some View {
         Image.icecreamIcon
             .padding()
+            .offset(y: 20)
     }
     var headerTopView: some View {
         HStack {

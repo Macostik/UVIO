@@ -22,8 +22,7 @@ struct BirthDateOnboardingView: View, Identifiable {
                     NextButtonAction {
                         viewModel.presentOnboardingView.value = .gender
                     }
-                    SkipButton(destination: CompleteOnboardingView(viewModel: viewModel,
-                                                                   mainViewModel: MainViewModel()))
+                    SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
                 }
             }
         }

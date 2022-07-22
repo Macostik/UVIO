@@ -198,3 +198,4 @@
 "signUp_method" = "Please select a Sign up method";
 "low_glucose_alarm" = "Low Glucose alarm";
 "high_glucose_alarm" = "High Glucose alarm";
+"hi" = "Hi ";
