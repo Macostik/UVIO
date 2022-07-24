@@ -116,13 +116,6 @@ class MainViewModel: BaseViewModel {
         handleInfoAlertShifting()
     }
     // Init handler
-    private func getUser() {
-        dependency.provider.storeService.getEntry()
-            .replaceError(with: nil)
-            .compactMap({ $0 })
-            .assign(to: \.user, on: self)
-            .store(in: &cancellable)
-    }
     private func handleMenuAction() {
         menuActionPubliser
             .sink { _ in

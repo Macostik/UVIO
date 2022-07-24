@@ -85,6 +85,8 @@ extension MenuView {
                             .overlay(
                                 VStack {
                                     item.icon
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
                                     Text(item.title)
                                         .foregroundColor(Color.black)
                                         .font(.poppins(.medium, size: 14))

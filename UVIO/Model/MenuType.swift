@@ -43,7 +43,7 @@ class MenuType {
     MenuType(id: 2,
              title: L10n.addReminder,
              icon: Image.remainderIcon,
-             shadowColor: .black.opacity(0.2),
+             shadowColor: .blue.opacity(0.2),
              menuAction: .reminder),
     MenuType(id: 3,
              title: L10n.logFood,
@@ -52,7 +52,7 @@ class MenuType {
              menuAction: .food),
     MenuType(id: 4,
              title: L10n.logInsulin,
-             icon: Image.longInsulinIcon,
-             shadowColor: .blue.opacity(0.2),
+             icon: Image.rapidInsulinIcon,
+             shadowColor: .orange.opacity(0.2),
              menuAction: .insulin)
 ]

@@ -11,10 +11,9 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
-            if (viewModel.user?.isLogin ?? false) &&
-                !viewModel.logOutPublisher {
-                MainView(userViewModel: viewModel,
-                         mainViewModel: MainViewModel())
+            if viewModel.user != nil &&
+                !viewModel.hasUserlogOut {
+                MainView(userViewModel: viewModel)
             } else {
                 ZStack {
                     Image.splashBackgroundImage

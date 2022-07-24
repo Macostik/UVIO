@@ -15,13 +15,6 @@ struct SettingsView: View {
             backgroundView
             navigationBarView
             contentView
-//            NavigationLink(isActive: $viewModel.logOutPublisher,
-//                           destination: {
-//                SplashView(viewModel: viewModel,
-//                         mainViewModel: MainViewModel())
-//            }, label: {
-//                EmptyView()
-//            })
         }
         .navigationBarHidden(true)
     }

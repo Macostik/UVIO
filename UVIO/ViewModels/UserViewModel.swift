@@ -132,7 +132,6 @@ class UserViewModel: BaseViewModel {
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
-    @Published var logOutPublisher = false
     var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
@@ -142,7 +141,6 @@ class UserViewModel: BaseViewModel {
     var appearBGLevel = PassthroughSubject<Void, Error>()
     override init() {
         super.init()
-        print(">>user \(dependency)")
         handleGettinguser()
         createUser()
         fillUserCredentials()
@@ -329,7 +327,7 @@ extension UserViewModel {
     func logOutUser() {
         logOut()
             .replaceError(with: false)
-            .assign(to: \.logOutPublisher, on: self)
+            .assign(to: \.hasUserlogOut, on: self)
             .store(in: &cancellableSet)
     }
 }
@@ -360,7 +358,10 @@ extension UserViewModel {
         dateFormatter.string(from: user?.birthDate ?? birthDate)
     }
     var glucoseUnit: String {
-        glucoseTypeSelectedItem?.type ?? user?.glucoseUnit ?? L10n.mgDL
+        if isUserInvalidated {
+           return glucoseTypeSelectedItem?.type ?? user?.glucoseUnit ?? L10n.mgDL
+        }
+        return L10n.mgDL
     }
 }
 // Handle onboarding
@@ -417,7 +418,10 @@ extension UserViewModel {
             .sink(receiveCompletion: { _ in
             }, receiveValue: { response in
                 guard let response = response.value,
-                        response.success else { return }
+                        response.success else {
+                    Logger.error("Something went wrong: \(String(describing: response.error))")
+                    return
+                }
                 let user = response.data.user
                 self.authToken = response.data.token
                 self.createNewUser.send(user)
@@ -430,7 +434,9 @@ extension UserViewModel {
                 .login(email: email, password: password)
                 .flatMap({ response -> AnyPublisher<Bool, Error> in
                     guard let response = response.value
-                    else { return Just(false)
+                    else {
+                        Logger.error("Something went wrong: \(String(describing: response.error))")
+                        return Just(false)
                             .setFailureType(to: Error.self)
                             .eraseToAnyPublisher()
                     }

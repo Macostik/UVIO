@@ -10,7 +10,7 @@ import RealmSwift
 
 struct MainView: View {
     @ObservedObject var userViewModel: UserViewModel
-    @ObservedObject var mainViewModel: MainViewModel
+    @ObservedObject var mainViewModel = MainViewModel()
     @State var shouldScroll = true
     @State var title = L10n.yourGlucose
     let columns = Array(repeating: GridItem(.flexible(minimum: 100), spacing: 0), count: 6)
@@ -37,8 +37,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(userViewModel: UserViewModel(),
-                 mainViewModel: MainViewModel())
+        MainView(userViewModel: UserViewModel())
     }
 }
 
@@ -121,11 +120,14 @@ extension MainView {
     var bottomOverlay: some View {
         HStack {
             VStack(alignment: .leading, spacing: 12) {
-                HStack {
+                HStack(spacing: 0) {
                     Text(L10n.hi)
                         .font(.poppins(.bold, size: 24))
                         .foregroundColor(Color.black)
-                    Text(mainViewModel.user?.name ?? "")
+                    Text(mainViewModel.userName)
+                        .font(.poppins(.bold, size: 24))
+                        .foregroundColor(Color.black)
+                    Text(",")
                         .font(.poppins(.bold, size: 24))
                         .foregroundColor(Color.black)
                 }

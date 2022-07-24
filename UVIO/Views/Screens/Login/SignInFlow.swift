@@ -15,8 +15,7 @@ struct SignInFlow: View {
             containerViews
             NavigationLink(isActive: $viewModel.signInConfirmed,
                            destination: {
-                MainView(userViewModel: viewModel,
-                         mainViewModel: MainViewModel())
+                MainView(userViewModel: viewModel)
             }, label: {
                 EmptyView()
             })

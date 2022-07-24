@@ -12,10 +12,22 @@ import Alamofire
 
 class BaseViewModel: ObservableObject {
     @Published var user: User?
+    @Published var hasUserlogOut = false
     var cancellableSet = Set<AnyCancellable>()
     @Environment(\.dependency) var dependency
     init() {
-        handleGettinguser()
+        if user == nil {
+            handleGettinguser()
+        }
+    }
+    var isUserInvalidated: Bool {
+        return !(user?.isInvalidated ?? true)
+    }
+    var userName: String {
+        if isUserInvalidated, let user = user {
+           return user.name
+        }
+        return ""
     }
     func handleGettinguser() {
         getUser()

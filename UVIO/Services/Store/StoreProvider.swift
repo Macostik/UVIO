@@ -35,12 +35,8 @@ class StoreService: StoreInteractor {
     func logOut() -> AnyPublisher<Bool, Error> {
         let subject = CurrentValueSubject<Bool, Error>(false)
         let realm = realmProvider.realm
-        guard let currentUser = realm?.objects(User.self).first else {
-            Logger.error("Realm doesn't contain user")
-            return subject.eraseToAnyPublisher()
-        }
         realm?.writeAsync({
-            currentUser.isLogin = false
+            realm?.deleteAll()
         }, onComplete: { error in
             guard let error = error else {
                 Logger.debug("User was log out successfully")
@@ -62,7 +58,7 @@ class StoreService: StoreInteractor {
                 .eraseToAnyPublisher()
         }
         Logger.debug("Entry was found: \(entry.description)")
-        return  Just(entry)
+        return Just(entry)
             .mapError { _ in RealmError.unknow }
             .eraseToAnyPublisher()
     }

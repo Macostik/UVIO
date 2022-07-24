@@ -42,7 +42,6 @@ class User: Object {
     @Persisted var glucoseTargetUpperBound: Int = 0
     @Persisted var hyper: Int = 0
     @Persisted var hypo: Int = 0
-    @Persisted var isLogin: Bool = true
     @Persisted var isVibrate: Bool = false
     @Persisted var isNotDisturb: Bool = false
 }
