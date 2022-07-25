@@ -282,7 +282,7 @@ extension MainView {
             }
             .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.capsulaGrayColor, lineWidth: 1)
+                .stroke(Color.capsulaGrayColor.opacity(0.5), lineWidth: 1)
         }
     }
     var menuView: some View {

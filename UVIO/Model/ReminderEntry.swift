@@ -21,7 +21,7 @@ extension ReminderEntry: Mapable {
         var listViewEntry = ListViewEntry()
         listViewEntry.createdAt = createdAt.convertToString()
         listViewEntry.addedAt = createdAt
-        listViewEntry.mainColor = Color.grayScaleColor
+        listViewEntry.mainColor = Color.grayBackgroundColor.opacity(0.7)
         listViewEntry.image = Image.bellIcon
         listViewEntry.title =
         Text("\(createdAt.time)")

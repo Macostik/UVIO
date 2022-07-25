@@ -41,14 +41,17 @@ extension InsulinView {
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
                     .padding(.top)
-                if viewModel.selectedSegementItem == .rapid {
-                    Image.rapidInsulinIcon
-                } else {
-                    Image.longInsulinIcon
+                Group {
+                    if viewModel.selectedSegementItem == .rapid {
+                        Image.rapidInsulinIcon
+                    } else {
+                        Image.longInsulinIcon
+                    }
                 }
+                .padding(.top, 5)
                 Text(L10n.logInsulin)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top)
+                    .padding(.top, -10)
                 segmentControlView
                 CounterView(counter: $viewModel.insulinCounter,
                             unit: $viewModel.insulinsubtitle,

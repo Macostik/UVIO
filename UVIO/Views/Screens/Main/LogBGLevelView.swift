@@ -49,9 +49,10 @@ extension LogBGLevelView {
                     .frame(width: 56, height: 4)
                     .padding(.top)
                 Image.bgLevelIcon
-                Text(L10n.createEntry)
+                    .padding(.top, 5)
+                Text(L10n.logManualyBGLevel)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top)
+                    .padding(.top, -10)
                 inputContainer
                 whenContainer
                 timeContainer

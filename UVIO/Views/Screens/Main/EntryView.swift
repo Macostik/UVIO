@@ -62,7 +62,7 @@ extension EntryView {
                 )
             listViewEntry.image
                 .resizable()
-                .frame(width: 17, height: 17)
+                .frame(width: 20, height: 20)
         }
     }
 }

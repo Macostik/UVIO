@@ -38,9 +38,10 @@ extension FoodView {
                     .frame(width: 56, height: 4)
                     .padding(.top)
                 Image.foodIcon
+                    .padding(.top, 5)
                 Text(L10n.whatEat)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top)
+                    .padding(.top, -10)
                 whenContainer
                 timeContainer
                 foodContainer

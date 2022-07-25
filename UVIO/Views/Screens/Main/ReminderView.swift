@@ -41,9 +41,10 @@ extension ReminderView {
                     .frame(width: 56, height: 4)
                     .padding(.top)
                 Image.remainderIcon
+                    .padding(.top, 5)
                 Text(L10n.setReminder)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top)
+                    .padding(.top, -10)
                 CounterView(counter: $viewModel.reminderCounter,
                             unit: $viewModel.reminderSubtitle,
                             color: .constant(Color.grayScaleColor),

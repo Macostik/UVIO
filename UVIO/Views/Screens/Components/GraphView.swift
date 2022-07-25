@@ -150,6 +150,7 @@ extension GraphView {
                 .font(.poppins(.medium, size: 12))
                 .padding(.horizontal, 30)
             }
+            .padding(.top)
             endPoint
         }
     }
