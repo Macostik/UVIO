@@ -108,7 +108,6 @@ class MainViewModel: BaseViewModel {
     }
     override init() {
         super.init()
-        print(">>main \(dependency)")
         handleMenuAction()
         handleInsulinSegmentTap()
         handleSubmition()

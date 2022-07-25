@@ -95,22 +95,22 @@ extension SignInView {
                     .font(.poppins(.medium, size: 14))
                     .foregroundColor(.black))
             }
-            Button {
-                self.viewModel.appleLogin()
-            } label: {
-                ZStack {
-                    HStack {
-                        Image.appleIcon.padding()
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
-                .background(Color.white.opacity(0.6))
-                .cornerRadius(12)
-                .padding(.horizontal)
-                .overlay(Text(L10n.continueWithApple)
-                    .font(.poppins(.medium, size: 14))
-                    .foregroundColor(.black))
-            }
+//            Button {
+//                self.viewModel.appleLogin()
+//            } label: {
+//                ZStack {
+//                    HStack {
+//                        Image.appleIcon.padding()
+//                    }
+//                }
+//                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
+//                .background(Color.white.opacity(0.6))
+//                .cornerRadius(12)
+//                .padding(.horizontal)
+//                .overlay(Text(L10n.continueWithApple)
+//                    .font(.poppins(.medium, size: 14))
+//                    .foregroundColor(.black))
+//            }
         }
     }
 }

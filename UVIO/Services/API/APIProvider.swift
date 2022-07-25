@@ -87,17 +87,14 @@ private enum APIRequest: URLRequestConvertible {
     }
 }
 
-// swiftlint:disable function_parameter_count
 class APIService: APIInteractor {
-    func register(firstName: String,
-                  lastName: String,
+    func register(name: String,
                   email: String,
                   password: String,
                   birthDate: String,
                   gender: String) -> DataResponsePublisher<RegisterResponsable> {
         let params = [
-            "first_name": firstName,
-            "last_name": lastName,
+            "name": name,
             "email": email,
             "password": password,
             "birth_date": birthDate,

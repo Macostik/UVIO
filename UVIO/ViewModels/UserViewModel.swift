@@ -396,8 +396,7 @@ extension UserViewModel {
     }
     func registerUser() {
         dependency.provider.apiService
-            .register(firstName: name,
-                   lastName: name,
+            .register(name: name,
                    email: email,
                       password: password.isEmpty ? "password" : password,
                    birthDate: birthDateParam,

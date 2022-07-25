@@ -21,7 +21,8 @@ struct CompleteOnboardingView: View {
             }
             NavigationBarView(destination: {
                 EmptyView()
-            }, content: {})
+            }, content: {},
+            disabled: true)
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
                 MainView(userViewModel: viewModel)
             } label: {

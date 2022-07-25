@@ -8,10 +8,8 @@
 import Foundation
 import Alamofire
 
-// swiftlint:disable function_parameter_count
 protocol APIInteractor {
-    func register(firstName: String,
-                  lastName: String,
+    func register(name: String,
                   email: String,
                   password: String,
                   birthDate: String,

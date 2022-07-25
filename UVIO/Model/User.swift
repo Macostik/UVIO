@@ -19,12 +19,10 @@ struct DataResponsable: Decodable {
 }
 struct UserResponsable: Decodable {
     let id: Int
-    let first_name: String
-    let last_name: String
+    let name: String
     let email: String
     let birth_date: String
     let gender: String
-    let name: String
     let updated_at: String
     let created_at: String
 }

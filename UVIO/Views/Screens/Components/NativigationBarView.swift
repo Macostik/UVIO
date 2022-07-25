@@ -51,9 +51,13 @@ struct NativigationBackBarView<Content: View>: View {
 struct NavigationBarView<Content: View, Destination: View>: View {
     let content: Content?
     let destination: (() -> Destination)
-    init(destination: @escaping (() -> Destination), @ViewBuilder content: () -> Content?) {
+    let disabled: Bool
+    init(destination: @escaping (() -> Destination),
+         @ViewBuilder content: () -> Content?,
+         disabled: Bool = false) {
         self.destination = destination
         self.content = content()
+        self.disabled = disabled
     }
     var body: some View {
         ZStack {
@@ -68,6 +72,7 @@ struct NavigationBarView<Content: View, Destination: View>: View {
                 } label: {
                     Image.settingsIcon
                 }
+                .disabled(disabled)
             }
             .padding(.horizontal, 30)
         }
