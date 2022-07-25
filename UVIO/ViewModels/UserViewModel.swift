@@ -110,18 +110,12 @@ class UserViewModel: BaseViewModel {
     }
     // Update user data
     @Published var updateUserDataPublisher = PassthroughSubject<Void, Error>()
-    @Published var signUpConfirmed = false {
-        willSet {
-            if newValue {
-                self.presentOnboardingView.value = .name
-            }
-        }
-    }
     lazy var glucoseTypeList = [
-        GlucoseType(id: 1, type: L10n.mgDL, isSelected: user?.glucoseUnit == L10n.mgDL),
-        GlucoseType(id: 2, type: L10n.mmolL, isSelected: user?.glucoseUnit == L10n.mmolL)
+        GlucoseType(id: 1, type: L10n.mgDL,
+                    isSelected: isUserInvalidated ? user?.glucoseUnit == L10n.mgDL : false),
+        GlucoseType(id: 2, type: L10n.mmolL,
+                    isSelected: isUserInvalidated ?  user?.glucoseUnit == L10n.mmolL : false)
     ]
-    @Published var signInConfirmed = false
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var recoveryEmail: String = ""
@@ -132,7 +126,6 @@ class UserViewModel: BaseViewModel {
     @Published var userPersist = false
     @Published var userCreateCompleted = false
     @Published var showErrorAlert: Bool = false
-    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<UserResponsable, Error>()
@@ -324,12 +317,6 @@ extension UserViewModel {
             .store(in: &cancellableSet)
 
     }
-    func logOutUser() {
-        logOut()
-            .replaceError(with: false)
-            .assign(to: \.hasUserlogOut, on: self)
-            .store(in: &cancellableSet)
-    }
 }
 // Handle validate publishers
 extension UserViewModel {
@@ -352,10 +339,10 @@ extension UserViewModel {
     var birthDateParam: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return dateFormatter.string(from: user?.birthDate ?? birthDate)
+        return dateFormatter.string(from: isUserInvalidated ? user?.birthDate ?? birthDate : Date())
     }
     var birthDateString: String {
-        dateFormatter.string(from: user?.birthDate ?? birthDate)
+        dateFormatter.string(from: isUserInvalidated ?  user?.birthDate ?? birthDate : Date())
     }
     var glucoseUnit: String {
         if isUserInvalidated {

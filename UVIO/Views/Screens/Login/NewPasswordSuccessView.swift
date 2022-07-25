@@ -30,8 +30,8 @@ struct NewPasswordSuccessView: View {
         }
     }
     var openEmailAppLink: some View {
-        NavigationLink {
-            SignUpFlow(viewModel: viewModel)
+        Button {
+            self.viewModel.presentLoginView.value = .signIn
         } label: {
             Text(L10n.signIn)
                 .font(.poppins(.medium, size: 14))

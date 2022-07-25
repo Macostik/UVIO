@@ -12,7 +12,21 @@ import Alamofire
 
 class BaseViewModel: ObservableObject {
     @Published var user: User?
-    @Published var hasUserlogOut = false
+    @Published var signInConfirmed = false
+    @Published var signUpConfirmed = false {
+        willSet {
+            if newValue {
+                self.presentOnboardingView.value = .name
+            }
+        }
+    }
+    @Published var hasUserlogOut = false {
+        willSet {
+            self.signInConfirmed = !newValue
+            self.signUpConfirmed = !newValue
+        }
+    }
+    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
     var cancellableSet = Set<AnyCancellable>()
     @Environment(\.dependency) var dependency
     init() {
@@ -33,6 +47,12 @@ class BaseViewModel: ObservableObject {
         getUser()
             .replaceError(with: nil)
             .assign(to: \.user, on: self)
+            .store(in: &cancellableSet)
+    }
+    func logOutUser() {
+        logOut()
+            .replaceError(with: false)
+            .assign(to: \.hasUserlogOut, on: self)
             .store(in: &cancellableSet)
     }
     //    func checkUser() {

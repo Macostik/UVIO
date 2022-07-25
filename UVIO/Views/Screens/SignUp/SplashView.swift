@@ -11,7 +11,7 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
-            if viewModel.user != nil &&
+            if viewModel.isUserInvalidated &&
                 !viewModel.hasUserlogOut {
                 MainView(userViewModel: viewModel)
             } else {
