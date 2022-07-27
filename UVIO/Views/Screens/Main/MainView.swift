@@ -106,7 +106,7 @@ extension MainView {
             VStack {
                 headerTopView
                     .padding(.top, 10)
-                GraphView()
+                GraphView(spacing: mainViewModel.listEntries.isEmpty ? 20 : 12)
             }
         }
     }

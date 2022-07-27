@@ -65,9 +65,17 @@ let points: [Points] = [
     Points(value: 13.5)
 ]
 
+var tabs = ["1h", "3h", "6h", "12h", "24h"]
+
 struct GraphView: View {
+    @State var selected = tabs[0]
+    @Namespace var animation
+    var spacing: CGFloat
     var body: some View {
         contentView
+    }
+    init(spacing: CGFloat = 20.0) {
+        self.spacing = spacing
     }
 }
 
@@ -91,7 +99,7 @@ extension GraphView {
                         .position(point)
                 }
             }
-            VStack(spacing: 20) {
+            VStack(spacing: spacing) {
                 ZStack {
                     VStack(alignment: .trailing, spacing: 18) {
                         HStack {
@@ -129,26 +137,14 @@ extension GraphView {
                     .padding(.leading)
                     .font(.poppins(.medium, size: 12))
                 }
-                HStack {
-                    Group {
-                        Text("1h")
-                        Spacer()
-                        Capsule()
-                            .foregroundColor(
-                                Color.grayScaleColor.opacity(0.75))
-                            .overlay(Text("3h")
-                            )
-                            .frame(width: 40, height: 24)
-                        Spacer()
-                        Text("6h")
-                        Spacer()
-                        Text("12h")
-                        Spacer()
-                        Text("24h")
+                GeometryReader { reader in
+                    HStack {
+                        ForEach(tabs, id: \.self) { tab in
+                            TabButton(title: tab, selected: $selected, animation: animation)
+                        }
                     }
+                    .frame(width: reader.size.width)
                 }
-                .font(.poppins(.medium, size: 12))
-                .padding(.horizontal, 30)
             }
             .padding(.top)
             endPoint
@@ -188,5 +184,38 @@ struct Line: Shape {
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: rect.width, y: 0))
         return path
+    }
+}
+
+struct TabButton: View {
+    var title: String
+    @Binding var selected: String
+
+    var animation: Namespace.ID
+
+    var body: some View {
+        Button(action: {
+            withAnimation {
+                selected = title
+            }
+        }, label: {
+            HStack {
+                Spacer()
+                Text(title)
+                    .font(.poppins(.medium, size: 12))
+                    .foregroundColor(Color.black)
+                    .background(
+                        ZStack {
+                            if selected == title {
+                                RoundedCorner(radius: 16)
+                                    .frame(width: 40, height: 26)
+                                    .foregroundColor(Color.grayScaleColor.opacity(0.8))
+                                    .matchedGeometryEffect(id: "Tab", in: animation)
+                            }
+                        }
+                    )
+                Spacer()
+            }
+        })
     }
 }
