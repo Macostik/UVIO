@@ -10,8 +10,6 @@ import SwiftUI
 import RealmSwift
 import Alamofire
 
-// swiftlint:disable file_length
-
 protocol UserViewModelProvider {
     var userViewModel: BaseViewModel { get }
 }
@@ -384,92 +382,5 @@ extension UserViewModel {
         case .newPassword: return .checkInBox
         case .newPasswordSuccess: return .newPassword
         }
-    }
-}
-// Handle third party login
-extension UserViewModel {
-    func dexcomLogin() {
-        dependency.provider.dexcomService.getBearer()
-            .replaceError(with: "")
-            .assign(to: \.dexcomToken, on: self)
-            .store(in: &cancellableSet)
-    }
-    func registerUser() {
-        dependency.provider.apiService
-            .register(name: name,
-                   email: email,
-                      password: password.isEmpty ? "password" : password,
-                   birthDate: birthDateParam,
-                   gender: genderSelectedItem?.type ?? "" )
-            .sink(receiveCompletion: { _ in
-            }, receiveValue: { response in
-                guard let response = response.value,
-                        response.success else {
-                    Logger.error("Something went wrong: \(String(describing: response.error))")
-                    return
-                }
-                let user = response.data.user
-                self.authToken = response.data.token
-                self.createNewUser.send(user)
-            })
-            .store(in: &cancellableSet)
-    }
-    func login() -> AnyPublisher<Bool, Error> {
-        if loginMode == .signIn {
-            return dependency.provider.apiService
-                .login(email: email, password: password)
-                .flatMap({ response -> AnyPublisher<Bool, Error> in
-                    guard let response = response.value
-                    else {
-                        Logger.error("Something went wrong: \(String(describing: response.error))")
-                        return Just(false)
-                            .setFailureType(to: Error.self)
-                            .eraseToAnyPublisher()
-                    }
-                    let user = response.data.user
-                    self.authToken = response.data.token
-                    self.createNewUser.send(user)
-                    return Just(response.success)
-                        .setFailureType(to: Error.self)
-                        .eraseToAnyPublisher()
-                })
-                .eraseToAnyPublisher()
-        }
-        return Just(true)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-    func appleLogin() {
-        dependency.provider.appleService.singIn()
-            .map({ [unowned self] value in
-                let authorized = value == .authorized
-                self.signUp = authorized
-                return authorized
-            })
-            .replaceError(with: false)
-            .assign(to: \.isloginModeSignUp, on: self)
-            .store(in: &cancellableSet)
-    }
-    func facebookLogin() {
-        dependency.provider.facebookService.getBearer()
-            .replaceError(with: "")
-            .compactMap({ $0})
-            .map({ [unowned self] email in
-                self.email = email
-                return true
-            })
-            .assign(to: \.isloginModeSignUp, on: self)
-            .store(in: &cancellableSet)
-    }
-    func googleLogin() {
-        dependency.provider.googleService.getBearer()
-            .replaceError(with: "")
-            .compactMap({ $0})
-            .map({ [unowned self] email in
-                self.email = email
-                return true
-            })
-            .assign(to: \.isloginModeSignUp, on: self)
-            .store(in: &cancellableSet)
     }
 }

@@ -15,7 +15,7 @@ extension LoginManager {
     }
     struct FacebookPublisher: Publisher {
         // swiftlint:disable nesting
-        typealias Output = Token?
+        typealias Output = SocialValueType?
         typealias Failure = Error
         private let loginManager: LoginManager
         fileprivate init(loginManager: LoginManager) {
@@ -28,7 +28,7 @@ extension LoginManager {
         }
     }
     private class FacebookSubscription<S: Subscriber>: Subscription
-    where S.Input == Token?, S.Failure == Error {
+    where S.Input == SocialValueType?, S.Failure == Error {
         private let loginManager: LoginManager
         private var subscriber: S?
         init(loginManager: LoginManager, subscriber: S) {
@@ -51,11 +51,16 @@ extension LoginManager {
                             _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
                         } else {
                             guard let info = result as? [String: Any],
-                                  let email = info["email"] as? String else {
+                                  let email = info["email"] as? String,
+                                  let name = info["name"] as? String else {
                                 _ = self.subscriber?.receive(completion: Subscribers.Completion.finished)
                                 return
                             }
-                            _ = self.subscriber?.receive(email)
+                            let socialType = SocialValueType(name: name,
+                                                             email: email,
+                                                             token: accessToken.tokenString,
+                                                             platform: "facebook")
+                            _ = self.subscriber?.receive(socialType)
                         }
                     }
                 }

@@ -15,7 +15,7 @@ extension GIDSignIn {
     }
     struct GoogleSingInPublisher: Publisher {
         // swiftlint:disable nesting
-        typealias Output = Token?
+        typealias Output = SocialValueType?
         typealias Failure = Error
         private let loginManager: GIDSignIn
         fileprivate init(loginManager: GIDSignIn) {
@@ -30,7 +30,7 @@ extension GIDSignIn {
         }
     }
     private class GoogleSingInSubscription<S: Subscriber>: Subscription
-    where S.Input == Token?, S.Failure == Error {
+    where S.Input == SocialValueType?, S.Failure == Error {
         private let loginManager: GIDSignIn
         private var subscriber: S?
         init(loginManager: GIDSignIn, subscriber: S) {
@@ -47,7 +47,11 @@ extension GIDSignIn {
                     }
                     return
                 }
-                _ = self.subscriber?.receive(user.profile?.email ?? "")
+                let socialType = SocialValueType(name: user.profile?.name ?? "",
+                                                 email: user.profile?.email ?? "",
+                                                 token: user.authentication.accessToken,
+                                                 platform: "google")
+                _ = self.subscriber?.receive(socialType)
             }
         }
         func cancel() {

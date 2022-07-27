@@ -135,10 +135,10 @@ extension GraphView {
                         Spacer()
                         Capsule()
                             .foregroundColor(
-                                Color.grayScaleColor)
+                                Color.grayScaleColor.opacity(0.75))
                             .overlay(Text("3h")
                             )
-                            .frame(width: 40, height: 20)
+                            .frame(width: 40, height: 24)
                         Spacer()
                         Text("6h")
                         Spacer()

@@ -16,7 +16,7 @@ protocol FacebookProvider {
 
 struct FacebookService: FacebookInteractor {
     let loginManager = LoginManager()
-    func getBearer() -> AnyPublisher<Token?, Error> {
+    func getData() -> AnyPublisher<SocialValueType?, Error> {
         loginManager.authorizePublisher()
             .mapError { $0 }
             .eraseToAnyPublisher()

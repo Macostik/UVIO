@@ -16,4 +16,8 @@ protocol APIInteractor {
                   gender: String) -> DataResponsePublisher<RegisterResponsable>
     func login(email: String,
                password: String) -> DataResponsePublisher<RegisterResponsable>
+    func socialLogin(name: String,
+                     email: String,
+                     token: String,
+                     platform: String) -> DataResponsePublisher<RegisterResponsable>
 }

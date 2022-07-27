@@ -9,5 +9,5 @@ import Combine
 import FacebookLogin
 
 protocol FacebookInteractor {
-    func getBearer() -> AnyPublisher<Token?, Error>
+    func getData() -> AnyPublisher<SocialValueType?, Error>
 }

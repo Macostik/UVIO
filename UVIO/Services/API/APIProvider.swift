@@ -17,18 +17,20 @@ protocol APIProvider {
 private enum APIRequest: URLRequestConvertible {
     case register([String: Any])
     case login([String: Any])
+    case socialLogin([String: Any])
     func asURLRequest() throws -> URLRequest {
         let headers: [String: String]? = nil
         var method: HTTPMethod {
             switch self {
-            case .register, .login:
+            case .register, .login, .socialLogin:
                 return .post
             }
         }
         let parameters: ([String: Any]?) = {
             switch self {
             case .login(let parameters),
-                    .register(let parameters):
+                    .register(let parameters),
+                    .socialLogin(let parameters):
                 return parameters
             }
         }()
@@ -40,6 +42,8 @@ private enum APIRequest: URLRequestConvertible {
                 query = "login"
             case .register:
                 query = "register"
+            case .socialLogin:
+                query = "login-social"
             }
             if let query = query {
                 URL = URL.appendingPathComponent(query)
@@ -60,7 +64,7 @@ private enum APIRequest: URLRequestConvertible {
             }
         }
         switch self {
-        case .login, .register:
+        case .login, .register, .socialLogin:
             return try URLEncoding(arrayEncoding: .noBrackets).encode(urlRequest, with: parameters)
 //        default:
 //            return try URLEncoding.default.encode(urlRequest, with: parameters)
@@ -102,8 +106,16 @@ class APIService: APIInteractor {
         ]
         return APIRequest.register(params).json(RegisterResponsable.self)
     }
-    func login(email: String, password: String) -> DataResponsePublisher<RegisterResponsable> {
+    func login(email: String,
+               password: String) -> DataResponsePublisher<RegisterResponsable> {
         let params = ["email": email, "password": password]
         return APIRequest.login(params).json(RegisterResponsable.self)
+    }
+    func socialLogin(name: String,
+                     email: String,
+                     token: String,
+                     platform: String) -> DataResponsePublisher<RegisterResponsable> {
+        let params = ["name": name, "email": email, "token": token, "platform": platform]
+        return APIRequest.socialLogin(params).json(RegisterResponsable.self)
     }
 }

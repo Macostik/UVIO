@@ -15,7 +15,7 @@ protocol GoogleProvider {
 
 struct GoogleService: GoogleInteractor {
     let loginManager = GIDSignIn.sharedInstance
-    func getBearer() -> AnyPublisher<Token?, Error> {
+    func getData() -> AnyPublisher<SocialValueType?, Error> {
         loginManager.authorizePublisher()
             .mapError { $0 }
             .eraseToAnyPublisher()

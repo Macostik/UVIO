@@ -140,6 +140,7 @@
 		56E6F19C283D458900623AE2 /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F197283D458900623AE2 /* SlimLogger.swift */; };
 		56E6F19D283D458900623AE2 /* SlimLoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6F198283D458900623AE2 /* SlimLoggerConfig.swift */; };
 		56EF4D672872CB1A00C7EE88 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF4D662872CB1A00C7EE88 /* SettingsView.swift */; };
+		56F5C442289130C500BDCA3A /* SocialValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5C441289130C500BDCA3A /* SocialValueType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -273,6 +274,7 @@
 		56E6F197283D458900623AE2 /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogger.swift; sourceTree = "<group>"; };
 		56E6F198283D458900623AE2 /* SlimLoggerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLoggerConfig.swift; sourceTree = "<group>"; };
 		56EF4D662872CB1A00C7EE88 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		56F5C441289130C500BDCA3A /* SocialValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialValueType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,6 +523,7 @@
 				56D1F0F32869F43800B18BBE /* InfoAlertType.swift */,
 				56DD17902872F1A30030F7F2 /* SettingsViewType.swift */,
 				5633E73A288599C400F03399 /* AuthToken.swift */,
+				56F5C441289130C500BDCA3A /* SocialValueType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				563E02EA284F498900610F7C /* AuthFacebook+Ext.swift in Sources */,
 				56C772112835645A0000E579 /* Fonts+Generated.swift in Sources */,
 				562A6BBA2847E134002152B0 /* CompleteOnboardingView.swift in Sources */,
+				56F5C442289130C500BDCA3A /* SocialValueType.swift in Sources */,
 				563E02E6284F3EAE00610F7C /* ASAuthorizationController+Ext.swift in Sources */,
 				565BDF702851D92B000BE00C /* RoundedCorner.swift in Sources */,
 				56371394283F71E0003C5A09 /* ConnectCGMView.swift in Sources */,

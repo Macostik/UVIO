@@ -80,3 +80,105 @@ extension BaseViewModel {
         dependency.provider.storeService.logOut()
     }
 }
+// Handle third party login
+extension UserViewModel {
+    func dexcomLogin() {
+        dependency.provider.dexcomService.getBearer()
+            .replaceError(with: "")
+            .assign(to: \.dexcomToken, on: self)
+            .store(in: &cancellableSet)
+    }
+    func registerUser() {
+        dependency.provider.apiService
+            .register(name: name,
+                   email: email,
+                      password: password.isEmpty ? "password" : password,
+                   birthDate: birthDateParam,
+                   gender: genderSelectedItem?.type ?? "" )
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { response in
+                guard let response = response.value,
+                        response.success else {
+                    Logger.error("Something went wrong: \(String(describing: response.error))")
+                    return
+                }
+                let user = response.data.user
+                self.authToken = response.data.token
+                self.createNewUser.send(user)
+            })
+            .store(in: &cancellableSet)
+    }
+    func login() -> AnyPublisher<Bool, Error> {
+        if loginMode == .signIn {
+            return dependency.provider.apiService
+                .login(email: email, password: password)
+                .flatMap({ response -> AnyPublisher<Bool, Error> in
+                    guard let response = response.value
+                    else {
+                        Logger.error("Something went wrong: \(String(describing: response.error))")
+                        return Just(false)
+                            .setFailureType(to: Error.self)
+                            .eraseToAnyPublisher()
+                    }
+                    let user = response.data.user
+                    self.authToken = response.data.token
+                    self.createNewUser.send(user)
+                    return Just(response.success)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                })
+                .eraseToAnyPublisher()
+        }
+        return Just(true)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
+    func socialLogin(with socialType: SocialValueType) {
+        dependency.provider.apiService
+            .socialLogin(name: socialType.name,
+                         email: socialType.email,
+                         token: socialType.token,
+                         platform: socialType.platform)
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { response in
+                guard let response = response.value,
+                        response.success else {
+                    Logger.error("Something went wrong: \(String(describing: response.error))")
+                    return
+                }
+                let user = response.data.user
+                self.authToken = response.data.token
+                self.createNewUser.send(user)
+            })
+            .store(in: &cancellableSet)
+    }
+    func appleLogin() {
+        dependency.provider.appleService.singIn()
+            .map({ [unowned self] value in
+                let authorized = value == .authorized
+                self.signUp = authorized
+                return authorized
+            })
+            .replaceError(with: false)
+            .assign(to: \.isloginModeSignUp, on: self)
+            .store(in: &cancellableSet)
+    }
+    func facebookLogin() {
+        dependency.provider.facebookService.getData()
+            .compactMap({ $0 })
+            .sink { _ in
+            } receiveValue: { [unowned self] value in
+                self.socialLogin(with: value)
+            }
+            .store(in: &cancellableSet)
+    }
+    func googleLogin() {
+        dependency.provider.googleService.getData()
+            .compactMap({ $0 })
+            .sink { _ in
+            } receiveValue: { [unowned self] value in
+                self.socialLogin(with: value)
+            }
+            .store(in: &cancellableSet)
+    }
+}
