@@ -71,7 +71,7 @@ extension DOBView {
             .gesture(DragGesture()
                 .onChanged { gesture in
                     let yOffset = gesture.location.y
-                    if yOffset > 0 {
+                    if yOffset > 0 && !isShowCalendar {
                         offset = yOffset
                     }
                 }
@@ -99,7 +99,7 @@ extension DOBView {
     }
     var dobViewOverlay: some View {
         HStack {
-            Text(viewModel.birthDateString)
+            Text(viewModel.birthDate.convertToString())
                 .font(.poppins(.medium, size: 14))
         }
         .foregroundColor(Color.black)
