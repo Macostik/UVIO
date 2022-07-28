@@ -13,11 +13,11 @@ protocol APIInteractor {
                   email: String,
                   password: String,
                   birthDate: String,
-                  gender: String) -> DataResponsePublisher<RegisterResponsable>
+                  gender: String) -> DataResponsePublisher<UserResponsable>
     func login(email: String,
-               password: String) -> DataResponsePublisher<RegisterResponsable>
+               password: String) -> DataResponsePublisher<UserResponsable>
     func socialLogin(name: String,
                      email: String,
                      token: String,
-                     platform: String) -> DataResponsePublisher<RegisterResponsable>
+                     platform: String) -> DataResponsePublisher<UserResponsable>
 }

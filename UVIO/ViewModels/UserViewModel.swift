@@ -126,7 +126,7 @@ class UserViewModel: BaseViewModel {
     @Published var showErrorAlert: Bool = false
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
-    var createNewUser = PassthroughSubject<UserResponsable, Error>()
+    var createNewUser = PassthroughSubject<UserParam, Error>()
     var saveData = PassthroughSubject<Void, Error>()
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()

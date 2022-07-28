@@ -9,15 +9,15 @@ import Foundation
 import RealmSwift
 
 // swiftlint:disable identifier_name
-struct RegisterResponsable: Decodable {
+struct UserResponsable: Decodable {
     let success: Bool
     let data: DataResponsable
 }
 struct DataResponsable: Decodable {
     let token: String
-    let user: UserResponsable
+    let user: UserParam
 }
-struct UserResponsable: Decodable {
+struct UserParam: Decodable {
     let id: Int
     let name: String
     let email: String

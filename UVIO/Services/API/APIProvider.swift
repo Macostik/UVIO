@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 private let timeOutInterval = 30.0
-
+// swiftlint:disable function_body_length function_parameter_count superfluous_disable_command
 protocol APIProvider {
     var apiService: APIInteractor { get }
 }
@@ -18,11 +18,12 @@ private enum APIRequest: URLRequestConvertible {
     case register([String: Any])
     case login([String: Any])
     case socialLogin([String: Any])
+    case profile([String: Any])
     func asURLRequest() throws -> URLRequest {
         let headers: [String: String]? = nil
         var method: HTTPMethod {
             switch self {
-            case .register, .login, .socialLogin:
+            case .register, .login, .socialLogin, .profile:
                 return .post
             }
         }
@@ -30,7 +31,8 @@ private enum APIRequest: URLRequestConvertible {
             switch self {
             case .login(let parameters),
                     .register(let parameters),
-                    .socialLogin(let parameters):
+                    .socialLogin(let parameters),
+                    .profile(let parameters):
                 return parameters
             }
         }()
@@ -44,6 +46,8 @@ private enum APIRequest: URLRequestConvertible {
                 query = "register"
             case .socialLogin:
                 query = "login-social"
+            case .profile:
+                query = "profiles"
             }
             if let query = query {
                 URL = URL.appendingPathComponent(query)
@@ -64,7 +68,7 @@ private enum APIRequest: URLRequestConvertible {
             }
         }
         switch self {
-        case .login, .register, .socialLogin:
+        case .login, .register, .socialLogin, .profile:
             return try URLEncoding(arrayEncoding: .noBrackets).encode(urlRequest, with: parameters)
 //        default:
 //            return try URLEncoding.default.encode(urlRequest, with: parameters)
@@ -96,7 +100,7 @@ class APIService: APIInteractor {
                   email: String,
                   password: String,
                   birthDate: String,
-                  gender: String) -> DataResponsePublisher<RegisterResponsable> {
+                  gender: String) -> DataResponsePublisher<UserResponsable> {
         let params = [
             "name": name,
             "email": email,
@@ -104,18 +108,44 @@ class APIService: APIInteractor {
             "birth_date": birthDate,
             "gender": gender
         ]
-        return APIRequest.register(params).json(RegisterResponsable.self)
+        return APIRequest.register(params).json(UserResponsable.self)
     }
     func login(email: String,
-               password: String) -> DataResponsePublisher<RegisterResponsable> {
+               password: String) -> DataResponsePublisher<UserResponsable> {
         let params = ["email": email, "password": password]
-        return APIRequest.login(params).json(RegisterResponsable.self)
+        return APIRequest.login(params).json(UserResponsable.self)
     }
     func socialLogin(name: String,
                      email: String,
                      token: String,
-                     platform: String) -> DataResponsePublisher<RegisterResponsable> {
+                     platform: String) -> DataResponsePublisher<UserResponsable> {
         let params = ["name": name, "email": email, "token": token, "platform": platform]
-        return APIRequest.socialLogin(params).json(RegisterResponsable.self)
+        return APIRequest.socialLogin(params).json(UserResponsable.self)
+    }
+    func profile(userID: String = "",
+                 diabetesType: String = "",
+                 glucoseUnit: String = "",
+                 glucoseTargetMin: String = "",
+                 glucoseTargetMax: String = "",
+                 glucoseHyper: String = "",
+                 glucoseHypo: String = "",
+                 glucoseSensor: String = "",
+                 country: String = "",
+                 alertVibrate: String = "",
+                 dontDisturb: String = "") -> DataResponsePublisher<UserResponsable> {
+        let params = [
+            "user_id": userID,
+            "diabetes_type": diabetesType,
+            "glucose_unit": glucoseUnit,
+            "glucose_target_min": glucoseTargetMin,
+            "glucose_target_max": glucoseTargetMax,
+            "glucose_hyper": glucoseHyper,
+            "glucose_hypo": glucoseHypo,
+            "glucose_sensor": glucoseSensor,
+            "country": country,
+            "alerts_vibrate": alertVibrate,
+            "override_do_not_disturb": dontDisturb
+        ]
+        return APIRequest.register(params).json(UserResponsable.self)
     }
 }
