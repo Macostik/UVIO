@@ -40,13 +40,12 @@ extension GIDSignIn {
         func signIn(loginManager: GIDSignIn) {
             loginManager.signIn(with: GIDConfiguration(clientID: Constant.clientID),
                                 presenting: rootViewController) { user, error in
-                guard let user = user else {
-                    if let error = error {
-                        _ = self.subscriber?
-                            .receive(completion: Subscribers.Completion.failure(error))
-                    }
+                if let error = error {
+                    _ = self.subscriber?
+                        .receive(completion: Subscribers.Completion.failure(error))
                     return
                 }
+                guard let user = user else { return }
                 let socialType = SocialValueType(name: user.profile?.name ?? "",
                                                  email: user.profile?.email ?? "",
                                                  token: user.authentication.accessToken,

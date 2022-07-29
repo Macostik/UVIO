@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignUpFlow: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
@@ -45,7 +46,11 @@ extension SignUpFlow {
         VStack {
             NavigationBackBarViewAction(action: {
                 withAnimation {
-                    viewModel.selectedOnboardingItem = viewModel.previousOnboardingType
+                    if viewModel.selectedLoginItem == .signIn {
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        viewModel.selectedLoginItem = viewModel.previousLoginType
+                    }
                 }
             }, content: {
                 ProgressView(completed: viewModel.completionValue)

@@ -40,7 +40,9 @@ extension LoginManager {
                 if let error = error {
                     _ = self.subscriber?.receive(completion: Subscribers.Completion.failure(error))
                 } else {
-                    guard let accessToken = FBSDKLoginKit.AccessToken.current else { return }
+                    guard let result = result,
+                          !result.isCancelled,
+                          let accessToken = FBSDKLoginKit.AccessToken.current else { return }
                     let graphRequest = FBSDKLoginKit.GraphRequest(graphPath: "me",
                                                                   parameters: ["fields": "email, name"],
                                                                   tokenString: accessToken.tokenString,

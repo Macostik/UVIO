@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignInFlow: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var currentTabIndex: Double = 0
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
@@ -42,7 +43,11 @@ extension SignInFlow {
         VStack {
             NavigationBackBarViewAction(action: {
                 withAnimation {
-                    viewModel.selectedLoginItem = viewModel.previousLoginType
+                    if viewModel.selectedLoginItem == .signIn {
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        viewModel.selectedLoginItem = viewModel.previousLoginType
+                    }
                 }
             }, content: {
                 Group {
