@@ -33,7 +33,7 @@ class StoreService: StoreInteractor {
         return subject.eraseToAnyPublisher()
     }
     func logOut() -> AnyPublisher<Bool, Error> {
-        let subject = CurrentValueSubject<Bool, Error>(false)
+        let subject = PassthroughSubject<Bool, Error>()
         let realm = realmProvider.realm
         realm?.writeAsync({
             realm?.deleteAll()

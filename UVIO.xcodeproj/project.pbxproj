@@ -370,8 +370,8 @@
 		568C171628364DB400C77384 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				5659428B28573C8700A1A168 /* SignUpFlow.swift */,
 				56A8537328323934000DFE3D /* SplashView.swift */,
+				5659428B28573C8700A1A168 /* SignUpFlow.swift */,
 				56E2867E28354EAE0095FD9F /* SignUpView.swift */,
 				568C171728364DDB00C77384 /* EmailSignUpView.swift */,
 				56D958212833D3430053E65C /* GenderOnboardingView.swift */,

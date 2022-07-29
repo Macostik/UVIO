@@ -29,7 +29,7 @@ struct SignUpFlow_Previews: PreviewProvider {
 extension SignUpFlow {
     var backgroundColor: some View {
         Group {
-            if viewModel.selectedOnboardingItem == .singUp ||
+            if viewModel.selectedOnboardingItem == .signUp ||
                 viewModel.selectedOnboardingItem == .emailSignUp {
                 Image.loginViewBackground
                     .resizable()
@@ -46,10 +46,10 @@ extension SignUpFlow {
         VStack {
             NavigationBackBarViewAction(action: {
                 withAnimation {
-                    if viewModel.selectedLoginItem == .signIn {
+                    if viewModel.selectedOnboardingItem == .signUp {
                         presentationMode.wrappedValue.dismiss()
                     } else {
-                        viewModel.selectedLoginItem = viewModel.previousLoginType
+                        viewModel.selectedOnboardingItem = viewModel.previousOnboardingType
                     }
                 }
             }, content: {
@@ -57,7 +57,7 @@ extension SignUpFlow {
             })
             TabView(selection: $viewModel.selectedOnboardingItem) {
                 SignUpView(viewModel: viewModel)
-                    .tag(OnboardingViewType.singUp)
+                    .tag(OnboardingViewType.signUp)
                 EmailSignUpView(viewModel: viewModel)
                     .tag(OnboardingViewType.emailSignUp)
                 NameOnboardingView(viewModel: viewModel)

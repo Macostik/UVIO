@@ -13,20 +13,14 @@ import Alamofire
 class BaseViewModel: ObservableObject {
     @Published var user: User?
     @Published var signInConfirmed = false
-    @Published var signUpConfirmed = false {
-        willSet {
-            if newValue {
-                self.presentOnboardingView.value = .name
-            }
-        }
-    }
+    @Published var signUpConfirmed = false
     @Published var hasUserlogOut = false {
         willSet {
             self.signInConfirmed = !newValue
             self.signUpConfirmed = !newValue
         }
     }
-    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.singUp)
+    var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.signUp)
     var cancellableSet = Set<AnyCancellable>()
     @Environment(\.dependency) var dependency
     init() {
@@ -129,6 +123,7 @@ extension UserViewModel {
                 })
                 .eraseToAnyPublisher()
         }
+        self.presentOnboardingView.value = .name
         return Just(true)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()

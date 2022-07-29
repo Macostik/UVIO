@@ -64,7 +64,7 @@ class UserViewModel: BaseViewModel {
         }
     }
     // Onboarding selection
-    @Published var selectedOnboardingItem: OnboardingViewType = .singUp
+    @Published var selectedOnboardingItem: OnboardingViewType = .signUp
     // Login  selection
     @Published var selectedLoginItem: LoginViewType = .signIn
     // Onboarding alert
@@ -84,6 +84,9 @@ class UserViewModel: BaseViewModel {
                 UserDefaults.standard.set(newValue, forKey: Constant.authTokenKey)
                 signUp = true
                 isloginModeSignUp = true
+                hasUserlogOut = false
+                presentLoginView.value = .signIn
+                presentOnboardingView.value = .signUp
             }
         }
     }
@@ -123,7 +126,7 @@ class UserViewModel: BaseViewModel {
     @Published var signUp = false
     @Published var userWasUpdated = false
     @Published var userPersist = false
-    @Published var userCreateCompleted = false
+    @Published var userCreateCompleted = false 
     @Published var showErrorAlert: Bool = false
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
@@ -355,7 +358,7 @@ extension UserViewModel {
 extension UserViewModel {
     var completionValue: CGFloat {
         switch selectedOnboardingItem {
-        case .singUp: return 0.0
+        case .signUp: return 0.0
         case .emailSignUp: return 0.0
         case .name:  return 0.2
         case .birthDate: return 0.4
@@ -366,8 +369,8 @@ extension UserViewModel {
     }
     var previousOnboardingType: OnboardingViewType {
         switch selectedOnboardingItem {
-        case .singUp: return .singUp
-        case .emailSignUp: return .singUp
+        case .signUp: return .signUp
+        case .emailSignUp: return .signUp
         case .name: return .emailSignUp
         case .birthDate: return .name
         case .gender: return .birthDate
