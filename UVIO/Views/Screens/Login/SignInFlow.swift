@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignInFlow: View {
+    @State private var currentTabIndex: Double = 0
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
@@ -71,7 +72,8 @@ extension SignInFlow {
                     .tag(LoginViewType.newPassword)
                 NewPasswordSuccessView(viewModel: viewModel)
                     .tag(LoginViewType.newPasswordSuccess)
-            }.tabViewStyle(.page(indexDisplayMode: .never))
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
         }
     }
 }

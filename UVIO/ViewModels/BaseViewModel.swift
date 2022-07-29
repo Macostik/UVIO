@@ -152,6 +152,34 @@ extension UserViewModel {
             })
             .store(in: &cancellableSet)
     }
+    func setProfile() {
+        let userID = String(user?.id ?? 0)
+        dependency.provider.apiService
+            .profile(userID: userID,
+                     diabetesType: self.diabetSelectedItem?.type ?? "",
+                     glucoseUnit: self.glucoseUnit,
+                     glucoseTargetMin: String(self.glucoseRangeValue.lowerBound),
+                     glucoseTargetMax: String(self.glucoseRangeValue.upperBound),
+                     glucoseHyper: String(self.hyperValue),
+                     glucoseHypo: String(self.hypoValue),
+                     glucoseSensor: "",
+                     country: "",
+                     alertVibrate: isVibrate ? "1" : "0",
+                     dontDisturb: isNotDisturb ? "1" : "0")
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { response in
+                guard let response = response.value,
+                      response.success else {
+                    Logger.error("Something went wrong: \(String(describing: response.error))")
+                    return
+                }
+                Logger.debug("Set profile value successfully")
+            })
+            .store(in: &cancellableSet)
+    }
+}
+// Handle login via social frameworks
+extension UserViewModel {
     func appleLogin() {
         dependency.provider.appleService.singIn()
             .map({ [unowned self] value in

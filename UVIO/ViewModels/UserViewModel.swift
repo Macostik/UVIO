@@ -81,6 +81,7 @@ class UserViewModel: BaseViewModel {
         willSet {
             if !newValue.isEmpty {
                 Logger.info("Login was successful with auth token: \(newValue)")
+                UserDefaults.standard.set(newValue, forKey: Constant.authTokenKey)
                 signUp = true
                 isloginModeSignUp = true
             }
@@ -288,6 +289,7 @@ extension UserViewModel {
     }
     func updateBGLevelsData() {
         saveBGLevelsData
+            .map({[unowned self] _ in  self.setProfile() })
             .compactMap({ [unowned self] _ in self.user })
             .sink(receiveCompletion: { _ in
             }, receiveValue: { [unowned self] user in

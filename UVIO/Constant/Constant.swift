@@ -21,4 +21,5 @@ struct Constant {
     static let gcmMessageID: String = "gcm.message_id"
     static let fcmTokenKey: String = "FCMToken"
     static let baseURL = "http://3.82.236.173/api"
+    static let authTokenKey = "authToken"
 }

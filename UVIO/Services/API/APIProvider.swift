@@ -9,18 +9,22 @@ import Foundation
 import Alamofire
 
 private let timeOutInterval = 30.0
-// swiftlint:disable function_body_length function_parameter_count superfluous_disable_command
+// swiftlint:disable function_body_length function_parameter_count superfluous_disable_command line_length
 protocol APIProvider {
     var apiService: APIInteractor { get }
 }
-
 private enum APIRequest: URLRequestConvertible {
     case register([String: Any])
     case login([String: Any])
     case socialLogin([String: Any])
     case profile([String: Any])
+    // swiftlint:disable cyclomatic_complexity
     func asURLRequest() throws -> URLRequest {
-        let headers: [String: String]? = nil
+        var headersData: [String: String]?
+        if let token = UserDefaults.standard.string(forKey: Constant.authTokenKey) {
+            headersData = ["Authorization": "Bearer " + token]
+        }
+        let headers: [String: String]? = headersData
         var method: HTTPMethod {
             switch self {
             case .register, .login, .socialLogin, .profile:
@@ -132,7 +136,7 @@ class APIService: APIInteractor {
                  glucoseSensor: String = "",
                  country: String = "",
                  alertVibrate: String = "",
-                 dontDisturb: String = "") -> DataResponsePublisher<UserResponsable> {
+                 dontDisturb: String = "") -> DataResponsePublisher<DiabetesValueResponsable> {
         let params = [
             "user_id": userID,
             "diabetes_type": diabetesType,
@@ -146,6 +150,6 @@ class APIService: APIInteractor {
             "alerts_vibrate": alertVibrate,
             "override_do_not_disturb": dontDisturb
         ]
-        return APIRequest.register(params).json(UserResponsable.self)
+        return APIRequest.profile(params).json(DiabetesValueResponsable.self)
     }
 }

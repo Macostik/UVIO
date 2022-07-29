@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 // swiftlint:disable identifier_name
+
 struct UserResponsable: Decodable {
     let success: Bool
     let data: DataResponsable
@@ -21,10 +22,31 @@ struct UserParam: Decodable {
     let id: Int
     let name: String
     let email: String
-    let birth_date: String
-    let gender: String
+    let birth_date: String?
+    let gender: String?
     let updated_at: String
     let created_at: String
+}
+
+struct DiabetesValueResponsable: Decodable {
+    let success: Bool
+    let data: DiabetesParam
+}
+struct DiabetesParam: Decodable {
+    let user_id: String
+    let diabetes_type: String?
+    let glucose_unit: String?
+    let glucose_target_min: String?
+    let glucose_target_max: String?
+    let glucose_hyper: String?
+    let glucose_hypo: String?
+    let glucose_sensor: String?
+    let country: String?
+    let alerts_vibrate: String?
+    let override_do_not_disturb: String?
+    let updated_at: String?
+    let created_at: String?
+    let id: Int
 }
 
 class User: Object {
