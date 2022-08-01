@@ -36,6 +36,8 @@ struct SplashView: View {
             RoundedRectangle(cornerRadius: 32)
                 .foregroundColor(Color.white)
             Image.uvioIcon
+                .resizable()
+                .frame(width: 51, height: 40)
         }
         .frame(width: 128, height: 128)
     }
@@ -45,6 +47,8 @@ struct SplashView: View {
                 .bold()
                 .foregroundColor(.black)
                 .font(.poppins(.bold, size: 24))
+                .padding(.top, 0)
+                .padding(.bottom, 20)
             Text(L10n.takeBackControl)
                 .font(.poppins(.medium, size: 18))
                 .multilineTextAlignment(.center)
