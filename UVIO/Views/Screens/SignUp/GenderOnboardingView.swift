@@ -21,6 +21,7 @@ struct GenderOnboardingView: View, Identifiable {
                 contentView
                 Spacer()
                 SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                    .padding(.bottom, 7)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -62,6 +63,6 @@ extension GenderOnboardingView {
             }
             .frame(height: 175)
         }
-        .padding(.bottom)
+        .offset(y: -20)
     }
 }
