@@ -35,9 +35,7 @@ extension SignUpFlow {
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
             } else {
-                LinearGradient(
-                    colors: [Color.grayBackgroundColor],
-                    startPoint: .top, endPoint: .bottom)
+                Color.grayOnboardingColor
                 .ignoresSafeArea()
             }
         }
