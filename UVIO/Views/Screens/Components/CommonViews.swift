@@ -73,6 +73,7 @@ struct NextButtonAction: View {
                 HStack {
                     Image.nextIcon
                         .padding()
+                        .padding(.trailing, 10)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)

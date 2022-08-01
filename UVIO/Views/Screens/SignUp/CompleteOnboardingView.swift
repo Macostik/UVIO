@@ -18,11 +18,10 @@ struct CompleteOnboardingView: View {
                 contentView
                 Spacer()
                 connectButton
+                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                    .padding(.bottom, 7)
             }
-            NavigationBarView(destination: {
-                EmptyView()
-            }, content: {},
-            disabled: true)
+            navigationView
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
                 MainView(userViewModel: viewModel)
             } label: {
@@ -49,15 +48,15 @@ extension CompleteOnboardingView {
     var contentView: some View {
         VStack {
             Image.successMarkIcon
-                .padding(.bottom, -15)
+                .offset(y: 10)
             Text(L10n.awesomeYouMadeIt)
                 .font(.poppins(.bold, size: 24))
-                .padding(.bottom, 5)
+                .padding(.bottom, 10)
             letsConnectText
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
         }
-        .padding(.top, 60)
+        .padding(.top, 75)
     }
     var connectButton: some View {
         Button {
@@ -67,6 +66,7 @@ extension CompleteOnboardingView {
                 HStack {
                     Image.nextIcon
                         .padding()
+                        .padding(.trailing, 10)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
@@ -79,7 +79,7 @@ extension CompleteOnboardingView {
                     .foregroundColor(.white)
             )
         }
-        .padding(.bottom, 40)
+        .padding(.bottom, 18)
     }
     var letsConnectText: some View {
         Text(L10n.letsConnectDexcom)
@@ -88,5 +88,23 @@ extension CompleteOnboardingView {
             .font(.poppins(.bold, size: 21)) +
         Text(L10n.getStarted)
             .font(.poppins(.regular, size: 21))
+    }
+    var navigationView: some View {
+        ZStack {
+            HStack {
+                Image.uvioIcon
+                    .resizable()
+                    .frame(width: 32, height: 25)
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                NavigationLink {
+                } label: {
+                    Image.menuIcon
+                }
+                .disabled(true)
+            }
+            .padding(.horizontal, 30)
+        }
+        .frame(maxWidth: .infinity)
     }
 }
