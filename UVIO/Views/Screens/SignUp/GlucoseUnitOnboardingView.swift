@@ -20,6 +20,7 @@ struct GlucoseUnitOnboardingView: View {
                 contentView
                 Spacer()
                 SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                    .padding(.bottom, 7)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -34,10 +35,11 @@ struct GlucoseUnitOnboardingView_Previews: PreviewProvider {
 
 extension GlucoseUnitOnboardingView {
     var contentView: some View {
-        VStack(spacing: 32) {
+        VStack {
             Text(L10n.selectGlucose)
                 .font(.poppins(.bold, size: 24))
                 .multilineTextAlignment(.center)
+                .padding(.bottom, 33)
             HStack {
                 ScrollView([]) {
                     LazyVGrid(columns: columns, spacing: 15) {
@@ -67,6 +69,6 @@ extension GlucoseUnitOnboardingView {
                 .frame(height: 48)
             }
         }
-        .padding(.bottom, 20)
+        .offset(y: -25)
     }
 }
