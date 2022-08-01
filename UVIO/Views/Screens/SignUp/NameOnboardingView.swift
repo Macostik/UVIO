@@ -43,7 +43,6 @@ extension NameOnboardingView {
                 .font(.poppins(.bold, size: 24))
             TextField(L10n.eg, text: $viewModel.name)
                 .padding(.leading)
-                .foregroundColor(Color.grayScaleColor)
                 .font(.poppins(.medium, size: 14))
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .background(Color.white)

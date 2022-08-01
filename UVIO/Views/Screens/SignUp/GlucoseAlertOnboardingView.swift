@@ -16,6 +16,7 @@ struct GlucoseAlertOnboardingView: View, Identifiable {
                 contentView
                 Spacer()
                 NextButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                    .padding(.bottom, 6)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -30,7 +31,7 @@ struct GlucoseAlertOnboardingView_Previews: PreviewProvider {
 
 extension GlucoseAlertOnboardingView {
     var contentView: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading) {
             targetView
             hypersAndHypos
         }
@@ -39,13 +40,15 @@ extension GlucoseAlertOnboardingView {
         VStack {
             Text(L10n.setGlucoseAlert)
                 .font(.poppins(.bold, size: 24))
+                .padding(.top, -7)
             ZStack {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 16)
                     .foregroundColor(Color.white)
                     .frame(height: 116)
                     .overlay(rangeSliderOverlay)
             }
             .padding(.trailing)
+            .padding(.top, 15)
         }
         .padding(.leading)
     }
@@ -66,8 +69,10 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
+                .padding(.horizontal, 8)
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
+                .padding(.horizontal, 10)
             }.padding()
         }
     }
@@ -75,7 +80,9 @@ extension GlucoseAlertOnboardingView {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.grayLightColor)
+                .padding(.top, 6)
                 .padding(.horizontal, 8)
+                .frame(height: 108)
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
@@ -88,7 +95,9 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
+                .padding(.horizontal, 8)
                 SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
+                    .padding(.horizontal, 10)
             }
             .padding()
         }
@@ -98,6 +107,7 @@ extension GlucoseAlertOnboardingView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.grayLightColor)
                 .padding(.horizontal, 8)
+                .frame(height: 108)
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
@@ -109,30 +119,34 @@ extension GlucoseAlertOnboardingView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
+                .padding(.horizontal, 8)
                 SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                .padding(.horizontal, 10)
             }
             .padding()
+            .padding(.top, -4)
         }
     }
     var hypersAndHypos: some View {
         VStack(alignment: .leading) {
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 396)
+                    .frame(height: 408)
                     .foregroundColor(Color.white)
                     .overlay(doubleSliderOverlay)
             }
             .padding(.trailing)
         }
         .padding(.leading)
+        .padding(.top, 6)
     }
     var doubleSliderOverlay: some View {
         VStack {
             RoundedRectangle(cornerRadius: 12)
-                .frame(height: 100)
+                .frame(height: 108)
                 .overlay(topSliderOverlay)
             RoundedRectangle(cornerRadius: 12)
-                .frame(height: 100)
+                .frame(height: 108)
                 .overlay(bottomSliderOverlay)
                 .padding(.bottom, 8)
             vibrateView
@@ -171,7 +185,7 @@ extension GlucoseAlertOnboardingView {
             VStack {
                 VStack(alignment: .leading) {
                 HStack {
-                    Image.timerIcon
+                    Image.alertTimeIcon
                     Text(L10n.dontDisturb)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.black)

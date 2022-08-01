@@ -31,6 +31,7 @@ internal extension Image {
   static var alertBackgroundBlue : Image { Image("alertBackgroundBlue", bundle: BundleToken.bundle) }
   static var alertBackgroundGreen : Image { Image("alertBackgroundGreen", bundle: BundleToken.bundle) }
   static var alertBackgroundRed : Image { Image("alertBackgroundRed", bundle: BundleToken.bundle) }
+  static var alertTimeIcon : Image { Image("alertTimeIcon", bundle: BundleToken.bundle) }
   static var appleIcon : Image { Image("appleIcon", bundle: BundleToken.bundle) }
   static var arrowBottomIcon : Image { Image("arrowBottomIcon", bundle: BundleToken.bundle) }
   static var awesomeIcon : Image { Image("awesomeIcon", bundle: BundleToken.bundle) }
