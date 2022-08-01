@@ -23,6 +23,9 @@ struct BirthDateOnboardingView: View, Identifiable {
                         viewModel.presentOnboardingView.value = .gender
                     }
                     SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                        .shadow(color: Color.black.opacity(0.1),
+                                radius: 7)
+                        .padding(.bottom, 7)
                 }
             }
         }
@@ -45,5 +48,6 @@ extension BirthDateOnboardingView {
                            isPresentedDatePicker: $isPresentedDatePicker)
             .padding(.top)
         }
+        .offset(y: 7)
     }
 }
