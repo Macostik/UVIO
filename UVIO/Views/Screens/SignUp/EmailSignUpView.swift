@@ -14,12 +14,13 @@ struct EmailSignUpView: View {
         ZStack(alignment: .top) {
             VStack {
                 signUpBanner
-                    .padding(.bottom, 52)
+                    .padding(.bottom, 48)
                     .layoutPriority(0)
                 container
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
+                    .padding(.bottom, 13)
             }
         }
     }
@@ -66,7 +67,7 @@ extension EmailSignUpView {
                     Text(L10n.forgotPassword)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.complementaryColor)
-                        .padding(.top, 32)
+                        .padding(.top, 25)
                 }
             }
         }

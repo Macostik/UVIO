@@ -51,9 +51,11 @@ extension SignInFlow {
                 }
             }, content: {
                 Group {
-                    if viewModel.selectedLoginItem == .signIn ||
+                    if viewModel.selectedLoginItem == .signIn {
+                       EmptyView()
+                    } else if
                         viewModel.selectedLoginItem == .emailSignUp {
-                        EmptyView()
+                        Text(L10n.signIn)
                     } else if viewModel.selectedLoginItem == .recoveryEmail ||
                                 viewModel.selectedLoginItem == .checkInBox {
                         Text(L10n.forgotPassword)
