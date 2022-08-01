@@ -24,6 +24,7 @@ struct SignUpView: View {
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
+                    .padding(.bottom, 13)
             }
         }
         .onAppear(perform: {
@@ -42,7 +43,7 @@ extension SignUpView {
     var signUpTitle: some View {
         Text(L10n.signUpMethod)
             .font(.poppins(.medium, size: 18))
-            .padding(.top, 60)
+            .padding(.top, 45)
             .padding(.bottom, 25)
     }
     var containerButtons: some View {
@@ -52,7 +53,10 @@ extension SignUpView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.emailIcon.padding()
+                        Image.emailIcon
+                            .resizable()
+                            .frame(width: 20, height: 16)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
@@ -68,7 +72,10 @@ extension SignUpView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.facebookIcon.padding()
+                        Image.facebookIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
@@ -84,7 +91,10 @@ extension SignUpView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.googleIcon.padding()
+                        Image.googleIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)

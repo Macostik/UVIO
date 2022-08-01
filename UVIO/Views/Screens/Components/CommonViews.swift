@@ -28,6 +28,7 @@ struct BackButtonAction: View {
             action()
         } label: {
             Image.backButtonIcon
+                .padding(.horizontal, 5)
         }
     }
 }
@@ -147,7 +148,7 @@ var signUpBanner: some View {
         Text(L10n.cone)
             .font(.poppins(.bold, size: 21))
     }
-    .padding(.top, 65)
+    .padding(.top, 81)
 }
 
 var signInBanner: some View {

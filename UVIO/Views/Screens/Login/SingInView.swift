@@ -16,6 +16,7 @@ struct SignInView: View {
         ZStack(alignment: .top) {
             VStack {
                 signUpBanner
+                    .offset(y: -28)
                 VStack {
                     signInTitle
                     containerButtons
@@ -23,6 +24,7 @@ struct SignInView: View {
                 Spacer()
                 privatePolicy
                     .multilineTextAlignment(.center)
+                    .padding(.bottom, 13)
             }
         }
         .onAppear(perform: {
@@ -41,9 +43,9 @@ extension SignInView {
     var signInTitle: some View {
         Text(L10n.welcomeBack)
             .font(.poppins(.medium, size: 18))
-            .padding(.top, 50)
+            .padding(.top, 18)
             .multilineTextAlignment(.center)
-            .padding(.bottom, 25)
+            .padding(.bottom, 30)
     }
     var containerButtons: some View {
         VStack(spacing: 12) {
@@ -52,7 +54,10 @@ extension SignInView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.emailIcon.padding()
+                        Image.emailIcon
+                            .resizable()
+                            .frame(width: 20, height: 16)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
@@ -68,7 +73,10 @@ extension SignInView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.facebookIcon.padding()
+                        Image.facebookIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
@@ -84,7 +92,10 @@ extension SignInView {
             } label: {
                 ZStack {
                     HStack {
-                        Image.googleIcon.padding()
+                        Image.googleIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .padding()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 48, alignment: .leading)
