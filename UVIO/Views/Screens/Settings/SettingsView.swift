@@ -39,16 +39,19 @@ extension SettingsView {
     }
     var contentView: some View {
         VStack(alignment: .leading) {
+            Text(L10n.menu)
+                .font(.poppins(.bold, size: 24))
+                .padding(.top, 79)
             VStack(alignment: .leading, spacing: 30) {
-                Text(L10n.menu)
-                    .font(.poppins(.bold, size: 24))
-                    .padding(.top, 70)
                 NavigationLink {
                      AccountInformationView(viewModel: viewModel)
                 } label: {
                     HStack(spacing: 15) {
                         Image.accountInfoIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text(L10n.accountInformation)
+                            .font(.poppins(.medium, size: 21))
                     }
                     .offset(x: -2)
                 }
@@ -57,7 +60,10 @@ extension SettingsView {
                 } label: {
                     HStack(spacing: 15) {
                         Image.bgAlertIcon
-                        Text(L10n.bgLevels)
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text(L10n.bgLevelAlerts)
+                            .font(.poppins(.medium, size: 21))
                     }
                 }
                 NavigationLink {
@@ -65,29 +71,36 @@ extension SettingsView {
                 } label: {
                     HStack(spacing: 15) {
                         Image.devicesIcon
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text(L10n.integrations)
+                            .font(.poppins(.medium, size: 21))
                     }
                 }
             }
             .foregroundColor(Color.black)
             .font(.poppins(.regular, size: 16))
+            .padding(.top, 15)
             Spacer()
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: 17) {
                 Text(L10n.termsOfService)
-                Text(L10n.privacyPolicy)
+                    .font(.poppins(.medium, size: 16))
+                Text(L10n.pp)
+                    .font(.poppins(.medium, size: 16))
             }
             .font(.poppins(.regular, size: 14))
+            .padding(.bottom, 10)
             Button {
                 viewModel.logOutUser()
             } label: {
                 Text(L10n.logout)
-                    .font(.poppins(.bold, size: 14))
+                    .font(.poppins(.bold, size: 16))
                     .foregroundColor(Color.black)
                     .padding(.top)
             }
             .padding(.bottom, 30)
 
         }
-        .padding(.leading, 30)
+        .padding(.leading, 32)
     }
 }

@@ -28,6 +28,7 @@ struct NavigationBackBarViewAction<Content: View>: View {
         .frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
         .background(backgroundColor)
         .overlay(content)
+        .offset(x: -1, y: -5)
     }
 }
 

@@ -124,7 +124,6 @@
 "log_action" = "Long acting";
 "submit_insulin" = "Submit Insulin Log";
 "submit_food" = "Submit Food Log";
-"units" = "units";
 "minutes" = "minutes";
 "set_reminder" = "Set reminder";
 "add_reminder" = "Add Remidner";
@@ -199,3 +198,5 @@
 "low_glucose_alarm" = "Low Glucose alarm";
 "high_glucose_alarm" = "High Glucose alarm";
 "hi" = "Hi ";
+"p_p" = " Privacy Policy";
+"units" = "Units";

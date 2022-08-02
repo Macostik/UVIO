@@ -247,6 +247,8 @@ public enum L10n {
   public static let openEmailApp = L10n.tr("Base", "open_email_app")
   /// Other
   public static let other = L10n.tr("Base", "other")
+  ///  Privacy Policy
+  public static let pp = L10n.tr("Base", "p_p")
   /// Password
   public static let password = L10n.tr("Base", "password")
   /// Password is required
@@ -354,7 +356,7 @@ public enum L10n {
   public static let type2Diabetes = L10n.tr("Base", "type_2_diabetes")
   /// I understand the risk
   public static let understandRisk = L10n.tr("Base", "understand_risk")
-  /// units
+  /// Units
   public static let units = L10n.tr("Base", "units")
   /// units of insulin
   public static let unitsInsulin = L10n.tr("Base", "units_insulin")

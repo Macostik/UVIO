@@ -13,6 +13,7 @@ internal extension Color {
   static var grayLightColor : Color { Color("grayLightColor", bundle: BundleToken.bundle) }
   static var grayOnboardingColor : Color { Color("grayOnboardingColor", bundle: BundleToken.bundle) }
   static var grayScaleColor : Color { Color("grayScaleColor", bundle: BundleToken.bundle) }
+  static var graySettingsColor : Color { Color("graySettingsColor", bundle: BundleToken.bundle) }
   static var greenSuccessColor : Color { Color("greenSuccessColor", bundle: BundleToken.bundle) }
   static var listGrayColor : Color { Color("listGrayColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }

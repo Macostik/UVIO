@@ -53,7 +53,7 @@ struct AccountInformationView_Previews: PreviewProvider {
 extension AccountInformationView {
     var backgroundView: some View {
         Rectangle()
-            .foregroundColor(Color.grayScaleColor)
+            .foregroundColor(Color.graySettingsColor)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
     }
     var navigationBarView: some View {
@@ -69,13 +69,17 @@ extension AccountInformationView {
     var contentView: some View {
         VStack {
             topView
-            fullNameView
-            emailView
-            genderView
-            dobView
+            VStack(spacing: 8.5) {
+                fullNameView
+                emailView
+                genderView
+                dobView
+            }
+            .padding(.top, -2)
             bloodGlucoseView
             unitsView
         }
+        .padding(.top, 0)
     }
     var topView: some View {
         VStack(alignment: .leading) {
@@ -95,7 +99,7 @@ extension AccountInformationView {
                         .foregroundColor(Color.complementaryColor)
                 }
             }
-            .padding(.top)
+            .padding(.top, 8)
         }
     }
     var fullNameView: some View {
@@ -103,7 +107,7 @@ extension AccountInformationView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
                 .overlay(fullNameOverlay, alignment: .leading)
-                .frame(height: 48)
+                .frame(height: 50)
         }
     }
     var fullNameOverlay: some View {
@@ -135,7 +139,7 @@ extension AccountInformationView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
                 .overlay(emailOverlay, alignment: .leading)
-                .frame(height: 48)
+                .frame(height: 50)
         }
     }
     var emailOverlay: some View {
@@ -170,7 +174,7 @@ extension AccountInformationView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
                 .overlay(genderOverlay, alignment: .leading)
-                .frame(height: 48)
+                .frame(height: 50)
                 .onTapGesture {
                     withAnimation {
                         viewModel.isDOBPresented = false
@@ -201,7 +205,7 @@ extension AccountInformationView {
         VStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
-                .frame(height: 48)
+                .frame(height: 50)
                 .overlay(dobOverlay, alignment: .leading)
                 .onTapGesture {
                     withAnimation {
@@ -256,7 +260,7 @@ extension AccountInformationView {
             }
             .frame(height: 48)
         }
-        .padding(.top)
+        .padding(.top, 10)
     }
     var unitsView: some View {
         VStack(alignment: .leading) {
@@ -285,6 +289,7 @@ extension AccountInformationView {
             }
             .frame(height: 48)
         }
+        .padding(.top, 9)
     }
     var footerView: some View {
         ZStack {
@@ -304,6 +309,7 @@ extension AccountInformationView {
                 .background(Color.complementaryColor)
                 .cornerRadius(12)
                 .padding(.horizontal)
+                .padding(.bottom, 20)
             }
             .frame(height: 100)
             .background(Color.white)
