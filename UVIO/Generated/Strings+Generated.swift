@@ -94,6 +94,8 @@ public enum L10n {
   public static let dexcom = L10n.tr("Base", "dexcom")
   /// dexcom G6
   public static let dexcomG6 = L10n.tr("Base", "dexcom_G6")
+  /// DEXCOM 
+  public static let dexcomUpper = L10n.tr("Base", "dexcomUpper")
   /// Diab. Type
   public static let diabType = L10n.tr("Base", "diab_type")
   /// DOB

@@ -11,9 +11,11 @@ import SwiftUI
 struct SingleSliderView: View {
     let currentValue: Binding<Int>
     let sliderBounds: ClosedRange<Int>
-    public init(value: Binding<Int>, bounds: ClosedRange<Int>) {
+    let invertColor: Bool
+    public init(value: Binding<Int>, bounds: ClosedRange<Int>, invertColor: Bool = false) {
         self.currentValue = value
         self.sliderBounds = bounds
+        self.invertColor = invertColor
     }
     var body: some View {
         GeometryReader { geomentry in
@@ -24,7 +26,7 @@ struct SingleSliderView: View {
         let sliderViewYCenter = sliderSize.height / 2
         ZStack {
             RoundedRectangle(cornerRadius: 2)
-                .fill(Color.grayScaleColor)
+                .fill(invertColor ? Color.primaryAlertColor : Color.grayScaleColor)
                 .frame(height: 4)
             ZStack {
                 let sliderBoundDifference = sliderBounds.count
@@ -54,7 +56,7 @@ struct SingleSliderView: View {
         Path { path in
             path.move(to: from)
             path.addLine(to: toPoint)
-        }.stroke(Color.primaryAlertColor, lineWidth: 4)
+        }.stroke(invertColor ? Color.grayScaleColor : Color.primaryAlertColor, lineWidth: 4)
     }
     @ViewBuilder func thumbView(position: CGPoint, value: Int) -> some View {
         ZStack {

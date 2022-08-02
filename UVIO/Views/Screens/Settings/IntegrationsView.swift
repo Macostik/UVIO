@@ -31,7 +31,7 @@ struct IntegrationsView_Previews: PreviewProvider {
 extension IntegrationsView {
     var backgroundView: some View {
         Rectangle()
-            .foregroundColor(Color.grayScaleColor)
+            .foregroundColor(Color.graySettingsColor)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
     }
     var navigationBarView: some View {
@@ -48,8 +48,8 @@ extension IntegrationsView {
         VStack(alignment: .leading) {
             Text(L10n.selecteDevices)
                 .font(.poppins(.bold, size: 18))
-                .padding(.top)
-            Text(L10n.dexcom)
+                .padding(.top, 10)
+            Text(L10n.dexcomUpper)
                 .font(.poppins(.bold, size: 12))
                 .padding(.top, 2)
             deviceView
@@ -73,7 +73,7 @@ extension IntegrationsView {
                     .resizable()
                     .frame(width: 44, height: 38)
                 VStack {
-                    Text(L10n.dexcomG6)
+                    Text(L10n.dexcomG6.capitalized)
                         .font(.poppins(.bold, size: 14))
                     Text(L10n.connected)
                         .font(.poppins(.bold, size: 14))
@@ -81,6 +81,8 @@ extension IntegrationsView {
                 }
                 Spacer()
                 Image.vDotsIcon
+                    .resizable()
+                    .frame(width: 4, height: 18)
                     .colorInvert()
             }
             .padding(.horizontal)
@@ -95,6 +97,6 @@ extension IntegrationsView {
                 .background(Color.complementaryColor)
                 .cornerRadius(12)
         }
-        .padding(.top, 16)
+        .padding(.top, 8)
     }
 }

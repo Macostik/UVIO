@@ -42,7 +42,7 @@ struct BGLevelAlertView_Previews: PreviewProvider {
 extension BGLevelAlertView {
     var backgroundView: some View {
         Rectangle()
-            .foregroundColor(Color.grayScaleColor)
+            .foregroundColor(Color.graySettingsColor)
             .edgesIgnoringSafeArea([.leading, .trailing, .bottom])
     }
     var navigationBarView: some View {
@@ -60,7 +60,6 @@ extension BGLevelAlertView {
             targetRangeView
             hypersAndHypos
         }
-        .padding(.leading)
     }
     var targetRangeView: some View {
         ZStack {
@@ -69,8 +68,8 @@ extension BGLevelAlertView {
                 .frame(height: 116)
                 .overlay(rangeSliderOverlay)
         }
-        .padding(.trailing)
-        .padding(.top, 10)
+        .padding(.horizontal)
+        .padding(.top, 5)
     }
     var rangeSliderOverlay: some View {
         ZStack {
@@ -89,6 +88,7 @@ extension BGLevelAlertView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryGreenColor)
                 }
+                .padding(.horizontal, 8)
                 RangedSliderView(value: $viewModel.glucoseRangeValue,
                                  bounds: 0...300)
                 .onChange(of: viewModel.glucoseRangeValue) { _ in
@@ -96,6 +96,7 @@ extension BGLevelAlertView {
                         showFooter = true
                     }
                 }
+                .padding(.horizontal, 10)
             }.padding()
         }
     }
@@ -103,20 +104,22 @@ extension BGLevelAlertView {
         VStack(alignment: .leading) {
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .frame(height: 396)
+                    .frame(height: 408)
                     .foregroundColor(Color.white)
                     .overlay(doubleSliderOverlay)
             }
             .padding(.trailing)
         }
+        .padding(.leading)
+        .padding(.top, 4)
     }
     var doubleSliderOverlay: some View {
         VStack {
             RoundedRectangle(cornerRadius: 12)
-                .frame(height: 100)
+                .frame(height: 108)
                 .overlay(topSliderOverlay)
             RoundedRectangle(cornerRadius: 12)
-                .frame(height: 100)
+                .frame(height: 108)
                 .overlay(bottomSliderOverlay)
                 .padding(.bottom, 8)
             vibrateView
@@ -128,7 +131,9 @@ extension BGLevelAlertView {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.grayLightColor)
+                .padding(.top, 2)
                 .padding(.horizontal, 8)
+                .frame(height: 108)
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
@@ -141,12 +146,14 @@ extension BGLevelAlertView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
+                .padding(.horizontal, 8)
                 SingleSliderView(value: $viewModel.hypoValue, bounds: 0...300)
                     .onChange(of: viewModel.hypoValue) { _ in
                         withAnimation {
                             showFooter = true
                         }
                     }
+                    .padding(.horizontal, 10)
             }
             .padding()
         }
@@ -156,6 +163,7 @@ extension BGLevelAlertView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.grayLightColor)
                 .padding(.horizontal, 8)
+                .frame(height: 108)
             VStack(spacing: 0) {
                 HStack {
                     Image.alertArrowIcon
@@ -167,14 +175,19 @@ extension BGLevelAlertView {
                         .font(.poppins(.bold, size: 14))
                         .foregroundColor(Color.primaryAlertColor)
                 }
-                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
-                    .onChange(of: viewModel.hyperValue) { _ in
-                        withAnimation {
-                            showFooter = true
-                        }
+                .padding(.horizontal, 8)
+                SingleSliderView(value: $viewModel.hyperValue,
+                                 bounds: 0...300,
+                                 invertColor: true)
+                .onChange(of: viewModel.hyperValue) { _ in
+                    withAnimation {
+                        showFooter = true
                     }
+                }
+                .padding(.horizontal, 10)
             }
             .padding()
+            .padding(.top, -4)
         }
     }
     var vibrateView: some View {
@@ -190,7 +203,8 @@ extension BGLevelAlertView {
                         .font(.poppins(.medium, size: 12))
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isVibrate)
-                        .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                        .toggleStyle(
+                            CustomToggleStyle(color: Color.complementaryColor))
                         .onChange(of: viewModel.isVibrate) { _ in
                             withAnimation {
                                 showFooter = true
@@ -203,11 +217,11 @@ extension BGLevelAlertView {
                     .padding(.leading, 28)
             }
             Divider()
-                .padding(.leading, 40)
+                .padding(.leading, 30)
             VStack {
                 VStack(alignment: .leading) {
                 HStack {
-                    Image.timerIcon
+                    Image.alertTimeIcon
                     Text(L10n.dontDisturb)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.black)
@@ -216,14 +230,15 @@ extension BGLevelAlertView {
                         .font(.poppins(.medium, size: 12))
                         .foregroundColor(Color.black)
                     Toggle("", isOn: $viewModel.isNotDisturb)
-                        .toggleStyle(CustomToggleStyle(color: Color.complementaryColor))
+                        .toggleStyle(
+                            CustomToggleStyle(color: Color.complementaryColor))
                         .onChange(of: viewModel.isNotDisturb) { _ in
                             withAnimation {
                                 showFooter = true
                             }
                         }
                 }
-                    Text(L10n.turnOnDisturbMode)
+                Text(L10n.turnOnDisturbMode)
                     .font(.poppins(.medium, size: 10))
                     .foregroundColor(Color.gray)
                     .padding(.leading, 28)
@@ -251,6 +266,7 @@ extension BGLevelAlertView {
                 .background(Color.complementaryColor)
                 .cornerRadius(12)
                 .padding(.horizontal)
+                .padding(.bottom, 20)
             }
             .frame(height: 100)
             .background(Color.white)

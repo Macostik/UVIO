@@ -120,7 +120,9 @@ extension GlucoseAlertOnboardingView {
                         .foregroundColor(Color.primaryAlertColor)
                 }
                 .padding(.horizontal, 8)
-                SingleSliderView(value: $viewModel.hyperValue, bounds: 0...300)
+                SingleSliderView(value: $viewModel.hyperValue,
+                                 bounds: 0...300,
+                                 invertColor: true)
                 .padding(.horizontal, 10)
             }
             .padding()
@@ -181,7 +183,7 @@ extension GlucoseAlertOnboardingView {
                     .padding(.leading, 28)
             }
             Divider()
-                .padding(.leading, 40)
+                .padding(.leading, 30)
             VStack {
                 VStack(alignment: .leading) {
                 HStack {
