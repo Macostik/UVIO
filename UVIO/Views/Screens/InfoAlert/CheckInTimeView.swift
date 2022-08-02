@@ -24,20 +24,24 @@ extension CheckInTimeView {
     var contentView: some View {
         VStack {
             Image.timerIcon
+                .offset(y: -5)
             Text(L10n.checkInTime)
                 .foregroundColor(Color.black)
                 .font(.poppins(.bold, size: 18))
                 .padding(.bottom, 3)
+                .offset(y: -15)
             Text(L10n.yourInsulinIsStillHigh)
                 .foregroundColor(Color.primaryAlertColor)
                 .font(.poppins(.bold, size: 16))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
+                .offset(y: -22)
             RoundedRectangle(cornerRadius: 24)
                 .foregroundColor(Color.white)
                 .frame(height: 149)
                 .overlay(checkInTimeOverlay)
                 .padding(.horizontal)
+                .offset(y: -20)
             Button {
             } label: {
                 ZStack {
@@ -51,6 +55,7 @@ extension CheckInTimeView {
                 .cornerRadius(12)
                 .padding(.horizontal)
                 .overlay(buttonOverlay)
+                .offset(y: -12)
             }
             Button {
                 withAnimation {
@@ -61,8 +66,7 @@ extension CheckInTimeView {
                     .foregroundColor(Color.black)
                     .font(.poppins(.medium, size: 14))
             }
-            .padding(.top, 12)
-
+            .padding(.top, 14)
         }
     }
     var buttonOverlay: some View {

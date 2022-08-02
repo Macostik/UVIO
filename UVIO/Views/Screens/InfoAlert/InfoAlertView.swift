@@ -35,8 +35,8 @@ extension InfoAlertView {
                 }
             )
             .overlay(bottomInfoAlertOverlay, alignment: .top)
-            .padding(.horizontal)
-            .padding(.bottom, safeAreaInsets.bottom - 15)
+            .padding(.horizontal, 8)
+            .padding(.bottom, safeAreaInsets.bottom - 10)
     }
     var bottomInfoAlertOverlay: some View {
         ZStack {

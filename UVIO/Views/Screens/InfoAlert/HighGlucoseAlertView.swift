@@ -24,19 +24,23 @@ extension HighGlucoseAlertView {
     var contentView: some View {
         VStack {
             Image.waringIcon
+                .offset(y: -14)
             Text(L10n.highGlucoseAlert)
                 .foregroundColor(Color.primaryAlertColor)
                 .font(.poppins(.bold, size: 18))
-                .padding(.bottom, 3)
+                .padding(.bottom, 0)
+                .offset(y: -19)
             Text(L10n.bloodSugarIsHigh)
                 .foregroundColor(Color.black)
                 .font(.poppins(.regular, size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
+                .offset(y: -8)
             CounterView(counter: $viewModel.highAlertCounterValue,
                         unit: .constant(L10n.unitsInsulin),
                         color: .constant(Color.white.opacity(0.4)),
                         buttonColor: .constant(Color.white), isInvertedColor: true)
+                .offset(y: -5)
             Button {
                 viewModel.presentAlertItem = .checkInTime
             } label: {
@@ -51,7 +55,8 @@ extension HighGlucoseAlertView {
                 .cornerRadius(12)
                 .padding(.horizontal)
                 .overlay(buttonOverlay)
-                .padding(.top, 15)
+                .padding(.top, 10)
+                .offset(y: -5)
             }
             Button {
                 withAnimation {
@@ -62,7 +67,7 @@ extension HighGlucoseAlertView {
                     .foregroundColor(Color.black)
                     .font(.poppins(.medium, size: 14))
             }
-            .padding(.top, 12)
+            .padding(.top, 15)
 
         }
     }
