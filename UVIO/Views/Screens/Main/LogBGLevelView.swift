@@ -47,21 +47,21 @@ extension LogBGLevelView {
                 Capsule()
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
-                    .padding(.top)
+                    .padding(.top, 10)
                 Image.bgLevelIcon
-                    .padding(.top, 5)
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                    .padding(.top, 10)
                 Text(L10n.logManualyBGLevel)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top, -10)
+                    .padding(.top, -8)
                 inputContainer
                 whenContainer
                 timeContainer
                 addNote
-                submitLogButton
-                cancelButton
-                    .padding(.bottom, 40)
+                footerView
             }
-            .background(Color.bottomBGColor)
+            .background(Color.graySettingsColor)
             .clipShape(RoundedCorner(radius: 24,
                                      corners: [.topLeft, .topRight]))
             .offset(y: self.offset)
@@ -86,7 +86,7 @@ extension LogBGLevelView {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(Color.white)
                 .overlay(inputOverlay)
-                .frame(height: 204)
+                .frame(height: 220)
                 .padding(.horizontal)
         }
     }
@@ -95,8 +95,10 @@ extension LogBGLevelView {
             TextFieldDone(text: $viewModel.logBGInput, keyType: .numberPad)
             Text(viewModel.user?.glucoseUnit ?? "")
                 .font(.poppins(.medium, size: 18))
+                .offset(y: -50)
             Text(L10n.glucose)
                 .font(.poppins(.bold, size: 18))
+                .offset(y: -40)
         }
     }
     var whenContainer: some View {
@@ -190,7 +192,7 @@ extension LogBGLevelView {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.complementaryColor)
-                        .padding(.top)
+                        .padding(.vertical)
                 }
             }
         }
@@ -223,6 +225,16 @@ extension LogBGLevelView {
         .foregroundColor(Color.black)
         .padding(.horizontal)
     }
+    var footerView: some View {
+        VStack {
+            submitLogButton
+            cancelButton
+                .padding(.top, 8)
+                .padding(.bottom, 26)
+        }
+        .background(Color.white)
+        .edgesIgnoringSafeArea(.bottom)
+    }
     var submitLogButton: some View {
         Button {
             viewModel.subminLogBGPublisher.send()
@@ -246,7 +258,7 @@ extension LogBGLevelView {
                     .foregroundColor(Color.white)
             )
         }
-        .padding(.top, 17)
+        .padding(.top, 16)
     }
     var cancelButton: some View {
         Button {

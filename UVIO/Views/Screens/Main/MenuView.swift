@@ -41,10 +41,12 @@ extension MenuView {
                 Capsule()
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
-                    .padding(.top)
+                    .padding(.top, 8)
                 Text(L10n.createEntry)
                     .font(.poppins(.medium, size: 18))
+                    .padding(.top, 10)
                 buttonsContent
+                    .padding(.top, -10)
                 closeButton
                     .padding(.bottom, 40)
             }
@@ -109,11 +111,11 @@ extension MenuView {
             Rectangle()
                 .foregroundColor(Color.white)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.grayScaleColor, lineWidth: 4)
-                        .frame(width: 52, height: 52)
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.closeColor, lineWidth: 4)
+                        .frame(width: 62, height: 62)
                 )
-                .frame(width: 56, height: 56)
+                .frame(width: 64, height: 64)
                 .overlay(Image.closeIcon)
         }
     }

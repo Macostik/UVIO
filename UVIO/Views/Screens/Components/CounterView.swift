@@ -78,8 +78,8 @@ extension CounterView {
     var counterOverlay: some View {
         VStack(spacing: -10) {
             Text("\(counter)")
-                .font(.poppins(.bold, size: 50))
-            Text(unit)
+                .font(.poppins(.bold, size: 32))
+            Text(unit.lowercased())
                 .font(.poppins(.medium, size: 14))
         }
     }

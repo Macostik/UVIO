@@ -17,8 +17,8 @@ struct SegmentControl: View {
                 selectedTab = title
             }
         }, label: {
-            Text(title.rawValue)
-                .font(.poppins(.medium, size: 14))
+            Text(title.action)
+                .font(.poppins((title == selectedTab ? .bold : .medium), size: 14))
                 .foregroundColor(isSelected ? selectedColor : Color.black)
                 .padding(.vertical, 10)
                 .frame(width: UIScreen.main.bounds.width/2 - 30)

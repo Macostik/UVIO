@@ -39,23 +39,24 @@ extension ReminderView {
                 Capsule()
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
-                    .padding(.top)
+                    .padding(.top, 8)
                 Image.remainderIcon
+                    .resizable()
+                    .frame(width: 32, height: 32)
                     .padding(.top, 5)
+                    .offset(y: 5)
                 Text(L10n.setReminder)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top, -10)
+                    .padding(.bottom, -5)
                 CounterView(counter: $viewModel.reminderCounter,
                             unit: $viewModel.reminderSubtitle,
-                            color: .constant(Color.grayScaleColor),
+                            color: .constant(Color.segmentBGColor.opacity(0.8)),
                             buttonColor: $viewModel.reminderColor,
                             isInvertedColor: true)
                 addNote
-                submitLogButton
-                cancelButton
-                    .padding(.bottom, 40)
+                footerView
             }
-            .background(Color.bottomBGColor)
+            .background(Color.graySettingsColor)
             .clipShape(RoundedCorner(radius: 24,
                                      corners: [.topLeft, .topRight]))
             .offset(y: self.offset)
@@ -74,6 +75,15 @@ extension ReminderView {
                 }
             )
         }.background(Color.clear)
+    }
+    var footerView: some View {
+        VStack {
+            submitLogButton
+            cancelButton
+                .padding(.top, 8)
+                .padding(.bottom, 26)
+        }
+        .background(Color.white)
     }
     var submitLogButton: some View {
         Button {
@@ -98,7 +108,7 @@ extension ReminderView {
                     .foregroundColor(Color.white)
             )
         }
-        .padding(.top, 17)
+        .padding(.top, 16)
     }
     var cancelButton: some View {
         Button {
@@ -128,7 +138,7 @@ extension ReminderView {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.complementaryColor)
-                        .padding(.top)
+                        .padding(.bottom)
                 }
             }
         }

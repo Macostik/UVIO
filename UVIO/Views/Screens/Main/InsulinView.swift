@@ -40,31 +40,33 @@ extension InsulinView {
                 Capsule()
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
-                    .padding(.top)
+                    .padding(.top, 8)
                 Group {
                     if viewModel.selectedSegementItem == .rapid {
                         Image.rapidInsulinIcon
+                            .resizable()
                     } else {
                         Image.longInsulinIcon
+                            .resizable()
                     }
                 }
-                .padding(.top, 5)
+                .frame(width: 32, height: 32)
+                .padding(.top, 0)
                 Text(L10n.logInsulin)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top, -10)
+                    .padding(.top, -5)
                 segmentControlView
                 CounterView(counter: $viewModel.insulinCounter,
                             unit: $viewModel.insulinsubtitle,
-                            color: .constant(Color.grayScaleColor),
+                            color: .constant(Color.segmentBGColor.opacity(0.6)),
                             buttonColor: $viewModel.insulinMainColor)
+                .padding(.vertical, 5)
                 whenContainer
                 timeContainer
                 addNote
-                submitLogButton
-                cancelButton
-                    .padding(.bottom, 40)
+                footerView
             }
-            .background(Color.bottomBGColor)
+            .background(Color.graySettingsColor)
             .clipShape(RoundedCorner(radius: 24,
                                      corners: [.topLeft, .topRight]))
             .offset(y: self.offset)
@@ -94,7 +96,7 @@ extension InsulinView {
             .frame(maxWidth: .infinity)
         }
         .padding(.vertical, 5)
-        .background(Color.capsulaGrayColor)
+        .background(Color.segmentBGColor)
         .cornerRadius(16)
         .padding(.horizontal)
     }
@@ -113,7 +115,7 @@ extension InsulinView {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.complementaryColor)
-                        .padding(.top)
+                        .padding(.vertical)
                 }
             }
         }
@@ -129,6 +131,15 @@ extension InsulinView {
         }
         .foregroundColor(Color.black)
         .padding(.horizontal)
+    }
+    var footerView: some View {
+        VStack {
+            submitLogButton
+            cancelButton
+                .padding(.top, 8)
+                .padding(.bottom, 26)
+        }
+        .background(Color.white)
     }
     var submitLogButton: some View {
         Button {
@@ -153,7 +164,7 @@ extension InsulinView {
                     .foregroundColor(Color.white)
             )
         }
-        .padding(.top, 17)
+        .padding(.top, 16)
     }
     var cancelButton: some View {
         Button {

@@ -36,22 +36,22 @@ extension FoodView {
                 Capsule()
                     .foregroundColor(Color.grayScaleColor)
                     .frame(width: 56, height: 4)
-                    .padding(.top)
+                    .padding(.top, 8)
                 Image.foodIcon
-                    .padding(.top, 5)
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                    .padding(.top, 9)
                 Text(L10n.whatEat)
                     .font(.poppins(.medium, size: 18))
-                    .padding(.top, -10)
+                    .padding(.top, -2)
                 whenContainer
                 timeContainer
                 foodContainer
                 carbsContainer
                 addNote
-                submitLogButton
-                cancelButton
-                    .padding(.bottom, 40)
+                footerView
             }
-            .background(Color.bottomBGColor)
+            .background(Color.graySettingsColor)
             .clipShape(RoundedCorner(radius: 24,
                                      corners: [.topLeft, .topRight]))
             .offset(y: self.offset)
@@ -83,7 +83,7 @@ extension FoodView {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(whenOverlay, alignment: .leading)
-                    .frame(height: 48)
+                    .frame(height: 49)
                     .padding(.horizontal)
             }
         }
@@ -123,7 +123,7 @@ extension FoodView {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
                         .overlay(timeOverlay, alignment: .leading)
-                        .frame(height: 48)
+                        .frame(height: 49)
                         .padding(.horizontal)
                 }
             }
@@ -166,7 +166,7 @@ extension FoodView {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
                         .overlay(foodOverlay, alignment: .leading)
-                        .frame(height: 48)
+                        .frame(height: 49)
                         .padding(.horizontal)
                 }
             }
@@ -192,7 +192,7 @@ extension FoodView {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(carbsOverlay, alignment: .leading)
-                    .frame(height: 48)
+                    .frame(height: 49)
                     .padding(.horizontal)
             }
         }
@@ -213,7 +213,7 @@ extension FoodView {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
                     .overlay(inputNoteOverlay, alignment: .leading)
-                    .frame(height: 48)
+                    .frame(height: 49)
                     .padding(.horizontal)
             } else {
                 Button {
@@ -225,7 +225,7 @@ extension FoodView {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
                         .foregroundColor(Color.complementaryColor)
-                        .padding(.top)
+                        .padding(.vertical)
                 }
             }
         }
@@ -242,6 +242,15 @@ extension FoodView {
         .foregroundColor(Color.black)
         .padding(.horizontal)
     }
+    var footerView: some View {
+        VStack {
+            submitLogButton
+            cancelButton
+                .padding(.top, 8)
+                .padding(.bottom, 26)
+        }
+        .background(Color.white)
+    }
     var submitLogButton: some View {
         Button {
             withAnimation {
@@ -255,7 +264,7 @@ extension FoodView {
                         .padding()
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
+            .frame(maxWidth: .infinity, maxHeight: 49, alignment: .trailing)
             .background(Color.complementaryColor)
             .cornerRadius(12)
             .padding(.horizontal)
@@ -265,7 +274,7 @@ extension FoodView {
                     .foregroundColor(Color.white)
             )
         }
-        .padding(.top, 17)
+        .padding(.top, 16)
     }
     var cancelButton: some View {
         Button {
@@ -276,7 +285,7 @@ extension FoodView {
             Text(L10n.cancel)
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
-                .frame(height: 48)
+                .frame(height: 49)
                 .padding(.horizontal)
         }
     }

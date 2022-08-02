@@ -14,6 +14,12 @@ enum MenuAction: CaseIterable {
 
 enum InsulinAction: StringLiteralType, CaseIterable {
     case rapid, long
+    var action: String {
+        switch self {
+        case .rapid: return L10n.rapidAction
+        case .long: return L10n.logAction
+        }
+    }
 }
 
 class MenuType {

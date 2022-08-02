@@ -8,6 +8,7 @@ internal extension Color {
   // Colors.xcassets
   static var bottomBGColor : Color { Color("bottomBGColor", bundle: BundleToken.bundle) }
   static var capsulaGrayColor : Color { Color("capsulaGrayColor", bundle: BundleToken.bundle) }
+  static var closeColor : Color { Color("closeColor", bundle: BundleToken.bundle) }
   static var complementaryColor : Color { Color("complementaryColor", bundle: BundleToken.bundle) }
   static var grayBackgroundColor : Color { Color("grayBackgroundColor", bundle: BundleToken.bundle) }
   static var grayLightColor : Color { Color("grayLightColor", bundle: BundleToken.bundle) }
@@ -24,6 +25,7 @@ internal extension Color {
   static var primaryGreenColor : Color { Color("primaryGreenColor", bundle: BundleToken.bundle) }
   static var primaryOrangeColor : Color { Color("primaryOrangeColor", bundle: BundleToken.bundle) }
   static var rapidOrangeColor : Color { Color("rapidOrangeColor", bundle: BundleToken.bundle) }
+  static var segmentBGColor : Color { Color("segmentBGColor", bundle: BundleToken.bundle) }
   static var successBackgroundColor : Color { Color("successBackgroundColor", bundle: BundleToken.bundle) }
 }
 
