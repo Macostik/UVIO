@@ -68,6 +68,7 @@ internal extension Image {
   static var loadIcon : Image { Image("loadIcon", bundle: BundleToken.bundle) }
   static var loginViewBackground : Image { Image("loginViewBackground", bundle: BundleToken.bundle) }
   static var longInsulinIcon : Image { Image("longInsulinIcon", bundle: BundleToken.bundle) }
+  static var mainBottomBackground : Image { Image("mainBottomBackground", bundle: BundleToken.bundle) }
   static var menuIcon : Image { Image("menuIcon", bundle: BundleToken.bundle) }
   static var minusIcon : Image { Image("minusIcon", bundle: BundleToken.bundle) }
   static var nextIcon : Image { Image("nextIcon", bundle: BundleToken.bundle) }

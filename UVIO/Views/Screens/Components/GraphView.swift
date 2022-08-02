@@ -62,7 +62,12 @@ let points: [Points] = [
     Points(value: 11),
     Points(value: 12),
     Points(value: 13),
-    Points(value: 13.5)
+    Points(value: 13.5),
+    Points(value: 14),
+    Points(value: 14),
+    Points(value: 14.5),
+    Points(value: 15),
+    Points(value: 15.5)
 ]
 
 var tabs = ["1h", "3h", "6h", "12h", "24h"]
@@ -91,17 +96,18 @@ extension GraphView {
             Group {
                 ForEach(0..<points.count, id: \.self) { index in
                     let item = points[index]
-                    let point = CGPoint(x: CGFloat((index + 1) * ((index == 0) ? 10 : 8)),
+                    let point = CGPoint(x: CGFloat((index + 1) * 7),
                                         y: (115 - item.value * 5))
                     Circle()
                         .foregroundColor(item.color)
                         .frame(width: 3, height: 3)
                         .position(point)
+                        .offset(x: 10, y: 15)
                 }
             }
             VStack(spacing: spacing) {
                 ZStack {
-                    VStack(alignment: .trailing, spacing: 18) {
+                    VStack(alignment: .trailing, spacing: 20) {
                         HStack {
                             Text("21")
                             graphLine
@@ -123,8 +129,8 @@ extension GraphView {
                     Rectangle()
                         .frame(height: 32)
                         .foregroundColor(Color.greenSuccessColor.opacity(0.1))
-                        .offset(x: 10, y: 20)
-                        .padding(.trailing, 10)
+                        .offset(x: 15, y: 20)
+                        .padding(.trailing, 15)
                 }
                 HStack {
                     Group {
@@ -135,6 +141,7 @@ extension GraphView {
                         Text("6PM")
                     }
                     .padding(.leading)
+                    .padding(.top, -12)
                     .font(.poppins(.medium, size: 12))
                 }
                 GeometryReader { reader in
@@ -144,6 +151,7 @@ extension GraphView {
                         }
                     }
                     .frame(width: reader.size.width)
+                    .padding(.top, 11)
                 }
             }
             .padding(.top)
@@ -151,7 +159,7 @@ extension GraphView {
         }
     }
     private var lastPoint: CGPoint {
-        CGPoint(x: CGFloat(points.count *  8),
+        CGPoint(x: CGFloat(points.count * 7),
                 y: (117 - (points.last?.value ?? 0) * 5))
     }
     private var lastPointColor: Color {
@@ -167,14 +175,15 @@ extension GraphView {
                 .foregroundColor(lastPointColor.opacity(0.3))
             )
             .position(lastPoint)
+            .offset(x: 10, y: 15)
     }
     var graphLine: some View {
         Line()
             .stroke(style: StrokeStyle(lineWidth: 1,
-                                       dash: [5, 3],
-                                       dashPhase: 1))
+                                       dash: [3, 5],
+                                       dashPhase: 2))
             .frame(height: 1)
-            .foregroundColor(Color.capsulaGrayColor)
+            .foregroundColor(Color.black.opacity(0.1))
     }
 }
 
@@ -209,7 +218,7 @@ struct TabButton: View {
                             if selected == title {
                                 RoundedCorner(radius: 16)
                                     .frame(width: 40, height: 26)
-                                    .foregroundColor(Color.grayScaleColor.opacity(0.8))
+                                    .foregroundColor(Color.graySettingsColor)
                                     .matchedGeometryEffect(id: "Tab", in: animation)
                             }
                         }

@@ -54,7 +54,7 @@ extension MainView {
             mainViewModel.listEntries.isEmpty ||
             mainViewModel.isShowInfoAlert
             VStack(spacing: isShownBottomPlaceholder ? 20 : 0) {
-                NavigationBarView(destination: {
+                MainNavigationBarView(destination: {
                     SettingsView(viewModel: userViewModel)
                 }, content: {
                     Text(title)
@@ -107,44 +107,49 @@ extension MainView {
                 headerTopView
                     .padding(.top, 10)
                 GraphView(spacing: mainViewModel.listEntries.isEmpty ? 20 : 12)
+                    .padding(.top, 22)
             }
         }
     }
     var bottomView: some View {
         RoundedRectangle(cornerRadius: 16)
-            .foregroundColor(Color.bottomBGColor)
+            .foregroundColor(Color.clear)
             .overlay(bottomOverlay, alignment: .top)
-            .padding(.horizontal)
+            .padding(.horizontal, 8)
             .padding(.bottom, safeAreaInsets.bottom - 10)
     }
     var bottomOverlay: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 0) {
-                    Text(L10n.hi)
-                        .font(.poppins(.bold, size: 24))
+        ZStack {
+            Image.mainBottomBackground
+                .resizable()
+            HStack {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 0) {
+                        Text(L10n.hi)
+                            .font(.poppins(.bold, size: 24))
+                            .foregroundColor(Color.black)
+                        Text(mainViewModel.userName)
+                            .font(.poppins(.bold, size: 24))
+                            .foregroundColor(Color.black)
+                        Text(",")
+                            .font(.poppins(.bold, size: 24))
+                            .foregroundColor(Color.black)
+                    }
+                    Text(L10n.pressPlus)
+                        .font(.poppins(.regular, size: 16))
                         .foregroundColor(Color.black)
-                    Text(mainViewModel.userName)
-                        .font(.poppins(.bold, size: 24))
-                        .foregroundColor(Color.black)
-                    Text(",")
-                        .font(.poppins(.bold, size: 24))
-                        .foregroundColor(Color.black)
+                        .lineLimit(4)
+                        .multilineTextAlignment(.leading)
+                    Image.spiralIcon
+                        .padding(.top, 45)
+                        .padding(.leading)
                 }
-                Text(L10n.pressPlus)
-                    .font(.poppins(.regular, size: 16))
-                    .foregroundColor(Color.black)
-                    .lineLimit(4)
-                    .multilineTextAlignment(.leading)
-                Image.spiralIcon
-                    .padding(.top, 45)
-                    .padding(.leading)
+                .padding(.leading, 20)
+                .padding(.top)
+                Spacer()
             }
-            .padding(.leading, 20)
-            .padding(.top)
-            Spacer()
         }
-        .padding(.top)
+//        .padding(.top)
         .overlay(icecreamOverlay, alignment: .trailing)
     }
     private var axes: Axis.Set {
@@ -251,24 +256,35 @@ extension MainView {
                 .frame(width: 82, height: 32)
                 .foregroundColor(Color.white)
                 .overlay(dexcomOverlay)
-            Spacer()
-            HStack(alignment: .top, spacing: 0) {
-                VStack(spacing: -10) {
-                    Text(mainViewModel.glucoseValue)
-                        .foregroundColor(Color.greenSuccessColor)
-                        .font(.poppins(.bold, size: 50))
-                    Text(userViewModel.glucoseUnit)
-                        .foregroundColor(Color.black)
-                        .font(.poppins(.medium, size: 14))
-                        .padding(.horizontal, 5)
-                }
-                Text(mainViewModel.glucoseCorrectionValue)
-                    .font(.poppins(.medium, size: 14))
-            }
+                .padding(.leading, 20)
+                .offset(y: 4)
             Spacer()
             Image.glucoseLevelArrow
+                .resizable()
+                .frame(width: 42, height: 42)
+                .padding(.trailing, 59)
+                .offset(y: 4)
         }
-        .padding(.horizontal, 40)
+        .overlay(glucoseValueView)
+        .frame(maxWidth: .infinity)
+    }
+    var glucoseValueView: some View {
+        HStack(alignment: .top, spacing: 0) {
+            VStack(spacing: -16) {
+                Text(mainViewModel.glucoseValue)
+                    .foregroundColor(Color.greenSuccessColor)
+                    .font(.poppins(.bold, size: 50))
+                    .offset(y: -5)
+                Text(userViewModel.glucoseUnit)
+                    .foregroundColor(Color.black)
+                    .font(.poppins(.medium, size: 14))
+                    .padding(.horizontal, 5)
+            }
+            .overlay( Text(mainViewModel.glucoseCorrectionValue)
+                .font(.poppins(.medium, size: 14))
+                .offset(x: 50, y: -18)
+            )
+        }
     }
     var dexcomOverlay: some View {
         ZStack {
@@ -282,7 +298,7 @@ extension MainView {
             }
             .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.capsulaGrayColor.opacity(0.5), lineWidth: 1)
+                .stroke(Color.black.opacity(0.1), lineWidth: 1)
         }
     }
     var menuView: some View {

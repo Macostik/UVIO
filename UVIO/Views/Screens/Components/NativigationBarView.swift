@@ -65,7 +65,7 @@ struct NavigationBarView<Content: View, Destination: View>: View {
             HStack {
                 Image.uvioIcon
                     .resizable()
-                    .frame(width: 28, height: 25)
+                    .frame(width: 32, height: 25.5)
                     .aspectRatio(contentMode: .fit)
                 Spacer()
                 NavigationLink {
@@ -75,9 +75,42 @@ struct NavigationBarView<Content: View, Destination: View>: View {
                 }
                 .disabled(disabled)
             }
-            .padding(.horizontal, 30)
+            .padding(.horizontal, 24)
         }
         .frame(maxWidth: .infinity)
         .overlay(content)
+    }
+}
+struct MainNavigationBarView<Content: View, Destination: View>: View {
+    let content: Content?
+    let destination: (() -> Destination)
+    let disabled: Bool
+    init(destination: @escaping (() -> Destination),
+         @ViewBuilder content: () -> Content?,
+         disabled: Bool = false) {
+        self.destination = destination
+        self.content = content()
+        self.disabled = disabled
+    }
+    var body: some View {
+        ZStack {
+            HStack {
+                Image.uvioIcon
+                    .resizable()
+                    .frame(width: 32, height: 25.5)
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+                NavigationLink {
+                    destination()
+                } label: {
+                    Image.settingsIcon
+                }
+                .disabled(disabled)
+            }
+            .padding(.horizontal, 24)
+        }
+        .frame(maxWidth: .infinity)
+        .overlay(content)
+        .padding(.top, 20)
     }
 }
