@@ -16,6 +16,8 @@ internal extension Color {
   static var graySettingsColor : Color { Color("graySettingsColor", bundle: BundleToken.bundle) }
   static var greenSuccessColor : Color { Color("greenSuccessColor", bundle: BundleToken.bundle) }
   static var listGrayColor : Color { Color("listGrayColor", bundle: BundleToken.bundle) }
+  static var longInsulinColor : Color { Color("longInsulinColor", bundle: BundleToken.bundle) }
+  static var mainBottomColor : Color { Color("mainBottomColor", bundle: BundleToken.bundle) }
   static var primaryAlertColor : Color { Color("primaryAlertColor", bundle: BundleToken.bundle) }
   static var primaryCayanColor : Color { Color("primaryCayanColor", bundle: BundleToken.bundle) }
   static var primaryFoodColor : Color { Color("primaryFoodColor", bundle: BundleToken.bundle) }
@@ -57,6 +59,7 @@ internal extension Image {
   static var emailIcon : Image { Image("emailIcon", bundle: BundleToken.bundle) }
   static var eyeIcon : Image { Image("eyeIcon", bundle: BundleToken.bundle) }
   static var facebookIcon : Image { Image("facebookIcon", bundle: BundleToken.bundle) }
+  static var foodEntryIcon : Image { Image("foodEntryIcon", bundle: BundleToken.bundle) }
   static var foodIcon : Image { Image("foodIcon", bundle: BundleToken.bundle) }
   static var freestyleDeviceIcon : Image { Image("freestyleDeviceIcon", bundle: BundleToken.bundle) }
   static var glucoseLevelArrow : Image { Image("glucoseLevelArrow", bundle: BundleToken.bundle) }

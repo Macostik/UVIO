@@ -50,9 +50,6 @@ extension MainView {
     }
     var contentView: some View {
         ZStack(alignment: .bottom) {
-//            let isShownBottomPlaceholder =
-//            mainViewModel.listEntries.isEmpty ||
-//            mainViewModel.isShowInfoAlert
             VStack {
                 MainNavigationBarView(destination: {
                     SettingsView(viewModel: userViewModel)
@@ -63,8 +60,8 @@ extension MainView {
                 .padding(.bottom)
                 if !mainViewModel.isFullHistory {
                     topView
-                        .frame(height: 325)
-                        .padding(.top, 10)
+                        .frame(height: mainViewModel.isShownBottomPlaceholder ? 325 : 290)
+                        .padding(.top, mainViewModel.isShownBottomPlaceholder ? 10 : -4)
                 }
                 if !mainViewModel.isShowInfoAlert {
                     if mainViewModel.listEntries.isEmpty &&
@@ -107,8 +104,8 @@ extension MainView {
             VStack {
                 headerTopView
                     .padding(.top, 10)
-                GraphView(spacing: mainViewModel.listEntries.isEmpty ? 20 : 12)
-                    .padding(.top, 23)
+                GraphView(isList: !mainViewModel.isShownBottomPlaceholder)
+                    .padding(.top, mainViewModel.isShownBottomPlaceholder ? 23 : 8)
             }
         }
     }
@@ -172,9 +169,11 @@ extension MainView {
                     }
                 }
                 .padding(.bottom, safeAreaInsets.bottom)
+                Color.clear.padding(.bottom, 65)
             }
             historyOverlay
         }
+        .background(Color.graySettingsColor)
     }
     private func section(index: Int, title: String) -> some View {
         VStack {
@@ -183,6 +182,7 @@ extension MainView {
                     .foregroundColor(Color.black)
                     .font(.poppins(.bold, size: 14))
                     .frame(height: 40)
+                    .padding(.leading, 6)
                 Spacer()
             }
             if mainViewModel.isShowCalendarHistory && index == 0 {
@@ -241,7 +241,7 @@ extension MainView {
                 }
             }
             .frame(height: 40)
-            .padding(.trailing)
+            .padding(.trailing, 24)
         }
     }
     var icecreamOverlay: some View {

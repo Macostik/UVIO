@@ -75,12 +75,12 @@ var tabs = ["1h", "3h", "6h", "12h", "24h"]
 struct GraphView: View {
     @State var selected = tabs[0]
     @Namespace var animation
-    var spacing: CGFloat
+    var isList: Bool
     var body: some View {
         contentView
     }
-    init(spacing: CGFloat = 20.0) {
-        self.spacing = spacing
+    init(isList: Bool = false) {
+        self.isList = isList
     }
 }
 
@@ -97,7 +97,7 @@ extension GraphView {
                 ForEach(0..<points.count, id: \.self) { index in
                     let item = points[index]
                     let point = CGPoint(x: CGFloat((index + 1) * 7),
-                                        y: (115 - item.value * 5))
+                                        y: (127 - item.value * 5))
                     Circle()
                         .foregroundColor(item.color)
                         .frame(width: 3, height: 3)
@@ -105,7 +105,7 @@ extension GraphView {
                         .offset(x: 10, y: 15)
                 }
             }
-            VStack(spacing: spacing) {
+            VStack(spacing: 20) {
                 ZStack {
                     VStack(alignment: .trailing, spacing: 20) {
                         HStack {
@@ -129,7 +129,7 @@ extension GraphView {
                     Rectangle()
                         .frame(height: 32)
                         .foregroundColor(Color.greenSuccessColor.opacity(0.1))
-                        .offset(x: 15, y: 20)
+                        .offset(x: 15, y: 25)
                         .padding(.trailing, 15)
                 }
                 HStack {
@@ -151,7 +151,7 @@ extension GraphView {
                         }
                     }
                     .frame(width: reader.size.width)
-                    .padding(.top, 11)
+                    .padding(.top, isList ? 0 : 11)
                 }
             }
             .padding(.top)
@@ -160,7 +160,7 @@ extension GraphView {
     }
     private var lastPoint: CGPoint {
         CGPoint(x: CGFloat(points.count * 7),
-                y: (117 - (points.last?.value ?? 0) * 5))
+                y: (125 - (points.last?.value ?? 0) * 5))
     }
     private var lastPointColor: Color {
         points.last?.color ?? Color.greenSuccessColor

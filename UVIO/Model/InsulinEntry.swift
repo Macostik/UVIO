@@ -26,7 +26,7 @@ extension InsulinEntry: Mapable {
     var color: Color {
         isRapidAction  ?
         Color.rapidOrangeColor.opacity(0.1) :
-        Color.primaryGreenColor.opacity(0.1)
+        Color.longInsulinColor.opacity(0.1)
     }
     var image: Image {
         isRapidAction ?

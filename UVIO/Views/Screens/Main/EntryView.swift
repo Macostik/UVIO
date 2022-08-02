@@ -48,9 +48,10 @@ extension EntryView {
                 listViewEntry.timer
                     .font(.poppins(.medium, size: 10))
                 Image.vDotsIcon
+                    .padding(.trailing, 5)
             }
-            .padding()
-            .background(Color.white.cornerRadius(12))
+            .padding(16)
+            .background(Color.white.cornerRadius(16))
             .padding(.horizontal)
     }
     var image: some View {

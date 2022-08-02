@@ -98,6 +98,10 @@ class MainViewModel: BaseViewModel {
             }
         }
     }
+    var isShownBottomPlaceholder: Bool {
+        listEntries.isEmpty ||
+        isShowInfoAlert
+    }
     var isPresented: Bool {
         isMenuPresented ||
         isLogBGPresented ||
