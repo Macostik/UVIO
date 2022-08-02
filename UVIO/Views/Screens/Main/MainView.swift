@@ -50,10 +50,10 @@ extension MainView {
     }
     var contentView: some View {
         ZStack(alignment: .bottom) {
-            let isShownBottomPlaceholder =
-            mainViewModel.listEntries.isEmpty ||
-            mainViewModel.isShowInfoAlert
-            VStack(spacing: isShownBottomPlaceholder ? 20 : 0) {
+//            let isShownBottomPlaceholder =
+//            mainViewModel.listEntries.isEmpty ||
+//            mainViewModel.isShowInfoAlert
+            VStack {
                 MainNavigationBarView(destination: {
                     SettingsView(viewModel: userViewModel)
                 }, content: {
@@ -64,6 +64,7 @@ extension MainView {
                 if !mainViewModel.isFullHistory {
                     topView
                         .frame(height: 325)
+                        .padding(.top, 10)
                 }
                 if !mainViewModel.isShowInfoAlert {
                     if mainViewModel.listEntries.isEmpty &&
@@ -107,7 +108,7 @@ extension MainView {
                 headerTopView
                     .padding(.top, 10)
                 GraphView(spacing: mainViewModel.listEntries.isEmpty ? 20 : 12)
-                    .padding(.top, 22)
+                    .padding(.top, 23)
             }
         }
     }
@@ -126,13 +127,13 @@ extension MainView {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 0) {
                         Text(L10n.hi)
-                            .font(.poppins(.bold, size: 24))
+                            .font(.poppins(.bold, size: 21))
                             .foregroundColor(Color.black)
                         Text(mainViewModel.userName)
-                            .font(.poppins(.bold, size: 24))
+                            .font(.poppins(.bold, size: 21))
                             .foregroundColor(Color.black)
                         Text(",")
-                            .font(.poppins(.bold, size: 24))
+                            .font(.poppins(.bold, size: 21))
                             .foregroundColor(Color.black)
                     }
                     Text(L10n.pressPlus)
@@ -145,11 +146,9 @@ extension MainView {
                         .padding(.leading)
                 }
                 .padding(.leading, 20)
-                .padding(.top)
                 Spacer()
             }
         }
-//        .padding(.top)
         .overlay(icecreamOverlay, alignment: .trailing)
     }
     private var axes: Axis.Set {

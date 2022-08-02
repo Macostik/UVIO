@@ -141,7 +141,7 @@ extension GraphView {
                         Text("6PM")
                     }
                     .padding(.leading)
-                    .padding(.top, -12)
+                    .padding(.top, -10)
                     .font(.poppins(.medium, size: 12))
                 }
                 GeometryReader { reader in
