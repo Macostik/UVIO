@@ -10,7 +10,7 @@ import SwiftUI
 struct Points: Hashable {
     var value: CGFloat
     var color: Color {
-        return value >= 10 || value <= 4 ? Color.red : Color.greenSuccessColor
+        return value >= 11 || value <= 4 ? Color.red : Color.greenSuccessColor
     }
     var id = UUID().uuidString
     func hash(into hasher: inout Hasher) {
