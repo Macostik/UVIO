@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GenderView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @StateObject var viewModel: UserViewModel
     @State var offset: CGFloat = 0.0
     @State var isShowInputView = false
@@ -51,7 +52,7 @@ extension GenderView {
                 }
                 saveButton
                 cancelButton
-                    .padding(.bottom, 40)
+                    .padding(.bottom, keyboard.isShown ? 90 : 26)
             }
             .background(Color.bottomBGColor)
             .clipShape(RoundedCorner(radius: 24,

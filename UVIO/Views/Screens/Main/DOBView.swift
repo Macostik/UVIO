@@ -49,11 +49,6 @@ extension DOBView {
                                     $viewModel.birthDate,
                                    displayedComponents: [.date])
                         .datePickerStyle(.graphical)
-                        .onChange(of: viewModel.birthDate) { _ in
-                            withAnimation {
-                                isShowCalendar = false
-                            }
-                        }
                     }
                     .background(Color.white)
                     .cornerRadius(16)

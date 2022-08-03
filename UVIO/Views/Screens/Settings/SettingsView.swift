@@ -16,6 +16,9 @@ struct SettingsView: View {
             navigationBarView
             contentView
         }
+        .onAppear {
+            UIScrollView.appearance().isScrollEnabled = true
+        }
         .navigationBarHidden(true)
     }
 }

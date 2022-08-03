@@ -68,7 +68,11 @@ extension SignUpFlow {
                     .tag(OnboardingViewType.glucoseUnit)
                 GlucoseAlertOnboardingView(viewModel: viewModel)
                     .tag(OnboardingViewType.glucoseAlert)
-            }.tabViewStyle(.page(indexDisplayMode: .never))
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .onAppear {
+                UIScrollView.appearance().isScrollEnabled = false
+            }
         }
     }
 }

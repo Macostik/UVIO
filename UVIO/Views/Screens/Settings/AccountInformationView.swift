@@ -31,6 +31,9 @@ struct AccountInformationView: View {
                         .transition(.move(edge: .bottom))
                 }
             }
+            .overlay(Rectangle()
+                .fill(viewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear)
+                .ignoresSafeArea())
             .edgesIgnoringSafeArea(.bottom)
             Group {
                 genderMenuView

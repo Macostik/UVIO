@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FoodView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @ObservedObject var viewModel: MainViewModel
     @State var offset = 0.0
     var body: some View {
@@ -19,6 +20,7 @@ struct FoodView: View {
                 }
             }
         }
+        .animation(.easeInOut)
         .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
     }
 }
@@ -76,15 +78,33 @@ extension FoodView {
     }
     var whenContainer: some View {
         VStack {
-            Button {
-                viewModel.isTimePickerOpen = false
-                viewModel.isFoodCalendarOpen.toggle()
-            } label: {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color.white)
-                    .overlay(whenOverlay, alignment: .leading)
-                    .frame(height: 49)
-                    .padding(.horizontal)
+            if viewModel.isFoodCalendarOpen {
+                VStack(alignment: .trailing) {
+                    DatePicker("",
+                               selection: $viewModel.foodWhenValue,
+                               displayedComponents: [.date])
+                    .datePickerStyle(.graphical)
+                }
+                .background(Color.white)
+                .cornerRadius(16)
+                .padding(.horizontal)
+                .animation(.easeInOut)
+            } else {
+                Button {
+                    viewModel.isFoodCalendarOpen.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        viewModel.isTimePickerOpen = false
+                        viewModel.isNodeAdded = false
+                        viewModel.isCarbsAdded = false
+                    }
+                } label: {
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundColor(Color.white)
+                        .overlay(whenOverlay, alignment: .leading)
+                        .frame(height: 49)
+                        .padding(.horizontal)
+                }
             }
         }
     }
@@ -100,17 +120,12 @@ extension FoodView {
     }
     var timeContainer: some View {
         VStack {
-            if viewModel.isCalendarOpen {
+            if viewModel.isFoodCalendarOpen {
                 VStack(alignment: .trailing) {
                     DatePicker("",
-                               selection: $viewModel.foodWhenValue,
-                               displayedComponents: [.date])
+                               selection: $viewModel.foodTimeValue,
+                               displayedComponents: [.hourAndMinute])
                         .datePickerStyle(.graphical)
-                        .onChange(of: viewModel.foodWhenValue) { _ in
-                            withAnimation {
-                                viewModel.isCalendarOpen = false
-                            }
-                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)
@@ -119,6 +134,12 @@ extension FoodView {
             } else {
                 Button {
                     viewModel.isTimePickerOpen.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        viewModel.isFoodCalendarOpen = false
+                        viewModel.isNodeAdded = false
+                        viewModel.isCarbsAdded = false
+                    }
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
@@ -148,19 +169,6 @@ extension FoodView {
                     .cornerRadius(16)
                     .padding(.horizontal)
                     .animation(.easeInOut)
-            } else if viewModel.isCarbsAdded {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color.white)
-                    .overlay(
-                        Picker("", selection: $viewModel.foodCarbs) {
-                            ForEach(CarbsPickerData.allCases, id: \.self) {
-                                Text($0.description)
-                            }
-                        }
-                        .pickerStyle(.wheel)
-                    )
-                    .frame(height: 156)
-                .padding(.horizontal)
             } else {
                 VStack {
                     RoundedRectangle(cornerRadius: 12)
@@ -180,20 +188,51 @@ extension FoodView {
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isFoodCalendarOpen = false
+                        viewModel.isTimePickerOpen = false
+                        viewModel.isNodeAdded = false
+                        viewModel.isCarbsAdded = false
+                    }
+                }
         }
         .foregroundColor(Color.black)
         .padding()
     }
     var carbsContainer: some View {
-        Button {
-            viewModel.isCarbsAdded.toggle()
-        } label: {
-            VStack {
+        VStack {
+            if viewModel.isCarbsAdded {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.white)
-                    .overlay(carbsOverlay, alignment: .leading)
-                    .frame(height: 49)
-                    .padding(.horizontal)
+                    .overlay(
+                        Picker("", selection: $viewModel.foodCarbs) {
+                            ForEach(CarbsPickerData.allCases, id: \.self) {
+                                Text($0.description)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                    )
+                    .frame(height: 156)
+                .padding(.horizontal)
+            } else {
+                Button {
+                    viewModel.isCarbsAdded.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        viewModel.isFoodCalendarOpen = false
+                        viewModel.isTimePickerOpen = false
+                        viewModel.isNodeAdded = false
+                    }
+                } label: {
+                    VStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundColor(Color.white)
+                            .overlay(carbsOverlay, alignment: .leading)
+                            .frame(height: 49)
+                            .padding(.horizontal)
+                    }
+                }
             }
         }
     }
@@ -217,10 +256,12 @@ extension FoodView {
                     .padding(.horizontal)
             } else {
                 Button {
-                    viewModel.isNodeAdded = true
-                    viewModel.isCalendarOpen = false
-                    viewModel.isTimePickerOpen = false
-                    viewModel.isCarbsAdded = false
+                    withAnimation {
+                        viewModel.isNodeAdded = true
+                        viewModel.isFoodCalendarOpen = false
+                        viewModel.isTimePickerOpen = false
+                        viewModel.isCarbsAdded = false
+                    }
                 } label: {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
@@ -238,6 +279,13 @@ extension FoodView {
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)
+                .onTapGesture {
+                    withAnimation {
+                        viewModel.isFoodCalendarOpen = false
+                        viewModel.isTimePickerOpen = false
+                        viewModel.isCarbsAdded = false
+                    }
+                }
         }
         .foregroundColor(Color.black)
         .padding(.horizontal)
@@ -247,9 +295,10 @@ extension FoodView {
             submitLogButton
             cancelButton
                 .padding(.top, 8)
-                .padding(.bottom, 26)
+                .padding(.bottom, keyboard.isShown ? 140 : 26)
         }
         .background(Color.white)
+        .padding(.bottom, viewModel.keyboardPadding)
     }
     var submitLogButton: some View {
         Button {

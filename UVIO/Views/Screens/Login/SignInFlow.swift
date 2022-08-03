@@ -81,6 +81,9 @@ extension SignInFlow {
                     .tag(LoginViewType.newPasswordSuccess)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
+            .onAppear {
+                UIScrollView.appearance().isScrollEnabled = false
+            }
         }
     }
 }

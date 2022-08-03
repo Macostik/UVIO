@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct LogBGLevelView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
     @State var offset = 0.0
     var body: some View {
-                ZStack {
-                    VStack {
-                        if viewModel.isLogBGPresented {
-                            contentView
-                                .transition(.move(edge: .bottom))
-                            }
-                        }
-                    }
-                .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
+        ZStack {
+            VStack {
+                if viewModel.isLogBGPresented {
+                    contentView
+                        .transition(.move(edge: .bottom))
+                }
+            }
         }
+        .animation(.easeInOut)
+        .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
+    }
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -93,6 +95,13 @@ extension LogBGLevelView {
     var inputOverlay: some View {
         VStack {
             TextFieldDone(text: $viewModel.logBGInput, keyType: .numberPad)
+                .onTapGesture {
+                    withAnimation {
+                        isNodeAdded = false
+                        isTimePickerOpen = false
+                        isCalendarOpen = false
+                    }
+                }
             Text(viewModel.user?.glucoseUnit ?? "")
                 .font(.poppins(.medium, size: 18))
                 .offset(y: -50)
@@ -114,8 +123,12 @@ extension LogBGLevelView {
                     .animation(.easeInOut)
             } else {
                 Button {
-                    isTimePickerOpen = false
                     isCalendarOpen.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        isNodeAdded = false
+                        isTimePickerOpen = false
+                    }
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
@@ -144,11 +157,6 @@ extension LogBGLevelView {
                                 $viewModel.logBGWhenValue,
                                displayedComponents: [.date])
                         .datePickerStyle(.graphical)
-                        .onChange(of: viewModel.logBGWhenValue) { _ in
-                            withAnimation {
-                                isCalendarOpen = false
-                            }
-                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)
@@ -157,6 +165,11 @@ extension LogBGLevelView {
             } else {
                 Button {
                     isTimePickerOpen.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        isNodeAdded = false
+                        isCalendarOpen = false
+                    }
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)
@@ -221,6 +234,12 @@ extension LogBGLevelView {
                 .font(.poppins(.bold, size: 14))
                 .accentColor(Color.black)
                 .multilineTextAlignment(.leading)
+                .onTapGesture {
+                    withAnimation {
+                        isCalendarOpen = false
+                        isTimePickerOpen = false
+                    }
+                }
         }
         .foregroundColor(Color.black)
         .padding(.horizontal)
@@ -230,7 +249,7 @@ extension LogBGLevelView {
             submitLogButton
             cancelButton
                 .padding(.top, 8)
-                .padding(.bottom, 26)
+                .padding(.bottom, keyboard.isShown ? 170 : 26)
         }
         .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)

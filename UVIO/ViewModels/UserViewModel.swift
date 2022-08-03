@@ -134,6 +134,11 @@ class UserViewModel: BaseViewModel {
     var saveData = PassthroughSubject<Void, Error>()
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()
+    var isMenuPresented: Bool {
+        isDOBPresented ||
+        isGenderPresented ||
+        isChangePassword
+    }
     override init() {
         super.init()
         handleGettinguser()

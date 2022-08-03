@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InsulinView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
@@ -23,6 +24,7 @@ struct InsulinView: View {
                 }
             }
         }
+        .animation(.easeInOut)
         .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
     }
 }
@@ -111,6 +113,10 @@ extension InsulinView {
             } else {
                 Button {
                     isNodeAdded = true
+                    withAnimation {
+                        isTimePickerOpen = false
+                        isCalendarOpen = false
+                    }
                 } label: {
                     Text(L10n.addNote)
                         .font(.poppins(.medium, size: 14))
@@ -137,7 +143,7 @@ extension InsulinView {
             submitLogButton
             cancelButton
                 .padding(.top, 8)
-                .padding(.bottom, 26)
+                .padding(.bottom, keyboard.isShown ? 130 : 26)
         }
         .background(Color.white)
     }
@@ -191,8 +197,12 @@ extension InsulinView {
             } else {
                 VStack {
                     Button {
-                        isTimePickerOpen = false
                         isCalendarOpen.toggle()
+                        withAnimation {
+                            hideKeyboard()
+                            isTimePickerOpen = false
+                            isNodeAdded = false
+                        }
                     } label: {
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(Color.white)
@@ -222,11 +232,6 @@ extension InsulinView {
                                selection: $viewModel.insulinWhenValue,
                                displayedComponents: [.date])
                         .datePickerStyle(.graphical)
-                        .onChange(of: viewModel.insulinWhenValue) { _ in
-                            withAnimation {
-                                isCalendarOpen = false
-                            }
-                        }
                 }
                 .background(Color.white)
                 .cornerRadius(16)
@@ -235,6 +240,11 @@ extension InsulinView {
             } else {
                 Button {
                     isTimePickerOpen.toggle()
+                    withAnimation {
+                        hideKeyboard()
+                        isCalendarOpen = false
+                        isNodeAdded = false
+                    }
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundColor(Color.white)

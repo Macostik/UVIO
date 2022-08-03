@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReminderView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @ObservedObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
@@ -22,6 +23,7 @@ struct ReminderView: View {
                 }
             }
         }
+        .animation(.easeInOut)
         .shadow(color: .gray.opacity(0.3), radius: 16, y: -10)
     }
 }
@@ -81,7 +83,7 @@ extension ReminderView {
             submitLogButton
             cancelButton
                 .padding(.top, 8)
-                .padding(.bottom, 26)
+                .padding(.bottom, keyboard.isShown ? 200 : 26)
         }
         .background(Color.white)
     }

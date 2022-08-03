@@ -98,6 +98,7 @@ class MainViewModel: BaseViewModel {
             }
         }
     }
+    @Published var keyboardPadding: CGFloat = 0
     var isShownBottomPlaceholder: Bool {
         listEntries.isEmpty ||
         isShowInfoAlert
