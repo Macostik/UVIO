@@ -47,6 +47,7 @@ internal extension Image {
   static var bgAlertIcon : Image { Image("bg_alertIcon", bundle: BundleToken.bundle) }
   static var blackCircleArrowIcon : Image { Image("blackCircleArrowIcon", bundle: BundleToken.bundle) }
   static var bluetoothIcon : Image { Image("bluetoothIcon", bundle: BundleToken.bundle) }
+  static var calendarIcon : Image { Image("calendarIcon", bundle: BundleToken.bundle) }
   static var checkMarkIcon : Image { Image("checkMarkIcon", bundle: BundleToken.bundle) }
   static var chevronIcon : Image { Image("chevronIcon", bundle: BundleToken.bundle) }
   static var clockIcon : Image { Image("clockIcon", bundle: BundleToken.bundle) }

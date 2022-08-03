@@ -89,6 +89,7 @@ extension AccountInformationView {
                 Spacer()
                 Button {
                     withAnimation {
+                        hideKeyboard()
                         viewModel.isDOBPresented = false
                         viewModel.isGenderPresented = false
                         viewModel.isChangePassword.toggle()
@@ -120,6 +121,13 @@ extension AccountInformationView {
                 Text(viewModel.user?.name ?? "")
                     .foregroundColor(self.isEditUserName ? Color.clear : Color.black)
                 TextField("", text: $viewModel.name)
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.isDOBPresented = false
+                            viewModel.isGenderPresented = false
+                            viewModel.isChangePassword = false
+                        }
+                    }
                     .onChange(of: viewModel.name, perform: { _ in
                         self.isEditUserName = true
                         withAnimation {
@@ -153,6 +161,13 @@ extension AccountInformationView {
                     .foregroundColor(self.isEditEmail ? Color.clear : Color.black)
                 TextField("", text: $viewModel.email)
                     .keyboardType(.emailAddress)
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.isDOBPresented = false
+                            viewModel.isGenderPresented = false
+                            viewModel.isChangePassword = false
+                        }
+                    }
                     .onChange(of: viewModel.email, perform: { _ in
                         self.isEditEmail = true
                         if viewModel.email.isValidEmail() {
@@ -177,6 +192,7 @@ extension AccountInformationView {
                 .frame(height: 50)
                 .onTapGesture {
                     withAnimation {
+                        hideKeyboard()
                         viewModel.isDOBPresented = false
                         viewModel.isChangePassword = false
                         viewModel.isGenderPresented.toggle()
@@ -209,6 +225,7 @@ extension AccountInformationView {
                 .overlay(dobOverlay, alignment: .leading)
                 .onTapGesture {
                     withAnimation {
+                        hideKeyboard()
                         viewModel.isChangePassword = false
                         viewModel.isGenderPresented = false
                         viewModel.isDOBPresented.toggle()
@@ -217,15 +234,20 @@ extension AccountInformationView {
         }
     }
     var dobOverlay: some View {
-        ZStack(alignment: .leading) {
-            Text(L10n.dob)
-                .font(.poppins(.medium, size: 14))
-                .foregroundColor(Color.black)
-                .padding()
-            Text(viewModel.birthDateString)
-                .font(.poppins(.bold, size: 14))
-                .accentColor(Color.black)
-                .offset(x: 100)
+        HStack {
+            ZStack(alignment: .leading) {
+                Text(L10n.dob)
+                    .font(.poppins(.medium, size: 14))
+                    .foregroundColor(Color.black)
+                    .padding()
+                Text(viewModel.birthDateString)
+                    .font(.poppins(.bold, size: 14))
+                    .accentColor(Color.black)
+                    .offset(x: 100)
+            }
+            Spacer()
+            Image.calendarIcon
+                .padding(.trailing, 14)
         }
     }
     var bloodGlucoseView: some View {

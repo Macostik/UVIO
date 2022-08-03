@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ChangePasswordView: View {
+    @StateObject var keyboard = KeyboardHandler()
     @StateObject var viewModel: UserViewModel
     @State var offset: CGFloat = 0.0
     @State var isShownOldPassword = false
     @State var isShownNewPassword = false
     var body: some View {
-        ZStack {
+        VStack {
             VStack {
                 if viewModel.isChangePassword {
                     contentView
@@ -46,7 +47,7 @@ extension ChangePasswordView {
                 newPasswordView
                 saveButton
                 cancelButton
-                    .padding(.bottom, 40)
+                    .padding(.bottom, keyboard.height == 0 ? 30 : 70)
             }
             .background(Color.bottomBGColor)
             .clipShape(RoundedCorner(radius: 24,
