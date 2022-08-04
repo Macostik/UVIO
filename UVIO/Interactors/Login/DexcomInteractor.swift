@@ -10,5 +10,5 @@ import Combine
 
 typealias Token = String
 protocol DexcomInteractor {
-    func getBearer() -> AnyPublisher<String, Error>
+   func getBearer() -> AnyPublisher<DexcomToken, Error>
 }

@@ -18,6 +18,7 @@ private enum APIRequest: URLRequestConvertible {
     case login([String: Any])
     case socialLogin([String: Any])
     case profile([String: Any])
+    case devices([String: Any])
     // swiftlint:disable cyclomatic_complexity
     func asURLRequest() throws -> URLRequest {
         var headersData: [String: String]?
@@ -27,7 +28,7 @@ private enum APIRequest: URLRequestConvertible {
         let headers: [String: String]? = headersData
         var method: HTTPMethod {
             switch self {
-            case .register, .login, .socialLogin, .profile:
+            case .register, .login, .socialLogin, .profile, .devices:
                 return .post
             }
         }
@@ -36,7 +37,8 @@ private enum APIRequest: URLRequestConvertible {
             case .login(let parameters),
                     .register(let parameters),
                     .socialLogin(let parameters),
-                    .profile(let parameters):
+                    .profile(let parameters),
+                    .devices(let parameters):
                 return parameters
             }
         }()
@@ -52,6 +54,8 @@ private enum APIRequest: URLRequestConvertible {
                 query = "login-social"
             case .profile:
                 query = "profiles"
+            case .devices:
+                query = "devices"
             }
             if let query = query {
                 URL = URL.appendingPathComponent(query)
@@ -72,7 +76,7 @@ private enum APIRequest: URLRequestConvertible {
             }
         }
         switch self {
-        case .login, .register, .socialLogin, .profile:
+        case .login, .register, .socialLogin, .profile, .devices:
             return try URLEncoding(arrayEncoding: .noBrackets).encode(urlRequest, with: parameters)
 //        default:
 //            return try URLEncoding.default.encode(urlRequest, with: parameters)
@@ -151,5 +155,16 @@ class APIService: APIInteractor {
             "override_do_not_disturb": dontDisturb
         ]
         return APIRequest.profile(params).json(DiabetesValueResponsable.self)
+    }
+    func devices(userID: String,
+                 apiToken: String,
+                 refreshApiToken: String) -> DataResponsePublisher<DiabetesValueResponsable> {
+        let params = ["user_id": userID,
+                      "name": "Dexcom",
+                      "version": "1.11",
+                      "model": "v1",
+                      "api_token": apiToken,
+                      "refresh_api_token": refreshApiToken]
+        return APIRequest.devices(params).json(DiabetesValueResponsable.self)
     }
 }

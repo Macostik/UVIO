@@ -14,7 +14,7 @@ protocol DexcomProvider {
 }
 
 struct DexcomService: DexcomInteractor {
-    func getBearer() -> AnyPublisher<String, Error> {
+    func getBearer() -> AnyPublisher<DexcomToken, Error> {
         let oauth2 = OAuth2Swift(consumerKey: Constant.dexcomSecretClientID,
                                  consumerSecret: Constant.dexcomSecretKey,
                                  authorizeUrl: Constant.authURL,
@@ -25,7 +25,8 @@ struct DexcomService: DexcomInteractor {
                                          scope: Constant.authScope,
                                          state: state)
             .map { credential, _, _ in
-                let token = credential.oauthToken
+                let token = DexcomToken(oauthToken: credential.oauthToken,
+                                        oauthRefreshToken: credential.oauthRefreshToken)
                 Logger.info("Dexcom login was successful with token: \(token)")
                 return token
             }

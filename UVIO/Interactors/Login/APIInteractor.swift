@@ -32,4 +32,7 @@ protocol APIInteractor {
                  country: String,
                  alertVibrate: String,
                  dontDisturb: String) -> DataResponsePublisher<DiabetesValueResponsable>
+    func devices(userID: String,
+                 apiToken: String,
+                 refreshApiToken: String) -> DataResponsePublisher<DiabetesValueResponsable>
 }

@@ -91,9 +91,10 @@ class UserViewModel: BaseViewModel {
         }
     }
     // Dexcome data
-    @Published var dexcomToken: String = "" {
+    @Published var dexcomToken = DexcomToken(oauthToken: "",
+                                             oauthRefreshToken: "") {
         didSet {
-            if !dexcomToken.isEmpty {
+            if !dexcomToken.oauthToken.isEmpty {
                 registerUser()
             }
         }

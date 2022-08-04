@@ -78,7 +78,8 @@ extension BaseViewModel {
 extension UserViewModel {
     func dexcomLogin() {
         dependency.provider.dexcomService.getBearer()
-            .replaceError(with: "")
+            .replaceError(with: DexcomToken(oauthToken: "",
+                                            oauthRefreshToken: ""))
             .assign(to: \.dexcomToken, on: self)
             .store(in: &cancellableSet)
     }

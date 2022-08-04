@@ -8,10 +8,7 @@
 import Foundation
 import RealmSwift
 
-class AuthToken: Object {
-    @Persisted var token: String = ""
-}
-
-class DexcomToken: Object {
-    @Persisted var token: String = ""
+struct DexcomToken {
+    var oauthToken: String
+    var oauthRefreshToken: String
 }
