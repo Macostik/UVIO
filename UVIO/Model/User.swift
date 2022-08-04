@@ -48,6 +48,21 @@ struct DiabetesParam: Decodable {
     let created_at: String?
     let id: Int
 }
+struct DevicesValueResponsable: Decodable {
+    let success: Bool
+    let data: DeviceParam
+}
+struct DeviceParam: Decodable {
+    let name: String
+    let version: String?
+    let model: String?
+    let user_id: String?
+    let api_token: String?
+    let api_refresh_token: String?
+    let updated_at: String?
+    let created_at: String?
+    let id: Int
+}
 
 class User: Object {
     @Persisted(primaryKey: true) var id: Int

@@ -30,6 +30,9 @@ struct BirthDateOnboardingView: View, Identifiable {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .onAppear {
+            UIScrollView.appearance().isScrollEnabled = true
+        }
     }
 }
 

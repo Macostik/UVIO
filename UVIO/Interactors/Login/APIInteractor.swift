@@ -34,5 +34,5 @@ protocol APIInteractor {
                  dontDisturb: String) -> DataResponsePublisher<DiabetesValueResponsable>
     func devices(userID: String,
                  apiToken: String,
-                 refreshApiToken: String) -> DataResponsePublisher<DiabetesValueResponsable>
+                 refreshApiToken: String) -> DataResponsePublisher<DevicesValueResponsable>
 }

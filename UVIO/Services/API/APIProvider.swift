@@ -158,13 +158,13 @@ class APIService: APIInteractor {
     }
     func devices(userID: String,
                  apiToken: String,
-                 refreshApiToken: String) -> DataResponsePublisher<DiabetesValueResponsable> {
+                 refreshApiToken: String) -> DataResponsePublisher<DevicesValueResponsable> {
         let params = ["user_id": userID,
                       "name": "Dexcom",
                       "version": "1.11",
                       "model": "v1",
                       "api_token": apiToken,
                       "refresh_api_token": refreshApiToken]
-        return APIRequest.devices(params).json(DiabetesValueResponsable.self)
+        return APIRequest.devices(params).json(DevicesValueResponsable.self)
     }
 }

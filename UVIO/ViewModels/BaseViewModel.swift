@@ -91,7 +91,7 @@ extension UserViewModel {
                    birthDate: birthDateParam,
                    gender: genderSelectedItem?.type ?? "" )
             .sink(receiveCompletion: { _ in
-            }, receiveValue: { response in
+            }, receiveValue: { [unowned self] response in
                 guard let response = response.value,
                         response.success else {
                     Logger.error("Something went wrong: \(String(describing: response.error))")
@@ -99,7 +99,9 @@ extension UserViewModel {
                 }
                 let user = response.data.user
                 self.authToken = response.data.token
+                self.userID = String(user.id)
                 self.createNewUser.send(user)
+                self.sendDexcomTokens()
             })
             .store(in: &cancellableSet)
     }
@@ -117,6 +119,7 @@ extension UserViewModel {
                     }
                     let user = response.data.user
                     self.authToken = response.data.token
+                    self.userID = String(user.id)
                     self.createNewUser.send(user)
                     return Just(response.success)
                         .setFailureType(to: Error.self)
@@ -144,6 +147,7 @@ extension UserViewModel {
                 }
                 let user = response.data.user
                 self.authToken = response.data.token
+                self.userID = String(user.id)
                 self.createNewUser.send(user)
             })
             .store(in: &cancellableSet)
@@ -170,6 +174,22 @@ extension UserViewModel {
                     return
                 }
                 Logger.debug("Set profile value successfully")
+            })
+            .store(in: &cancellableSet)
+    }
+    func sendDexcomTokens() {
+        dependency.provider.apiService
+            .devices(userID: userID,
+                     apiToken: dexcomToken.oauthToken,
+                     refreshApiToken: dexcomToken.oauthRefreshToken)
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { response in
+                guard let response = response.value,
+                      response.success else {
+                    Logger.error("Something went wrong: \(String(describing: response.error))")
+                    return
+                }
+                Logger.debug("Dexcom token was sent successfully")
             })
             .store(in: &cancellableSet)
     }
