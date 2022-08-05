@@ -28,6 +28,7 @@ struct EntryView_Previews: PreviewProvider {
 }
 extension EntryView {
     var contentView: some View {
+        VStack {
             HStack(spacing: 12) {
                 image
                 ZStack(alignment: .leading) {
@@ -50,9 +51,19 @@ extension EntryView {
                 Image.vDotsIcon
                     .padding(.trailing, 5)
             }
-            .padding(16)
-            .background(Color.white.cornerRadius(16))
-            .padding(.horizontal)
+            if listViewEntry.hasCommit {
+                listViewEntry.note
+                    .foregroundColor(Color.black)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(8)
+                    .background(Color.graySettingsColor)
+                    .cornerRadius(8)
+                    .font(.poppins(.regular, size: 12))
+            }
+        }
+        .padding(16)
+        .background(Color.white.cornerRadius(16))
+        .padding(.horizontal)
     }
     var image: some View {
         ZStack {

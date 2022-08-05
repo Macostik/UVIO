@@ -202,6 +202,7 @@ extension MainViewModel {
                     entry.note = self.insulineNote
                     entry.date = self.insulinWhenValue
                     entry.time = self.insulinTimeValue
+                    entry.note = self.logBGNote
                     return entry
                 }
             }).eraseToAnyPublisher()
@@ -216,6 +217,7 @@ extension MainViewModel {
                     entry.date = self.foodWhenValue
                     entry.time = self.foodTimeValue
                     entry.action = self.insulinAction.rawValue
+                    entry.note = self.insulineNote
                     return entry
                 }
             }).eraseToAnyPublisher()
@@ -230,6 +232,7 @@ extension MainViewModel {
                     entry.foodName = self.foodName
                     entry.date = self.foodWhenValue
                     entry.time = self.foodTimeValue
+                    entry.note = self.foodNote
                     return entry
                 }
             }).eraseToAnyPublisher()

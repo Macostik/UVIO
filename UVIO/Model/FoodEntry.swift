@@ -42,6 +42,8 @@ extension FoodEntry: Mapable {
             .font(.poppins(.medium, size: 10))
         listViewEntry.timer =
         Text("\(createdAt.time)")
+        listViewEntry.hasCommit = !note.isEmpty
+        listViewEntry.note = Text(note)
         return listViewEntry
     }
 }

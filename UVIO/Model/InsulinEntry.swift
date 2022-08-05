@@ -52,6 +52,8 @@ extension InsulinEntry: Mapable {
         listViewEntry.timer =
         Text("\(createdAt.time)")
             .font(.poppins(.medium, size: 10))
+        listViewEntry.hasCommit = !note.isEmpty
+        listViewEntry.note = Text(note)
         return listViewEntry
     }
 }

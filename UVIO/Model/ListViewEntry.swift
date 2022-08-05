@@ -31,6 +31,7 @@ struct ListViewEntry: Hashable {
     var action: Text?
     var note = Text("")
     var timer = Text("")
+    var hasCommit = false
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

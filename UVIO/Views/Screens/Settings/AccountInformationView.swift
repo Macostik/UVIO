@@ -5,6 +5,8 @@
 //  Created by Macostik on 04.07.2022.
 //
 
+// swiftlint:disable file_length 
+
 import SwiftUI
 
 struct AccountInformationView: View {
