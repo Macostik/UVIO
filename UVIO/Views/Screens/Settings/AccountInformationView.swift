@@ -123,22 +123,42 @@ extension AccountInformationView {
             ZStack(alignment: .leading) {
                 Text(viewModel.user?.name ?? "")
                     .foregroundColor(self.isEditUserName ? Color.clear : Color.black)
-                TextField("", text: $viewModel.name)
-                    .onTapGesture {
-                        withAnimation {
-                            viewModel.isDOBPresented = false
-                            viewModel.isGenderPresented = false
-                            viewModel.isChangePassword = false
+                if #available(iOS 15.0, *) {
+                    TextField("", text: $viewModel.name)
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.isDOBPresented = false
+                                viewModel.isGenderPresented = false
+                                viewModel.isChangePassword = false
+                            }
                         }
-                    }
-                    .onChange(of: viewModel.name, perform: { _ in
-                        self.isEditUserName = true
-                        withAnimation {
-                            self.showFooter = true
+                        .onChange(of: viewModel.name, perform: { _ in
+                            self.isEditUserName = true
+                            withAnimation {
+                                self.showFooter = true
+                            }
+                        })
+                        .font(.poppins(.bold, size: 14))
+                        .accentColor(Color.black)
+                        .submitLabel(.done)
+                } else {
+                    TextField("", text: $viewModel.name)
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.isDOBPresented = false
+                                viewModel.isGenderPresented = false
+                                viewModel.isChangePassword = false
+                            }
                         }
-                    })
-                    .font(.poppins(.bold, size: 14))
-                    .accentColor(Color.black)
+                        .onChange(of: viewModel.name, perform: { _ in
+                            self.isEditUserName = true
+                            withAnimation {
+                                self.showFooter = true
+                            }
+                        })
+                        .font(.poppins(.bold, size: 14))
+                        .accentColor(Color.black)
+                }
             }
             .font(.poppins(.bold, size: 14))
             .offset(x: 100)
@@ -162,25 +182,48 @@ extension AccountInformationView {
             ZStack(alignment: .leading) {
                 Text(viewModel.user?.email ?? "")
                     .foregroundColor(self.isEditEmail ? Color.clear : Color.black)
-                TextField("", text: $viewModel.email)
-                    .keyboardType(.emailAddress)
-                    .onTapGesture {
-                        withAnimation {
-                            viewModel.isDOBPresented = false
-                            viewModel.isGenderPresented = false
-                            viewModel.isChangePassword = false
-                        }
-                    }
-                    .onChange(of: viewModel.email, perform: { _ in
-                        self.isEditEmail = true
-                        if viewModel.email.isValidEmail() {
+                if #available(iOS 15.0, *) {
+                    TextField("", text: $viewModel.email)
+                        .keyboardType(.emailAddress)
+                        .onTapGesture {
                             withAnimation {
-                                self.showFooter = true
+                                viewModel.isDOBPresented = false
+                                viewModel.isGenderPresented = false
+                                viewModel.isChangePassword = false
                             }
                         }
-                    })
-                    .font(.poppins(.bold, size: 14))
-                    .accentColor(Color.black)
+                        .onChange(of: viewModel.email, perform: { _ in
+                            self.isEditEmail = true
+                            if viewModel.email.isValidEmail() {
+                                withAnimation {
+                                    self.showFooter = true
+                                }
+                            }
+                        })
+                        .font(.poppins(.bold, size: 14))
+                        .accentColor(Color.black)
+                        .submitLabel(.done)
+                } else {
+                    TextField("", text: $viewModel.email)
+                        .keyboardType(.emailAddress)
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.isDOBPresented = false
+                                viewModel.isGenderPresented = false
+                                viewModel.isChangePassword = false
+                            }
+                        }
+                        .onChange(of: viewModel.email, perform: { _ in
+                            self.isEditEmail = true
+                            if viewModel.email.isValidEmail() {
+                                withAnimation {
+                                    self.showFooter = true
+                                }
+                            }
+                        })
+                        .font(.poppins(.bold, size: 14))
+                        .accentColor(Color.black)
+                }
             }
             .font(.poppins(.bold, size: 14))
             .offset(x: 100)
