@@ -14,6 +14,10 @@ class BaseViewModel: ObservableObject {
     @Published var user: User?
     @Published var signInConfirmed = false
     @Published var signUpConfirmed = false
+    // Onboarding selection
+    @Published var selectedOnboardingItem: OnboardingViewType = .signUp
+    // Login  selection
+    @Published var selectedLoginItem: LoginViewType = .signIn
     @Published var hasUserlogOut = false {
         willSet {
             self.signInConfirmed = !newValue
@@ -109,7 +113,7 @@ extension UserViewModel {
         if loginMode == .signIn {
             return dependency.provider.apiService
                 .login(email: email, password: password)
-                .flatMap({ response -> AnyPublisher<Bool, Error> in
+                .flatMap({ [unowned self] response -> AnyPublisher<Bool, Error> in
                     guard let response = response.value
                     else {
                         Logger.error("Something went wrong: \(String(describing: response.error))")
@@ -139,7 +143,7 @@ extension UserViewModel {
                          token: socialType.token,
                          platform: socialType.platform)
             .sink(receiveCompletion: { _ in
-            }, receiveValue: { response in
+            }, receiveValue: {[unowned self] response in
                 guard let response = response.value,
                         response.success else {
                     Logger.error("Something went wrong: \(String(describing: response.error))")

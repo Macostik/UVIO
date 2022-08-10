@@ -63,10 +63,6 @@ class UserViewModel: BaseViewModel {
             diabetTypeList.first(where: { $0.id == item.id })?.isSelected = true
         }
     }
-    // Onboarding selection
-    @Published var selectedOnboardingItem: OnboardingViewType = .signUp
-    // Login  selection
-    @Published var selectedLoginItem: LoginViewType = .signIn
     // Onboarding alert
     @Published var isVibrate: Bool = false
     @Published var isNotDisturb: Bool = false
@@ -165,7 +161,7 @@ extension UserViewModel {
     }
     func createUser() {
         createNewUser
-            .map { value -> User in
+            .map { [unowned self]  value -> User in
                 let user = User()
                 user.id = value.id
                 user.name = value.name
@@ -207,7 +203,7 @@ extension UserViewModel {
         presentOnboardingView
             .receive(on: DispatchQueue.main)
             .sink { _ in
-            } receiveValue: { type in
+            } receiveValue: { [unowned self] type in
                 withAnimation {
                     self.selectedOnboardingItem = type
                 }
@@ -217,8 +213,8 @@ extension UserViewModel {
     func handleLoginScreen() {
         presentLoginView
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-            } receiveValue: { type in
+            .sink {  _ in
+            } receiveValue: { [unowned self] type in
                 withAnimation {
                     self.selectedLoginItem = type
                 }
@@ -238,7 +234,7 @@ extension UserViewModel {
                 }
             }
             .sink { _ in
-            } receiveValue: { success in
+            } receiveValue: {[unowned self] success in
                 withAnimation {
                     self.isDOBPresented = !success
                     self.isGenderPresented = !success
