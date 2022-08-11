@@ -31,7 +31,7 @@ class MainViewModel: BaseViewModel {
     @Published var glucoseUnitValue = "mmol/l"
     // Handle menu
     @Published var menuAction: MenuAction = .logBG
-    @Published var isMenuPresented = false
+    @Published var isMainMenuPresented = false
     @Published var isCalendarOpen = false
     // Handle logBG data
     @Published var logBGNote = ""
@@ -103,8 +103,8 @@ class MainViewModel: BaseViewModel {
         listEntries.isEmpty ||
         isShowInfoAlert
     }
-    var isPresented: Bool {
-        isMenuPresented ||
+    var isMenuPresented: Bool {
+        isMainMenuPresented ||
         isLogBGPresented ||
         isFoodPresented ||
         isInsulinPresented ||
@@ -199,10 +199,11 @@ extension MainViewModel {
                     let entry = LogBGEntry()
                     entry.logValue = "\(self.logBGInput)"
                     entry.logUnitType = self.user?.glucoseUnit ?? ""
-                    entry.note = self.insulineNote
+                    entry.note = self.logBGNote
                     entry.date = self.insulinWhenValue
                     entry.time = self.insulinTimeValue
                     entry.note = self.logBGNote
+                    self.logBGNote = ""
                     return entry
                 }
             }).eraseToAnyPublisher()
@@ -213,11 +214,12 @@ extension MainViewModel {
                 return self.updateEntry {
                     let entry = InsulinEntry()
                     entry.insulinValue = "\(self.insulinCounter)"
-                    entry.note = self.foodNote
+                    entry.note = self.insulineNote
                     entry.date = self.foodWhenValue
                     entry.time = self.foodTimeValue
                     entry.action = self.insulinAction.rawValue
                     entry.note = self.insulineNote
+                    self.insulineNote = ""
                     return entry
                 }
             }).eraseToAnyPublisher()
@@ -233,6 +235,7 @@ extension MainViewModel {
                     entry.date = self.foodWhenValue
                     entry.time = self.foodTimeValue
                     entry.note = self.foodNote
+                    self.foodNote = ""
                     return entry
                 }
             }).eraseToAnyPublisher()
@@ -244,6 +247,7 @@ extension MainViewModel {
                     let entry = ReminderEntry()
                     entry.reminderValue = "\(self.reminderCounter)"
                     entry.note = self.reminderNote
+                    self.reminderNote = ""
                     return entry
                 }
                 .map({[unowned self] value in

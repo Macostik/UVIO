@@ -19,7 +19,7 @@ struct MainView: View {
             backgroundView
             contentView
                 .overlay(Rectangle()
-                    .fill(mainViewModel.isPresented ? Color.black.opacity(0.3) : Color.clear))
+                    .fill(mainViewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear))
                 .ignoresSafeArea()
             menuView
             logBGView
@@ -32,6 +32,9 @@ struct MainView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
+        .onAppear {
+            UIScrollView.appearance().isScrollEnabled = true
+        }
     }
 }
 
@@ -81,7 +84,7 @@ extension MainView {
             } else {
                 Button {
                     withAnimation {
-                        mainViewModel.isMenuPresented = true
+                        mainViewModel.isMainMenuPresented = true
                     }
                 } label: {
                     Image.plusButtonIcon
@@ -301,7 +304,7 @@ extension MainView {
         }
     }
     var menuView: some View {
-        MenuView(isPresented: $mainViewModel.isMenuPresented,
+        MenuView(isPresented: $mainViewModel.isMainMenuPresented,
                  menuAction: { action in
             mainViewModel.menuActionPubliser.send(action)
         })
