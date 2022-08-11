@@ -12,8 +12,34 @@ import Alamofire
 
 class BaseViewModel: ObservableObject {
     @Published var user: User?
+    @Published var name: String = ""
+    @Published var email: String = ""
+    // Change password
+    @Published var isChangePassword = false
+    @Published var isPasswordMatch = PassthroughSubject<Void, Error>()
+    @Published var passwordMode = PasswordMode.idle
+    @Published var password: String = ""
+    @Published var recoveryEmail: String = ""
+    @Published var newPassword: String = ""
+    @Published var oldPassword: String = ""
+    // User birthDate
+    @Published var birthDate: Date = Date()
     @Published var signInConfirmed = false
     @Published var signUpConfirmed = false
+    @Published var isDOBPresented = false
+    // User gender
+    @Published var isGenderPresented = false
+    @Published var ownType: String = ""
+    @Published var genderSelectedItem: GenderType? {
+        willSet {
+            guard let item = newValue else { return }
+            genderTypeList.forEach({ $0.isSelected = false })
+            let selectedItem = genderTypeList.first(where: { $0.id == item.id })
+            if let selectedItem = selectedItem {
+                selectedItem.isSelected = true
+            }
+        }
+    }
     // Onboarding selection
     @Published var selectedOnboardingItem: OnboardingViewType = .signUp
     // Login  selection
@@ -23,6 +49,98 @@ class BaseViewModel: ObservableObject {
             self.signInConfirmed = !newValue
             self.signUpConfirmed = !newValue
         }
+    }
+    @Published var logBGNote = ""
+    @Published var foodNote = ""
+    @Published var insulineNote = ""
+    @Published var reminderNote = ""
+    // User glucose
+    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
+    @Published var hyperValue: Int = 200
+    @Published var hypoValue: Int = 70
+    @Published var isVibrate: Bool = false
+    @Published var isNotDisturb: Bool = false
+    @Published var isMainMenuPresented = false
+    @Published var isLogBGPresented = false
+    @Published var isReminderPresented = false
+    @Published var isInsulinPresented = false
+    @Published var isShownWarningAlert = false
+    @Published var isNodeAdded = false
+    @Published var isShowInfoAlert = false
+    @Published var isFoodPresented = false {
+        willSet {
+//            if !newValue {
+//                isFoodCalendarOpen = false
+//                isTimePickerOpen = false
+//                isCarbsAdded = false
+//                isNodeAdded = false
+//            }
+        }
+    }
+    // Handle menu
+    @Published var menuAction: MenuAction = .logBG
+    @Published var isCalendarOpen = false
+    // Handle logBG data
+    @Published var logBGInput = ""
+    @Published var logBGWhenValue = Date()
+    @Published var logBGTimeValue = Date()
+    // Handle food data
+    @Published var foodName = ""
+    @Published var isFoodCalendarOpen = false
+    @Published var isTimePickerOpen = false
+    @Published var isCarbsAdded = false
+
+    @Published var foodWhenValue = Date()
+    @Published var foodTimeValue = Date()
+    @Published var foodCarbs: CarbsPickerData = .c15
+    // Handle insulin data
+    @Published var insulinCounter: Int = 0
+    @Published var insulinsubtitle: String = L10n.units
+    @Published var insulinMainColor: Color = Color.rapidOrangeColor
+    @Published var insulinWhenValue = Date()
+    @Published var insulinTimeValue = Date()
+    @Published var insulinAction: InsulinAction = .rapid
+    // Handle reminder data
+    @Published var reminderCounter: Int = 0
+    @Published var reminderColor: Color = Color.white
+    @Published var reminderSubtitle: String = L10n.minutes
+    @Published var glucoseTypeSelectedItem: GlucoseType? {
+        willSet {
+            guard let item = newValue else { return }
+            glucoseTypeList.forEach({ $0.isSelected = false })
+            glucoseTypeList.first(where: { $0.id == item.id })?.isSelected = true
+        }
+    }
+    @Published var entryWasUpdated = false {
+        willSet {
+            if newValue {
+                handleGettingEntries()
+            }
+        }
+    }
+    func handleGettingEntries() {}
+    var subminLogBGPublisher = PassthroughSubject<Void, Error>()
+    var subminInsulinPublisher = PassthroughSubject<Void, Error>()
+    var subminFoodPublisher = PassthroughSubject<Void, Error>()
+    var subminReminderPublisher = PassthroughSubject<Void, Error>()
+    lazy var glucoseTypeList = [
+        GlucoseType(id: 1, type: L10n.mgDL,
+                    isSelected: isUserInvalidated ? user?.glucoseUnit == L10n.mgDL : false),
+        GlucoseType(id: 2, type: L10n.mmolL,
+                    isSelected: isUserInvalidated ?  user?.glucoseUnit == L10n.mmolL : false)
+    ]
+    var isMenuPresented: Bool {
+        isMainMenuPresented ||
+        isLogBGPresented ||
+        isFoodPresented ||
+        isInsulinPresented ||
+        isReminderPresented ||
+        isShownWarningAlert
+    }
+    var isSettingsMenuPresented: Bool {
+        isDOBPresented ||
+        isGenderPresented ||
+        isChangePassword
     }
     var presentOnboardingView =  CurrentValueSubject<OnboardingViewType, Error>(.signUp)
     var cancellableSet = Set<AnyCancellable>()
@@ -38,6 +156,12 @@ class BaseViewModel: ObservableObject {
     var userName: String {
         if isUserInvalidated, let user = user {
            return user.name
+        }
+        return ""
+    }
+    var userEmail: String {
+        if isUserInvalidated, let user = user {
+           return user.email
         }
         return ""
     }
@@ -228,5 +352,88 @@ extension UserViewModel {
                 self.socialLogin(with: value)
             }
             .store(in: &cancellableSet)
+    }
+}
+
+// Handle submit publishers
+extension BaseViewModel {
+    var logBGPublisher: AnyPublisher<Bool, Error> {
+        subminLogBGPublisher
+            .flatMap({ [unowned self] _ in
+                return self.updateEntry {
+                    let entry = LogBGEntry()
+                    entry.logValue = "\(self.logBGInput)"
+                    entry.logUnitType = self.user?.glucoseUnit ?? ""
+                    entry.note = self.logBGNote
+                    entry.date = self.insulinWhenValue
+                    entry.time = self.insulinTimeValue
+                    entry.note = self.logBGNote
+                    self.logBGNote = ""
+                    return entry
+                }
+            }).eraseToAnyPublisher()
+    }
+    var insulinPublisher: AnyPublisher<Bool, Error> {
+        subminInsulinPublisher
+            .flatMap({ [unowned self] _ in
+                return self.updateEntry {
+                    let entry = InsulinEntry()
+                    entry.insulinValue = "\(self.insulinCounter)"
+                    entry.note = self.insulineNote
+                    entry.date = self.foodWhenValue
+                    entry.time = self.foodTimeValue
+                    entry.action = self.insulinAction.rawValue
+                    entry.note = self.insulineNote
+                    self.insulineNote = ""
+                    return entry
+                }
+            }).eraseToAnyPublisher()
+    }
+    var foodPublisher: AnyPublisher<Bool, Error> {
+        subminFoodPublisher
+            .flatMap({ [unowned self] _ in
+                return self.updateEntry {
+                    let entry = FoodEntry()
+                    entry.carbsValue = self.foodCarbs.description
+                    entry.note = self.foodNote
+                    entry.foodName = self.foodName
+                    entry.date = self.foodWhenValue
+                    entry.time = self.foodTimeValue
+                    entry.note = self.foodNote
+                    self.foodNote = ""
+                    return entry
+                }
+            }).eraseToAnyPublisher()
+    }
+    var reminderPublisher: AnyPublisher<Bool, Error> {
+        subminReminderPublisher
+            .flatMap({ [unowned self] _ in
+                return self.updateEntry {
+                    let entry = ReminderEntry()
+                    entry.reminderValue = "\(self.reminderCounter)"
+                    entry.note = self.reminderNote
+                    self.reminderNote = ""
+                    return entry
+                }
+                .map({[unowned self] value in
+                    self.startTimer()
+                    return value
+                })
+            }).eraseToAnyPublisher()
+    }
+    func handleSubmition() {
+        Publishers.Merge4(logBGPublisher, reminderPublisher, insulinPublisher, foodPublisher)
+            .replaceError(with: false)
+            .assign(to: \.entryWasUpdated, on: self)
+            .store(in: &cancellableSet)
+    }
+    private func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: CGFloat(self.self.reminderCounter * 60),
+                             repeats: false,
+                             block: { [unowned self] _ in
+            withAnimation {
+                self.isShowInfoAlert = true
+            }
+        })
     }
 }

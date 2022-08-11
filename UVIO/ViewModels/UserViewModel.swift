@@ -20,34 +20,6 @@ class UserViewModel: BaseViewModel {
     }
     // User name
     @Published var userID: String = ""
-    @Published var name: String = ""
-    // User birthDate
-    @Published var birthDate: Date = Date()
-    @Published var isDOBPresented = false
-    // User gender
-    @Published var isGenderPresented = false
-    @Published var ownType: String = ""
-    @Published var genderSelectedItem: GenderType? {
-        willSet {
-            guard let item = newValue else { return }
-            genderTypeList.forEach({ $0.isSelected = false })
-            let selectedItem = genderTypeList.first(where: { $0.id == item.id })
-            if let selectedItem = selectedItem {
-                selectedItem.isSelected = true
-            }
-        }
-    }
-    // User glucose
-    @Published var glucoseRangeValue: ClosedRange<Int> = 100...160
-    @Published var hyperValue: Int = 200
-    @Published var hypoValue: Int = 70
-    @Published var glucoseTypeSelectedItem: GlucoseType? {
-        willSet {
-            guard let item = newValue else { return }
-            glucoseTypeList.forEach({ $0.isSelected = false })
-            glucoseTypeList.first(where: { $0.id == item.id })?.isSelected = true
-        }
-    }
     @Published var unitsSelectedItem: UnitsType? {
         willSet {
             guard let item = newValue else { return }
@@ -64,14 +36,8 @@ class UserViewModel: BaseViewModel {
         }
     }
     // Onboarding alert
-    @Published var isVibrate: Bool = false
-    @Published var isNotDisturb: Bool = false
     @Published var notifyBGLevelOutOfRange: Bool = false
     @Published var alertBGLevelOutOfRange: Bool = false
-    // Change password
-    @Published var isChangePassword = false
-    @Published var isPasswordMatch = PassthroughSubject<Void, Error>()
-    @Published var passwordMode = PasswordMode.idle
     // Facebook token
     @Published var authToken: String = "" {
         willSet {
@@ -109,17 +75,6 @@ class UserViewModel: BaseViewModel {
     }
     // Update user data
     @Published var updateUserDataPublisher = PassthroughSubject<Void, Error>()
-    lazy var glucoseTypeList = [
-        GlucoseType(id: 1, type: L10n.mgDL,
-                    isSelected: isUserInvalidated ? user?.glucoseUnit == L10n.mgDL : false),
-        GlucoseType(id: 2, type: L10n.mmolL,
-                    isSelected: isUserInvalidated ?  user?.glucoseUnit == L10n.mmolL : false)
-    ]
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var recoveryEmail: String = ""
-    @Published var newPassword: String = ""
-    @Published var oldPassword: String = ""
     @Published var signUp = false
     @Published var userWasUpdated = false
     @Published var userPersist = false
@@ -131,11 +86,6 @@ class UserViewModel: BaseViewModel {
     var saveData = PassthroughSubject<Void, Error>()
     var saveBGLevelsData = PassthroughSubject<Void, Error>()
     var appearBGLevel = PassthroughSubject<Void, Error>()
-    var isMenuPresented: Bool {
-        isDOBPresented ||
-        isGenderPresented ||
-        isChangePassword
-    }
     override init() {
         super.init()
         handleGettinguser()

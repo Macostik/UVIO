@@ -34,7 +34,7 @@ struct AccountInformationView: View {
                 }
             }
             .overlay(Rectangle()
-                .fill(viewModel.isMenuPresented ? Color.black.opacity(0.3) : Color.clear)
+                .fill(viewModel.isSettingsMenuPresented ? Color.black.opacity(0.3) : Color.clear)
                 .ignoresSafeArea())
             .edgesIgnoringSafeArea(.bottom)
             Group {
@@ -123,7 +123,7 @@ extension AccountInformationView {
                 .foregroundColor(Color.black)
                 .padding()
             ZStack(alignment: .leading) {
-                Text(viewModel.user?.name ?? "")
+                Text(viewModel.userName)
                     .foregroundColor(self.isEditUserName ? Color.clear : Color.black)
                 if #available(iOS 15.0, *) {
                     TextField("", text: $viewModel.name)
@@ -182,7 +182,7 @@ extension AccountInformationView {
                 .foregroundColor(Color.black)
                 .padding()
             ZStack(alignment: .leading) {
-                Text(viewModel.user?.email ?? "")
+                Text(viewModel.userEmail)
                     .foregroundColor(self.isEditEmail ? Color.clear : Color.black)
                 if #available(iOS 15.0, *) {
                     TextField("", text: $viewModel.email)
@@ -200,6 +200,8 @@ extension AccountInformationView {
                                 withAnimation {
                                     self.showFooter = true
                                 }
+                            } else {
+                                self.showFooter = false
                             }
                         })
                         .font(.poppins(.bold, size: 14))
