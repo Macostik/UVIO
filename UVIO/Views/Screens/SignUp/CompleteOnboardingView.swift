@@ -18,7 +18,7 @@ struct CompleteOnboardingView: View {
                 contentView
                 Spacer()
                 connectButton
-                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                SkipButton(destination: MainView(userViewModel: viewModel))
                     .padding(.bottom, 7)
             }
             navigationView

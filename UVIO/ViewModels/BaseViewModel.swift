@@ -10,6 +10,8 @@ import SwiftUI
 import RealmSwift
 import Alamofire
 
+// swiftlint:disable all
+
 class BaseViewModel: ObservableObject {
     @Published var user: User?
     @Published var name: String = ""
@@ -27,6 +29,7 @@ class BaseViewModel: ObservableObject {
     @Published var signInConfirmed = false
     @Published var signUpConfirmed = false
     @Published var isDOBPresented = false
+    @Published var showErrorAlert: Bool = false
     // User gender
     @Published var isGenderPresented = false
     @Published var ownType: String = ""

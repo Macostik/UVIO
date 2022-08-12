@@ -79,7 +79,6 @@ class UserViewModel: BaseViewModel {
     @Published var userWasUpdated = false
     @Published var userPersist = false
     @Published var userCreateCompleted = false
-    @Published var showErrorAlert: Bool = false
     var presentLoginView =  CurrentValueSubject<LoginViewType, Error>(.signIn)
     var signUpClickPublisher = PassthroughSubject<Void, Error>()
     var createNewUser = PassthroughSubject<UserParam, Error>()

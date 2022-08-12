@@ -20,7 +20,7 @@ struct GenderOnboardingView: View, Identifiable {
                 Spacer()
                 contentView
                 Spacer()
-                SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                SkipButton(destination: MainView(userViewModel: viewModel))
                     .padding(.bottom, 7)
             }
         }

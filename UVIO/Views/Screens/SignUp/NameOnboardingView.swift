@@ -21,7 +21,7 @@ struct NameOnboardingView: View, Identifiable {
                     NextButtonAction {
                         viewModel.presentOnboardingView.value = .birthDate
                     }
-                    SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
+                    SkipButton(destination: MainView(userViewModel: viewModel))
                         .padding(.bottom, 7)
                 }
             }
