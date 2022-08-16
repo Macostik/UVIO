@@ -22,7 +22,7 @@ struct BirthDateOnboardingView: View, Identifiable {
                     NextButtonAction {
                         viewModel.presentOnboardingView.value = .gender
                     }
-                    SkipButton(destination: MainView(userViewModel: viewModel))
+                    SkipButton(destination: CompleteOnboardingView(viewModel: viewModel))
                         .shadow(color: Color.black.opacity(0.1),
                                 radius: 7)
                         .padding(.bottom, 7)
