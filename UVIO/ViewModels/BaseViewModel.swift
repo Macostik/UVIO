@@ -380,8 +380,8 @@ extension BaseViewModel {
                     entry.logValue = "\(self.logBGInput)"
                     entry.logUnitType = self.user?.glucoseUnit ?? ""
                     entry.note = self.logBGNote
-                    entry.date = self.insulinWhenValue
-                    entry.time = self.insulinTimeValue
+                    entry.date = self.logBGWhenValue
+                    entry.time = self.logBGTimeValue
                     entry.note = self.logBGNote
                     self.logBGNote = ""
                     return entry
@@ -395,8 +395,8 @@ extension BaseViewModel {
                     let entry = InsulinEntry()
                     entry.insulinValue = "\(self.insulinCounter)"
                     entry.note = self.insulineNote
-                    entry.date = self.foodWhenValue
-                    entry.time = self.foodTimeValue
+                    entry.date = self.insulinWhenValue
+                    entry.time = self.insulinTimeValue
                     entry.action = self.insulinAction.rawValue
                     entry.note = self.insulineNote
                     self.insulineNote = ""

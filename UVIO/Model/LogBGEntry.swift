@@ -39,7 +39,7 @@ extension LogBGEntry: Mapable {
             .foregroundColor(Color.black)
             .font(.poppins(.medium, size: 12))
         listViewEntry.timer =
-        Text("\(createdAt.time)")
+        Text("\(time.time)")
         listViewEntry.hasCommit = !note.isEmpty
         listViewEntry.note = Text(note)
         return listViewEntry
