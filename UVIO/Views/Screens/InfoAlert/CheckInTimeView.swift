@@ -30,8 +30,8 @@ extension CheckInTimeView {
                 .font(.poppins(.bold, size: 18))
                 .padding(.bottom, 3)
                 .offset(y: -15)
-            Text(L10n.yourInsulinIsStillHigh)
-                .foregroundColor(Color.primaryAlertColor)
+            Text(L10n.youReachedTargetRange)
+                .foregroundColor(Color.greenSuccessColor)
                 .font(.poppins(.bold, size: 16))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
@@ -42,31 +42,31 @@ extension CheckInTimeView {
                 .overlay(checkInTimeOverlay)
                 .padding(.horizontal)
                 .offset(y: -20)
-            Button {
-            } label: {
-                ZStack {
-                    HStack {
-                        Image.nextIcon
-                            .padding()
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
-                .background(Color.complementaryColor)
-                .cornerRadius(12)
-                .padding(.horizontal)
-                .overlay(buttonOverlay)
-                .offset(y: -12)
-            }
+//            Button {
+//            } label: {
+//                ZStack {
+//                    HStack {
+//                        Image.nextIcon
+//                            .padding()
+//                    }
+//                }
+//                .frame(maxWidth: .infinity, maxHeight: 48, alignment: .trailing)
+//                .background(Color.complementaryColor)
+//                .cornerRadius(12)
+//                .padding(.horizontal)
+//                .overlay(buttonOverlay)
+//                .offset(y: -12)
+//            }
             Button {
                 withAnimation {
                     viewModel.isShowInfoAlert = false
                 }
             } label: {
-                Text(L10n.skipForNow)
+                Text(L10n.close)
                     .foregroundColor(Color.black)
                     .font(.poppins(.medium, size: 14))
             }
-            .padding(.top, 14)
+            .padding(.top, 30)
         }
     }
     var buttonOverlay: some View {
@@ -80,13 +80,13 @@ extension CheckInTimeView {
             HStack {
                 Spacer()
                 VStack {
-                    Text("1:30 pm")
+                    Text(Date().time)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 10))
-                    Text("238")
+                    Text("5.0")
                         .foregroundColor(Color.primaryAlertColor)
                         .font(.poppins(.bold, size: 30))
-                    Text(L10n.mgDL)
+                    Text(viewModel.glucoseUnit)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
                 }
@@ -104,13 +104,17 @@ extension CheckInTimeView {
                 }
                 Spacer()
                 VStack {
-                    Text("2:45 pm")
+                    let reminderDate =
+                    Calendar.current.date(byAdding: .minute,
+                                          value: -viewModel.reminderCounter,
+                                          to: Date()) ?? Date()
+                    Text(reminderDate.time)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 10))
-                    Text("211")
+                    Text(viewModel.glucoseValue)
                         .foregroundColor(Color.primaryAlertColor)
                         .font(.poppins(.bold, size: 30))
-                    Text(L10n.mgDL)
+                    Text(viewModel.glucoseUnit)
                         .foregroundColor(Color.black)
                         .font(.poppins(.medium, size: 14))
                 }

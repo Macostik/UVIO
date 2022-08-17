@@ -29,6 +29,8 @@ extension InfoAlertView {
                 Group {
                     if viewModel.selectedInfoAlertItem == .reminder {
                         Image.alertBackgroundBlue.resizable()
+                    } else if viewModel.selectedInfoAlertItem == .checkInTime {
+                        Image.alertBackgroundGreen.resizable()
                     } else {
                         Image.alertBackgroundRed.resizable()
                     }

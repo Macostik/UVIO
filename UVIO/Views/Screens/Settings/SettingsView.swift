@@ -91,7 +91,7 @@ extension SettingsView {
             .font(.poppins(.regular, size: 14))
             .padding(.bottom, 10)
             Button {
-               _ = viewModel.logOut()
+                viewModel.logOutUser()
             } label: {
                 Text(L10n.logout)
                     .font(.poppins(.bold, size: 16))

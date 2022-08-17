@@ -47,10 +47,10 @@ class BaseViewModel: ObservableObject {
     @Published var selectedOnboardingItem: OnboardingViewType = .signUp
     // Login  selection
     @Published var selectedLoginItem: LoginViewType = .signIn
-    @Published var hasUserlogOut = false {
+    @Published var isUserlogOut = false {
         willSet {
-            self.signInConfirmed = !newValue
-            self.signUpConfirmed = !newValue
+            self.signInConfirmed = newValue
+            self.signUpConfirmed = newValue
         }
     }
     @Published var logBGNote = ""
@@ -70,16 +70,7 @@ class BaseViewModel: ObservableObject {
     @Published var isShownWarningAlert = false
     @Published var isNodeAdded = false
     @Published var isShowInfoAlert = false
-    @Published var isFoodPresented = false {
-        willSet {
-//            if !newValue {
-//                isFoodCalendarOpen = false
-//                isTimePickerOpen = false
-//                isCarbsAdded = false
-//                isNodeAdded = false
-//            }
-        }
-    }
+    @Published var isFoodPresented = false 
     // Handle menu
     @Published var menuAction: MenuAction = .logBG
     @Published var isCalendarOpen = false
@@ -189,16 +180,9 @@ class BaseViewModel: ObservableObject {
     func logOutUser() {
         logOut()
             .replaceError(with: false)
-            .assign(to: \.hasUserlogOut, on: self)
+            .assign(to: \.isUserlogOut, on: self)
             .store(in: &cancellableSet)
     }
-    //    func checkUser() {
-    //        $user
-    //            .map { $0?.isLogin }
-    //            .replaceNil(with: false)
-    //            .assign(to: \.userPersist, on: self)
-    //            .store(in: &cancellableSet)
-    //    }
 }
 
 // Handle store user

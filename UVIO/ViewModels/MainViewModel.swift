@@ -27,15 +27,14 @@ class MainViewModel: BaseViewModel {
     @Published var glucoseValue = "5.4"
     @Published var glucoseCorrectionValue = "+18"
     @Published var timeValue = "27 minutes ago"
-    @Published var glucoseUnitValue = "mmol/l"
     // Handel segmentControl
     let segementItems = InsulinAction.allCases
     @Published var selectedSegementItem = InsulinAction.rapid
     // Handle Info Alert
-    @Published var selectedInfoAlertItem: InfoAlertType = .reminder
+    @Published var selectedInfoAlertItem: InfoAlertType = .checkInTime
     @Published var highAlertCounterValue: Int = 0
     @Published var reminderAlertCounterValue: Int = 0
-    @Published var presentAlertItem: InfoAlertType = .inputValue
+    @Published var presentAlertItem: InfoAlertType = .checkInTime
     @Published var foodNameAlert = ""
     // Publishers
     private(set) var menuActionPubliser = PassthroughSubject<MenuAction, Error>()
@@ -102,6 +101,12 @@ class MainViewModel: BaseViewModel {
     }
     func resoreListEntries() {
        listEntries = listEntriesOrigin
+    }
+    var glucoseUnit: String {
+        if isUserInvalidated {
+           return glucoseTypeSelectedItem?.type ?? user?.glucoseUnit ?? L10n.mgDL
+        }
+        return L10n.mgDL
     }
 }
 

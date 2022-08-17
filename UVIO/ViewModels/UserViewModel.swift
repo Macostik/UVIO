@@ -47,7 +47,7 @@ class UserViewModel: BaseViewModel {
                 UserDefaults.standard.set(newValue, forKey: Constant.authTokenKey)
                 signUp = true
                 isloginModeSignUp = true
-                hasUserlogOut = false
+                isUserlogOut = true
                 presentLoginView.value = .signIn
                 presentOnboardingView.value = .signUp
             }

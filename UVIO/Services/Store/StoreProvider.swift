@@ -40,7 +40,7 @@ class StoreService: StoreInteractor {
         }, onComplete: { error in
             guard let error = error else {
                 Logger.debug("User was log out successfully")
-                subject.send(true)
+                subject.send(false)
                 subject.send(completion: .finished)
                 return
             }

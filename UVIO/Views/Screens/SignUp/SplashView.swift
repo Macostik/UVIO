@@ -11,8 +11,7 @@ struct SplashView: View {
     @ObservedObject var viewModel: UserViewModel
     var body: some View {
         NavigationView {
-            if viewModel.isUserInvalidated &&
-                !viewModel.hasUserlogOut {
+            if viewModel.isUserlogOut {
                 MainView()
             } else {
                 ZStack {
