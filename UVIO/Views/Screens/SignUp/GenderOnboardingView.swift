@@ -20,8 +20,9 @@ struct GenderOnboardingView: View, Identifiable {
                 Spacer()
                 contentView
                 Spacer()
-                SkipButton(destination: CompleteOnboardingView())
-                    .padding(.bottom, 7)
+                SkipButtonAction(action: {
+                    viewModel.presentOnboardingView.value = .glucoseUnit
+                }).padding(.bottom, 7)
             }
         }
         .edgesIgnoringSafeArea(.all)

@@ -103,6 +103,19 @@ struct SkipButton<Destination: View>: View {
         }
     }
 }
+struct SkipButtonAction: View {
+    private var action: () -> Void
+    init(action: @escaping () -> Void) {
+        self.action = action
+    }
+    var body: some View {
+        Button(action: action) {
+            Text(L10n.skip)
+                .font(.poppins(.medium, size: 14))
+                .foregroundColor(Color.black)
+        }
+    }
+}
 
 struct ProgressView: View {
     var completed: Double = 1.0

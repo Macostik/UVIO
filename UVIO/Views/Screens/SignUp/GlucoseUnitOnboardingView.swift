@@ -19,7 +19,9 @@ struct GlucoseUnitOnboardingView: View {
                 Spacer()
                 contentView
                 Spacer()
-                SkipButton(destination: CompleteOnboardingView())
+                SkipButtonAction(action: {
+                    viewModel.presentOnboardingView.value = .glucoseAlert
+                })
                     .padding(.bottom, 7)
             }
         }
