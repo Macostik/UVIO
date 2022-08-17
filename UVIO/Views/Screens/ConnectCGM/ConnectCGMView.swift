@@ -73,7 +73,7 @@ extension ConnectCGMView {
                 Image.connectCGMIcon
             }
             NavigationLink {
-                MainView(userViewModel: userViewModel)
+                MainView()
             } label: {
                 HStack {
                     Text(L10n.willConnectCGM)

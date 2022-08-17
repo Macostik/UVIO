@@ -168,6 +168,18 @@ class BaseViewModel: ObservableObject {
         }
         return ""
     }
+    var userGlucoseUnit: String {
+        if isUserInvalidated, let user = user {
+           return user.glucoseUnit
+        }
+        return ""
+    }
+    var userGender: String {
+        if isUserInvalidated, let user = user {
+           return user.gender
+        }
+        return ""
+    }
     func handleGettinguser() {
         getUser()
             .replaceError(with: nil)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IntegrationsView: View {
-    @StateObject var viewModel: UserViewModel
+    @EnvironmentObject var viewModel: UserViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .top) {
@@ -24,7 +24,7 @@ struct IntegrationsView: View {
 
 struct IntegrationsView_Previews: PreviewProvider {
     static var previews: some View {
-        IntegrationsView(viewModel: UserViewModel())
+        IntegrationsView()
     }
 }
 

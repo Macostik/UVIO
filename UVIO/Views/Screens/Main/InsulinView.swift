@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InsulinView: View {
     @StateObject var keyboard = KeyboardHandler()
-    @ObservedObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
@@ -31,7 +31,7 @@ struct InsulinView: View {
 
 struct InsulinView_Previews: PreviewProvider {
     static var previews: some View {
-        InsulinView(viewModel: MainViewModel())
+        InsulinView()
     }
 }
 

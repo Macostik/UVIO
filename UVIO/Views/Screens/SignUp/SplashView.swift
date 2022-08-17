@@ -13,7 +13,7 @@ struct SplashView: View {
         NavigationView {
             if viewModel.isUserInvalidated &&
                 !viewModel.hasUserlogOut {
-                MainView(userViewModel: viewModel)
+                MainView()
             } else {
                 ZStack {
                     Image.splashBackgroundImage
@@ -30,6 +30,7 @@ struct SplashView: View {
                 }
             }
         }
+        .environmentObject(viewModel)
     }
     var splashIconView: some View {
         ZStack {

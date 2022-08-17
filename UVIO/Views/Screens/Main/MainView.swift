@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct MainView: View {
-    @ObservedObject var userViewModel: UserViewModel
+    @EnvironmentObject var userViewModel: UserViewModel
     @ObservedObject var mainViewModel = MainViewModel()
     @State var shouldScroll = true
     @State var title = L10n.yourGlucose
@@ -30,6 +30,7 @@ struct MainView: View {
                 warningView
             }
         }
+        .environmentObject(mainViewModel)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
         .onAppear {
@@ -40,7 +41,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(userViewModel: UserViewModel())
+        MainView()
     }
 }
 
@@ -55,7 +56,7 @@ extension MainView {
         ZStack(alignment: .bottom) {
             VStack {
                 MainNavigationBarView(destination: {
-                    SettingsView(viewModel: userViewModel)
+                    SettingsView()
                 }, content: {
                     Text(title)
                         .font(.poppins(.bold, size: 18))
@@ -310,18 +311,18 @@ extension MainView {
         })
     }
     var logBGView: some View {
-        LogBGLevelView(viewModel: mainViewModel)
+        LogBGLevelView()
     }
     var foodView: some View {
-        FoodView(viewModel: mainViewModel)
+        FoodView()
     }
     var insulinView: some View {
-        InsulinView(viewModel: mainViewModel)
+        InsulinView()
     }
     var remainderView: some View {
-        ReminderView(viewModel: mainViewModel)
+        ReminderView()
     }
     var warningView: some View {
-        WarningAlertView(viewModel: mainViewModel)
+        WarningAlertView()
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WarningAlertView: View {
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
         contentView
     }
@@ -16,7 +16,7 @@ struct WarningAlertView: View {
 
 struct WarningAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        WarningAlertView(viewModel: MainViewModel())
+        WarningAlertView()
     }
 }
 

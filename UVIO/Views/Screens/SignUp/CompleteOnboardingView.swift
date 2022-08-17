@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CompleteOnboardingView: View {
-    @ObservedObject var viewModel: UserViewModel
+    @EnvironmentObject var viewModel: UserViewModel
     var body: some View {
         ZStack(alignment: .top) {
             backgroundColor
@@ -18,12 +18,12 @@ struct CompleteOnboardingView: View {
                 contentView
                 Spacer()
                 connectButton
-                SkipButton(destination: MainView(userViewModel: viewModel))
+                SkipButton(destination: MainView())
                     .padding(.bottom, 7)
             }
             navigationView
             NavigationLink(isActive: $viewModel.userCreateCompleted) {
-                MainView(userViewModel: viewModel)
+                MainView()
             } label: {
                 EmptyView()
             }
@@ -34,7 +34,7 @@ struct CompleteOnboardingView: View {
 
 struct CompleteOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        CompleteOnboardingView(viewModel: UserViewModel())
+        CompleteOnboardingView()
     }
 }
 

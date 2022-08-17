@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var viewModel: UserViewModel
+    @EnvironmentObject var viewModel: UserViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -22,7 +22,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(viewModel: UserViewModel())
+        SettingsView()
     }
 }
 
@@ -44,7 +44,7 @@ extension SettingsView {
                 .padding(.top, 79)
             VStack(alignment: .leading, spacing: 30) {
                 NavigationLink {
-                     AccountInformationView(viewModel: viewModel)
+                     AccountInformationView()
                 } label: {
                     HStack(spacing: 15) {
                         Image.accountInfoIcon
@@ -56,7 +56,7 @@ extension SettingsView {
                     .offset(x: -2)
                 }
                 NavigationLink {
-                     BGLevelAlertView(viewModel: viewModel)
+                     BGLevelAlertView()
                 } label: {
                     HStack(spacing: 15) {
                         Image.bgAlertIcon
@@ -67,7 +67,7 @@ extension SettingsView {
                     }
                 }
                 NavigationLink {
-                     IntegrationsView(viewModel: viewModel)
+                     IntegrationsView()
                 } label: {
                     HStack(spacing: 15) {
                         Image.devicesIcon
@@ -91,7 +91,7 @@ extension SettingsView {
             .font(.poppins(.regular, size: 14))
             .padding(.bottom, 10)
             Button {
-                viewModel.logOutUser()
+               _ = viewModel.logOut()
             } label: {
                 Text(L10n.logout)
                     .font(.poppins(.bold, size: 16))

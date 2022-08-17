@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FoodView: View {
     @StateObject var keyboard = KeyboardHandler()
-    @ObservedObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @State var offset = 0.0
     var body: some View {
         ZStack {
@@ -27,7 +27,7 @@ struct FoodView: View {
 
 struct FoodView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodView(viewModel: MainViewModel())
+        FoodView()
     }
 }
 

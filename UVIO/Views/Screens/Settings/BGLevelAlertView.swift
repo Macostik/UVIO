@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BGLevelAlertView: View {
-    @StateObject var viewModel: UserViewModel
+    @EnvironmentObject var viewModel: UserViewModel
     @State var showFooter = false
     @State var isSaved = false
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -35,7 +35,7 @@ struct BGLevelAlertView: View {
 
 struct BGLevelAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        BGLevelAlertView(viewModel: UserViewModel())
+        BGLevelAlertView()
     }
 }
 

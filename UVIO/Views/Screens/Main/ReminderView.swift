@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReminderView: View {
     @StateObject var keyboard = KeyboardHandler()
-    @ObservedObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
@@ -30,7 +30,7 @@ struct ReminderView: View {
 
 struct RemainderView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderView(viewModel: MainViewModel())
+        ReminderView()
     }
 }
 

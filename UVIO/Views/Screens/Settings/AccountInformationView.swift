@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AccountInformationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @StateObject var viewModel: UserViewModel
+    @EnvironmentObject var viewModel: UserViewModel
     @State var isEditUserName = false
     @State var isEditEmail = false
     @State var isEditDiabetType = false
@@ -51,7 +51,7 @@ struct AccountInformationView: View {
 
 struct AccountInformationView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountInformationView(viewModel: UserViewModel())
+        AccountInformationView()
     }
 }
 
@@ -256,7 +256,7 @@ extension AccountInformationView {
                 .font(.poppins(.medium, size: 14))
                 .foregroundColor(Color.black)
                 .padding()
-            Text(viewModel.user?.gender ?? "")
+            Text(viewModel.userGender)
                 .font(.poppins(.bold, size: 14))
                 .foregroundColor(Color.black)
                 .accentColor(Color.black)

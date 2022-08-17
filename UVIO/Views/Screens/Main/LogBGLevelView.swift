@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LogBGLevelView: View {
     @StateObject var keyboard = KeyboardHandler()
-    @ObservedObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     @State var isCalendarOpen = false
     @State var isTimePickerOpen = false
     @State var isNodeAdded = false
@@ -38,7 +38,7 @@ struct LogBGLevelView: View {
 
 struct LogBGLevelView_Previews: PreviewProvider {
     static var previews: some View {
-        LogBGLevelView(viewModel: MainViewModel())
+        LogBGLevelView()
     }
 }
 
@@ -102,7 +102,7 @@ extension LogBGLevelView {
                         isCalendarOpen = false
                     }
                 }
-            Text(viewModel.user?.glucoseUnit ?? "")
+            Text(viewModel.userGlucoseUnit)
                 .font(.poppins(.medium, size: 18))
                 .offset(y: -50)
             Text(L10n.glucose)
