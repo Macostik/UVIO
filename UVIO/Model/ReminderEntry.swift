@@ -24,7 +24,7 @@ extension ReminderEntry: Mapable {
         listViewEntry.mainColor = Color.grayBackgroundColor.opacity(0.7)
         listViewEntry.image = Image.bellIcon
         listViewEntry.title =
-        Text("\(createdAt.time)")
+        Text("\(reminderValue)")
             .foregroundColor(Color.black)
             .font(.poppins(.bold, size: 12))
         listViewEntry.subTitle =

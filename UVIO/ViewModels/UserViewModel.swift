@@ -38,6 +38,7 @@ class UserViewModel: BaseViewModel {
     // Onboarding alert
     @Published var notifyBGLevelOutOfRange: Bool = false
     @Published var alertBGLevelOutOfRange: Bool = false
+    @Published var saveSettings = false
     // Facebook token
     @Published var authToken: String = "" {
         willSet {

@@ -425,7 +425,7 @@ extension BaseViewModel {
             .flatMap({ [unowned self] _ in
                 return self.updateEntry {
                     let entry = ReminderEntry()
-                    entry.reminderValue = "\(self.reminderCounter)"
+                    entry.reminderValue = self.minutesToHoursAndMinutes(self.reminderCounter)
                     entry.note = self.reminderNote
                     self.reminderNote = ""
                     return entry
@@ -435,6 +435,12 @@ extension BaseViewModel {
                     return value
                 })
             }).eraseToAnyPublisher()
+    }
+    func minutesToHoursAndMinutes(_ minutes: Int) -> String {
+        let hour = "\(minutes / 60) : "
+        let minutesValue = (minutes % 60)
+        let minutesString = minutesValue < 10 ? "0\(minutesValue)" : "\(minutesValue)"
+        return hour + minutesString
     }
     func handleSubmition() {
         Publishers.Merge4(logBGPublisher, reminderPublisher, insulinPublisher, foodPublisher)

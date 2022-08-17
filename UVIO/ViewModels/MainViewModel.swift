@@ -32,7 +32,7 @@ class MainViewModel: BaseViewModel {
     let segementItems = InsulinAction.allCases
     @Published var selectedSegementItem = InsulinAction.rapid
     // Handle Info Alert
-    @Published var selectedInfoAlertItem: InfoAlertType = .inputValue
+    @Published var selectedInfoAlertItem: InfoAlertType = .reminder
     @Published var highAlertCounterValue: Int = 0
     @Published var reminderAlertCounterValue: Int = 0
     @Published var presentAlertItem: InfoAlertType = .inputValue

@@ -130,7 +130,8 @@ extension MainView {
                         Text(L10n.hi)
                             .font(.poppins(.bold, size: 21))
                             .foregroundColor(Color.black)
-                        Text(mainViewModel.userName)
+                        Text(userViewModel.name.isEmpty ?
+                             userViewModel.userName : userViewModel.name )
                             .font(.poppins(.bold, size: 21))
                             .foregroundColor(Color.black)
                         Text(",")
