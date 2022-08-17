@@ -47,8 +47,7 @@ extension BirthDateOnboardingView {
         VStack {
             Text(L10n.whatIsYourBD)
                 .font(.poppins(.bold, size: 24))
-            DatePickerView(date: $viewModel.birthDate,
-                           isPresentedDatePicker: $isPresentedDatePicker)
+            RangeDatePicker(selectedItem: $viewModel.birthDate)
             .padding(.top)
         }
         .offset(y: 7)

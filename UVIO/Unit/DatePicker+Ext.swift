@@ -44,3 +44,29 @@ struct CarbsDataPicker: UIViewRepresentable {
     }
     func updateUIView(_ picker: UIPickerView, context: Context) {}
 }
+
+struct RangeDatePicker: UIViewRepresentable {
+    @Binding var selectedItem: Date
+    class Coordinator: NSObject {
+        var selectedItem: Binding<Date>
+        init(selectedItem: Binding<Date>) {
+          self.selectedItem = selectedItem
+        }
+        @objc func handleDatePicker(_ datePicker: UIDatePicker) {
+            selectedItem.wrappedValue = datePicker.date
+        }
+    }
+    func makeCoordinator() -> Coordinator {
+        Coordinator(selectedItem: $selectedItem)
+    }
+    func makeUIView(context: Context) -> UIDatePicker {
+        let picker = UIDatePicker()
+        picker.minimumDate = Calendar.current.date(byAdding: .year, value: -122, to: Date())
+        picker.maximumDate = Date()
+        picker.datePickerMode = .date
+        picker.preferredDatePickerStyle = .wheels
+        picker.addTarget(context.coordinator, action: #selector(Coordinator.handleDatePicker), for: .valueChanged)
+        return picker
+    }
+    func updateUIView(_ picker: UIDatePicker, context: Context) {}
+}
